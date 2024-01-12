@@ -20,9 +20,12 @@ public class SoundSettings
 
     [Range(0,2)] 
     public float volume=1;
+
+    [Range(0,2)]
     public float pitch;
 
     public AudioMixer Mixer;
+
     
      
 
@@ -55,6 +58,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        
         
 
     }
