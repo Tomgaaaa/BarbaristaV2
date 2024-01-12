@@ -22,8 +22,8 @@ public class SCR_Pool : MonoBehaviour
         for (int i = 0; i < qty; i++)
         {
             SCR_PoolItem item = Instantiate(prefab, transform);
-            item.gameObject.SetActive(false);
             item.Init(this);
+            item.gameObject.SetActive(false);
             ready.Enqueue(item);
         }
     }
@@ -31,7 +31,10 @@ public class SCR_Pool : MonoBehaviour
     public SCR_PoolItem Instantiate()
     {
         if (ready.Count == 0)
+        {
             Add();
+            Debug.Log("Pool vide");
+        }
 
         SCR_PoolItem obj = ready.Dequeue();
         obj.transform.parent = null;

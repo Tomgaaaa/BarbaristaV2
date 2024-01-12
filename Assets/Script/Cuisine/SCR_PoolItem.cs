@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class SCR_PoolItem : MonoBehaviour
 {
-    SCR_Pool pool;
+    [SerializeField] private protected SCR_Pool refPool;
 
     public virtual void Init(SCR_Pool basePool)
     {
-        pool = basePool;
+        refPool = basePool;
         gameObject.SetActive(true);
+
     }
 
     public void Back()
     {
-        if (pool != null)
-            pool.Back(this);
+        if (refPool != null)
+            refPool.Back(this);
     }
 
 
