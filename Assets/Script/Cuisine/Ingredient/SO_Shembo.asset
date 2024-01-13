@@ -12,6 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3178a60287f555c49accf6d15a2cab33, type: 3}
   m_Name: SO_Shembo
   m_EditorClassIdentifier: 
-  myEnumIngredient: 2
+  myEnumIngredientSO: 2
   mySpriteSO: {fileID: 21300000, guid: 2ddf0f40735475c42a162d6e55812f62, type: 3}
+  actualStateSO: 0
+  listDicoResistance:
+  - key: 0
+    value: 200
+  - key: 1
+    value: 0
+  - key: 2
+    value: 0
+  - key: 3
+    value: 0
+  - key: 4
+    value: 100
+  - key: 5
+    value: 0
   stockSO: 6
+  listDicoIngredientTransfo: []

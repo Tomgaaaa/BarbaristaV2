@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,7 @@ public class SCR_Ingredient : SCR_PoolItem
 
     private bool inEtagere = true;
     [SerializeField] private SCR_Etagere refEtagere;
+    public bool estMaintenue;
 
 
     private void Start()
@@ -38,11 +40,14 @@ public class SCR_Ingredient : SCR_PoolItem
     public override void Init(SCR_Pool basePool)
     {
         base.Init(basePool);
+        UpdateSprite();
+    }
+
+    public void UpdateSprite()
+    {
         gameObject.name = myIngredient.name;
         mySpriteRenderer.sprite = myIngredient.mySpriteSO;
     }
-
-
 
     private void OnMouseDown()
     {
@@ -56,7 +61,7 @@ public class SCR_Ingredient : SCR_PoolItem
 
         }
 
-
+        estMaintenue = true;
         SetTargetJointOnAnotherObject(false);
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         mySpriteRenderer.sortingOrder = 10;
@@ -64,13 +69,31 @@ public class SCR_Ingredient : SCR_PoolItem
 
     private void OnMouseUp()
     {
+        estMaintenue = false;
+
+
+        RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition));
+
+        if (rayHit.transform.GetComponent<SCR_Ustensile>())
+        {
+            SCR_Ustensile ustensileDrop = rayHit.transform.GetComponent<SCR_Ustensile>();
+            ustensileDrop.OnDrop(this);
+            Transformation(ustensileDrop.GetEtat());
+        }
+
+
+
+
         SetTargetJointOnAnotherObject(true);
         gameObject.layer = LayerMask.NameToLayer("DragObject");
-        mySpriteRenderer.sortingOrder = 10;
+        mySpriteRenderer.sortingOrder = 5;
     }
 
     public void OnMouseDrag()
     {
+       
+
+
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition));
 
         if (rayHit)
@@ -80,6 +103,13 @@ public class SCR_Ingredient : SCR_PoolItem
     }
 
    
+
+    public void Transformation(enumEtatIgredient newEtatParameter)
+    {
+        myIngredient =  myIngredient.dicoIngredientTransfo[newEtatParameter];
+        UpdateSprite();
+    }
+
 
     public void SetTargetJointOnAnotherObject(bool needReset = false)
     {
@@ -113,6 +143,17 @@ public class SCR_Ingredient : SCR_PoolItem
         }
 
     }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.GetComponent<SCR_Etagere>() && !estMaintenue)
+        {
+            Back(); 
+
+        }
+    }
+    
 
     public void SetSoIngredient(SCR_SO_Ingredient parameter_SOingredient, SCR_Etagere etagereParameter) { myIngredient = parameter_SOingredient; refEtagere = etagereParameter; }
 }

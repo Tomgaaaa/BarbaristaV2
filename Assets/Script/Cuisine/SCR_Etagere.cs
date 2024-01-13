@@ -7,7 +7,6 @@ using static DictionaryLesson;
 
 
 
-public enum enumAllIgredient{Scolk, Frejal, Shembo, Phylliul, Siarym, Klec}
 
 
 public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver
@@ -27,6 +26,9 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver
     private Dictionary<SCR_SO_Ingredient, Vector3> dicoposition;
 
     [SerializeField] private SCR_Pool refPool;
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -78,7 +80,7 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver
             poolIngredient.Init(refPool);
             poolIngredient.transform.position = dicoposition[ingredientAdd];
 
-            GameObject etiquetteOutOfStock = dicoOutOfStock[ingredientAdd.myEnumIngredient];
+            GameObject etiquetteOutOfStock = dicoOutOfStock[ingredientAdd.myEnumIngredientSO];
             etiquetteOutOfStock.SetActive(false);
         }
 
@@ -92,10 +94,10 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver
 
     public void UpdateStockIngredient(SCR_SO_Ingredient IngredientPris )
     {
-        dicoTextStock[IngredientPris.myEnumIngredient].text = "x" + IngredientPris.stockSO; ;
+        dicoTextStock[IngredientPris.myEnumIngredientSO].text = "x" + IngredientPris.stockSO; ;
         if (IngredientPris.stockSO == 0)
         {
-            GameObject etiquetteOutOfStock =  dicoOutOfStock[IngredientPris.myEnumIngredient];
+            GameObject etiquetteOutOfStock =  dicoOutOfStock[IngredientPris.myEnumIngredientSO];
             etiquetteOutOfStock.SetActive(true);
 
             // animation 
@@ -107,5 +109,12 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver
 
     public void OnBeforeSerialize()
     {
+    }
+
+
+
+    public void IngredientPick()
+    {
+        :
     }
 }
