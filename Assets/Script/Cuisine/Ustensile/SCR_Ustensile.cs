@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SCR_Ustensile : MonoBehaviour
+public class SCR_Ustensile : MonoBehaviour // script parent de tout les ustensiles (ceux qui permettent de modifier un etat)
 {
 
-    [SerializeField] private protected enumEtatIgredient etatApresTransformation;
+    [SerializeField] private protected enumEtatIgredient etatApresTransformation; // état de l'ingrédient apres la transformation 
 
 
 
@@ -24,11 +24,11 @@ public class SCR_Ustensile : MonoBehaviour
 
  
 
-    public virtual void OnDrop(SCR_Ingredient ingredientDropParameter)
+    public virtual void OnDrop(SCR_Ingredient ingredientDropParameter) // fonction appelé lorsqu'un ingrédient est laché par dessus un ustensile
     {
         Debug.Log("touché un sustensile");
 
     }
 
-    public enumEtatIgredient GetEtat() { return etatApresTransformation; }
+    public enumEtatIgredient GetEtat() { return etatApresTransformation; } // renvoie l'etat de transformation
 }
