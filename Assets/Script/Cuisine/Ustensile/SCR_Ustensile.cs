@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SCR_Ustensile : MonoBehaviour // script parent de tout les ustensiles (ceux qui permettent de modifier un etat)

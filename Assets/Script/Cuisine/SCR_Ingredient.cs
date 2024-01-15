@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ingrédient transformé
 {
