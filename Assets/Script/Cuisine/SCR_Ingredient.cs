@@ -18,7 +18,6 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     private bool inEtagere = true; // permet de savoir si l'ingrédient est dans l'etagere ou non
     [SerializeField] private SCR_Etagere refEtagere; // reference de l'etagere, utile pour calculer la distance 
-    private bool estMaintenue; // permet de savoir si l'objet est en train d'etre drag ou non
 
 
     private void Start()
@@ -62,7 +61,6 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
         }
 
-        estMaintenue = true; // défini l'objet comme maintenue 
         SetTargetJointOnAnotherObject(false); // ajoute le component TargetJoint, parametre false car on n'a pas besoin de reset le joint
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); // on passe l'objet sur ce layer pour qu'il garde ces collisions mais pas les Cast
         mySpriteRenderer.sortingOrder = 10; // fait passer l'objet devant tout le reste 
@@ -70,7 +68,6 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     private void OnMouseUp() // fonction appelé lorsqu'on relache le clique (et qu'on avait clique sur l'objet avant, pas lorsqu'on relache le clique n'importe ou)
     {
-        estMaintenue = false; // l'objet n'est plus maintenue vus qu'on l'a laché
 
 
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition)); // créer un Cast pour savoir si on a relaché l'ingrédient sur quelque chose
@@ -79,7 +76,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         {
             SCR_Ustensile ustensileDrop = rayHit.transform.GetComponent<SCR_Ustensile>(); // stock l'ustensile dans une var
             ustensileDrop.OnDrop(this); // appele la fonction OnDrop de l'ustensile
-            Transformation(ustensileDrop.GetEtat()); // transforme l'ingrédient dans l'etat de l'ustensile
+            //Transformation(ustensileDrop.GetEtat()); // transforme l'ingrédient dans l'etat de l'ustensile
         }
 
 
