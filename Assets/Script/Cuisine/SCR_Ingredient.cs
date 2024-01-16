@@ -19,6 +19,11 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
     private bool inEtagere = true; // permet de savoir si l'ingrédient est dans l'etagere ou non
     [SerializeField] private SCR_Etagere refEtagere; // reference de l'etagere, utile pour calculer la distance 
 
+    private bool inContenant;
+    private SCR_Contenant refLastContenant;
+
+
+
 
     private void Start()
     {
@@ -61,6 +66,15 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
         }
 
+
+        if(inContenant)
+        {
+            inContenant = false;
+            refLastContenant.PickUpFromContenant();
+        
+
+        }
+
         SetTargetJointOnAnotherObject(false); // ajoute le component TargetJoint, parametre false car on n'a pas besoin de reset le joint
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); // on passe l'objet sur ce layer pour qu'il garde ces collisions mais pas les Cast
         mySpriteRenderer.sortingOrder = 10; // fait passer l'objet devant tout le reste 
@@ -75,14 +89,26 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         if (rayHit.transform.GetComponent<SCR_Ustensile>()) // si on a relaché l'objet sur un ustensile 
         {
             SCR_Ustensile ustensileDrop = rayHit.transform.GetComponent<SCR_Ustensile>(); // stock l'ustensile dans une var
-            ustensileDrop.OnDrop(this); // appele la fonction OnDrop de l'ustensile
+
+            if (myIngredient.actualStateSO == enumEtatIgredient.Nature) 
+            {
+                ustensileDrop.OnDrop(this); // appele la fonction OnDrop de l'ustensile
+
+            }
+
+
             //Transformation(ustensileDrop.GetEtat()); // transforme l'ingrédient dans l'etat de l'ustensile
         }
 
+        if (rayHit.transform.GetComponent<SCR_Contenant>())
+        {
+            SCR_Contenant contenantDrop = rayHit.transform.GetComponent<SCR_Contenant>();
+            contenantDrop.OnDrop(this);
+
+        }
 
 
-
-        SetTargetJointOnAnotherObject(true); // retire le component TarGetJoint, parametre a vrai car cette on reset le joint
+            SetTargetJointOnAnotherObject(true); // retire le component TarGetJoint, parametre a vrai car cette on reset le joint
         gameObject.layer = LayerMask.NameToLayer("DragObject"); // repasse l'objet sur ce layer pour recevoir les Cast
         mySpriteRenderer.sortingOrder = 5; // repasse l'objet au meme niveau qu'il a de base
     }
@@ -125,11 +151,11 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         }
     }
 
-    
 
 
-   
-    
 
+    public SCR_SO_Ingredient GetCR_SO_Ingredient() { return myIngredient; }
+
+    public void SetInUstensileAndUstensile(bool inUstensileParameter, SCR_Contenant ustensileUseParameter) { inContenant = inUstensileParameter; refLastContenant = ustensileUseParameter; }
     public void SetSoIngredient(SCR_SO_Ingredient parameter_SOingredient, SCR_Etagere etagereParameter) { myIngredient = parameter_SOingredient; refEtagere = etagereParameter; } 
 }

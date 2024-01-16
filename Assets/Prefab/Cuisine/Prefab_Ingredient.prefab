@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7069a4d511f412c42831cd9c00c20702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refPool: {fileID: 0}
 --- !u!114 &5341052168554242939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,10 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d7535a306a478438d5436b59fe1a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myIngredient: {fileID: 0}
   refPool: {fileID: 0}
+  myIngredient: {fileID: 0}
   frequenceJoint: 5
   dampingJoint: 1
+  refEtagere: {fileID: 0}
 --- !u!61 &-7138166794813113727
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,7 +132,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

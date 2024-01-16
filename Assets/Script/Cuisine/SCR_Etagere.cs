@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static DictionaryLesson;
@@ -33,13 +34,18 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
 
     [SerializeField] private SCR_Pool refPool; // besoin du pool quand on veut rajouter un ingrédient dans le stock et que le stock est à 0
 
+    [SerializeField] private Transform bambooShade;
+    [SerializeField] private Vector3 emplacementbambooShade;
+    private Vector3 startPositionBambooShade;
+    [SerializeField] private Transform allUstensile;
+    private Vector3 startPositionAllUstensile;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        startPositionBambooShade = bambooShade.position;
     }
 
     public void OnAfterDeserialize() // permet de faire le lien list (qu'on voit) -> dico (qu'on voit pas)
@@ -128,6 +134,25 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
             etiquetteOutOfStock.transform.DOScale(ancienScale, 0.3f); // change le scale de l'objet, il passe de X2 à son ancien scale (X1) en 0.3 secondes
         }
     }
+
+
+    public void LockIngredient()
+    {
+        startPositionBambooShade = bambooShade.position;
+        bambooShade.DOLocalMove(emplacementbambooShade, 1f);
+
+        startPositionAllUstensile = allUstensile.position;
+        allUstensile.DOLocalMove(new Vector3(-10, 0, 0),1f);
+    }
+
+
+    public void UnLockIngredient()
+    {
+        bambooShade.DOLocalMove(startPositionBambooShade, 1f);
+
+        allUstensile.DOLocalMove(startPositionAllUstensile,1f);
+    }
+
 
     public void OnBeforeSerialize()
     {

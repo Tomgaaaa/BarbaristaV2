@@ -35,56 +35,59 @@ public class SCR_UST_Presse : SCR_Ustensile
 
     public override void OnMouseDrag()
     {
-        base.OnMouseDrag();
-
-        Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 mouseDirection = mousePos - roueCrante.position;
-        float rotZ = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg - 90 ;
-        Quaternion queternionEuler = Quaternion.Euler(0, 0, rotZ);
-
-
-
-        //roueCrante.rotation = Quaternion.Euler(0,0, rotZ);
-        /*if(roueCrante.eulerAngles.z < endRotation + 10 && roueCrante.eulerAngles.z > endRotation )
+        if(inManipulation)
         {
-            endRotation = roueCrante.eulerAngles.z;
-            roueCrante.rotation = Quaternion.Euler(0,0, rotZ);
-        }*/
+            base.OnMouseDrag();
+
+            Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mouseDirection = mousePos - roueCrante.position;
+            float rotZ = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg - 90;
+            Quaternion queternionEuler = Quaternion.Euler(0, 0, rotZ);
 
 
-        if (queternionEuler.eulerAngles.z < endRotation + 10 && queternionEuler.eulerAngles.z > endRotation || endRotation > 355 && queternionEuler.eulerAngles.z > 0)
-        {
-            roueCrante.rotation = Quaternion.Euler(0, 0, rotZ);
-            endRotation = roueCrante.eulerAngles.z;
 
-            if(endRotation > 355)
+            //roueCrante.rotation = Quaternion.Euler(0,0, rotZ);
+            /*if(roueCrante.eulerAngles.z < endRotation + 10 && roueCrante.eulerAngles.z > endRotation )
             {
-                endRotation = 0;
-                nmbDeTour++;
+                endRotation = roueCrante.eulerAngles.z;
+                roueCrante.rotation = Quaternion.Euler(0,0, rotZ);
+            }*/
 
-                if(nmbDeTour >= nombreDeTourNecessaire)
+
+            if (queternionEuler.eulerAngles.z < endRotation + 10 && queternionEuler.eulerAngles.z > endRotation || endRotation > 355 && queternionEuler.eulerAngles.z > 0)
+            {
+                roueCrante.rotation = Quaternion.Euler(0, 0, rotZ);
+                endRotation = roueCrante.eulerAngles.z;
+
+                if (endRotation > 355)
                 {
-                    ingredientDrop.Transformation(etatApresTransformation);
-                    ingredientDrop = null;
-                    
+                    endRotation = 0;
+                    nmbDeTour++;
+
+                    if (nmbDeTour >= nombreDeTourNecessaire)
+                    {
+                        FinishManipulation();
+                        nmbDeTour = 0;
+                        endRotation = 0;
+                        roueCrante.rotation = Quaternion.Euler(0, 0, 0);
+
+                    }
                 }
             }
         }
-
         
-        
-
-
-
-
-
-
-
 
 
     }
 
+    public override void FinishManipulation()
+    {
+        
+        base.FinishManipulation();
 
+        // fauddra reset la position du bras dela presse
+
+    }
 
     public static float Remap( float value, float from1, float to1, float from2, float to2)
     {
