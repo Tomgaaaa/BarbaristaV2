@@ -16,4 +16,15 @@ public class SCR_Compendium_Child : MonoBehaviour
     {
         parent.NextPage();
     }
+
+    public void PreviewPageChild()
+    {
+        parent.PreviewPage();
+    }
+
+    public void GoToChild(int page)
+    {
+        parent.GoToPage(page);
+    }
+
 }
