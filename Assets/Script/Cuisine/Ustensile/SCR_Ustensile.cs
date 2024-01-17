@@ -7,13 +7,14 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
 {
 
     [SerializeField] private protected enumEtatIgredient etatApresTransformation; // état de l'ingrédient apres la transformation 
-    private protected Camera mainCam;
-    private Vector3 startPositionCam;
-    [SerializeField] private Vector3 emplacementCam;
 
-    [SerializeField] private Collider2D colliderManipulation;
-    [SerializeField] private Collider2D colliderDrop;
-    private protected bool inManipulation = false;
+    private protected Camera mainCam; // reference a la cam pour la transition camera 
+    private Vector3 startPositionCam; // stock la position initial de la cam
+    [SerializeField] private Vector3 emplacementCam; // position que devra prendre la camera apres transition
+
+    [SerializeField] private Collider2D colliderManipulation; // reference au collider utile à la manipulation
+    [SerializeField] private Collider2D colliderDrop; // reference au collider qui permet le OnDrop
+    private protected bool inManipulation = false; // empeche de manipuler l'ingrédient si il n'y pas d'ingrédient
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -32,22 +33,21 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
 
 
 
-    public override void OnDrop(SCR_Ingredient ingredientDropParameter)
+    public override void OnDrop(SCR_Ingredient ingredientDropParameter) // fonction appellé lorsuq'un ingrédient est drop sur l'ustensile
     {
-        if(nmbIngredientIn < maxIngredientDrop)
+        if(nmbIngredientIn < maxIngredientDrop) // vérifie si il n'y a pas déja un ingrédient dans l'ustensile
         {
-            base.OnDrop(ingredientDropParameter);
-
-            ingredientDrop = ingredientDropParameter;
-            ingredientDrop.GetComponent<Collider2D>().enabled = false;
-
-            colliderManipulation.enabled = true;
-            colliderDrop.enabled = false;
-            inManipulation = true;
+            base.OnDrop(ingredientDropParameter); // fait le OnDrop du script contenant
 
 
-            mainCam.transform.DOMove(new Vector3(emplacementCam.x, emplacementCam.y, -2), 1f);
-            mainCam.DOOrthoSize(emplacementCam.z, 1f);
+            colliderManipulation.enabled = true; // active le collider de manipulation 
+            colliderDrop.enabled = false; // désactive le collider qui permet de detecter le OnDrop
+            inManipulation = true; // on passe en mode manipulation
+
+            ingredientCollider.enabled = false; // désactive le collider de l'ingrédient car on ne peut pas toucher l'ingrédient lorsqu'on le manipule
+
+            mainCam.transform.DOMove(new Vector3(emplacementCam.x, emplacementCam.y, -2), 1f); // déplace la camera centré sur l'ustensile
+            mainCam.DOOrthoSize(emplacementCam.z, 1f); // change le zoom de la camera, emplacement.z car on est en 2D donc inutile le Z, ça évite de recreer une variable
         }
 
         
@@ -61,22 +61,28 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     }
 
 
-    public virtual void FinishManipulation()
+    public virtual void FinishManipulation() // fonction appellé lorsqu'on a finis la manipulation
     {
-        colliderManipulation.enabled = false;
-        colliderDrop.enabled = true;
-        inManipulation = false;
+        colliderManipulation.enabled = false; // désactive le collider de manipulation vus qu'on a finis
+        inManipulation = false; // on ne manipule plus l'ingrédient 
 
 
-        ingredientDrop.Transformation(etatApresTransformation);
-        ingredientDrop.SetInUstensileAndUstensile(true, this);
-        ingredientDrop.GetComponent<Collider2D>().enabled = true;
+        ingredientDrop.Transformation(etatApresTransformation); // indique à l'ingrédient qu'on le transforme en l'etat que transforme l'ustensile
+        ingredientCollider.enabled = true; // re active le collider de l'ingrédient pour pouvoir le reprendre
 
-        mainCam.transform.DOMove(new Vector3(startPositionCam.x, startPositionCam.y, -2), 1f);
-        mainCam.DOOrthoSize(5.7f, 1f);
-
+        mainCam.transform.DOMove(new Vector3(startPositionCam.x, startPositionCam.y, -2), 1f); // reposition la camera sa position intial
+        mainCam.DOOrthoSize(5.7f, 1f); // remet le zoom de la camera a sa valeur intial
 
 
+
+
+
+    }
+
+    public override void PickUpFromContenant()
+    {
+        base.PickUpFromContenant();
+        colliderDrop.enabled = true; // réactive le collider pour permettre de re drop des ingrédients sur l'ustensile, on le reactive que lorsque l'ingrédient est repris
 
 
     }

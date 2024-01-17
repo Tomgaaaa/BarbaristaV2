@@ -19,8 +19,8 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
     private bool inEtagere = true; // permet de savoir si l'ingrédient est dans l'etagere ou non
     [SerializeField] private SCR_Etagere refEtagere; // reference de l'etagere, utile pour calculer la distance 
 
-    private bool inContenant;
-    private SCR_Contenant refLastContenant;
+    private bool inContenant; // permet de savoir si l'ingrédient est dans un contenant ou pas
+    private SCR_Contenant refLastContenant; // ref du contenant pour appeler des fonctions lorsqu'on prend l'ingrédient depuis un contenant
 
 
 
@@ -67,10 +67,10 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         }
 
 
-        if(inContenant)
+        if(inContenant) // si on clique sur l'ingrédient et qu'il est dans un contenant
         {
-            inContenant = false;
-            refLastContenant.PickUpFromContenant();
+            inContenant = false; // on le sort du contenant
+            refLastContenant.PickUpFromContenant(); // informe le contenant que l'on a pris l'ingrédient
         
 
         }
@@ -90,25 +90,24 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         {
             SCR_Ustensile ustensileDrop = rayHit.transform.GetComponent<SCR_Ustensile>(); // stock l'ustensile dans une var
 
-            if (myIngredient.actualStateSO == enumEtatIgredient.Nature) 
+            if (myIngredient.actualStateSO == enumEtatIgredient.Nature) // verifie que notre ingrédient n'est pas transformé
             {
                 ustensileDrop.OnDrop(this); // appele la fonction OnDrop de l'ustensile
 
             }
 
 
-            //Transformation(ustensileDrop.GetEtat()); // transforme l'ingrédient dans l'etat de l'ustensile
         }
 
-        if (rayHit.transform.GetComponent<SCR_Contenant>())
+        if (rayHit.transform.GetComponent<SCR_Contenant>() && rayHit.transform.GetComponent<SCR_Ustensile>() == null) // si on a relaché l'objet sur un contenant et qu'il ne s'agit pas d'un ustensile
         {
-            SCR_Contenant contenantDrop = rayHit.transform.GetComponent<SCR_Contenant>();
-            contenantDrop.OnDrop(this);
+            SCR_Contenant contenantDrop = rayHit.transform.GetComponent<SCR_Contenant>(); // stock le contenant dans une var
+            contenantDrop.OnDrop(this); // appelle la fonction onDrop du contenant
 
         }
 
 
-            SetTargetJointOnAnotherObject(true); // retire le component TarGetJoint, parametre a vrai car cette on reset le joint
+            SetTargetJointOnAnotherObject(true); // retire le component TarGetJoint, parametre a vrai car cette fois on reset le joint
         gameObject.layer = LayerMask.NameToLayer("DragObject"); // repasse l'objet sur ce layer pour recevoir les Cast
         mySpriteRenderer.sortingOrder = 5; // repasse l'objet au meme niveau qu'il a de base
     }

@@ -34,18 +34,18 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
 
     [SerializeField] private SCR_Pool refPool; // besoin du pool quand on veut rajouter un ingrédient dans le stock et que le stock est à 0
 
-    [SerializeField] private Transform bambooShade;
-    [SerializeField] private Vector3 emplacementbambooShade;
-    private Vector3 startPositionBambooShade;
-    [SerializeField] private Transform allUstensile;
-    private Vector3 startPositionAllUstensile;
+    [SerializeField] private Transform bambooShade; // transform du volet pour le deplacer
+    [SerializeField] private Vector3 emplacementbambooShade; // l'emplacement que doit prendre le volet 
+    private Vector3 startPositionBambooShade; // position initial du volet
+    [SerializeField] private Transform allUstensile; // ça je vais surement le deplacer
+    private Vector3 startPositionAllUstensile; // pareil
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        startPositionBambooShade = bambooShade.position;
+        startPositionBambooShade = bambooShade.position; // stock la position initial du volet
     }
 
     public void OnAfterDeserialize() // permet de faire le lien list (qu'on voit) -> dico (qu'on voit pas)
@@ -136,17 +136,16 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
     }
 
 
-    public void LockIngredient()
+    public void LockIngredient() // fonction appellé lorsqu'il y a 3 ingrédient dans les bols
     {
-        startPositionBambooShade = bambooShade.position;
-        bambooShade.DOLocalMove(emplacementbambooShade, 1f);
+        bambooShade.DOLocalMove(emplacementbambooShade, 1f); // déplace le volet jusqu'a son emplacement
 
-        startPositionAllUstensile = allUstensile.position;
+        startPositionAllUstensile = allUstensile.position; // je vais virer tout ça
         allUstensile.DOLocalMove(new Vector3(-10, 0, 0),1f);
     }
 
 
-    public void UnLockIngredient()
+    public void UnLockIngredient() // pareil ça va rester ici
     {
         bambooShade.DOLocalMove(startPositionBambooShade, 1f);
 
