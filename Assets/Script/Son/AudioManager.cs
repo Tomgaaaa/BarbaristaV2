@@ -112,8 +112,19 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
+    public void Pause(string name)
+    {
+        // cherche parmis l'array sounds un élément qui a un label = au parametre name
+        SoundSettings s = System.Array.Find(sounds, sound => sound.label == name);
 
+
+        // si le name n'est pas trouvé on return pour pas bloquer le jeu
+        if (s == null)
+            return;
+
+        // indique à l'audio source, correspondant au parametre name, de play le clip choisit aleatoirement
+        s.source.Pause();
+    }
 
 
 }
-

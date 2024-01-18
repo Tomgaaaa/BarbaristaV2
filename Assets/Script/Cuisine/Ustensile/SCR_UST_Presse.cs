@@ -12,7 +12,7 @@ public class SCR_UST_Presse : SCR_Ustensile
     private float currentRotation; // valeur de rotation qui permet d'evaluer cmbien de tour la roue a fait
     private int nmbDeTour; // nombre de tour réalisé
     [SerializeField] private int nombreDeTourNecessaire; // nombre de tour necessaire avant de transfoirmer un ingredient
-
+    private bool Isplayingsound = false;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -47,11 +47,20 @@ public class SCR_UST_Presse : SCR_Ustensile
             // ou si la rotation actuelle est superieur a 355 et que la rotation virtuelle est superieur a 0
             if (rotationVirtuelle.eulerAngles.z < currentRotation + 10 && rotationVirtuelle.eulerAngles.z > currentRotation || currentRotation > 355 && rotationVirtuelle.eulerAngles.z > 0)
             {
+                if (!Isplayingsound)
+                {
+
+                 AudioManager.instanceAM.Play("Pressoir");
+                    Isplayingsound = true;
+
+                }
                 roueCrante.rotation = rotationVirtuelle; // alors la rotation de la roue = la rotation virtuelle
                 currentRotation = roueCrante.eulerAngles.z; // la rotation se met a jour
 
+
                 if (currentRotation > 355) // si la rotation est superieur a 355, un tour a ete realise
                 {
+
                     currentRotation = 0; // on reset la rotation 
                     nmbDeTour++; // on ajoute 1 au nombre de tour effectué
 
@@ -63,7 +72,16 @@ public class SCR_UST_Presse : SCR_Ustensile
                         roueCrante.rotation = Quaternion.Euler(0, 0, 0); // on reset la rotation de la roue
 
                     }
+
                 }
+                
+            }
+            else
+            {
+                AudioManager.instanceAM.Pause("Pressoir");
+                Isplayingsound = false;
+
+
             }
         }
         

@@ -708,7 +708,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxIngredientDrop: 1
-  ingredientDrop: {fileID: 0}
   emplacementIngredient: {fileID: 397930619}
   multiplicateurScaleIngredient: {x: 0.8, y: 0.8, z: 0}
   listDicoEtiquetteUstensile:
@@ -2914,9 +2913,6 @@ MonoBehaviour:
   - key: {fileID: 11400000, guid: 06a0f9069f127694892382066ddcb4f7, type: 2}
     value: {x: 4.71, y: 5.96, z: 0}
   refPool: {fileID: 336186379}
-  bambooShade: {fileID: 1940839635}
-  emplacementbambooShade: {x: -0.014612739, y: -0.04656577, z: 0}
-  allUstensile: {fileID: 983763723}
 --- !u!4 &945196127
 Transform:
   m_ObjectHideFlags: 0
@@ -3970,7 +3966,7 @@ GameObject:
   - component: {fileID: 1268386026}
   - component: {fileID: 1268386025}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3989,22 +3985,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - label: Refuge
+  - label: Pressoir
     clip:
-    - {fileID: 8300000, guid: 0f34ba3ea8857ab49809134650e14c08, type: 3}
+    - {fileID: 8300000, guid: c11b53806f3c63e44a7070bb81e66479, type: 3}
     source: {fileID: 0}
-    loop: 0
-    volume: 1
+    loop: 1
+    volume: 1.59
     pitch: 1
-    Mixer: {fileID: 0}
-  - label: Menu
-    clip:
-    - {fileID: 8300000, guid: 74996c92afaf23040ac3d16ef2df980d, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 1.5
-    pitch: 1
-    Mixer: {fileID: 0}
+    Mixer: {fileID: 24100000, guid: 93b1f645b1a8463459276d216919bfc4, type: 2}
 --- !u!4 &1268386026
 Transform:
   m_ObjectHideFlags: 0
@@ -4112,7 +4100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxIngredientDrop: 0
-  ingredientDrop: {fileID: 0}
   emplacementIngredient: {fileID: 0}
   multiplicateurScaleIngredient: {x: 0, y: 0, z: 0}
   etatApresTransformation: 3
@@ -4481,7 +4468,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxIngredientDrop: 0
-  ingredientDrop: {fileID: 0}
   emplacementIngredient: {fileID: 0}
   multiplicateurScaleIngredient: {x: 0, y: 0, z: 0}
   etatApresTransformation: 0
@@ -4726,7 +4712,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxIngredientDrop: 0
-  ingredientDrop: {fileID: 0}
   emplacementIngredient: {fileID: 0}
   multiplicateurScaleIngredient: {x: 0, y: 0, z: 0}
   etatApresTransformation: 0
@@ -5630,7 +5615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxIngredientDrop: 1
-  ingredientDrop: {fileID: 0}
   emplacementIngredient: {fileID: 747508619}
   multiplicateurScaleIngredient: {x: 0.8, y: 0.8, z: 0}
   listDicoEtiquetteUstensile:
@@ -6609,7 +6593,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxIngredientDrop: 1
-  ingredientDrop: {fileID: 0}
   emplacementIngredient: {fileID: 1755156502}
   multiplicateurScaleIngredient: {x: 0.8, y: 0.8, z: 0}
   listDicoEtiquetteUstensile:
@@ -7507,7 +7490,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxIngredientDrop: 1
-  ingredientDrop: {fileID: 0}
   emplacementIngredient: {fileID: 0}
   multiplicateurScaleIngredient: {x: 0, y: 0, z: 0}
   etatApresTransformation: 2
