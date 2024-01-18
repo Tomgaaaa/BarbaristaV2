@@ -258,13 +258,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 79334855}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.43749353, w: 0.8992216}
-  m_LocalPosition: {x: 0.864, y: -0.034, z: -0.31}
+  m_LocalRotation: {x: 0, y: 0, z: -0.43051103, w: 0.9025853}
+  m_LocalPosition: {x: 0.79, y: -0.115, z: -0.31}
   m_LocalScale: {x: 0.11, y: 0.11, z: 0.11}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1930612883}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -51.888}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -51}
 --- !u!212 &79334857
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7381,7 +7381,6 @@ GameObject:
   - component: {fileID: 1930612886}
   - component: {fileID: 1930612885}
   - component: {fileID: 1930612887}
-  - component: {fileID: 1930612888}
   m_Layer: 0
   m_Name: PlaceHolder Trancheuse
   m_TagString: Untagged
@@ -7424,7 +7423,7 @@ MonoBehaviour:
   multiplicateurScaleIngredient: {x: 0.17, y: 0.17, z: 0}
   etatApresTransformation: 1
   emplacementCam: {x: -6.54, y: 3.78, z: 1.8}
-  colliderManipulation: {fileID: 1930612888}
+  colliderManipulation: {fileID: 1930612887}
   colliderDrop: {fileID: 1930612886}
   baseTrancheuse: {fileID: 79334856}
 --- !u!61 &1930612886
@@ -7504,54 +7503,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.078454494, y: 0.72570586}
+  m_Offset: {x: 0.0671618, y: 0.6500442}
   serializedVersion: 2
-  m_Radius: 0.2607131
---- !u!61 &1930612888
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930612882}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.19634414
 --- !u!1 &1936445383
 GameObject:
   m_ObjectHideFlags: 0
