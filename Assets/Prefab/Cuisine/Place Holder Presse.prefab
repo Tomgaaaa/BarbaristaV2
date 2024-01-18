@@ -465,10 +465,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxIngredientDrop: 1
   emplacementIngredient: {fileID: 8999933136230960322}
+  multiplicateurScaleIngredient: {x: 0, y: 0, z: 0}
   etatApresTransformation: 3
   emplacementCam: {x: -5, y: 1.5, z: -1.8}
+  colliderManipulation: {fileID: 4760430031537092583}
+  colliderDrop: {fileID: 7793481258025412384}
   roueCrante: {fileID: 2000660799527017104}
-  endRotation: 0
+  nombreDeTourNecessaire: 3
 --- !u!58 &4760430031537092583
 CircleCollider2D:
   m_ObjectHideFlags: 0

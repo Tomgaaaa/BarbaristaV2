@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.AI;
 using UnityEngine;
-using static SCR_Etagere;
 
 public class SCR_Bol : SCR_Contenant, ISerializationCallbackReceiver
 {
@@ -68,8 +66,7 @@ public class SCR_Bol : SCR_Contenant, ISerializationCallbackReceiver
 
     public void UnlockBouilloire() // fonction appellé lorsque les 3 bols ont un 1 ingrédient
     {
-        Debug.Log("passage a la bouilloire");
-        refEtagere.LockIngredient(); // affiche le volet qui permet de bloquer le fait de prendre des ingrédient, ça va changer
+        SCR_CuisineManager.instanceCM.TransitionBouilloire(); // affiche le volet qui permet de bloquer le fait de prendre des ingrédient, ça va changer
     }
 
     public int GetNombreIngredient() { return nmbIngredientIn; } // permet de recuperer le nombre d'ingrédient present dans le bol pour verifier s'il y a un ingrédient

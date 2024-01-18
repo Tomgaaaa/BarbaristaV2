@@ -37,6 +37,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     {
         if(nmbIngredientIn < maxIngredientDrop) // vérifie si il n'y a pas déja un ingrédient dans l'ustensile
         {
+
             base.OnDrop(ingredientDropParameter); // fait le OnDrop du script contenant
 
 
@@ -86,6 +87,12 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
 
 
     }
+
+    public virtual float Remap(float value, float from1, float to1, float from2, float to2) // je le garde psk j'en ai eu besoin pendant un test et que je galere a retrouver le nom remap a chaque fois
+    {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+
 
     public enumEtatIgredient GetEtat() { return etatApresTransformation; } // renvoie l'etat de transformation
 }

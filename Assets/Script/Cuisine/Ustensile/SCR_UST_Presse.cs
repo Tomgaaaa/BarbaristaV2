@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class SCR_UST_Presse : SCR_Ustensile
 {
@@ -81,8 +80,5 @@ public class SCR_UST_Presse : SCR_Ustensile
 
     }
 
-    public static float Remap( float value, float from1, float to1, float from2, float to2) // je le garde psk j'en ai eu besoin pendant un test et que je galere a retrouver le nom remap a chaque fois
-    {
-        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
-    }
+   
 }

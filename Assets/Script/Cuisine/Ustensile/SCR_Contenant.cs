@@ -8,7 +8,7 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
     [SerializeField] private protected int maxIngredientDrop = 1; // le nombre maximum que l'on peut déposer dans le contenant, concretement y a juste la boisson ou l'on peut en mettre 3
     private protected int nmbIngredientIn; // le nombre actuelle qu'il y a d'ingrédient dans le contenant
 
-    [SerializeField] private protected SCR_Ingredient ingredientDrop; // ref de l'ingrédient actuellement dans le contenant
+    private protected SCR_Ingredient ingredientDrop; // ref de l'ingrédient actuellement dans le contenant
     private protected Collider2D ingredientCollider; // collider de l'ingrédient pour le passer en trigger, on le stock pour eviter de cast lors du depot et lors du retrait
     private Rigidbody2D ingredientRB; // meme chose pour le rigidBody de l'ingrédient
 
@@ -39,7 +39,7 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
             ingredientDropParameter.SetInUstensileAndUstensile(true, this); // passe la variable inContenant de l'ingredient a vrai et renseigne ce contenant 
 
             ingredientCollider = ingredientDropParameter.GetComponent<Collider2D>(); // stock le collider de l'ingrédient drop 
-            ingredientCollider.isTrigger = true; // passe le collider en trigger pour empecher les collisions mais qu'il puisse recevoir les cast quand meme
+            //ingredientCollider.isTrigger = true; // passe le collider en trigger pour empecher les collisions mais qu'il puisse recevoir les cast quand meme
 
             ingredientRB = ingredientDropParameter.GetComponent<Rigidbody2D>(); // stock le rigidBody de l'ingrédient drop
             ingredientRB.gravityScale = 0; // retire la gravité 
