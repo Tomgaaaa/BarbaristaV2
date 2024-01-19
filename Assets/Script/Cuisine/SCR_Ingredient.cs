@@ -80,6 +80,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
         SetTargetJointOnAnotherObject(false); // ajoute le component TargetJoint, parametre false car on n'a pas besoin de reset le joint
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); // on passe l'objet sur ce layer pour qu'il garde ces collisions mais pas les Cast
+        refEtagere.gameObject.layer = LayerMask.NameToLayer("Default"); // change le layere de l'etagere afin qu'il puisse recevoir les raycast afin de ranger les ingrédients
         mySpriteRenderer.sortingOrder = 10; // fait passer l'objet devant tout le reste 
     }
 
@@ -111,13 +112,23 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
 
 
+        if (rayHit.transform.GetComponent<SCR_Etagere>())
+        {
+            if(myIngredient.actualStateSO != enumEtatIgredient.Nature)
+            {
+                Transformation(enumEtatIgredient.Nature);
+            }
 
+            Back();
+            refEtagere.AddIngredient(myIngredient);
+        }
 
 
 
 
             SetTargetJointOnAnotherObject(true); // retire le component TarGetJoint, parametre a vrai car cette fois on reset le joint
         gameObject.layer = LayerMask.NameToLayer("DragObject"); // repasse l'objet sur ce layer pour recevoir les Cast
+        refEtagere.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); // change le layere de l'etagere pour pas qu'il interfere avec les ray cast de l'ingrédients
         mySpriteRenderer.sortingOrder = 5; // repasse l'objet au meme niveau qu'il a de base
     }
 

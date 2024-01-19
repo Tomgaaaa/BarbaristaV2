@@ -50,7 +50,7 @@ public class SCR_UST_Presse : SCR_Ustensile
                 if (!Isplayingsound)
                 {
 
-                 AudioManager.instanceAM.Play("Pressoir");
+                 //AudioManager.instanceAM.Play("Pressoir");
                     Isplayingsound = true;
 
                 }
@@ -78,7 +78,7 @@ public class SCR_UST_Presse : SCR_Ustensile
             }
             else
             {
-                AudioManager.instanceAM.Pause("Pressoir");
+               // AudioManager.instanceAM.Pause("Pressoir");
                 Isplayingsound = false;
 
 
