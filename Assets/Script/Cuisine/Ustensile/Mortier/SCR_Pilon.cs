@@ -17,7 +17,7 @@ public class SCR_Pilon : MonoBehaviour
     private float tempsNecessaireBoyagePilon;
     public float currentTempsBroyage;
 
-    [SerializeField] private Transform aimPositionMortier;
+    [SerializeField] private Transform aimPositionMortier; // pour la partie ou le pilon vise la base du mortier
 
 
     #region Drag
@@ -34,7 +34,7 @@ public class SCR_Pilon : MonoBehaviour
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
 
-        rb.centerOfMass = new Vector3 (0,-0.8f,0);
+        rb.centerOfMass = new Vector3 (0,-0.8f,0); // change le centre de masse du pilon pour le mettre en bas du pilon
     }
 
     private void OnMouseDown()
@@ -50,14 +50,14 @@ public class SCR_Pilon : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        //rb.MoveRotation(rb.rotation * 0);
+        //rb.MoveRotation(rb.rotation * 0); // pour que le pilon vise toujours le bas
 
-        /*Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition); // recupere la world position du curseur
-        Vector3 mouseDirection = mousePos - aimPositionMortier.position; // calcule le vecteur de direction entre la roue et le curseur
-        float rotZ = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg ; // calcule l'angle necessaire
-        Quaternion rotationVirtuelle = Quaternion.Euler(0, 0, rotZ); // Vector 3 avec pour Z la rotation de la roue qui vise le curseur
-        */
+        Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition); // recupere la world position du curseur
+        Vector3 mouseDirection = aimPositionMortier.position - mousePos ; // calcule le vecteur de direction entre la roue et le curseur
+        float rotZ = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg + 90 ; // calcule l'angle necessaire
 
+
+        rb.MoveRotation( rotZ); // pour que le pilon vise la base du mortier
 
 
 
@@ -76,7 +76,7 @@ public class SCR_Pilon : MonoBehaviour
         SetTargetJointOnAnotherObject(true); // retire le component TarGetJoint, parametre a vrai car cette fois on reset le joint
         gameObject.layer = LayerMask.NameToLayer("DragObject"); // repasse l'objet sur ce layer pour recevoir les Cast
 
-        rb.velocity = Vector3.zero;
+        rb.velocity = Vector3.zero; // a voir
     }
 
     public void SetTargetJointOnAnotherObject(bool needReset = false) // fonction qui ajoute / retire le component TargetJoint, élément principal pour Drag un objet 
@@ -95,7 +95,7 @@ public class SCR_Pilon : MonoBehaviour
         }
     }
 
-    public void SetTimer(float dureeBroyageParameter, float velociteParameter,SCR_Mortier refMortierParameter)
+    public void SetTimer(float dureeBroyageParameter, float velociteParameter,SCR_Mortier refMortierParameter) // recupere les informations du bol de mortier pour initialiser les parametres
     {
         tempsNecessaireBoyagePilon = dureeBroyageParameter;
         velocityNecessairePilon = velociteParameter;
@@ -103,18 +103,18 @@ public class SCR_Pilon : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<SCR_Mortier>() != null)
+        if (collision.gameObject.GetComponent<SCR_Mortier>() != null) // si on reste en collision avec le mortier 
         {
 
-            if (Mathf.Abs(rb.velocity.x) > velocityNecessairePilon || Mathf.Abs(rb.velocity.y) > velocityNecessairePilon)
+            if (Mathf.Abs(rb.velocity.x) > velocityNecessairePilon || Mathf.Abs(rb.velocity.y) > velocityNecessairePilon) // si la velocite du pilon est supérieur à la valeur necessaire
             {
-                currentTempsBroyage += Time.deltaTime;
+                currentTempsBroyage += Time.deltaTime; // alors on ajoute le temps que l'on passe en collision
             }
 
 
 
 
-            if (currentTempsBroyage >= tempsNecessaireBoyagePilon)
+            if (currentTempsBroyage >= tempsNecessaireBoyagePilon) // si le temps actuelle de broyage et supérieur à celle necessaire alors on transforme l'ingrédient
             {
                 Debug.Log("Transfo");
             }

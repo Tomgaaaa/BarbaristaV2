@@ -12,7 +12,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     private Vector3 startPositionCam; // stock la position initial de la cam
     [SerializeField] private Vector3 emplacementCam; // position que devra prendre la camera apres transition
 
-    [SerializeField] private Collider2D colliderManipulation; // reference au collider utile à la manipulation
+    [SerializeField] private protected Collider2D colliderManipulation; // reference au collider utile à la manipulation
     [SerializeField] private Collider2D colliderDrop; // reference au collider qui permet le OnDrop
     private protected bool inManipulation = false; // empeche de manipuler l'ingrédient si il n'y pas d'ingrédient
 

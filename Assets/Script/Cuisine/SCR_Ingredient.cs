@@ -22,6 +22,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
     private bool inContenant; // permet de savoir si l'ingrédient est dans un contenant ou pas
     private SCR_Contenant refLastContenant; // ref du contenant pour appeler des fonctions lorsqu'on prend l'ingrédient depuis un contenant
 
+    private bool leaveEtagere = false; // bool qui permet de savoir si l'ingrédient a deja quitté la zone de l'etagere au moins une fois 
 
 
 
@@ -38,6 +39,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         mainCamera = Camera.main;
+        leaveEtagere = false;
        
     }
 
@@ -112,21 +114,21 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
 
 
-        if (rayHit.transform.GetComponent<SCR_Etagere>())
+        if (rayHit.transform.GetComponent<SCR_Etagere>() && leaveEtagere) // fonction qui permet de ranger un ingrédient dans l'etagere, si on relache au niveau de l'etagere et que l'ingrédedient a deja quitté la zone d'etagere au moins une fois
         {
-            if(myIngredient.actualStateSO != enumEtatIgredient.Nature)
+            if(myIngredient.actualStateSO != enumEtatIgredient.Nature) // si l'ingrédient est nature, il faut le transformer en nature, sinon pas besoin
             {
-                Transformation(enumEtatIgredient.Nature);
+                Transformation(enumEtatIgredient.Nature); // transforme l'ingrédient dans sa version nature, c'est lui qui a les stats de stock
             }
 
-            Back();
-            refEtagere.AddIngredient(myIngredient);
+            Back(); // renvoie l'ingrédient dans le pool
+            refEtagere.AddIngredient(myIngredient); // ajoute un ingrédient au stock et met a jour le texte de stock
         }
 
 
 
 
-            SetTargetJointOnAnotherObject(true); // retire le component TarGetJoint, parametre a vrai car cette fois on reset le joint
+        SetTargetJointOnAnotherObject(true); // retire le component TarGetJoint, parametre a vrai car cette fois on reset le joint
         gameObject.layer = LayerMask.NameToLayer("DragObject"); // repasse l'objet sur ce layer pour recevoir les Cast
         refEtagere.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); // change le layere de l'etagere pour pas qu'il interfere avec les ray cast de l'ingrédients
         mySpriteRenderer.sortingOrder = 5; // repasse l'objet au meme niveau qu'il a de base
@@ -170,7 +172,15 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision) // fontion appellé quand on quitté la collision avec un objet en trigger
+    {
 
+        if (collision.GetComponent<SCR_Etagere>()) // verifie que c'est le trigger de l'etagere qu'on quitte
+        {
+            leaveEtagere = true; // passe le bool a vrai pour permettre de ranger l'ingrédient dans l'etagere
+        }
+
+    }
 
 
     public SCR_SO_Ingredient GetCR_SO_Ingredient() { return myIngredient; }

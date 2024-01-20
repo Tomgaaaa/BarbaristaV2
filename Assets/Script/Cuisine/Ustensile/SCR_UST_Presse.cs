@@ -43,6 +43,10 @@ public class SCR_UST_Presse : SCR_Ustensile
                 roueCrante.rotation = Quaternion.Euler(0,0, rotZ);
             }*/
 
+
+
+
+
             // si la rotation virtuelle est plus petite que la rotation actuelle + 10 mais qu'elle est supérieur a la rotation actuelle
             // ou si la rotation actuelle est superieur a 355 et que la rotation virtuelle est superieur a 0
             if (rotationVirtuelle.eulerAngles.z < currentRotation + 10 && rotationVirtuelle.eulerAngles.z > currentRotation || currentRotation > 355 && rotationVirtuelle.eulerAngles.z > 0)

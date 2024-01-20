@@ -52,7 +52,6 @@ public class SCR_CuisineManager : MonoBehaviour
         allUstensile.DOLocalMove(new Vector3(-10, 0, 0), 1f);
 
         boulloire.transform.DOLocalMove(emplacementBoulloire.position, 1f);
-        boulloire.UnlockBouilloire();
     }
 
 

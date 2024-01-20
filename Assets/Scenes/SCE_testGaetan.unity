@@ -2328,7 +2328,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366893560}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -3344,6 +3344,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5de8350829f622044879b8637ceba175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxIngredientDrop: 1
+  emplacementIngredient: {fileID: 0}
+  multiplicateurScaleIngredient: {x: 0, y: 0, z: 0}
+  etatApresTransformation: 0
+  emplacementCam: {x: 0, y: 0, z: 0}
+  colliderManipulation: {fileID: 711422537}
+  colliderDrop: {fileID: 0}
   contenantBouilloire: {fileID: 1026037775}
   quantiteEauNecessaire: 1000
 --- !u!61 &711422537
@@ -6356,6 +6363,7 @@ MonoBehaviour:
   emplacementIngredient: {fileID: 1478490374}
   multiplicateurScaleIngredient: {x: 0, y: 0, z: 0}
   listIngredientsUtilises: []
+  refBouilloire: {fileID: 711422536}
 --- !u!1 &1555845530
 GameObject:
   m_ObjectHideFlags: 0
