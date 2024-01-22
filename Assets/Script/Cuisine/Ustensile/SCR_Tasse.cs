@@ -11,6 +11,25 @@ public class SCR_Tasse : SCR_Contenant
 
     [SerializeField] private SCR_Bouilloire refBouilloire; // ref a la bouilloire pour la débloquer lorsqu'il y a 3 ingrédients dans la tasse
 
+    #region Visuelle
+    [Header("Presse")]
+    [SerializeField] private SpriteRenderer SR_liquide;
+
+    [Header("Tranche")]
+    [SerializeField] private List<SpriteRenderer> listSrTranche;
+    private List<SpriteRenderer> listTrancheDejaUtilise = new List<SpriteRenderer>();
+
+    [Header("Broye")]
+    [SerializeField] private List<SpriteRenderer> listSrBroye;
+    private List<SpriteRenderer> listBroyeDejaUtilise = new List<SpriteRenderer>();
+
+    [Header("Rape")]
+    [SerializeField] private List<SpriteRenderer> listSrRape;
+    private List<SpriteRenderer> listRapeDejaUtilise = new List<SpriteRenderer>();
+
+    #endregion
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +44,9 @@ public class SCR_Tasse : SCR_Contenant
         ingredientDrop.gameObject.SetActive(false); // désactive l'ingrédient drop, faudra le renvoyer dans le pool plutot
 
         CalCulStat(ingredientDropParameter.GetCR_SO_Ingredient().dicoResistance); // met a jour les stats de la boisson avec l'ingrédient qui a ete drop
+
+        // a mettre quand l'eau a ete versée
+        UpdateVisuelle(ingredientDrop.GetCR_SO_Ingredient());
 
         if(listIngredientsUtilises.Count == 3) // si il y a 3 ingrédient dans la tasse 
         {
@@ -42,13 +64,78 @@ public class SCR_Tasse : SCR_Contenant
            
         }
 
-        foreach (KeyValuePair<enumResistance, int> resistance in dicoStatBoisson) // c'est juste pour debug
+       /* foreach (KeyValuePair<enumResistance, int> resistance in dicoStatBoisson) // c'est juste pour debug
         {
             Debug.Log("Stat " + resistance.Key + " : " + resistance.Value);
-        }
+        }*/
 
     }
 
+    private void UpdateVisuelle(SCR_SO_Ingredient SoParameter)
+    {
+
+
+        if(SoParameter.actualStateSO == enumEtatIgredient.Presse)
+        {
+
+            switch (listIngredientsUtilises.Count)
+            {
+                case 1: SR_liquide.color = SoParameter.colorSO; break; 
+
+                case 2:
+                    Color MixedColor = new Color((listIngredientsUtilises[0].GetCR_SO_Ingredient().colorSO.r + SoParameter.colorSO.r) / 2, (listIngredientsUtilises[0].GetCR_SO_Ingredient().colorSO.g + SoParameter.colorSO.g) / 2, (listIngredientsUtilises[0].GetCR_SO_Ingredient().colorSO.b + SoParameter.colorSO.b) / 2, 255);
+                    SR_liquide.color = MixedColor;
+                    break; 
+
+                case 3: SR_liquide.color = SoParameter.colorSO; break; 
+            }
+        }
+
+        else if(SoParameter.actualStateSO == enumEtatIgredient.Tranche)
+        {
+            SpriteRenderer randomTranche = getRandomSr(listSrTranche,listTrancheDejaUtilise);
+            listTrancheDejaUtilise.Add(randomTranche);
+
+            randomTranche.color = SoParameter.colorSO;
+            randomTranche.gameObject.SetActive(true);
+
+        }
+
+        else if (SoParameter.actualStateSO == enumEtatIgredient.Broye)
+        {
+            SpriteRenderer randomBroye = getRandomSr(listSrBroye, listBroyeDejaUtilise);
+            listBroyeDejaUtilise.Add(randomBroye);
+
+            randomBroye.color = SoParameter.colorSO;
+            randomBroye.gameObject.SetActive(true);
+        }
+
+        else if(SoParameter.actualStateSO == enumEtatIgredient.Rape)
+        {
+            SpriteRenderer randomRape = getRandomSr(listSrRape, listRapeDejaUtilise);
+            listRapeDejaUtilise.Add(randomRape);
+
+            randomRape.color = SoParameter.colorSO;
+            randomRape.gameObject.SetActive(true);
+        }
+
+
+
+    }
+
+
+    private SpriteRenderer getRandomSr(List<SpriteRenderer> listGlobalParameter, List<SpriteRenderer> listDejaUtilliseParameter)
+    {
+        SpriteRenderer randomTranche = listGlobalParameter[Random.Range(0, listGlobalParameter.Count)];
+
+        if(listDejaUtilliseParameter.Contains(randomTranche))
+            randomTranche = getRandomSr(listGlobalParameter,listDejaUtilliseParameter);
+
+
+
+        return randomTranche;
+    }
+    
     public void ResetBoisson()
     {
         if(dicoStatBoisson.Count != 6) // sera effectué au start pour initialiser le dico

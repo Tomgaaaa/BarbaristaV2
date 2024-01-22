@@ -1,8 +1,6 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class SCR_Pilon : MonoBehaviour
@@ -163,6 +161,7 @@ public class SCR_Pilon : MonoBehaviour
                 inManipulation = false;
                 transform.DOMove(initialPosition, 0.5f);
                 transform.DORotate(Vector3.zero, 0.5f);
+                currentTempsBroyage = 0;
 
             }
 

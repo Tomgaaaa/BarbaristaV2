@@ -68,6 +68,7 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
                 {
                     FinishManipulation();
                     refPlaque.DOLocalMoveX(0, 0.5f);
+                    currentTempsPasse = 0;
                 }
             }
 
