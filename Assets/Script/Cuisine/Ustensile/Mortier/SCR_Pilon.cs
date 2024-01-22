@@ -1,6 +1,8 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class SCR_Pilon : MonoBehaviour
@@ -14,9 +16,14 @@ public class SCR_Pilon : MonoBehaviour
 
     private float tempsNecessaireBoyagePilon;
     public float currentTempsBroyage;
+    private bool inManipulation;
 
     [SerializeField] private Transform aimPositionMortier; // pour la partie ou le pilon vise la base du mortier
 
+    private bool inMortier;
+    private SCR_Mortier refMortier;
+
+    private Vector3 initialPosition;
 
     #region Drag
     private TargetJoint2D myTargetJoint;
@@ -31,6 +38,7 @@ public class SCR_Pilon : MonoBehaviour
     {
         mainCam = Camera.main;
         rb = GetComponent<Rigidbody2D>();
+        initialPosition = transform.position;
 
         rb.centerOfMass = new Vector3 (0,-0.8f,0); // change le centre de masse du pilon pour le mettre en bas du pilon
     }
@@ -50,22 +58,55 @@ public class SCR_Pilon : MonoBehaviour
     {
         //rb.MoveRotation(rb.rotation * 0); // pour que le pilon vise toujours le bas
 
-        Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition); // recupere la world position du curseur
-        Vector3 mouseDirection = aimPositionMortier.position - mousePos ; // calcule le vecteur de direction entre la roue et le curseur
-        float rotZ = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg + 90 ; // calcule l'angle necessaire
 
-
-        rb.MoveRotation( rotZ); // pour que le pilon vise la base du mortier
-
-
-
-
-        RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCam.ScreenPointToRay(Input.mousePosition)); // cast pour avoir la world position de la souris
-
-        if (rayHit)// si le cast touche quelque chose
+        if (inManipulation)
         {
-            myTargetJoint.target = rayHit.point; // indique au TargetJoint que la target est la position de la souris
+            RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCam.ScreenPointToRay(Input.mousePosition)); // cast pour avoir la world position de la souris
+
+            if (rayHit)// si le cast touche quelque chose
+            {
+
+                if (inMortier && rayHit.point.y < aimPositionMortier.position.y + 1)
+                {
+                    // myTargetJoint.target = new Vector2(aimPositionMortier.position.x, aimPositionMortier.position.y+1); // indique au TargetJoint que la target est la position de la souris
+
+
+                    Vector2 distance = (Vector2)transform.position - rayHit.point;
+                    float angle = Remap(distance.x, -10, 10, 50, -50);
+                    rb.MoveRotation(angle); // pour que le pilon vise la base du mortier*/
+
+
+                    /* Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition); // recupere la world position du curseur
+                     Vector3 mouseDirection = mousePos - transform.position; // calcule le vecteur de direction entre la roue et le curseur
+                     float rotZ = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg + 90; // calcule l'angle necessaire
+
+
+                     rb.MoveRotation(rotZ); // pour que le pilon vise la base du mortier*/
+
+
+                    //myTargetJoint.target = new Vector2(rayHit.point.x,aimPositionMortier.position.y + 1);
+                }
+                else
+                {
+
+
+
+                    Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition); // recupere la world position du curseur
+                    Vector3 mouseDirection = aimPositionMortier.position - mousePos; // calcule le vecteur de direction entre la roue et le curseur
+                    float rotZ = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg + 90; // calcule l'angle necessaire
+
+
+                    rb.MoveRotation(rotZ); // pour que le pilon vise la base du mortier
+
+                    myTargetJoint.target = rayHit.point; // indique au TargetJoint que la target est la position de la souris
+
+                }
+            }
         }
+
+
+
+        
 
     }
 
@@ -97,12 +138,16 @@ public class SCR_Pilon : MonoBehaviour
     {
         tempsNecessaireBoyagePilon = dureeBroyageParameter;
         velocityNecessairePilon = velociteParameter;
+        refMortier = refMortierParameter;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<SCR_Mortier>() != null) // si on reste en collision avec le mortier 
         {
+
+            inMortier = true;
+
 
             if (Mathf.Abs(rb.velocity.x) > velocityNecessairePilon || Mathf.Abs(rb.velocity.y) > velocityNecessairePilon) // si la velocite du pilon est supérieur à la valeur necessaire
             {
@@ -114,11 +159,29 @@ public class SCR_Pilon : MonoBehaviour
 
             if (currentTempsBroyage >= tempsNecessaireBoyagePilon) // si le temps actuelle de broyage et supérieur à celle necessaire alors on transforme l'ingrédient
             {
-                Debug.Log("Transfo");
+                refMortier.FinishManipulation();
+                inManipulation = false;
+                transform.DOMove(initialPosition, 0.5f);
+                transform.DORotate(Vector3.zero, 0.5f);
+
             }
 
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.GetComponent<SCR_Mortier>() != null)
+        {
+            inMortier = false;
+        }
+    }
+    public virtual float Remap(float value, float from1, float to1, float from2, float to2) // je le garde psk j'en ai eu besoin pendant un test et que je galere a retrouver le nom remap a chaque fois
+    {
+        return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+    }
+
+    public void SetManipulation(bool manipulationParameter){inManipulation = manipulationParameter;}
     
 
 }

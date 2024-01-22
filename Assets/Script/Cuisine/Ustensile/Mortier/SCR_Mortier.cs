@@ -28,15 +28,17 @@ public class SCR_Mortier : SCR_Ustensile
         base.OnDrop(ingredientDropParameter);
         colliderPilon.enabled = true; // on active les collider de manipulation
         colliderBordDMortier.SetActive(true); // pareil
+
+        refPilon.SetManipulation(true);
     }
 
-    public override void PickUpFromContenant()
-    {
-        base.PickUpFromContenant();
+  
 
+    public override void FinishManipulation()
+    {
+        base.FinishManipulation();
         colliderPilon.enabled = false; // désactive les colliders de manipulation
         colliderBordDMortier.SetActive(false); // pareil
-
     }
 
     public void InitPilon()

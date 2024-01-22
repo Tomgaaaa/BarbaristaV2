@@ -58,7 +58,7 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
                 multiplicateurScaleIngredient = Vector3.one; // Vector3.one pour que le scale soit multiplié par 1, ce que ne changera pas le scale de l'ingrédient
             }
 
-            ingredientDropParameter.transform.DOMove(emplacementIngredient.position,1f); // déplace l'ingrédient à l'endroit voulus
+            ingredientDropParameter.transform.DOMove(new Vector3(emplacementIngredient.position.x, emplacementIngredient.position.y,0),1f); // déplace l'ingrédient à l'endroit voulus
 
             // creer un vector3 qui sera le scale de l'ingrédient apres multiplication
             Vector3 newScale = new Vector3(multiplicateurScaleIngredient.x * ingredientDropParameter.transform.localScale.x, multiplicateurScaleIngredient.y * ingredientDropParameter.transform.localScale.y, multiplicateurScaleIngredient.z * ingredientDropParameter.transform.localScale.z);
