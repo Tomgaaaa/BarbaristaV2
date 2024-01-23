@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SCR_Compendium_Child : MonoBehaviour
+public class SCR_Compendium_Page : MonoBehaviour
 {
     SCR_Compendium parent;
 
