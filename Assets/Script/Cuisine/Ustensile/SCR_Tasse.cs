@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +6,7 @@ public class SCR_Tasse : SCR_Contenant
 {
 
     [SerializeField] private List<SCR_Ingredient> listIngredientsUtilises; // liste des ingrédients qui ont ete drop dans la tasse, sera utilise pour l'historique
-    private Dictionary<enumResistance, int> dicoStatBoisson = new Dictionary<enumResistance, int>(); // dico des stats de la boisson
+    private Dictionary<enumResistance, float> dicoStatBoisson = new Dictionary<enumResistance, float>(); // dico des stats de la boisson
 
     [SerializeField] private SCR_Bouilloire refBouilloire; // ref a la bouilloire pour la débloquer lorsqu'il y a 3 ingrédients dans la tasse
 
@@ -30,10 +29,16 @@ public class SCR_Tasse : SCR_Contenant
     #endregion
 
 
+    [SerializeField] private SCR_HexagoneStat refHexagone;
+
+    [SerializeField] private GameObject allVisuelle;
+
     // Start is called before the first frame update
     void Start()
     {
         ResetBoisson(); // initialise le dictionnaire de stat
+
+        allVisuelle.SetActive(false);
     }
 
     public override void OnDrop(SCR_Ingredient ingredientDropParameter)
@@ -54,15 +59,16 @@ public class SCR_Tasse : SCR_Contenant
         }
     }
 
-    private void CalCulStat(Dictionary<enumResistance,int> statIngredientParameter) // fonction qui permet de calculer les stats de la boisson en prennant en parametre le dico de stat de l'ingrédient
+    private void CalCulStat(Dictionary<enumResistance,float> statIngredientParameter) // fonction qui permet de calculer les stats de la boisson en prennant en parametre le dico de stat de l'ingrédient
     {
 
 
-        foreach (KeyValuePair<enumResistance,int> resistance in statIngredientParameter) // pour chaque paire (quand il y a une clé associé a une valeur),on fait ce qu'il y a ci dessous
+        foreach (KeyValuePair<enumResistance,float> resistance in statIngredientParameter) // pour chaque paire (quand il y a une clé associé a une valeur),on fait ce qu'il y a ci dessous
         {
             dicoStatBoisson[resistance.Key] += statIngredientParameter[resistance.Key]; // on prend la meme clé dans le dico de la boisson que la clé de l'ingrédient et on ajoute la valuer de l'ingrédient
            
         }
+
 
        /* foreach (KeyValuePair<enumResistance, int> resistance in dicoStatBoisson) // c'est juste pour debug
         {
@@ -71,6 +77,15 @@ public class SCR_Tasse : SCR_Contenant
 
     }
 
+
+    public void FinishBoisson()
+    {
+        refHexagone.UpdateStat(dicoStatBoisson);
+        allVisuelle.SetActive(true);
+
+
+
+    }
     private void UpdateVisuelle(SCR_SO_Ingredient SoParameter)
     {
 
@@ -156,6 +171,9 @@ public class SCR_Tasse : SCR_Contenant
             dicoStatBoisson[enumResistance.Electrique] = 0;
             dicoStatBoisson[enumResistance.Lethargique] = 0;
         }
-        
+
+
+
+        allVisuelle.SetActive(false);
     }
 }

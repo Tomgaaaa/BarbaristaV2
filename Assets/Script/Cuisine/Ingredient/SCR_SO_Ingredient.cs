@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static SCR_Etagere;
 
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/So_Ingredient", order = 1)]
@@ -10,8 +9,8 @@ public class SCR_SO_Ingredient : ScriptableObject, ISerializationCallbackReceive
 
     #region pour les dicos
 
-    [System.Serializable] public class dicoResistanceClass : TemplateDico<enumResistance, int> { };
-    public Dictionary<enumResistance, int> dicoResistance; // dictionnaire des resistances, on associe une resistance à un int, pas un float car y'a jamais de virgule
+    [System.Serializable] public class dicoResistanceClass : TemplateDico<enumResistance, float> { };
+    public Dictionary<enumResistance, float> dicoResistance; // dictionnaire des resistances, on associe une resistance à un float, float psk pour bouger dans l'hexagone il faut un float
 
 
     [System.Serializable] public class dicoIngredientTransfoClass : TemplateDico<enumEtatIgredient, SCR_SO_Ingredient> { };
@@ -35,7 +34,7 @@ public class SCR_SO_Ingredient : ScriptableObject, ISerializationCallbackReceive
     public void OnAfterDeserialize() // fonction qui permet d'associer les listes (qu'on voit) aux dictionaires (qu'on ne voit pas)
     {
 
-        dicoResistance = new Dictionary<enumResistance, int>();
+        dicoResistance = new Dictionary<enumResistance, float>();
         foreach (dicoResistanceClass item in listDicoResistance)
         {
             if (!dicoResistance.ContainsKey(item.key))

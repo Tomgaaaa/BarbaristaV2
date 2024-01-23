@@ -20,6 +20,11 @@ public class SCR_CuisineManager : MonoBehaviour
     [SerializeField] private SCR_Bouilloire boulloire;
     [SerializeField] private Transform emplacementBoulloire;
 
+    [SerializeField] private SCR_HexagoneStat hexagone;
+    [SerializeField] private Transform emplacementHexagone;
+    private Vector3 startPositionHexagone; //  position initial des ustensiles
+
+
 
 
     #endregion
@@ -40,6 +45,8 @@ public class SCR_CuisineManager : MonoBehaviour
     void Start()
     {
         startPositionBambooShade = bambooShade.position; // stock la position initial du volet
+        startPositionHexagone = hexagone.transform.position; // stock la position initial du volet
+        startPositionAllUstensile = allUstensile.position;
 
     }
 
@@ -48,10 +55,11 @@ public class SCR_CuisineManager : MonoBehaviour
     {
         bambooShade.DOLocalMove(emplacementbambooShade, 1f); // déplace le volet jusqu'a son emplacement
 
-        startPositionAllUstensile = allUstensile.position; 
         allUstensile.DOLocalMove(new Vector3(-10, 0, 0), 1f);
 
         boulloire.transform.DOLocalMove(emplacementBoulloire.position, 1f);
+
+        hexagone.transform.DOLocalMove(emplacementHexagone.position,1f);
     }
 
 

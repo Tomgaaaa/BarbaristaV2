@@ -62,7 +62,7 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
 
             // creer un vector3 qui sera le scale de l'ingrédient apres multiplication
             Vector3 newScale = new Vector3(multiplicateurScaleIngredient.x * ingredientDropParameter.transform.localScale.x, multiplicateurScaleIngredient.y * ingredientDropParameter.transform.localScale.y, multiplicateurScaleIngredient.z * ingredientDropParameter.transform.localScale.z);
-            ingredientDropParameter.transform.DOScale(newScale, 0.5f); // resize l'ingrédient avec le nouvea scla (scale de l'ingrédient X le multiplicateur)
+            ingredientDropParameter.transform.DOScale(newScale, 0.2f); // resize l'ingrédient avec le nouvea scla (scale de l'ingrédient X le multiplicateur)
         }
     }
 

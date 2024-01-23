@@ -1,9 +1,7 @@
 using DG.Tweening;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.UI;
 
 public class SCR_PlateauTournant : MonoBehaviour
 {
@@ -14,8 +12,8 @@ public class SCR_PlateauTournant : MonoBehaviour
 
     private Tween tweenRotation;
     public bool canRotate = false;
-    private float targetRotation;
-    private float targetTour;
+    public float targetRotation;
+
 
 
     // Start is called before the first frame update
@@ -40,7 +38,7 @@ public class SCR_PlateauTournant : MonoBehaviour
         Vector3 diffMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition) - lastMousePos; // vecteur de direction entre la derniere position de la souris et sa position actuelle
         RotZ += diffMousePos.x + diffMousePos.y; // positif quand on va vers le haut ou droite et negatif quand on va a gauche ou en bas
         
-
+        
 
         lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
     }
@@ -52,23 +50,13 @@ public class SCR_PlateauTournant : MonoBehaviour
 
 
 
-            
-        targetTour = (transform.rotation.eulerAngles.z + RotZ * 200) / 360;
 
-
-        /*if(RotZ > 0)
-        {
-            targetRotation = (transform.rotation.eulerAngles.z + RotZ * 200) % 360;
-
-        }
-        else
-        {
-            targetRotation = (transform.rotation.eulerAngles.z - (360 -RotZ) * 200) % 360;
-
-
-        }*/
-
-        Debug.Log(targetRotation);
+        float e = 0;
+        e = (transform.rotation.eulerAngles.z + RotZ * 400);
+        targetRotation = e % 360;
+   
+       
+       
 
     }
 
@@ -76,14 +64,13 @@ public class SCR_PlateauTournant : MonoBehaviour
     {
         if (canRotate)
         {
+            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(64, 0,targetRotation), Time.deltaTime );
 
-            if(targetTour > 0)
-            {
-                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(64, 0,targetRotation), Time.deltaTime );
-
-            }
+        
         }
 
     }
+
+  
 
 }

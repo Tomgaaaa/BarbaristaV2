@@ -15,7 +15,7 @@ public class SCR_Bouilloire : SCR_Ustensile
     [SerializeField] private float quantiteEauNecessaire; // quantite necessaire pour realiser la manipulation
     private float eauVerse; // la valeur actuelle de l'eau qu'on a versé
 
-
+    [SerializeField] private SCR_Tasse refTasse;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -77,6 +77,9 @@ public class SCR_Bouilloire : SCR_Ustensile
     {
  
         OnMouseUp(); // reset la rotation de la bouilloire
+
+        refTasse.FinishBoisson();
+
     }
 
     public void UnlockBouilloire() // debloque le fait de pouvoir manipuler la bouilloire
