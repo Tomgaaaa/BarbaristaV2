@@ -18,14 +18,14 @@ public class SCR_Pilon : MonoBehaviour
 
     [SerializeField] private Transform aimPositionMortier; // pour la partie ou le pilon vise la base du mortier
 
-    private bool inMortier;
+    public bool inMortier;
     private SCR_Mortier refMortier;
 
     private Vector3 initialPosition;
 
     #region Drag
     private TargetJoint2D myTargetJoint;
-    [SerializeField, Range(0f, 100f)] float frequenceJoint = 5f; // frequence a laquel l'objet essaye de réetablir la distance avec la target
+    [SerializeField, Range(0f, 1000f)] float frequenceJoint = 5f; // frequence a laquel l'objet essaye de réetablir la distance avec la target
     [SerializeField, Range(0f, 100f)] float dampingJoint = 1f; // vitesse qui est réduit a chaque fréquence
     #endregion
 
@@ -61,35 +61,28 @@ public class SCR_Pilon : MonoBehaviour
         {
             RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCam.ScreenPointToRay(Input.mousePosition)); // cast pour avoir la world position de la souris
 
+
             if (rayHit)// si le cast touche quelque chose
             {
+                Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition); // recupere la world position du curseur
 
-                if (inMortier && rayHit.point.y < aimPositionMortier.position.y + 1)
+                if (inMortier && rayHit.point.y < transform.position.y)
                 {
-                    // myTargetJoint.target = new Vector2(aimPositionMortier.position.x, aimPositionMortier.position.y+1); // indique au TargetJoint que la target est la position de la souris
+                    Vector3 mouseDirection = mousePos - transform.position; // calcule le vecteur de direction entre la roue et le curseur
+                    float distance = Mathf.Abs(mouseDirection.x) + Mathf.Abs(mouseDirection.y);
+                    float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg + 90; // calcule l'angle necessaire
 
 
-                    Vector2 distance = (Vector2)transform.position - rayHit.point;
-                    float angle = Remap(distance.x, -10, 10, 50, -50);
-                    rb.MoveRotation(angle); // pour que le pilon vise la base du mortier*/
+                    float distanceRemap = Mathf.Clamp(distance,0,5) * angle / 5;
 
+                    rb.MoveRotation(distanceRemap);
 
-                    /* Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition); // recupere la world position du curseur
-                     Vector3 mouseDirection = mousePos - transform.position; // calcule le vecteur de direction entre la roue et le curseur
-                     float rotZ = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg + 90; // calcule l'angle necessaire
-
-
-                     rb.MoveRotation(rotZ); // pour que le pilon vise la base du mortier*/
-
-
-                    //myTargetJoint.target = new Vector2(rayHit.point.x,aimPositionMortier.position.y + 1);
                 }
                 else
                 {
 
 
 
-                    Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition); // recupere la world position du curseur
                     Vector3 mouseDirection = aimPositionMortier.position - mousePos; // calcule le vecteur de direction entre la roue et le curseur
                     float rotZ = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg + 90; // calcule l'angle necessaire
 
@@ -100,11 +93,12 @@ public class SCR_Pilon : MonoBehaviour
 
                 }
             }
+
         }
 
 
 
-        
+
 
     }
 
@@ -139,7 +133,19 @@ public class SCR_Pilon : MonoBehaviour
         refMortier = refMortierParameter;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        inMortier = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        inMortier = false;
+    }
+
+
+    /*private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<SCR_Mortier>() != null) // si on reste en collision avec le mortier 
         {
@@ -174,7 +180,7 @@ public class SCR_Pilon : MonoBehaviour
         {
             inMortier = false;
         }
-    }
+    }*/
     public virtual float Remap(float value, float from1, float to1, float from2, float to2) // je le garde psk j'en ai eu besoin pendant un test et que je galere a retrouver le nom remap a chaque fois
     {
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;

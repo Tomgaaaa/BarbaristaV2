@@ -401,12 +401,13 @@ EdgeCollider2D:
   - {x: 0.75594664, y: 0.17151082}
   - {x: 0.6971741, y: 0.1570583}
   - {x: 0.67361116, y: -0.0022068024}
-  - {x: 0.6132622, y: -0.3175218}
-  - {x: 0.42452383, y: -0.54252106}
-  - {x: 0.20254803, y: -0.7289281}
-  - {x: -0.1372838, y: -0.7476455}
-  - {x: -0.3441429, y: -0.59147847}
-  - {x: -0.5999656, y: -0.3005393}
+  - {x: 0.63844013, y: -0.33533973}
+  - {x: 0.3859191, y: -0.68091655}
+  - {x: 0.16873884, y: -0.78947914}
+  - {x: -0.11883497, y: -0.79296625}
+  - {x: -0.17982864, y: -0.75937724}
+  - {x: -0.37979794, y: -0.6390183}
+  - {x: -0.62076426, y: -0.309453}
   - {x: -0.62624407, y: -0.056746423}
   - {x: -0.62687397, y: 0.18124482}
   - {x: -0.6800761, y: 0.19988021}
@@ -8516,7 +8517,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 1000
   m_GravityScale: 0
@@ -8545,7 +8546,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTempsBroyage: 0
   aimPositionMortier: {fileID: 1790583766}
-  frequenceJoint: 5
+  inMortier: 0
+  frequenceJoint: 1000
   dampingJoint: 1
 --- !u!70 &1250482042
 CapsuleCollider2D:
@@ -9868,7 +9870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1517721845
 MonoBehaviour:
   m_ObjectHideFlags: 0

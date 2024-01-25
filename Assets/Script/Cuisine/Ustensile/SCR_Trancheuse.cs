@@ -50,7 +50,7 @@ public class SCR_Trancheuse : SCR_Ustensile
             }
             else
             {
-                lagSpeed = 1.6f; // si il arrive au niveau de l'ingrédient, le couteau met + de temps a atteindre sa rotation cible, donne un effet de forcage 
+                lagSpeed = 1.2f; // si il arrive au niveau de l'ingrédient, le couteau met + de temps a atteindre sa rotation cible, donne un effet de forcage 
             }
 
 
