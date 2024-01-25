@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6872597599011700598}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SCR_Compendium_Page, Assembly-CSharp
         m_MethodName: GoToChild
         m_Mode: 3
@@ -266,7 +266,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6872597599011700598}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SCR_Compendium_Page, Assembly-CSharp
         m_MethodName: GoToChild
         m_Mode: 3
@@ -490,7 +490,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6872597599011700598}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SCR_Compendium_Page, Assembly-CSharp
         m_MethodName: GoToChild
         m_Mode: 3
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6872597599011700598}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SCR_Compendium_Page, Assembly-CSharp
         m_MethodName: GoToChild
         m_Mode: 3
@@ -667,18 +667,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3420674707373020229, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: _currentPage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420674707373020229, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: dicoPageList.Array.data[1].value
+      value: 
+      objectReference: {fileID: 327276934779513006}
     - target: {fileID: 4767391515128437184, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
       propertyPath: m_Name
       value: 2_PageBaseVariant_SommaireBiome
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767391515128437184, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7820336352491001834, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
       propertyPath: m_SizeDelta.y
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7820336352491001834, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 232.37598
+      propertyPath: m_AnchoredPosition.x
+      value: 688.92
       objectReference: {fileID: 0}
+    - target: {fileID: 7820336352491001834, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7979896963072974730, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 327276934779513006}
     - target: {fileID: 8409940031648454452, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -767,19 +787,13 @@ PrefabInstance:
       addedObject: {fileID: 7407137420306379081}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+--- !u!1 &327276934779513006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767391515128437184, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+  m_PrefabInstance: {fileID: 5090076863574258030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &950824018742614612 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5445296805792656186, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
   m_PrefabInstance: {fileID: 5090076863574258030}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6872597599011700598 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1856550581696220696, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
-  m_PrefabInstance: {fileID: 5090076863574258030}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e4f5cdbcdec20488beeab2a20b74de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

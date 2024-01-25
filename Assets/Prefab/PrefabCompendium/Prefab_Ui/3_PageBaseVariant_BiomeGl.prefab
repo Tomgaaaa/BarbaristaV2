@@ -133,7 +133,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8147888412476607561}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SCR_Compendium_Page, Assembly-CSharp
         m_MethodName: GoToChild
         m_Mode: 3
@@ -416,7 +416,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8147888412476607561}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SCR_Compendium_Page, Assembly-CSharp
         m_MethodName: GoToChild
         m_Mode: 3
@@ -561,7 +561,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8147888412476607561}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SCR_Compendium_Page, Assembly-CSharp
         m_MethodName: GoToChild
         m_Mode: 3
@@ -954,7 +954,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8147888412476607561}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SCR_Compendium_Page, Assembly-CSharp
         m_MethodName: GoToChild
         m_Mode: 3
@@ -1086,7 +1086,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8147888412476607561}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SCR_Compendium_Page, Assembly-CSharp
         m_MethodName: GoToChild
         m_Mode: 3
@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8147888412476607561}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SCR_Compendium_Page, Assembly-CSharp
         m_MethodName: GoToChild
         m_Mode: 3
@@ -1582,7 +1582,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8147888412476607561}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SCR_Compendium_Page, Assembly-CSharp
         m_MethodName: GoToChild
         m_Mode: 3
@@ -1817,9 +1817,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3420674707373020229, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: _currentPage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420674707373020229, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: dicoPageList.Array.data[2].value
+      value: 
+      objectReference: {fileID: 3096782121366051729}
     - target: {fileID: 4767391515128437184, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
       propertyPath: m_Name
-      value: 3_PageBaseVariant_Biome
+      value: 3_PageBaseVariant_BiomeGl
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767391515128437184, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820336352491001834, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820336352491001834, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 104.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820336352491001834, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 582.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820336352491001834, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -29.78003
       objectReference: {fileID: 0}
     - target: {fileID: 8409940031648454452, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
       propertyPath: m_Pivot.x
@@ -1932,19 +1960,13 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5445296805792656186, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
   m_PrefabInstance: {fileID: 7552773784378065489}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3096782121366051729 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4767391515128437184, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+  m_PrefabInstance: {fileID: 7552773784378065489}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &7422016620189508245 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1139581643104460996, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
   m_PrefabInstance: {fileID: 7552773784378065489}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8147888412476607561 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1856550581696220696, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
-  m_PrefabInstance: {fileID: 7552773784378065489}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e4f5cdbcdec20488beeab2a20b74de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

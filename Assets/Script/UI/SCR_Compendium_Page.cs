@@ -5,7 +5,7 @@ using UnityEngine;
 public class SCR_Compendium_Page : MonoBehaviour
 {
     SCR_Compendium parent;
-
+    /*
     private void Start()
     {
         parent = GetComponentInParent<SCR_Compendium>();
@@ -17,14 +17,28 @@ public class SCR_Compendium_Page : MonoBehaviour
         parent.NextPage();
     }
 
+    
     public void PreviewPageChild()
     {
         parent.PreviewPage();
     }
-
-    public void GoToChild(int page)
+    public  enumPage GetKeyFromValue(GameObject gOPage)
     {
-        parent.GoToPage(page);
+        foreach (string keyVar in parent.dicoPage.Keys)
+        {
+            if (dictionaryVar[keyVar] == valueVar)
+            {
+                return keyVar;
+            }
+        }
+        return null;
     }
 
+    public void GoToChild(GameObject page)
+    {
+
+        parent.GoToPage(ePage);
+    }
+
+  */
 }
