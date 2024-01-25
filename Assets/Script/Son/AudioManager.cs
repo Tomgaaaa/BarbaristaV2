@@ -24,7 +24,7 @@ public class SoundSettings
     [Range(0,2)]
     public float pitch;
 
-    public AudioMixer Mixer;
+    
 
     
      

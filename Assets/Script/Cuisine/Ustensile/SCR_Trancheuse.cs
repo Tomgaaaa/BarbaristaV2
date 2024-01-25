@@ -57,19 +57,23 @@ public class SCR_Trancheuse : SCR_Ustensile
 
             // lerp la rotation entre sa rotation actuelle et sa rotation souhaité divisé par le lag pour la durée
             couteau.rotation = Quaternion.Lerp(couteau.rotation,  Quaternion.Euler(0, 0, rotationXRemap), Time.deltaTime / lagSpeed);
-            
+
+
+            AudioManager.instanceAM.Play("Trancheuse");
+
             //tweenRotationDrag = baseTrancheuse.DORotate(new Vector3(0,0,rotationXRemap), 1.5f);
 
 
 
 
 
-            if(couteau.rotation.eulerAngles.z - 360 < -50 && needReset) // si le couteau est revenu à sa rotation initial, il peut effectuer une nouvelle decoupe
+            if (couteau.rotation.eulerAngles.z - 360 < -50 && needReset) // si le couteau est revenu à sa rotation initial, il peut effectuer une nouvelle decoupe
             {
                 needReset = false;
             }
             if(couteau.eulerAngles.z - 360 > -10 && !needReset ) // si le couteau est arrivé a la fin de sa course, il doit revenir a sa rotation initial, pour pas juste faire des petits accoups
             {
+
                 needReset = true; // empeche de rester en bas de la rotation et de spam des petits accoups
                 currentNombreCoupe++; // ajoute 1 au nombre de ecoupe effectue
 
@@ -92,7 +96,7 @@ public class SCR_Trancheuse : SCR_Ustensile
         tweenRotationDrag.Kill();
         //baseTrancheuse.rotation = Quaternion.Euler(0, 0, -51f);
 
-        tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, -51), 0.8f) ; // si le joueur relache ele clique, le couteau se repositionne à sa rotation intial
+        tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, -51), 0.8f) ; // si le joueur relache le clique, le couteau se repositionne à sa rotation intial
         RotZ = 0; // reset la valeur pour pas que quand on clique a nouveau, le couteau reprenne sa position ou on l'a lache
 
     }
