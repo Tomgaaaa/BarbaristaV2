@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SCR_Pilon : MonoBehaviour
@@ -137,6 +138,8 @@ public class SCR_Pilon : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         inMortier = true;
+
+       
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -145,15 +148,13 @@ public class SCR_Pilon : MonoBehaviour
     }
 
 
-    /*private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<SCR_Mortier>() != null) // si on reste en collision avec le mortier 
         {
 
-            inMortier = true;
 
-
-            if (Mathf.Abs(rb.velocity.x) > velocityNecessairePilon || Mathf.Abs(rb.velocity.y) > velocityNecessairePilon) // si la velocite du pilon est supérieur à la valeur necessaire
+            if (Mathf.Abs(rb.velocity.x) > velocityNecessairePilon || Mathf.Abs(rb.velocity.y) > velocityNecessairePilon || Mathf.Abs(rb.angularVelocity) > velocityNecessairePilon) // si la velocite du pilon est supérieur à la valeur necessaire
             {
                 currentTempsBroyage += Time.deltaTime; // alors on ajoute le temps que l'on passe en collision
             }
@@ -174,13 +175,8 @@ public class SCR_Pilon : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.gameObject.GetComponent<SCR_Mortier>() != null)
-        {
-            inMortier = false;
-        }
-    }*/
+ 
+
     public virtual float Remap(float value, float from1, float to1, float from2, float to2) // je le garde psk j'en ai eu besoin pendant un test et que je galere a retrouver le nom remap a chaque fois
     {
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2;

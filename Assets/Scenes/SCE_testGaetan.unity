@@ -6588,7 +6588,7 @@ MonoBehaviour:
   colliderDrop: {fileID: 918939134}
   refPilon: {fileID: 1250482041}
   tempsNecessaireBoyage: 3
-  velocityNecessaireBroyage: 3
+  velocityNecessaireBroyage: 2
   colliderPilon: {fileID: 1250482042}
   colliderBordDMortier: {fileID: 50445614}
 --- !u!61 &918939134
@@ -9870,7 +9870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1517721845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9886,6 +9886,7 @@ MonoBehaviour:
   RotZ: 0
   canRotate: 0
   targetRotation: 0
+  speedRotation: 0
 --- !u!212 &1517721846
 SpriteRenderer:
   m_ObjectHideFlags: 0

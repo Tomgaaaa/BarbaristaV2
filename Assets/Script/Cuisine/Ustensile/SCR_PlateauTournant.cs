@@ -13,7 +13,8 @@ public class SCR_PlateauTournant : MonoBehaviour
     private Tween tweenRotation;
     public bool canRotate = false;
     public float targetRotation;
-
+    public float currentRotation;
+    public float speedRotation;
 
 
     // Start is called before the first frame update
@@ -53,7 +54,8 @@ public class SCR_PlateauTournant : MonoBehaviour
 
         float e = 0;
         e = (transform.rotation.eulerAngles.z + RotZ * 400);
-        targetRotation = e % 360;
+        targetRotation = e;
+        currentRotation = targetRotation;
    
        
        
@@ -64,9 +66,20 @@ public class SCR_PlateauTournant : MonoBehaviour
     {
         if (canRotate)
         {
-            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(64, 0,targetRotation), Time.deltaTime );
-
         
+
+
+            if(currentRotation > 90)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(64, 0, 90 ), Time.deltaTime);
+
+            }
+            else
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(64, 0,targetRotation), Time.deltaTime );
+                
+
+            }
         }
 
     }
