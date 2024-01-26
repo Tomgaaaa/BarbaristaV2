@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public enum enumPage
 {
 
-    Sommaire,SommaireBiome,BiomeGlace, BiomeFeu, BiomeElec, BiomeForet,SousBMontagne, SousBGrotte, SousBTaiga, SousBVolcan, SousBDune, SousBRocheuse,SousBFoudre, SousBHelium, SousBSoufre, SousBJungle, SousBMarecage, SousBBiolumi,
+    Sommaire, SommaireBiome, BiomeGlace, SousBGrotte, SousBTaiga, SousBMontagne,  BiomeFeu, SousBVolcan, SousBDune, SousBRocheuse, BiomeElec, SousBFoudre, SousBHelium, SousBSoufre, BiomeForet, SousBJungle, SousBMarecage, SousBBiolumi,
 
     SommaireBestiaire,
     FrengMontagne, FrengGrotte, MagastalMontagne, MagastalTaiga, SregolGrotte, ChokaroTaiga, SregolBasalte, DeshrogBasalte, CarabosDune,
@@ -46,9 +46,10 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
     public void PrevPage()
     {
-        dicoPage[actualPage].SetActive(false);
+        if (pageToDestroy != null)
+            Destroy(pageToDestroy);
         actualPage--;
-        dicoPage[actualPage].SetActive(true);
+        pageToDestroy = Instantiate(dicoPage[actualPage], transform);
 
     }
 
@@ -64,8 +65,9 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
     {
         if (pageToDestroy != null)
             Destroy(pageToDestroy);
-        pageToDestroy = Instantiate(dicoPage[actualPage], transform);
         actualPage = GetKeyFromValue(gActualPage);
+        pageToDestroy = Instantiate(dicoPage[actualPage], transform);
+        
     }
 
     public enumPage GetKeyFromValue(GameObject goPage)
