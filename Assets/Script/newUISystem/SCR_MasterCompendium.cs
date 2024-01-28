@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public enum enumPage
 {
 
-    Sommaire, SommaireBiome, BiomeGlace, SousBGrotte, SousBTaiga, SousBMontagne,  BiomeFeu, SousBVolcan, SousBDune, SousBRocheuse, BiomeElec, SousBFoudre, SousBHelium, SousBSoufre, BiomeForet, SousBJungle, SousBMarecage, SousBBiolumi,
+    Sommaire, SommaireBiome, BiomeGlace, SousBGrotte, SousBTaiga, SousBMontagne,  BiomeFeu,  SousBAride, SousBRocheuse, SousBBasalte, BiomeElec, SousBSoufre, SousBHelium, SousBFoudre,  BiomeForet, SousBJungle, SousBBiolumi, SousBMarecage, 
 
     SommaireBestiaire,
     FrengMontagne, FrengGrotte, MagastalMontagne, MagastalTaiga, SregolGrotte, ChokaroTaiga, SregolBasalte, DeshrogBasalte, CarabosDune,
