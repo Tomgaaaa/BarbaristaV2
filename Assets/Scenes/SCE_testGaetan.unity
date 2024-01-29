@@ -7275,6 +7275,17 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 7793481258025412384, guid: 0faf1bc9deaa4f84381e62bf95484541, type: 3}
   m_PrefabInstance: {fileID: 2561500128362124192}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1025299354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2913601796975562638, guid: 0faf1bc9deaa4f84381e62bf95484541, type: 3}
+  m_PrefabInstance: {fileID: 2561500128362124192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a6cbdfac900344c80fb6480fa6e67c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1047602238
 GameObject:
   m_ObjectHideFlags: 0
@@ -9870,7 +9881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1517721845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9884,7 +9895,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotZ: 0
-  canRotate: 0
   targetRotation: 0
   currentRotation: 0
   curveLinear:
@@ -9917,25 +9927,30 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dureeRotation: 3
+  listUstensile:
+  - {fileID: 1930612885}
+  - {fileID: 1025299354}
+  - {fileID: 918939133}
+  - {fileID: 1826659161}
+  currentUstensile: {fileID: 0}
 --- !u!212 &1517721846
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -95,4 +95,5 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
 
 
     public enumEtatIgredient GetEtat() { return etatApresTransformation; } // renvoie l'etat de transformation
+    public Collider2D GetDropCollider() { return colliderDrop; } // renvoie l'etat de transformation
 }
