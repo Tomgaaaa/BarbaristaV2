@@ -19,10 +19,13 @@ public class SCR_Trancheuse : SCR_Ustensile
     [SerializeField] private int nombreDeCoupeNecessaire; // pour realiser la transformation
     private int currentNombreCoupe; // le nombre de coup mis actuellement
     private bool needReset ;  // si le couteau est revenu a sa rotation d'origine 
+    private bool Isplayingsound = true;
+    
 
     private void OnMouseDown()
     {
         lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        AudioManager.instanceAM.Play("Grab_1");
 
     }
 
@@ -51,7 +54,13 @@ public class SCR_Trancheuse : SCR_Ustensile
             else
             {
                 lagSpeed = 1.2f; // si il arrive au niveau de l'ingrédient, le couteau met + de temps a atteindre sa rotation cible, donne un effet de forcage 
+               
+                AudioManager.instanceAM.Play("")
+
+
+
             }
+            
 
 
 
@@ -59,23 +68,25 @@ public class SCR_Trancheuse : SCR_Ustensile
             couteau.rotation = Quaternion.Lerp(couteau.rotation,  Quaternion.Euler(0, 0, rotationXRemap), Time.deltaTime / lagSpeed);
 
 
-            AudioManager.instanceAM.Play("Trancheuse");
+            
 
             //tweenRotationDrag = baseTrancheuse.DORotate(new Vector3(0,0,rotationXRemap), 1.5f);
 
-
+            
 
 
 
             if (couteau.rotation.eulerAngles.z - 360 < -50 && needReset) // si le couteau est revenu à sa rotation initial, il peut effectuer une nouvelle decoupe
             {
                 needReset = false;
+               
             }
             if(couteau.eulerAngles.z - 360 > -10 && !needReset ) // si le couteau est arrivé a la fin de sa course, il doit revenir a sa rotation initial, pour pas juste faire des petits accoups
             {
-
+                AudioManager.instanceAM.Play("Trancheuse_1");
                 needReset = true; // empeche de rester en bas de la rotation et de spam des petits accoups
                 currentNombreCoupe++; // ajoute 1 au nombre de ecoupe effectue
+                
 
 
                 if (currentNombreCoupe == nombreDeCoupeNecessaire) // si on a atteint le nombre de coupe necessaire
@@ -98,7 +109,7 @@ public class SCR_Trancheuse : SCR_Ustensile
 
         tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, -51), 0.8f) ; // si le joueur relache le clique, le couteau se repositionne à sa rotation intial
         RotZ = 0; // reset la valeur pour pas que quand on clique a nouveau, le couteau reprenne sa position ou on l'a lache
-
+        AudioManager.instanceAM.Play("Shing");
     }
   
 
