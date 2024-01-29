@@ -6177,7 +6177,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  speedRotation: 0
+  listUstensile: []
+  currentUstensile: {fileID: 0}
 --- !u!212 &982357555
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7783,6 +7784,20 @@ MonoBehaviour:
   - label: Grab_1
     clip:
     - {fileID: 8300000, guid: 5f45b7859342528439e64b6ff2cb04e4, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - label: "R\xE2pe"
+    clip:
+    - {fileID: 8300000, guid: 5f45b7859342528439e64b6ff2cb04e4, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - label: Grab_2
+    clip:
+    - {fileID: 8300000, guid: d7a47bbcf8894d14883e24d185185242, type: 3}
     source: {fileID: 0}
     loop: 0
     volume: 1
