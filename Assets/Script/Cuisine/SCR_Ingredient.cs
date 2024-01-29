@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ingrédient transformé
@@ -24,7 +25,8 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     private bool leaveEtagere = false; // bool qui permet de savoir si l'ingrédient a deja quitté la zone de l'etagere au moins une fois 
 
-
+    private bool isMaintenu = false;
+ 
 
     private void Start()
     {
@@ -58,8 +60,40 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
        
     }
 
+
+    private void OnMouseEnter()
+    {
+        if (!inContenant || inContenant && myIngredient.actualStateSO != enumEtatIgredient.Nature)
+        {
+            Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
+
+
+            Cursor.SetCursor(cursorHover, Vector2.zero, CursorMode.Auto);
+        }
+        
+    }
+
+
+    private void OnMouseExit()
+    {
+
+        if(!isMaintenu)
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto );
+
+        }
+
+    }
+
     private void OnMouseDown() // fonction appelé lorsqu'on clique sur l'ingrédient
     {
+
+        isMaintenu = true;
+        Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
+
+        Cursor.SetCursor(cursorHover, Vector2.zero, CursorMode.Auto);
+
+
         if (inEtagere) // verifie si l'objet est dans l'etagere ou non 
         {
             inEtagere = false; // l'objet n'est plus dans l'etagere car on l'a pris
@@ -88,7 +122,9 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     private void OnMouseUp() // fonction appelé lorsqu'on relache le clique (et qu'on avait clique sur l'objet avant, pas lorsqu'on relache le clique n'importe ou)
     {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
+        isMaintenu = false;
 
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition)); // créer un Cast pour savoir si on a relaché l'ingrédient sur quelque chose
 

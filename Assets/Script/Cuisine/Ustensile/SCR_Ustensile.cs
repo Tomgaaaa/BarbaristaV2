@@ -31,7 +31,34 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
         
     }
 
+    private void OnMouseEnter()
+    {
+        if(inManipulation)
+        {
+            Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
 
+            Cursor.SetCursor(cursorHover, Vector2.zero, CursorMode.Auto);
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        if (inManipulation)
+        {
+            Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
+
+            Cursor.SetCursor(cursorHover, Vector2.zero, CursorMode.Auto);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (inManipulation)
+        {
+
+            Cursor.SetCursor(null, new Vector2(0, 0.5f), CursorMode.Auto);
+        }
+    }
 
     public override void OnDrop(SCR_Ingredient ingredientDropParameter) // fonction appellé lorsuq'un ingrédient est drop sur l'ustensile
     {
