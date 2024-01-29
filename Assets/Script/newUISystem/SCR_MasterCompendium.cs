@@ -21,7 +21,7 @@ public enum enumPage
 
 public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceiver
 {
-  
+   
     private List<GameObject> listPage;
     [SerializeField] private enumPage actualPage;
     [System.Serializable] public class dicoPageClass : TemplateDico<enumPage, GameObject> { };
@@ -41,7 +41,7 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
         else
             Destroy(gameObject);
 
-        pageToDestroy = Instantiate(dicoPage[enumPage.Sommaire], transform);
+       // pageToDestroy = Instantiate(dicoPage[enumPage.Sommaire], transform);
     }
 
     
@@ -65,6 +65,7 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
     public void GoToPage(GameObject gActualPage)
     {
+     
         if (pageToDestroy != null)
             Destroy(pageToDestroy);
         actualPage = GetKeyFromValue(gActualPage);
@@ -102,4 +103,16 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
     }
 
+    public void OpenComp()
+    {
+        Debug.Log("Hallo");
+        
+        pageToDestroy = Instantiate(dicoPage[actualPage], transform);
+    }
+    public void CloseComp()
+    {
+
+        if (pageToDestroy != null)
+            Destroy(pageToDestroy);
+    }
 }
