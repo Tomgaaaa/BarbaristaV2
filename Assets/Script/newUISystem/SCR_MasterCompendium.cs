@@ -9,9 +9,11 @@ public enum enumPage
     Sommaire, SommaireBiome, BiomeGlace, SousBGrotte, SousBTaiga, SousBMontagne,  BiomeFeu,  SousBAride, SousBRocheuse, SousBBasalte, BiomeElec, SousBSoufre, SousBHelium, SousBFoudre,  BiomeForet, SousBJungle, SousBBiolumi, SousBMarecage, 
 
     SommaireBestiaire,
-    FrengMontagne, FrengGrotte, MagastalMontagne, MagastalTaiga, SregolGrotte, ChokaroTaiga, SregolBasalte, DeshrogBasalte, CarabosDune,
-    EvisparDune, CarabosRocheux, KerusculaFoudre, CresholdSoufre, CresholdHelium, ChokaroHelium, KerusculaJungle, PhacoliereJungle, PhacoliereMarais,
-    EvisparMarais, EvisparBiolumi,
+    MagastalMontagne, FrengMontagne, SregolGrotte, FrengGrotte,  ChokaroTaiga, MagastalTaiga,
+    SregolBasalte, DeshrogBasalte, CarabosDune, EvisparDune, CarabosRocheux,
+    KerusculaJungle, PhacoliereJungle, EvisparMarais, PhacoliereMarais,  EvisparBiolumi,
+    KerusculaFoudre, DeshrogFoudre, CresholdSoufre, CresholdHelium, ChokaroHelium, 
+   
 
     SommaireIngredient,
     Frejal, Kleck, Phylliul, Scolk, Shembo, Siarym
