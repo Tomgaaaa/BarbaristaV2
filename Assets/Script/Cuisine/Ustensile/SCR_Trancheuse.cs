@@ -55,7 +55,7 @@ public class SCR_Trancheuse : SCR_Ustensile
             {
                 lagSpeed = 1.2f; // si il arrive au niveau de l'ingrédient, le couteau met + de temps a atteindre sa rotation cible, donne un effet de forcage 
 
-                AudioManager.instanceAM.Play("");
+                
 
 
 
@@ -109,7 +109,6 @@ public class SCR_Trancheuse : SCR_Ustensile
 
         tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, -51), 0.8f) ; // si le joueur relache le clique, le couteau se repositionne à sa rotation intial
         RotZ = 0; // reset la valeur pour pas que quand on clique a nouveau, le couteau reprenne sa position ou on l'a lache
-        AudioManager.instanceAM.Play("Shing");
     }
   
 

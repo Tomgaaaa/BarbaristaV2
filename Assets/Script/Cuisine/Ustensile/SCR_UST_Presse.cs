@@ -67,7 +67,7 @@ public class SCR_UST_Presse : SCR_Ustensile
 
                     currentRotation = 0; // on reset la rotation 
                     nmbDeTour++; // on ajoute 1 au nombre de tour effectué
-
+                    AudioManager.instanceAM.Play("Presse");
                     if (nmbDeTour >= nombreDeTourNecessaire) // si on a realise le nombre de tour necessaire
                     {
                         FinishManipulation(); // alors on a finit de manipuler
@@ -82,8 +82,7 @@ public class SCR_UST_Presse : SCR_Ustensile
             }
             else
             {
-               // AudioManager.instanceAM.Pause("Pressoir");
-                Isplayingsound = false;
+               
 
 
             }
@@ -97,7 +96,7 @@ public class SCR_UST_Presse : SCR_Ustensile
     {
         
         base.FinishManipulation();
-
+        AudioManager.instanceAM.Play("Finish_Presse");
         // fauddra reset la position du bras de la presse
 
     }

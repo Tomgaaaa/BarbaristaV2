@@ -37,7 +37,7 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
         plaqueTargetJoint = refPlaque.gameObject.AddComponent<TargetJoint2D>();
         plaqueTargetJoint.frequency = frequenceJoint;
         plaqueTargetJoint.dampingRatio = dampingJoint;
-        AudioManager.instanceAM.Play("Râpe");
+        AudioManager.instanceAM.Play("Grab_2");
     }
 
     private void OnMouseUp()
@@ -51,7 +51,7 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
         if(inManipulation)
         {
             base.OnMouseDrag();
-            AudioManager.instanceAM.Play("Grab_2");
+            
             Vector3 diffMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition) - lastMousePos; // vecteur de direction entre la derniere position de la souris et sa position actuelle
             PosX += diffMousePos.x; // positif quand on va vers le haut ou droite et negatif quand on va a gauche ou en bas
             float posxClamp = Mathf.Clamp(PosX, -1, 1); // clamp cette valeur à 1 car on veut on mouvement ver le haut ou droite pour effectuer la manipulation
@@ -59,8 +59,8 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
             float positionXRemap = Remap(posxClamp, -1, 1, -0.2f, 0.2f); // remap cette valeur avec les rotation min et max de la bouilloire
 
             plaqueTargetJoint.target = new Vector2(transform.position.x + positionXRemap, refPlaque.position.y);
-
-            if(diffMousePos.x != 0)
+            
+            if (diffMousePos.x != 0)
             {
                 currentTempsPasse += Mathf.Abs(diffMousePos.x /10);
                 
@@ -70,6 +70,7 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
                     FinishManipulation();
                     refPlaque.DOLocalMoveX(0, 0.5f);
                     currentTempsPasse = 0;
+                    AudioManager.instanceAM.Play("Finish");
                 }
             }
 

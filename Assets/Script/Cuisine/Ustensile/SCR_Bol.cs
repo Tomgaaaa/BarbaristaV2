@@ -39,6 +39,7 @@ public class SCR_Bol : SCR_Contenant, ISerializationCallbackReceiver
     {
         if(ingredientDropParameter.GetCR_SO_Ingredient().actualStateSO != enumEtatIgredient.Nature) // verifie que l'ingrédient qui a ete drop, est un ingrédient transformé
         {
+            AudioManager.instanceAM.Play("Drop");
             base.OnDrop(ingredientDropParameter);
 
             etiquette.sprite = dicoEtiquetteUstensile[ingredientDrop.GetCR_SO_Ingredient().actualStateSO]; // update l'etiquette pour afficher l'ustensile utilisé sur l'ingrédient
