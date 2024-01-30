@@ -19,11 +19,7 @@ public class SCR_Trancheuse : SCR_Ustensile
     [SerializeField] private int nombreDeCoupeNecessaire; // pour realiser la transformation
     private int currentNombreCoupe; // le nombre de coup mis actuellement
     private bool needReset ;  // si le couteau est revenu a sa rotation d'origine 
-<<<<<<< HEAD
-=======
-    
-    
->>>>>>> f8bad44 (Modif Presse , trancheuse , ajout son code mortier et pilon)
+
 
 
     public override void OnMouseDown()
