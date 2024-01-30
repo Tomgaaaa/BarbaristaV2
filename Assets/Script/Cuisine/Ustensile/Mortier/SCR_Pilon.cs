@@ -45,7 +45,7 @@ public class SCR_Pilon : MonoBehaviour
     {
         SetTargetJointOnAnotherObject(false); // ajoute le component TargetJoint, parametre false car on n'a pas besoin de reset le joint
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); // on passe l'objet sur ce layer pour qu'il garde ces collisions mais pas les Cast
-
+        AudioManager.instanceAM.Play("GrabPilon");
 
 
     }
@@ -55,7 +55,7 @@ public class SCR_Pilon : MonoBehaviour
     private void OnMouseDrag()
     {
         //rb.MoveRotation(rb.rotation * 0); // pour que le pilon vise toujours le bas
-
+        
 
         if (inManipulation)
         {
@@ -65,7 +65,7 @@ public class SCR_Pilon : MonoBehaviour
             if (rayHit)// si le cast touche quelque chose
             {
                 Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition); // recupere la world position du curseur
-
+                
                 if (inMortier && rayHit.point.y < transform.position.y)
                 {
                     Vector3 mouseDirection = mousePos - transform.position; // calcule le vecteur de direction entre la roue et le curseur
@@ -88,6 +88,7 @@ public class SCR_Pilon : MonoBehaviour
 
 
                     rb.MoveRotation(rotZ); // pour que le pilon vise la base du mortier
+                    
 
                     myTargetJoint.target = rayHit.point; // indique au TargetJoint que la target est la position de la souris
 
@@ -137,8 +138,9 @@ public class SCR_Pilon : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         inMortier = true;
+        AudioManager.instanceAM.Play("Mortier");
 
-       
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)

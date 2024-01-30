@@ -39,6 +39,7 @@ public class SCR_Mortier : SCR_Ustensile
         base.FinishManipulation();
         colliderPilon.enabled = false; // désactive les colliders de manipulation
         colliderBordDMortier.SetActive(false); // pareil
+        AudioManager.instanceAM.Play("Completion Mortier");
     }
 
     public void InitPilon()
