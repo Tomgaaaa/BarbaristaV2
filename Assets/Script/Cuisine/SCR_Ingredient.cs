@@ -85,7 +85,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     public void OnMouseEnter()
     {
-        if (!inContenant || !hasBeenTransformed)
+        if (!inContenant || !hasBeenTransformed || hasBeenTransformed && myIngredient.actualStateSO!=enumEtatIgredient.Nature)
         {
             Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
             outlineMaterial.SetFloat("_Thickness", 0.04f);

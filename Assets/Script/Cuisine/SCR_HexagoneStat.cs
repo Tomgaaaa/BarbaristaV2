@@ -56,9 +56,7 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 
     private LineRenderer ln;
 
-    public SCR_SO_Ingredient ingredient;
 
-    public bool canUpdate;
 
 
     private void Start()
@@ -69,11 +67,7 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
     private void Update()
     {
 
-        if (canUpdate)
-        {
-            canUpdate = false;
-            UpdateStat(ingredient.dicoResistance);
-        }
+
 
         if(canUpdateLine)
         {
@@ -98,7 +92,6 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 
         }
 
-
         Vector3 newPositionThermique = dicoEmplacementPoint[enumResistance.Thermique][0].position;
         dicoResistanceTrasnform[enumResistance.Thermique].DOMove(newPositionThermique,3f).OnComplete(Lock);
     }
@@ -111,7 +104,6 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
         ln.SetPosition(3, new Vector3(dicoResistanceTrasnform[enumResistance.Cryogenique].position.x, dicoResistanceTrasnform[enumResistance.Cryogenique].position.y, -1));
         ln.SetPosition(4, new Vector3(dicoResistanceTrasnform[enumResistance.Electrique].position.x, dicoResistanceTrasnform[enumResistance.Electrique].position.y, -1));
         ln.SetPosition(5, new Vector3(dicoResistanceTrasnform[enumResistance.Lethargique].position.x, dicoResistanceTrasnform[enumResistance.Lethargique].position.y, -1));
-        ln.SetPosition(6, new Vector3(dicoResistanceTrasnform[enumResistance.Thermique].position.x, dicoResistanceTrasnform[enumResistance.Thermique].position.y, -1));
 
     }
 
