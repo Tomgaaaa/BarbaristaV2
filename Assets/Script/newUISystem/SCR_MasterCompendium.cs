@@ -16,12 +16,12 @@ public enum enumPage
    
 
     SommaireIngredient,
-    Frejal, Kleck, Phylliul, Scolk, Shembo, Siarym
+    Shembo, Frejal, Kleck, Siarym, Phylliul, Scolk  
 }
 
 public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceiver
 {
-   
+    [SerializeField] private RectTransform infoBulle;
     private List<GameObject> listPage;
     [SerializeField] private enumPage actualPage;
     [System.Serializable] public class dicoPageClass : TemplateDico<enumPage, GameObject> { };
@@ -114,5 +114,17 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
         if (pageToDestroy != null)
             Destroy(pageToDestroy);
+    }
+
+    public void PopUpInfo(SO_PopUp info)
+    {
+        infoBulle.gameObject.SetActive(true);
+        infoBulle.GetComponentInChildren<Text>().text = info.textInfo;        
+        infoBulle.transform.localPosition = info.position;
+        infoBulle.sizeDelta = info.dimension;  
+    }
+    public void PopUpEnd()
+    {
+        infoBulle.gameObject.SetActive(false);
     }
 }

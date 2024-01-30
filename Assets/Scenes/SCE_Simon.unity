@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &55933332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7367194782707028932, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &55933337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55933332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: b096e96eb32a65e43a27253bd6a6f9c4, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &209190028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1946,13 +1996,409 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8958335214924464153, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 362451951}
+    - targetCorrespondingSourceObject: {fileID: 8487073990979193127, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1169559868}
+    - targetCorrespondingSourceObject: {fileID: 8487073990979193127, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1169559867}
+    - targetCorrespondingSourceObject: {fileID: 4688520001981628162, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1099984846}
+    - targetCorrespondingSourceObject: {fileID: 4688520001981628162, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1099984845}
+    - targetCorrespondingSourceObject: {fileID: 6784748789708989860, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 824436696}
+    - targetCorrespondingSourceObject: {fileID: 6784748789708989860, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 824436695}
+    - targetCorrespondingSourceObject: {fileID: 8021761869534364603, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 389262805}
+    - targetCorrespondingSourceObject: {fileID: 8021761869534364603, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 389262804}
+    - targetCorrespondingSourceObject: {fileID: 5056161428936144361, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 276988942}
+    - targetCorrespondingSourceObject: {fileID: 5056161428936144361, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 276988941}
+    - targetCorrespondingSourceObject: {fileID: 2452887380952469723, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 317478393}
+    - targetCorrespondingSourceObject: {fileID: 2452887380952469723, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 317478392}
+    - targetCorrespondingSourceObject: {fileID: 5067550948988977317, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 546822915}
+    - targetCorrespondingSourceObject: {fileID: 7367194782707028932, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 55933337}
+    - targetCorrespondingSourceObject: {fileID: 2116456929578663824, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 702380999}
+    - targetCorrespondingSourceObject: {fileID: 516380432535876230, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 447284768}
+    - targetCorrespondingSourceObject: {fileID: 308204825742221933, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1039385175}
+    - targetCorrespondingSourceObject: {fileID: 8946243352469998716, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1762157901}
   m_SourcePrefab: {fileID: 100100000, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+--- !u!1 &276988936 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5056161428936144361, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &276988941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276988936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 1fadd72938523dc45b070c43c3c2652a, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &276988942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276988936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+--- !u!1 &317478387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2452887380952469723, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &317478392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317478387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: ee5d936cbabd0d44d9fd6d7644a4202f, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &317478393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317478387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+--- !u!1 &362451947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8958335214924464153, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &362451951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362451947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: c47cb167736561a44bdcff1ec283ff16, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &389262799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8021761869534364603, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &389262804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389262799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 53bd63560007200439e6d4685a3b2456, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &389262805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389262799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+--- !u!1 &447284763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 516380432535876230, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &447284768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447284763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 53bd63560007200439e6d4685a3b2456, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!224 &489426328 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5996393895989891963, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
   m_PrefabInstance: {fileID: 209190028}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &546822910 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5067550948988977317, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &546822915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546822910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: ec99c2a6828e16b44b6170962eb90d29, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &668891278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,6 +2533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d75ee59a23401f4b8d306c343f7b5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infoBulle: {fileID: 1531908494}
   actualPage: 0
   dicoPageList:
   - key: 0
@@ -2160,27 +2607,29 @@ MonoBehaviour:
   - key: 34
     value: {fileID: 9110377098978319838, guid: 30b1afb4248d0d041a2643f3db374771, type: 3}
   - key: 35
-    value: {fileID: 1096310451740692960, guid: 5bef97dff61e5ef41849e1b10e70b590, type: 3}
+    value: {fileID: 9110377098978319838, guid: 8acd783c21f4ffb4a8f7bdbd7b0fbd62, type: 3}
   - key: 36
-    value: {fileID: 1096310451740692960, guid: 5bef97dff61e5ef41849e1b10e70b590, type: 3}
+    value: {fileID: 9110377098978319838, guid: b69787234c063784d94e3354925f0bc1, type: 3}
   - key: 37
-    value: {fileID: 1096310451740692960, guid: 5bef97dff61e5ef41849e1b10e70b590, type: 3}
+    value: {fileID: 9110377098978319838, guid: 5d293232f51b4d043bee1a7b70e94166, type: 3}
   - key: 38
-    value: {fileID: 1096310451740692960, guid: 5bef97dff61e5ef41849e1b10e70b590, type: 3}
+    value: {fileID: 9110377098978319838, guid: 00d677d0b4de6cf46a57c938c6f510df, type: 3}
   - key: 39
-    value: {fileID: 7520393446571656506, guid: 77044144df7857c49b8437f4dfc8b253, type: 3}
+    value: {fileID: 9110377098978319838, guid: 7df878e2bc95ad14facb2b7b7035b0f3, type: 3}
   - key: 40
-    value: {fileID: 1096310451740692960, guid: 5bef97dff61e5ef41849e1b10e70b590, type: 3}
+    value: {fileID: 7520393446571656506, guid: 77044144df7857c49b8437f4dfc8b253, type: 3}
   - key: 41
     value: {fileID: 1096310451740692960, guid: 5bef97dff61e5ef41849e1b10e70b590, type: 3}
   - key: 42
-    value: {fileID: 1096310451740692960, guid: 5bef97dff61e5ef41849e1b10e70b590, type: 3}
+    value: {fileID: 1096310451740692960, guid: bba03577f9e1ec84aafdcfc30b026164, type: 3}
   - key: 43
-    value: {fileID: 1096310451740692960, guid: 5bef97dff61e5ef41849e1b10e70b590, type: 3}
+    value: {fileID: 1096310451740692960, guid: 69b05221a1f4e5d46a7c8c1af15af65d, type: 3}
   - key: 44
-    value: {fileID: 1096310451740692960, guid: 5bef97dff61e5ef41849e1b10e70b590, type: 3}
+    value: {fileID: 1096310451740692960, guid: 69b05221a1f4e5d46a7c8c1af15af65d, type: 3}
   - key: 45
-    value: {fileID: 1096310451740692960, guid: 5bef97dff61e5ef41849e1b10e70b590, type: 3}
+    value: {fileID: 1096310451740692960, guid: 2090f69fc88a7df4cb85bcee1fa52cad, type: 3}
+  - key: 46
+    value: {fileID: 1096310451740692960, guid: 04116ae381f52be488af022d28a864e5, type: 3}
 --- !u!114 &682084649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2258,6 +2707,7 @@ RectTransform:
   m_Children:
   - {fileID: 999863818}
   - {fileID: 489426328}
+  - {fileID: 1531908494}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2265,6 +2715,119 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &702380994 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2116456929578663824, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &702380999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702380994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 4529da409d8473c4387c24973967931d, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &824436690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6784748789708989860, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &824436695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824436690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 4529da409d8473c4387c24973967931d, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &824436696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824436690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &967683805
 GameObject:
   m_ObjectHideFlags: 0
@@ -2692,6 +3255,182 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1039385170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 308204825742221933, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1039385175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039385170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 1fadd72938523dc45b070c43c3c2652a, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &1099984840 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4688520001981628162, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1099984845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099984840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: b096e96eb32a65e43a27253bd6a6f9c4, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1099984846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099984840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+--- !u!1 &1169559862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8487073990979193127, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1169559867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169559862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: ec99c2a6828e16b44b6170962eb90d29, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1169559868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169559862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &1341350158
 GameObject:
   m_ObjectHideFlags: 0
@@ -2776,6 +3515,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1531908493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1531908494}
+  - component: {fileID: 1531908496}
+  - component: {fileID: 1531908495}
+  m_Layer: 5
+  m_Name: PopUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1531908494
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531908493}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1816056396}
+  m_Father: {fileID: 682084652}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 95, y: 146}
+  m_SizeDelta: {x: 190, y: 156.7439}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &1531908495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531908493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1531908496
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531908493}
+  m_CullTransparentMesh: 1
 --- !u!1 &1731802137
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,6 +3635,135 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1762157896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8946243352469998716, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 209190028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1762157901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762157896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: ee5d936cbabd0d44d9fd6d7644a4202f, type: 2}
+            m_ObjectArgumentAssemblyTypeName: SO_PopUp, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 682084648}
+          m_TargetAssemblyTypeName: SCR_MasterCompendium, Assembly-CSharp
+          m_MethodName: PopUpEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &1816056395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1816056396}
+  - component: {fileID: 1816056398}
+  - component: {fileID: 1816056397}
+  m_Layer: 5
+  m_Name: TxtPopUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1816056396
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816056395}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1531908494}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1816056397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816056395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Test
+--- !u!222 &1816056398
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816056395}
+  m_CullTransparentMesh: 1
 --- !u!1 &2006695522
 GameObject:
   m_ObjectHideFlags: 0
