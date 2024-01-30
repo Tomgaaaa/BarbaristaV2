@@ -98,6 +98,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         {
             inEtagere = false; // l'objet n'est plus dans l'etagere car on l'a pris
             myIngredient.stockSO--; // retire 1 au stock
+            AudioManager.instanceAM.Play("PickItem");
             refEtagere.SpawnIngredient(myIngredient); // fait spawn un ingrédient dans l'etagere
             //SpawnIngredient(); // fait spawn un ingrédient pour remplacer celui qu'on a pris
             refEtagere.UpdateStockIngredient(myIngredient); // met a jour le texte de stock 

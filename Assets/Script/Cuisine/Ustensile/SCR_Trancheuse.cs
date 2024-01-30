@@ -31,10 +31,13 @@ public class SCR_Trancheuse : SCR_Ustensile
     }
 
 
+
+
     public override void OnMouseDrag()
     {
         if(inManipulation)
         {
+            
 
             base.OnMouseDrag();
 
@@ -51,36 +54,38 @@ public class SCR_Trancheuse : SCR_Ustensile
             if(couteau.rotation.eulerAngles.z - 360 < -25) // si le couteau est au début de sa rotation
             {
                 lagSpeed = 0.5f; // pas trop de lag car il n'est pas au niveau de l'ingrédient
+                
             }
             else
             {
                 lagSpeed = 1.2f; // si il arrive au niveau de l'ingrédient, le couteau met + de temps a atteindre sa rotation cible, donne un effet de forcage 
-
+                
                 
 
 
 
             }
+
+
+
             
-
-
-
             // lerp la rotation entre sa rotation actuelle et sa rotation souhaité divisé par le lag pour la durée
             couteau.rotation = Quaternion.Lerp(couteau.rotation,  Quaternion.Euler(0, 0, rotationXRemap), Time.deltaTime / lagSpeed);
 
-
             
+
 
             //tweenRotationDrag = baseTrancheuse.DORotate(new Vector3(0,0,rotationXRemap), 1.5f);
 
-            
+
 
 
 
             if (couteau.rotation.eulerAngles.z - 360 < -50 && needReset) // si le couteau est revenu à sa rotation initial, il peut effectuer une nouvelle decoupe
             {
                 needReset = false;
-               
+                
+
             }
             if(couteau.eulerAngles.z - 360 > -10 && !needReset ) // si le couteau est arrivé a la fin de sa course, il doit revenir a sa rotation initial, pour pas juste faire des petits accoups
             {
@@ -109,6 +114,7 @@ public class SCR_Trancheuse : SCR_Ustensile
         base.OnMouseUp();
         tweenRotationDrag.Kill();
         //baseTrancheuse.rotation = Quaternion.Euler(0, 0, -51f);
+        
 
         tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, -51), 0.8f) ; // si le joueur relache le clique, le couteau se repositionne à sa rotation intial
         RotZ = 0; // reset la valeur pour pas que quand on clique a nouveau, le couteau reprenne sa position ou on l'a lache
@@ -119,6 +125,7 @@ public class SCR_Trancheuse : SCR_Ustensile
     {
         base.FinishManipulation();
         currentNombreCoupe = 0; // reset le nombre de coup effectué
+        AudioManager.instanceAM.Play("CompletionTrancheuse");
     }
 
 }

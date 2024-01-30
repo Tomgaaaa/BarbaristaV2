@@ -93,6 +93,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
             ingredientCollider.enabled = false; // désactive le collider de l'ingrédient car on ne peut pas toucher l'ingrédient lorsqu'on le manipule
 
             mainCam.transform.DOMove(new Vector3(emplacementCam.x, emplacementCam.y, -2), 1f); // déplace la camera centré sur l'ustensile
+            AudioManager.instanceAM.Play("Transition");
             mainCam.DOOrthoSize(emplacementCam.z, 1f); // change le zoom de la camera, emplacement.z car on est en 2D donc inutile le Z, ça évite de recreer une variable
         }
 
@@ -116,6 +117,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
         ingredientCollider.enabled = true; // re active le collider de l'ingrédient pour pouvoir le reprendre
 
         mainCam.transform.DOMove(new Vector3(startPositionCam.x, startPositionCam.y, -2), 1f); // reposition la camera sa position intial
+        AudioManager.instanceAM.Play("Transitionback");
         mainCam.DOOrthoSize(5.7f, 1f); // remet le zoom de la camera a sa valeur intial
 
 

@@ -52,7 +52,9 @@ public class SCR_CuisineManager : MonoBehaviour
 
 
     public void TransitionBouilloire() 
+
     {
+        AudioManager.instanceAM.Play("Transibouilloire");
         bambooShade.DOLocalMove(emplacementbambooShade, 1f); // déplace le volet jusqu'a son emplacement
 
         allUstensile.DOLocalMove(new Vector3(-10, 0, 0), 1f);

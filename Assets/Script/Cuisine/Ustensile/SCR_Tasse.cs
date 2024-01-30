@@ -46,6 +46,7 @@ public class SCR_Tasse : SCR_Contenant
         base.OnDrop(ingredientDropParameter);
 
         listIngredientsUtilises.Add(ingredientDropParameter); // ajoute l'ingrédient drop sur la tasse a la liste des ingrédients utilisés pour la boisson
+        AudioManager.instanceAM.Play("DropItemTasse");
         ingredientDrop.gameObject.SetActive(false); // désactive l'ingrédient drop, faudra le renvoyer dans le pool plutot
 
         CalCulStat(ingredientDropParameter.GetCR_SO_Ingredient().dicoResistance); // met a jour les stats de la boisson avec l'ingrédient qui a ete drop

@@ -30,6 +30,7 @@ public class SCR_Bouilloire : SCR_Ustensile
     public override void OnMouseDown()
     {
         lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        AudioManager.instanceAM.Play("BouilloireVersement");
     }
 
     public override void OnMouseDrag()
@@ -44,11 +45,12 @@ public class SCR_Bouilloire : SCR_Ustensile
 
             if(rotationXRemap < -10) // si la bouilloire atteint une certaines rotation, l'eau coule
             {
-
+                
                 eauVerse  += Remap(rotzClamp,0.5f,1,0,1);// remap la rotation min qui permet de verser de l'eau et le max, si la bouilloire est + penche, elle verse + d'eau
-
+                
                 if (eauVerse >= quantiteEauNecessaire) // si on atteint la quati d'eau necessaire on a finit de manipuler
                 {
+
                     FinishManipulation();
                 }
             }
