@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.U2D;
 
 public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ingrédient transformé
 {
@@ -26,29 +27,44 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
     private bool leaveEtagere = false; // bool qui permet de savoir si l'ingrédient a deja quitté la zone de l'etagere au moins une fois 
 
     private bool isMaintenu = false;
+
+    private Material outlineMaterial;
  
 
     private void Start()
     {
-        Init(refPool); //initialise les ingrédients qui passe pas par le pool
+        outlineMaterial = GetComponent<Renderer>().material;
         refEtagere.UpdateStockIngredient(myIngredient); // update le texte de stock 
 
+        Init(refPool); //initialise les ingrédients qui passe pas par le pool
 
     }
 
     private void OnEnable() // dans le OnEnable car c'est avant le start
     {
-        
+
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         mainCamera = Camera.main;
         leaveEtagere = false;
-       
+
+        
     }
 
     public override void Init(SCR_Pool basePool) // fonction qui est dans pool item 
     {
         base.Init(basePool);
         UpdateSprite(); // voir ci-dessous
+
+        /*Texture2D croppedTexture = new Texture2D((int)mySpriteRenderer.sprite.rect.width, (int)mySpriteRenderer.sprite.rect.height);
+        var pixels = mySpriteRenderer.sprite.texture.GetPixels((int)mySpriteRenderer.sprite.textureRect.x,
+                                                (int)mySpriteRenderer.sprite.textureRect.y,
+                                                (int)mySpriteRenderer.sprite.textureRect.width,
+                                                (int)mySpriteRenderer.sprite.textureRect.height);
+
+        croppedTexture.SetPixels(pixels);
+        croppedTexture.Apply();
+
+        outlineMaterial.SetTexture("_MainTex", croppedTexture);*/
     }
 
     public void UpdateSprite() // update le sprite lorsqu'on l'"instancie"
@@ -66,7 +82,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         if (!inContenant || inContenant && myIngredient.actualStateSO != enumEtatIgredient.Nature)
         {
             Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
-
+            outlineMaterial.SetFloat("_Thickness", 0.04f);
 
             Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
         }
@@ -79,6 +95,8 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
         if(!isMaintenu)
         {
+
+            outlineMaterial.SetFloat("_Thickness", 0f);
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto );
 
         }
@@ -90,6 +108,8 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
         isMaintenu = true;
         Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
+        outlineMaterial.SetFloat("_Thickness", 0f);
+
 
         Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
 
