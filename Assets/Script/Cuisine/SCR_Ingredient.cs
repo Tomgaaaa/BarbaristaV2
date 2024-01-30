@@ -8,6 +8,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 {
     [SerializeField] private SCR_SO_Ingredient myIngredient; // besoin d'un SO pour savoir de quel ingrédient il s'agit
     private SpriteRenderer mySpriteRenderer; // stock le sprite REnderer car on a besoin de changer le sprite lorsqu'on "instancie" ou quand on transforme
+    private Rigidbody2D myRB;
     private Camera mainCamera; // stock la camera pour pouvoir l'utiliser dans les RayCast
 
     #region Drag
@@ -38,6 +39,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
         Init(refPool); //initialise les ingrédients qui passe pas par le pool
 
+
     }
 
     private void OnEnable() // dans le OnEnable car c'est avant le start
@@ -47,6 +49,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         mainCamera = Camera.main;
         leaveEtagere = false;
 
+        
         
     }
 
@@ -221,6 +224,11 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
             myTargetJoint.frequency = frequenceJoint; //met a jour les parametre du component avec les parametres qu'on a définis 
             myTargetJoint.dampingRatio = dampingJoint; // voir juste au dessus
 
+
+
+            myRB = GetComponent<Rigidbody2D>();
+            myRB.interpolation = RigidbodyInterpolation2D.Interpolate;
+            myRB.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
         }
         else // si on veut reset le component = quand on a finis de drag l'ingrédient
         {

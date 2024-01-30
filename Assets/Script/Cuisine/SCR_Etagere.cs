@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using static DictionaryLesson;
@@ -27,13 +28,18 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
     [SerializeField] private List<dicoPositionIngredient> listDicoPosition; // juste pour visualiser le dico ci-dessous
     private Dictionary<SCR_SO_Ingredient, Vector3> dicoPosition; // renseigne la position des ingrédients dans l'etagere
 
+
+    [System.Serializable] public class dicoOutlineMaterialClass : TemplateDico<enumAllIgredient, Material> { };
+    [SerializeField] private List<dicoOutlineMaterialClass> listOutlineMaterial; // juste pour visualiser le dico ci-dessous
+    private Dictionary<enumAllIgredient, Material> dicoOutlineMaterial; 
+
     #endregion
 
 
 
     [SerializeField] private SCR_Pool refPool; // besoin du pool quand on veut rajouter un ingrédient dans le stock et que le stock est à 0
 
-
+   
 
 
 
@@ -73,6 +79,16 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
             }
         }
 
+        dicoOutlineMaterial = new Dictionary<enumAllIgredient, Material>();
+        foreach (dicoOutlineMaterialClass item in listOutlineMaterial)
+        {
+            if (!dicoOutlineMaterial.ContainsKey(item.key))
+            {
+                dicoOutlineMaterial.Add(item.key, item.value);
+            }
+        }
+
+
     }
 
 
@@ -105,6 +121,8 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
            poolIngredient.SetSoIngredient(ingredientRemoveParameter, this); // définit quel est l'ingrédient 
            poolIngredient.Init(refPool); // permet d'avoir la reference du pool
            poolIngredient.transform.position = dicoPosition[ingredientRemoveParameter]; // positionne l'ingrédient à la position necessaire dans l'etagere, cette position est recuperé grace au dico position
+
+           poolIngredient.GetComponent<Renderer>().material = dicoOutlineMaterial[ingredientRemoveParameter.myEnumIngredientSO];
         }
         else // si on a plus de stock
         {
