@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -30,7 +31,9 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
     private bool isMaintenu = false;
 
     private Material outlineMaterial;
- 
+    private Camera mainCam;
+    private Vector2 startPosCam;
+    public bool hasBeenTransformed = false;
 
     private void Start()
     {
@@ -38,8 +41,8 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         refEtagere.UpdateStockIngredient(myIngredient); // update le texte de stock 
 
         Init(refPool); //initialise les ingrédients qui passe pas par le pool
-
-
+        mainCam = Camera.main;
+        startPosCam = mainCam.transform.position;
     }
 
     private void OnEnable() // dans le OnEnable car c'est avant le start
@@ -82,7 +85,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     public void OnMouseEnter()
     {
-        if (!inContenant || inContenant && myIngredient.actualStateSO != enumEtatIgredient.Nature)
+        if (!inContenant || !hasBeenTransformed)
         {
             Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
             outlineMaterial.SetFloat("_Thickness", 0.04f);
@@ -134,7 +137,11 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         {
             inContenant = false; // on le sort du contenant
             refLastContenant.PickUpFromContenant(); // informe le contenant que l'on a pris l'ingrédient
-        
+
+            mainCam.transform.DOMove(new Vector3(startPosCam.x, startPosCam.y, -2), 1f); // reposition la camera sa position intial
+            AudioManager.instanceAM.Play("Transitionback");
+            mainCam.DOOrthoSize(5.7f, 1f); // remet le zoom de la camera a sa valeur intial
+
 
         }
 
@@ -250,6 +257,8 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     public SCR_SO_Ingredient GetCR_SO_Ingredient() { return myIngredient; }
 
+
+    public void SetHasBeenTransformed(bool newTransfoParameter) { hasBeenTransformed = newTransfoParameter; }
     public void SetInUstensileAndUstensile(bool inUstensileParameter, SCR_Contenant ustensileUseParameter) { inContenant = inUstensileParameter; refLastContenant = ustensileUseParameter; }
     public void SetSoIngredient(SCR_SO_Ingredient parameter_SOingredient, SCR_Etagere etagereParameter) { myIngredient = parameter_SOingredient; refEtagere = etagereParameter; } 
 }

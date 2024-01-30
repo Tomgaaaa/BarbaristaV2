@@ -9,7 +9,6 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     [SerializeField] private protected enumEtatIgredient etatApresTransformation; // état de l'ingrédient apres la transformation 
 
     private protected Camera mainCam; // reference a la cam pour la transition camera 
-    private Vector3 startPositionCam; // stock la position initial de la cam
     [SerializeField] private Vector3 emplacementCam; // position que devra prendre la camera apres transition
 
     [SerializeField] private protected Collider2D colliderManipulation; // reference au collider utile à la manipulation
@@ -21,7 +20,6 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     public virtual void Start()
     {
         mainCam = Camera.main;
-        startPositionCam = mainCam.transform.position;
         colliderManipulation.enabled = false;
 
     }
@@ -39,6 +37,10 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
         isMaintenu = true;
         if (inManipulation)
         {
+
+            ingredientDrop.SetHasBeenTransformed(true);
+            ingredientCollider.enabled = false;
+
             Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
 
             Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
@@ -90,7 +92,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
             colliderDrop.enabled = false; // désactive le collider qui permet de detecter le OnDrop
             inManipulation = true; // on passe en mode manipulation
 
-            ingredientCollider.enabled = false; // désactive le collider de l'ingrédient car on ne peut pas toucher l'ingrédient lorsqu'on le manipule
+           // ingredientCollider.enabled = false; // désactive le collider de l'ingrédient car on ne peut pas toucher l'ingrédient lorsqu'on le manipule
 
             mainCam.transform.DOMove(new Vector3(emplacementCam.x, emplacementCam.y, -2), 1f); // déplace la camera centré sur l'ustensile
             AudioManager.instanceAM.Play("Transition");
@@ -116,9 +118,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
         ingredientDrop.Transformation(etatApresTransformation); // indique à l'ingrédient qu'on le transforme en l'etat que transforme l'ustensile
         ingredientCollider.enabled = true; // re active le collider de l'ingrédient pour pouvoir le reprendre
 
-        mainCam.transform.DOMove(new Vector3(startPositionCam.x, startPositionCam.y, -2), 1f); // reposition la camera sa position intial
-        AudioManager.instanceAM.Play("Transitionback");
-        mainCam.DOOrthoSize(5.7f, 1f); // remet le zoom de la camera a sa valeur intial
+        
 
 
 
