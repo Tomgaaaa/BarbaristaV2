@@ -12,6 +12,7 @@ public class Compendium : MonoBehaviour
     {
         actualPage = actualPage.pagePrecedante;
         view.SetPage(actualPage);
+        AudioManager.instanceAM.Play("SwiftPage");
     }
 
     public void NextPage()

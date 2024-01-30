@@ -52,6 +52,7 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
             Destroy(pageToDestroy);
         actualPage--;
         pageToDestroy = Instantiate(dicoPage[actualPage], transform);
+        AudioManager.instanceAM.Play("SwiftPage");
 
     }
 
@@ -61,6 +62,7 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
             Destroy(pageToDestroy);
         actualPage++;
         pageToDestroy = Instantiate(dicoPage[actualPage], transform);
+        AudioManager.instanceAM.Play("SwiftPage");
     }
 
     public void GoToPage(GameObject gActualPage)
@@ -70,7 +72,8 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
             Destroy(pageToDestroy);
         actualPage = GetKeyFromValue(gActualPage);
         pageToDestroy = Instantiate(dicoPage[actualPage], transform);
-        
+        AudioManager.instanceAM.Play("SwiftPage");
+
     }
 
     public enumPage GetKeyFromValue(GameObject goPage)

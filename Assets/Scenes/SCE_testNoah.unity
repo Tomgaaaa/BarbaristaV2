@@ -7059,6 +7059,7 @@ MonoBehaviour:
     value: {x: 8.33, y: 1.51, z: 0}
   - key: {fileID: 11400000, guid: 06a0f9069f127694892382066ddcb4f7, type: 2}
     value: {x: 4.71, y: 5.96, z: 0}
+  listOutlineMaterial: []
   refPool: {fileID: 96110940}
 --- !u!4 &1265176551
 Transform:
@@ -7350,6 +7351,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 484353d317e93294bbd748c136eb0c9f, type: 3}
     source: {fileID: 0}
     loop: 0
+    volume: 2
+    pitch: 1
+  - label: SwiftPage
+    clip:
+    - {fileID: 8300000, guid: fd74d1b9a1f66c04898cd1bf0ab401a6, type: 3}
+    source: {fileID: 0}
+    loop: 1
     volume: 2
     pitch: 1
 --- !u!1 &1291528098

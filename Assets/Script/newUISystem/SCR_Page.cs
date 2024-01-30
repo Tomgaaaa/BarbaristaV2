@@ -14,10 +14,12 @@ public class SCR_Page : SCR_PoolItem
     public void GoToPage(GameObject ePage)
     {
         SCR_MasterCompendium.instanceMComp.GoToPage(ePage);
+        
     }
    public void NextPage()
     {
         SCR_MasterCompendium.instanceMComp.NextPage();
+        
     }
     public void PrevPage()
     {
