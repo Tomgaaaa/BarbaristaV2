@@ -19,11 +19,11 @@ public class SCR_Trancheuse : SCR_Ustensile
     [SerializeField] private int nombreDeCoupeNecessaire; // pour realiser la transformation
     private int currentNombreCoupe; // le nombre de coup mis actuellement
     private bool needReset ;  // si le couteau est revenu a sa rotation d'origine 
-    private bool Isplayingsound = true;
-    
 
-    private void OnMouseDown()
+
+    public override void OnMouseDown()
     {
+        base.OnMouseDown();
         lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         AudioManager.instanceAM.Play("Grab_1");
 
@@ -102,8 +102,10 @@ public class SCR_Trancheuse : SCR_Ustensile
     }
    
 
-    private void OnMouseUp()
+    public override void OnMouseUp()
     {
+
+        base.OnMouseUp();
         tweenRotationDrag.Kill();
         //baseTrancheuse.rotation = Quaternion.Euler(0, 0, -51f);
 

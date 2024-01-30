@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite d'ustensile pour avoir acces aux fonctions OnDrop()... 
 {
@@ -30,8 +31,11 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
     }
 
 
-    private void OnMouseDown()
+    public override void OnMouseDown()
     {
+        base.OnMouseDown();
+
+
         lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
         plaqueTargetJoint = refPlaque.gameObject.AddComponent<TargetJoint2D>();
@@ -40,8 +44,10 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
         AudioManager.instanceAM.Play("Grab_2");
     }
 
-    private void OnMouseUp()
+    public override void OnMouseUp()
     {
+        base.OnMouseUp();
+
         Destroy(plaqueTargetJoint); plaqueTargetJoint = null;
         refPlaque.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         

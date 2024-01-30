@@ -61,14 +61,14 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
     }
 
 
-    private void OnMouseEnter()
+    public void OnMouseEnter()
     {
         if (!inContenant || inContenant && myIngredient.actualStateSO != enumEtatIgredient.Nature)
         {
             Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
 
 
-            Cursor.SetCursor(cursorHover, Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
         }
         
     }
@@ -91,7 +91,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         isMaintenu = true;
         Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
 
-        Cursor.SetCursor(cursorHover, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
 
 
         if (inEtagere) // verifie si l'objet est dans l'etagere ou non 

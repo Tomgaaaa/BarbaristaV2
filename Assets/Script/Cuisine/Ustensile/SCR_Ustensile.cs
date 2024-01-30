@@ -15,6 +15,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     [SerializeField] private protected Collider2D colliderManipulation; // reference au collider utile à la manipulation
     [SerializeField] private Collider2D colliderDrop; // reference au collider qui permet le OnDrop
     private protected bool inManipulation = false; // empeche de manipuler l'ingrédient si il n'y pas d'ingrédient
+    private protected bool isMaintenu;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -31,33 +32,50 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
         
     }
 
-    private void OnMouseEnter()
-    {
-        if(inManipulation)
-        {
-            Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
 
-            Cursor.SetCursor(cursorHover, Vector2.zero, CursorMode.Auto);
-        }
-    }
 
-    private void OnMouseDown()
+    public virtual void OnMouseDown()
     {
+        isMaintenu = true;
         if (inManipulation)
         {
             Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
 
-            Cursor.SetCursor(cursorHover, Vector2.zero, CursorMode.Auto);
+            Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
         }
     }
 
-    private void OnMouseExit()
+    public virtual void OnMouseUp()
     {
+        isMaintenu = false;
+
         if (inManipulation)
         {
 
-            Cursor.SetCursor(null, new Vector2(0, 0.5f), CursorMode.Auto);
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
+
+    }
+    public virtual void OnMouseOver()
+    {
+        if (inManipulation && !isMaintenu)
+        {
+            Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
+
+            Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
+        }
+    }
+
+    public virtual void OnMouseExit()
+    {
+        if (inManipulation && !isMaintenu)
+        {
+
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
+    }
+    public virtual void OnMouseDrag()
+    {
     }
 
     public override void OnDrop(SCR_Ingredient ingredientDropParameter) // fonction appellé lorsuq'un ingrédient est drop sur l'ustensile
@@ -84,13 +102,12 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     }
 
 
-    public virtual void OnMouseDrag()
-    {
-    }
 
 
     public virtual void FinishManipulation() // fonction appellé lorsqu'on a finis la manipulation
     {
+        OnMouseUp();
+
         colliderManipulation.enabled = false; // désactive le collider de manipulation vus qu'on a finis
         inManipulation = false; // on ne manipule plus l'ingrédient 
 

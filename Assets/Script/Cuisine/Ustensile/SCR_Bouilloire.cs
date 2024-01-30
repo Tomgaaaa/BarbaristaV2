@@ -27,7 +27,7 @@ public class SCR_Bouilloire : SCR_Ustensile
 
 
 
-    private void OnMouseDown()
+    public override void OnMouseDown()
     {
         lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
     }
@@ -66,7 +66,7 @@ public class SCR_Bouilloire : SCR_Ustensile
 
     }
 
-    private void OnMouseUp()
+    public override void OnMouseUp()
     {
         contenantBouilloire.transform.DOLocalRotate(startRotationBouilloire, 1f); // reset la rotation de la bouilloire àa sa rotation initial
         RotZ = 0f; // permet que quand on clique a nouveau sur la bouilloire la rotation reprenne a 0
