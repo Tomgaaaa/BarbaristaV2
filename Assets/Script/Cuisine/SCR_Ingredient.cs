@@ -1,10 +1,10 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
+
+
 using UnityEngine;
-using UnityEngine.U2D;
+
 
 public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ingrédient transformé
 {

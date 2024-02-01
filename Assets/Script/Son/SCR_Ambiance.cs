@@ -7,7 +7,8 @@ public class SCR_Ambiance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.instanceAM.Play("Presse");
+        AudioManager.instanceAM.Play("AmbianceExterieure");
+        AudioManager.instanceAM.Play("MusiqueAlatea");
        
     }
 
