@@ -32,4 +32,6 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
     {
         
     }
+
+
 }

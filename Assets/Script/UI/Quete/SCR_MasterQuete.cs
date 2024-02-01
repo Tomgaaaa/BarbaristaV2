@@ -12,6 +12,10 @@ public class SCR_MasterQuete : MonoBehaviour
     [SerializeField] Transform reward;
     [SerializeField] Transform diff;
 
+    [SerializeField] Transform P1;
+    [SerializeField] Transform P2;
+
+
 
 
     private void Awake()
@@ -32,5 +36,10 @@ public class SCR_MasterQuete : MonoBehaviour
             Instantiate<Image>(queteInfo.reward[i], reward);
             
         }
+    }
+
+    public void OnDrop(SCR_Ficheperso1 fiche)
+    {
+        fiche.transform.position = P1.position;
     }
 }
