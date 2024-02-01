@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class SCR_CuisineManager : MonoBehaviour
@@ -29,6 +30,8 @@ public class SCR_CuisineManager : MonoBehaviour
 
     #endregion
 
+    [SerializeField] private SCR_Tasse refTasse;
+    [SerializeField] private SCR_HexagoneStat refHexagone;
 
     private void Awake()
     {
@@ -51,8 +54,7 @@ public class SCR_CuisineManager : MonoBehaviour
     }
 
 
-    public void TransitionBouilloire() 
-
+    public void TransitionBouilloire(bool resetPositionParameter) 
     {
         AudioManager.instanceAM.Play("Transibouilloire");
         bambooShade.DOLocalMove(emplacementbambooShade, 1f); // déplace le volet jusqu'a son emplacement
@@ -61,7 +63,8 @@ public class SCR_CuisineManager : MonoBehaviour
 
         boulloire.transform.DOLocalMove(emplacementBoulloire.position, 1f);
 
-        hexagone.transform.DOLocalMove(emplacementHexagone.position,1f);
+        hexagone.transform.DOLocalMove(emplacementHexagone.position, 1f);
+
     }
 
 
@@ -72,10 +75,34 @@ public class SCR_CuisineManager : MonoBehaviour
         allUstensile.DOLocalMove(startPositionAllUstensile, 1f);
 
         boulloire.transform.DOLocalMove(new Vector3 (-20,0,0), 1f);
+
+        hexagone.gameObject.SetActive(false);
+        hexagone.transform.DOLocalMove(startPositionHexagone, 1f).OnComplete(ResetBoisson);
+
+    }
+
+    public void ResetBoisson()
+    {
+
+
+        refTasse.ResetBoisson();
+
+
+        Dictionary<enumResistance, float> dicoStatBoisson = new Dictionary<enumResistance, float>()
+        {
+            { enumResistance.Cryogenique, 0 },
+            { enumResistance.Thermique, 0 },
+            { enumResistance.Electrique, 0 },
+            { enumResistance.Toxique, 0 },
+            { enumResistance.Hemorragique, 0 },
+            { enumResistance.Lethargique, 0 },
+
+        };
+        refHexagone.UpdateStat(dicoStatBoisson);
+        hexagone.gameObject.SetActive(true);
+
     }
 
 
-
- 
 
 }

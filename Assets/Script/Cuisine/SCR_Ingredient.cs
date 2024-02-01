@@ -217,7 +217,6 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
             if(rayHit.transform.GetComponent<SCR_Contenant>())
             {
-                Debug.Log("la");
                 lastRefContenantOutline = rayHit.transform.GetComponent<SCR_Contenant>();
                 lastRefContenantOutline.ShowOutline(true,this);
             }

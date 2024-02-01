@@ -83,17 +83,28 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 
         foreach(KeyValuePair<enumResistance,float> pair in statAfficheParameter)
         {
-            float x = Remap(pair.Value, -300, 1500, dicoEmplacementPoint[pair.Key][0].position.x, dicoEmplacementPoint[pair.Key][1].position.x);
-            float y = Remap(pair.Value, -300, 1500, dicoEmplacementPoint[pair.Key][0].position.y, dicoEmplacementPoint[pair.Key][1].position.y);
-            float z = Remap(pair.Value, -300, 1500, dicoEmplacementPoint[pair.Key][0].position.z, dicoEmplacementPoint[pair.Key][1].position.z);
-            Vector3 newPosition = new Vector3(x, y, z);
-            dicoResistanceTrasnform[pair.Key].DOMove(newPosition,3f);
+            if(pair.Key != enumResistance.Thermique)
+            {
+                float x = Remap(pair.Value, -200, 1500, dicoEmplacementPoint[pair.Key][0].position.x, dicoEmplacementPoint[pair.Key][1].position.x);
+                float y = Remap(pair.Value, -200, 1500, dicoEmplacementPoint[pair.Key][0].position.y, dicoEmplacementPoint[pair.Key][1].position.y);
+                float z = Remap(pair.Value, -200, 1500, dicoEmplacementPoint[pair.Key][0].position.z, dicoEmplacementPoint[pair.Key][1].position.z);
+                Vector3 newPosition = new Vector3(x, y, z);
+
+                dicoResistanceTrasnform[pair.Key].DOMove(newPosition, 3f);
+
+            }
+            
 
 
         }
-
         Vector3 newPositionThermique = dicoEmplacementPoint[enumResistance.Thermique][0].position;
-        dicoResistanceTrasnform[enumResistance.Thermique].DOMove(newPositionThermique,3f).OnComplete(Lock);
+        Debug.Log(newPositionThermique);
+
+        float thermiqueX = Remap(statAfficheParameter[enumResistance.Thermique], -200, 1500, dicoEmplacementPoint[enumResistance.Thermique][0].position.x, dicoEmplacementPoint[enumResistance.Thermique][1].position.x);
+        float thermiqueY = Remap(statAfficheParameter[enumResistance.Thermique], -200, 1500, dicoEmplacementPoint[enumResistance.Thermique][0].position.y, dicoEmplacementPoint[enumResistance.Thermique][1].position.y);
+        float thermqueZ = Remap(statAfficheParameter[enumResistance.Thermique], -200, 1500, dicoEmplacementPoint[enumResistance.Thermique][0].position.z, dicoEmplacementPoint[enumResistance.Thermique][1].position.z);
+        Vector3 newPositionA = new Vector3(thermiqueX, thermiqueY, thermqueZ);
+        dicoResistanceTrasnform[enumResistance.Thermique].DOMove(newPositionA,3f).OnComplete(Lock);
     }
 
     private void UpdateLine()
@@ -104,7 +115,7 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
         ln.SetPosition(3, new Vector3(dicoResistanceTrasnform[enumResistance.Cryogenique].position.x, dicoResistanceTrasnform[enumResistance.Cryogenique].position.y, -1));
         ln.SetPosition(4, new Vector3(dicoResistanceTrasnform[enumResistance.Electrique].position.x, dicoResistanceTrasnform[enumResistance.Electrique].position.y, -1));
         ln.SetPosition(5, new Vector3(dicoResistanceTrasnform[enumResistance.Lethargique].position.x, dicoResistanceTrasnform[enumResistance.Lethargique].position.y, -1));
-
+        
     }
 
     private void Lock()

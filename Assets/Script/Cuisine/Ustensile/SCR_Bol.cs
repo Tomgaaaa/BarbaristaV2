@@ -63,7 +63,7 @@ public class SCR_Bol : SCR_Contenant, ISerializationCallbackReceiver
 
     public void UnlockBouilloire() // fonction appellé lorsque les 3 bols ont un 1 ingrédient
     {
-        SCR_CuisineManager.instanceCM.TransitionBouilloire(); // affiche le volet qui permet de bloquer le fait de prendre des ingrédient, ça va changer
+        SCR_CuisineManager.instanceCM.TransitionBouilloire(false); // affiche le volet qui permet de bloquer le fait de prendre des ingrédient, ça va changer
     }
 
 

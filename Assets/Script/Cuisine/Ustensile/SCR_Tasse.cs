@@ -6,7 +6,16 @@ public class SCR_Tasse : SCR_Contenant
 {
 
     [SerializeField] private List<SCR_Ingredient> listIngredientsUtilises; // liste des ingrédients qui ont ete drop dans la tasse, sera utilise pour l'historique
-    private Dictionary<enumResistance, float> dicoStatBoisson = new Dictionary<enumResistance, float>(); // dico des stats de la boisson
+    private Dictionary<enumResistance, float> dicoStatBoisson = new Dictionary<enumResistance, float>()
+    {
+        { enumResistance.Cryogenique, 0 },
+        { enumResistance.Thermique, 0 },
+        { enumResistance.Electrique, 0 },
+        { enumResistance.Toxique, 0 },
+        { enumResistance.Hemorragique, 0 },
+        { enumResistance.Lethargique, 0 },
+
+    }; // dico des stats de la boisson
 
     [SerializeField] private SCR_Bouilloire refBouilloire; // ref a la bouilloire pour la débloquer lorsqu'il y a 3 ingrédients dans la tasse
 
@@ -36,7 +45,6 @@ public class SCR_Tasse : SCR_Contenant
     // Start is called before the first frame update
     public override void Start()
     {
-        ResetBoisson(); // initialise le dictionnaire de stat
 
         allVisuelle.SetActive(false);
     }
@@ -71,10 +79,10 @@ public class SCR_Tasse : SCR_Contenant
         }
 
 
-       /* foreach (KeyValuePair<enumResistance, int> resistance in dicoStatBoisson) // c'est juste pour debug
+        foreach (KeyValuePair<enumResistance, float> resistance in dicoStatBoisson) // c'est juste pour debug
         {
             Debug.Log("Stat " + resistance.Key + " : " + resistance.Value);
-        }*/
+        }
 
     }
 
@@ -154,27 +162,18 @@ public class SCR_Tasse : SCR_Contenant
     
     public void ResetBoisson()
     {
-        if(dicoStatBoisson.Count != 6) // sera effectué au start pour initialiser le dico
-        {
-            dicoStatBoisson.Add(enumResistance.Hemorragique, 0);
-            dicoStatBoisson.Add(enumResistance.Cryogenique, 0);
-            dicoStatBoisson.Add(enumResistance.Thermique, 0);
-            dicoStatBoisson.Add(enumResistance.Toxique, 0);
-            dicoStatBoisson.Add(enumResistance.Electrique, 0);
-            dicoStatBoisson.Add(enumResistance.Lethargique, 0);
-        }
-        else // si le dico est deja intialisé, passe juste toutes les stats à 0
-        {
+
             dicoStatBoisson[enumResistance.Hemorragique] = 0;
             dicoStatBoisson[enumResistance.Cryogenique] = 0;
             dicoStatBoisson[enumResistance.Thermique] = 0;
             dicoStatBoisson[enumResistance.Toxique] = 0;
             dicoStatBoisson[enumResistance.Electrique] = 0;
             dicoStatBoisson[enumResistance.Lethargique] = 0;
-        }
+        
 
 
 
         allVisuelle.SetActive(false);
+        nmbIngredientIn = 0;
     }
 }
