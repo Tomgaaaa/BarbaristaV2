@@ -18,10 +18,15 @@ public class SCR_Pilon : MonoBehaviour
 
     [SerializeField] private Transform aimPositionMortier; // pour la partie ou le pilon vise la base du mortier
 
-    public bool inMortier;
+    private bool inMortier;
+    private bool contactMortier;
     private SCR_Mortier refMortier;
 
     private Vector3 initialPosition;
+
+    private Vector3 lastMousePos; // derniere position de la souris
+    public Vector3 ddd;
+
 
     #region Drag
     private TargetJoint2D myTargetJoint;
@@ -39,6 +44,8 @@ public class SCR_Pilon : MonoBehaviour
         initialPosition = transform.position;
 
         rb.centerOfMass = new Vector3 (0,-0.8f,0); // change le centre de masse du pilon pour le mettre en bas du pilon
+
+
     }
 
     private void OnMouseDown()
@@ -47,7 +54,7 @@ public class SCR_Pilon : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); // on passe l'objet sur ce layer pour qu'il garde ces collisions mais pas les Cast
         AudioManager.instanceAM.Play("GrabPilon");
 
-
+        lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
     }
 
 
@@ -65,8 +72,9 @@ public class SCR_Pilon : MonoBehaviour
             if (rayHit)// si le cast touche quelque chose
             {
                 Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition); // recupere la world position du curseur
+                ddd = mainCam.ScreenToWorldPoint(Input.mousePosition) - lastMousePos; // vecteur de direction entre la derniere position de la souris et sa position actuelle
                 
-                if (inMortier && rayHit.point.y < transform.position.y)
+                if (contactMortier && rayHit.point.y < transform.position.y)
                 {
                     Vector3 mouseDirection = mousePos - transform.position; // calcule le vecteur de direction entre la roue et le curseur
                     float distance = Mathf.Abs(mouseDirection.x) + Mathf.Abs(mouseDirection.y);
@@ -75,7 +83,14 @@ public class SCR_Pilon : MonoBehaviour
 
                     float distanceRemap = Mathf.Clamp(distance,0,5) * angle / 5;
 
+
                     rb.MoveRotation(distanceRemap);
+
+                    if (Mathf.Abs(ddd.x) * 5f > velocityNecessairePilon)
+                    {
+                        currentTempsBroyage += Time.deltaTime; // alors on ajoute le temps que l'on passe en collision
+
+                    }
 
                 }
                 else
@@ -87,13 +102,44 @@ public class SCR_Pilon : MonoBehaviour
                     float rotZ = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg + 90; // calcule l'angle necessaire
 
 
-                    rb.MoveRotation(rotZ); // pour que le pilon vise la base du mortier
                     
+                    transform.position = rayHit.point;
+                    transform.rotation =  Quaternion.Euler(0, 0, rotZ);
 
-                    myTargetJoint.target = rayHit.point; // indique au TargetJoint que la target est la position de la souris
+
+                    //rb.MoveRotation(rotZ); // pour que le pilon vise la base du mortier
+
+
+                    //myTargetJoint.target = rayHit.point; // indique au TargetJoint que la target est la position de la souris
 
                 }
+
+
+                if(inMortier && Mathf.Abs(ddd.y) * 10 > velocityNecessairePilon)
+                {
+                    currentTempsBroyage += Time.deltaTime; // alors on ajoute le temps que l'on passe en collision
+
+                }
+
+               
+
+
+
+
+                if (currentTempsBroyage >= tempsNecessaireBoyagePilon) // si le temps actuelle de broyage et supérieur à celle necessaire alors on transforme l'ingrédient
+                {
+                    refMortier.FinishManipulation();
+                    inManipulation = false;
+                    transform.DOMove(initialPosition, 0.5f);
+                    transform.DORotate(Vector3.zero, 0.5f);
+                    currentTempsBroyage = 0;
+
+                }
+
             }
+
+            lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+
 
         }
 
@@ -137,15 +183,23 @@ public class SCR_Pilon : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        inMortier = true;
-        AudioManager.instanceAM.Play("Mortier");
+        if (collision.gameObject.GetComponentInParent<SCR_Mortier>())
+        {
+            contactMortier = true;
+            AudioManager.instanceAM.Play("Mortier");
+        }
+        
 
 
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        inMortier = false;
+
+        if (collision.gameObject.GetComponentInParent<SCR_Mortier>())
+        { 
+            contactMortier = false;
+        }
     }
 
 
@@ -153,30 +207,20 @@ public class SCR_Pilon : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<SCR_Mortier>() != null) // si on reste en collision avec le mortier 
         {
+            inMortier =true;
 
-
-            if (Mathf.Abs(rb.velocity.x) > velocityNecessairePilon || Mathf.Abs(rb.velocity.y) > velocityNecessairePilon || Mathf.Abs(rb.angularVelocity) > velocityNecessairePilon) // si la velocite du pilon est supérieur à la valeur necessaire
-            {
-                currentTempsBroyage += Time.deltaTime; // alors on ajoute le temps que l'on passe en collision
-            }
-
-
-
-
-            if (currentTempsBroyage >= tempsNecessaireBoyagePilon) // si le temps actuelle de broyage et supérieur à celle necessaire alors on transforme l'ingrédient
-            {
-                refMortier.FinishManipulation();
-                inManipulation = false;
-                transform.DOMove(initialPosition, 0.5f);
-                transform.DORotate(Vector3.zero, 0.5f);
-                currentTempsBroyage = 0;
-
-            }
+            
 
         }
     }
 
- 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<SCR_Mortier>() != null) // si on reste en collision avec le mortier 
+        {
+            inMortier = false;
+        }
+    }
 
     public virtual float Remap(float value, float from1, float to1, float from2, float to2) // je le garde psk j'en ai eu besoin pendant un test et que je galere a retrouver le nom remap a chaque fois
     {

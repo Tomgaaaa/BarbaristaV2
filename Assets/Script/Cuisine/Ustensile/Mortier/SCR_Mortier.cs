@@ -33,6 +33,7 @@ public class SCR_Mortier : SCR_Ustensile
         colliderBordDMortier.SetActive(true); // pareil
 
         refPilon.SetManipulation(true);
+        ingredientCollider.isTrigger = true;
     }
 
   
@@ -57,6 +58,13 @@ public class SCR_Mortier : SCR_Ustensile
         base.OnMouseEnter();
 
   
+    }
+
+    public override void PickUpFromContenant()
+    {
+        base.PickUpFromContenant();
+        ingredientCollider.isTrigger = false;
+
     }
 
 }
