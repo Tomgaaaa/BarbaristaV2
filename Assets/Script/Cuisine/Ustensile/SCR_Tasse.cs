@@ -34,7 +34,7 @@ public class SCR_Tasse : SCR_Contenant
     [SerializeField] private GameObject allVisuelle;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
         ResetBoisson(); // initialise le dictionnaire de stat
 

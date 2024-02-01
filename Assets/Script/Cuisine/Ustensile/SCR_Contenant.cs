@@ -16,10 +16,17 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
     [SerializeField] private Vector3 multiplicateurScaleIngredient; // valeur qui va multiplier le scale de l'ingrédient lorsqu'on le dépose
     private protected Vector3 startScaleIngredient; // scale initiale de l'ingrédient avant le dépot
 
+
+    [SerializeField] private protected List<Renderer> rendererOutline;
+    private protected List<Material> outlineMaterial = new List<Material>();
+
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
-        
+        /*foreach(Renderer renderer in rendererOutline)
+       {
+           outlineMaterial.Add(renderer.material);
+       }*/
     }
 
     // Update is called once per frame
@@ -78,5 +85,30 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
         ingredientDrop = null;  // reset les variables de stockages
         ingredientCollider = null; // pareil
         ingredientRB = null; // également
+    }
+
+
+
+    public virtual void ShowOutline(bool needShowOutline, SCR_Ingredient ingredientDragParameter)
+    {
+        if (needShowOutline)
+        {
+
+            for (int i = 0; i < outlineMaterial.Count; i++)
+            {
+                outlineMaterial[i].SetFloat("_Thickness", 0.04f);
+
+            }
+
+        }
+        else
+        {
+            for (int i = 0; i < outlineMaterial.Count; i++)
+            {
+                outlineMaterial[i].SetFloat("_Thickness", 0);
+
+            }
+        }
+
     }
 }

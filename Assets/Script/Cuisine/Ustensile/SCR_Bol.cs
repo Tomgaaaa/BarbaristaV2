@@ -14,10 +14,6 @@ public class SCR_Bol : SCR_Contenant, ISerializationCallbackReceiver
     [SerializeField] private List<SCR_Bol> listOtherBol; // liste des autres bols pour verifier si ils sont plein 
     [SerializeField] private SCR_Etagere refEtagere; // ref a l'etagere pour bloquer les ingrédient lorsqu'on passa a la bouilloire, mais ça va pas rester la
 
-    private void Start()
-    {
-
-    }
 
     public void OnAfterDeserialize()
     {
@@ -69,6 +65,21 @@ public class SCR_Bol : SCR_Contenant, ISerializationCallbackReceiver
     {
         SCR_CuisineManager.instanceCM.TransitionBouilloire(); // affiche le volet qui permet de bloquer le fait de prendre des ingrédient, ça va changer
     }
+
+
+    public override void ShowOutline(bool needShowOutline, SCR_Ingredient ingredientDragParameter)
+    {
+
+        if(ingredientDragParameter.GetCR_SO_Ingredient().actualStateSO != enumEtatIgredient.Nature)
+        {
+            base.ShowOutline(needShowOutline, ingredientDragParameter);
+
+        }
+
+    }
+    
+   
+   
 
     public int GetNombreIngredient() { return nmbIngredientIn; } // permet de recuperer le nombre d'ingrédient present dans le bol pour verifier s'il y a un ingrédient
 }

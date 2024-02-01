@@ -16,11 +16,17 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     private protected bool inManipulation = false; // empeche de manipuler l'ingrédient si il n'y pas d'ingrédient
     private protected bool isMaintenu;
 
+    
+
+
     // Start is called before the first frame update
-    public virtual void Start()
+    public override void Start()
     {
+        base.Start();
         mainCam = Camera.main;
         colliderManipulation.enabled = false;
+
+       
 
     }
 
@@ -68,6 +74,11 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
         }
     }
 
+    public virtual void OnMouseEnter()
+    {
+        
+    }
+
     public virtual void OnMouseExit()
     {
         if (inManipulation && !isMaintenu)
@@ -105,7 +116,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     }
 
 
-
+    
 
     public virtual void FinishManipulation() // fonction appellé lorsqu'on a finis la manipulation
     {

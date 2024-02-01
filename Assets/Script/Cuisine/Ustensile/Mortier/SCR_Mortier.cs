@@ -12,12 +12,15 @@ public class SCR_Mortier : SCR_Ustensile
     [SerializeField] private Collider2D colliderPilon; // collider du pilon a activer au moment du drop
     [SerializeField] private GameObject colliderBordDMortier; // collider des bords du mortier 
 
+
+
     public override void Start()
     {
         base.Start();
         colliderPilon.enabled = false;
         colliderBordDMortier.SetActive(false);
         InitPilon(); // transmet les informations (velocite et temps necessaire) au pilon 
+
 
 
     }
@@ -45,6 +48,15 @@ public class SCR_Mortier : SCR_Ustensile
     public void InitPilon()
     {
         refPilon.SetTimer(tempsNecessaireBoyage,velocityNecessaireBroyage,this); // transmet les infos au pilon et le mortier comme reference
+    }
+
+
+    public override void OnMouseEnter()
+    {
+        
+        base.OnMouseEnter();
+
+  
     }
 
 }

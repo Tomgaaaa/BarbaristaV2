@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.U2D;
@@ -30,10 +31,12 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     private bool isMaintenu = false;
 
-    private Material outlineMaterial;
     private Camera mainCam;
     private Vector2 startPosCam;
     public bool hasBeenTransformed = false;
+
+    private Material outlineMaterial;
+    private SCR_Contenant lastRefContenantOutline;
 
     private void Start()
     {
@@ -211,6 +214,21 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         if (rayHit)// si le cast touche quelque chose
         {
             myTargetJoint.target = rayHit.point; // indique au TargetJoint que la target est la position de la souris
+
+            if(rayHit.transform.GetComponent<SCR_Contenant>())
+            {
+                Debug.Log("la");
+                lastRefContenantOutline = rayHit.transform.GetComponent<SCR_Contenant>();
+                lastRefContenantOutline.ShowOutline(true,this);
+            }
+            else
+            {
+                if(lastRefContenantOutline != null)
+                {
+                    lastRefContenantOutline.ShowOutline(false,this);
+                    lastRefContenantOutline = null;
+                }
+            }
         }
     }
 
