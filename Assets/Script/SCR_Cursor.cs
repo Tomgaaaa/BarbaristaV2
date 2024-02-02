@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,8 @@ public class SCR_Cursor : MonoBehaviour
     private Vector2 cursorOffset = new Vector2(0.1f, -0.2f);
 
     public bool overrideUpdate = false;
+
+    public float mutiplicateurZoom;
 
     private void Awake()
     {
@@ -52,6 +55,27 @@ public class SCR_Cursor : MonoBehaviour
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCam.ScreenPointToRay(Input.mousePosition)); // cast pour avoir la world position de la souris
 
         transform.position = rayHit.point + cursorOffset;
+    }
+
+    public void ZoomCamera()
+    {
+       Vector3 newScale = new Vector3(transform.localScale.x * mutiplicateurZoom, transform.localScale.y * mutiplicateurZoom, transform.localScale.z* mutiplicateurZoom);
+       transform.DOScale(newScale, 1f);
+
+
+
+        //transform.localScale  = new Vector3(transform.localScale.x * mutiplicateurZoom, transform.localScale.y * mutiplicateurZoom, transform.localScale.z * mutiplicateurZoom);
+    }
+
+    public void DeZoomCamera()
+    {
+        Vector3 newScale = new Vector3(transform.localScale.x / mutiplicateurZoom, transform.localScale.y / mutiplicateurZoom, transform.localScale.z / mutiplicateurZoom);
+        transform.DOScale(newScale, 1f);
+
+
+
+        //transform.localScale = new Vector3(transform.localScale.x / mutiplicateurZoom, transform.localScale.y / mutiplicateurZoom, transform.localScale.z / mutiplicateurZoom);
+
     }
 
 

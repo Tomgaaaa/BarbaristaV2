@@ -122,7 +122,7 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 #endif
 
 
-    private void UpdateLine()
+    public void UpdateLine()
     {
         ln.SetPosition(0, new Vector3(dicoResistanceTrasnform[enumResistance.Thermique].position.x, dicoResistanceTrasnform[enumResistance.Thermique].position.y, -1));
         ln.SetPosition(1, new Vector3(dicoResistanceTrasnform[enumResistance.Hemorragique].position.x, dicoResistanceTrasnform[enumResistance.Hemorragique].position.y, -1));

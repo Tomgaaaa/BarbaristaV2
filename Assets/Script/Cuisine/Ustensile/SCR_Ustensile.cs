@@ -108,6 +108,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
             mainCam.transform.DOMove(new Vector3(emplacementCam.x, emplacementCam.y, -2), 1f); // déplace la camera centré sur l'ustensile
             AudioManager.instanceAM.Play("Transition");
             mainCam.DOOrthoSize(emplacementCam.z, 1f); // change le zoom de la camera, emplacement.z car on est en 2D donc inutile le Z, ça évite de recreer une variable
+            SCR_Cursor.instanceCursor.ZoomCamera();
         }
 
         

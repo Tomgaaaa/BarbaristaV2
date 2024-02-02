@@ -146,6 +146,8 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
             mainCam.transform.DOMove(new Vector3(startPosCam.x, startPosCam.y, -2), 1f); // reposition la camera sa position intial
             AudioManager.instanceAM.Play("Transitionback");
             mainCam.DOOrthoSize(5.7f, 1f); // remet le zoom de la camera a sa valeur intial
+            SCR_Cursor.instanceCursor.DeZoomCamera();
+
 
 
         }
