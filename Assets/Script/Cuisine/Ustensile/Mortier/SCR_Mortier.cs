@@ -25,7 +25,9 @@ public class SCR_Mortier : SCR_Ustensile
 
     }
 
-
+    public override void OnMouseOver()
+    {
+    }
     public override void OnDrop(SCR_Ingredient ingredientDropParameter)
     {
         base.OnDrop(ingredientDropParameter);
@@ -44,7 +46,6 @@ public class SCR_Mortier : SCR_Ustensile
         colliderPilon.enabled = false; // désactive les colliders de manipulation
         AudioManager.instanceAM.Play("Completion Mortier");
 
-        ingredientCollider.enabled = false;
 
     }
 
@@ -75,7 +76,7 @@ public class SCR_Mortier : SCR_Ustensile
     public void LockIngredient()
     {
          ingredientDrop.SetHasBeenTransformed(true);
-        //ingredientCollider.enabled = false;
+        ingredientCollider.enabled = false;
 
     }
 

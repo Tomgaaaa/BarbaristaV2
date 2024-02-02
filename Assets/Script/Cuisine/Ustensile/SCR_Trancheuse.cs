@@ -11,7 +11,7 @@ public class SCR_Trancheuse : SCR_Ustensile
 
     // pour la partie drag
     private Vector3 lastMousePos;
-    private float RotZ;
+    public float RotZ;
     private Tweener tweenRotationDrag;
 
     private float lagSpeed = 1f; // vitesse de lag a laquelle le couteau suit le curseur
@@ -41,14 +41,14 @@ public class SCR_Trancheuse : SCR_Ustensile
 
             base.OnMouseDrag();
 
-
-
+            RotZ = 0f;
+            
             Vector3 diffMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition) - lastMousePos; // calcul le vecteur direction entre la derniere position de la souris et sa position actuelle
             RotZ += diffMousePos.x + diffMousePos.y; // valeur positive si on va a droite ou haut et negative si on va a gauche ou bas
             float rotzClamp = Mathf.Clamp(RotZ, -1, 0); // clamp la valeur pour trancher d'un coup si on fait un mouvement rapide
             RotZ = rotzClamp; // permet que RotZ est la valeur max du clamp
-            float rotationXRemap = Remap(rotzClamp, 0, -1, -51, -5); // passe la valeur entre 0 et -1 a une valeur entre -51 et -5 qui sont la rotation minimum et maximum du couteau
 
+            float rotationXRemap = Remap(rotzClamp, 0, -60, -51, -5); // passe la valeur entre 0 et -1 a une valeur entre -51 et -5 qui sont la rotation minimum et maximum du couteau
 
 
             if(couteau.rotation.eulerAngles.z - 360 < -25) // si le couteau est au début de sa rotation
