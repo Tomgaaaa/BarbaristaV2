@@ -23,10 +23,11 @@ public class SCR_Pilon : MonoBehaviour
     private SCR_Mortier refMortier;
 
     private Vector3 initialPosition;
+    private Vector3 ddd;
 
     private Vector3 lastMousePos; // derniere position de la souris
-    public Vector3 ddd;
 
+    private bool isMaintenu;
 
     #region Drag
     private TargetJoint2D myTargetJoint;
@@ -50,6 +51,9 @@ public class SCR_Pilon : MonoBehaviour
 
     private void OnMouseDown()
     {
+
+        isMaintenu = true;
+
         SetTargetJointOnAnotherObject(false); // ajoute le component TargetJoint, parametre false car on n'a pas besoin de reset le joint
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); // on passe l'objet sur ce layer pour qu'il garde ces collisions mais pas les Cast
         AudioManager.instanceAM.Play("GrabPilon");
@@ -57,8 +61,30 @@ public class SCR_Pilon : MonoBehaviour
         refMortier.LockIngredient();
 
         lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+
+        Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
+        Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
     }
 
+
+    private void OnMouseOver()
+    {
+        if(!isMaintenu)
+        {
+            Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
+            Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
+
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if(!isMaintenu)
+        {
+            Cursor.SetCursor(null, new Vector2(80f, 50f), CursorMode.Auto);
+
+        }
+    }
 
 
     private void OnMouseDrag()
@@ -153,6 +179,10 @@ public class SCR_Pilon : MonoBehaviour
 
     private void OnMouseUp()
     {
+        isMaintenu =false;
+
+
+
         SetTargetJointOnAnotherObject(true); // retire le component TarGetJoint, parametre a vrai car cette fois on reset le joint
         gameObject.layer = LayerMask.NameToLayer("DragObject"); // repasse l'objet sur ce layer pour recevoir les Cast
 

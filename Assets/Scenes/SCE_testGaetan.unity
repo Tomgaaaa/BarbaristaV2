@@ -5658,8 +5658,8 @@ Transform:
   m_GameObject: {fileID: 900434256}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.01, y: 1.74, z: 0.2}
-  m_LocalScale: {x: 3.60533, y: 0.31941, z: 1}
+  m_LocalPosition: {x: 0, y: 0.4898, z: 0.2}
+  m_LocalScale: {x: 0.41139978, y: 0.10039056, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1302396018}
@@ -8196,9 +8196,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 5.051712, y: 5.319552}
+  m_Offset: {x: 5.0784936, y: 5.3374057}
   serializedVersion: 2
-  m_Radius: 1.8537308
+  m_Radius: 2.0233448
 --- !u!114 &1323087555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11495,9 +11495,7 @@ MonoBehaviour:
   colliderManipulation: {fileID: 1930612887}
   colliderDrop: {fileID: 1930612886}
   couteau: {fileID: 79334856}
-  mouseVelocity: 0
-  forceRotation: 10
-  totalRotation: 0
+  initialForceRotation: 20
   nombreDeCoupeNecessaire: 3
 --- !u!61 &1930612886
 BoxCollider2D:
