@@ -64,16 +64,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         base.Init(basePool);
         UpdateSprite(); // voir ci-dessous
 
-        /*Texture2D croppedTexture = new Texture2D((int)mySpriteRenderer.sprite.rect.width, (int)mySpriteRenderer.sprite.rect.height);
-        var pixels = mySpriteRenderer.sprite.texture.GetPixels((int)mySpriteRenderer.sprite.textureRect.x,
-                                                (int)mySpriteRenderer.sprite.textureRect.y,
-                                                (int)mySpriteRenderer.sprite.textureRect.width,
-                                                (int)mySpriteRenderer.sprite.textureRect.height);
-
-        croppedTexture.SetPixels(pixels);
-        croppedTexture.Apply();
-
-        outlineMaterial.SetTexture("_MainTex", croppedTexture);*/
+      
     }
 
     public void UpdateSprite() // update le sprite lorsqu'on l'"instancie"
@@ -90,10 +81,14 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
     {
         if (!inContenant || !hasBeenTransformed || hasBeenTransformed && myIngredient.actualStateSO!=enumEtatIgredient.Nature)
         {
-            Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
+
+            SCR_Cursor.instanceCursor.ChangeHoverOff(true);
+
+            /*Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
+            Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);*/
+
             outlineMaterial.SetFloat("_Thickness", 0.04f);
 
-            Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
         }
         
     }
@@ -106,7 +101,10 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         {
 
             outlineMaterial.SetFloat("_Thickness", 0f);
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto );
+           // Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto );
+
+            SCR_Cursor.instanceCursor.ChangeClickOff(false);
+
 
         }
 
@@ -116,11 +114,15 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
     {
 
         isMaintenu = true;
-        Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
+
+        SCR_Cursor.instanceCursor.ChangeHoverOn(true);
+
+
+        /* Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
+         Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);*/
+
+
         outlineMaterial.SetFloat("_Thickness", 0f);
-
-
-        Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
 
 
         if (inEtagere) // verifie si l'objet est dans l'etagere ou non 

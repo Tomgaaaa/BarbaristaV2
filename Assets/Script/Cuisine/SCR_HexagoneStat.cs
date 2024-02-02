@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 {
@@ -104,10 +105,24 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
         float thermiqueY = Remap(statAfficheParameter[enumResistance.Thermique], -200, 1500, dicoEmplacementPoint[enumResistance.Thermique][0].position.y, dicoEmplacementPoint[enumResistance.Thermique][1].position.y);
         float thermqueZ = Remap(statAfficheParameter[enumResistance.Thermique], -200, 1500, dicoEmplacementPoint[enumResistance.Thermique][0].position.z, dicoEmplacementPoint[enumResistance.Thermique][1].position.z);
         Vector3 newPositionA = new Vector3(thermiqueX, thermiqueY, thermqueZ);
+
+
+
         dicoResistanceTrasnform[enumResistance.Thermique].DOMove(newPositionA,3f).OnComplete(Lock);
     }
 
-    public void UpdateLine()
+
+#if UNITY_EDITOR
+    [ContextMenu("Update la line")]
+
+    private void UpdateLineEditor()
+    {
+        UpdateLine();
+    }
+#endif
+
+
+    private void UpdateLine()
     {
         ln.SetPosition(0, new Vector3(dicoResistanceTrasnform[enumResistance.Thermique].position.x, dicoResistanceTrasnform[enumResistance.Thermique].position.y, -1));
         ln.SetPosition(1, new Vector3(dicoResistanceTrasnform[enumResistance.Hemorragique].position.x, dicoResistanceTrasnform[enumResistance.Hemorragique].position.y, -1));
@@ -117,6 +132,7 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
         ln.SetPosition(5, new Vector3(dicoResistanceTrasnform[enumResistance.Lethargique].position.x, dicoResistanceTrasnform[enumResistance.Lethargique].position.y, -1));
         
     }
+
 
     private void Lock()
     {
