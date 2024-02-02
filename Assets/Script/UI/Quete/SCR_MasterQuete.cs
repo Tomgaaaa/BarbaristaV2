@@ -6,17 +6,21 @@ using UnityEngine.UI;
 public class SCR_MasterQuete : MonoBehaviour
 {
     [SerializeField] SO_Quete queteInfo;
+
     [SerializeField] Text titre;
     [SerializeField] Text description;
+
     [SerializeField] Image illu;
+
     [SerializeField] Transform reward;
     [SerializeField] Transform diff;
-
     [SerializeField] Transform P1;
     [SerializeField] Transform P2;
 
+    public Dictionary<int, SCR_Ficheperso1> posQuete = new Dictionary<int, SCR_Ficheperso1>() { { 0,null},{ 1, null} };
 
-
+    public bool posP1;
+    public bool posP2;
 
     private void Awake()
     {
@@ -40,6 +44,34 @@ public class SCR_MasterQuete : MonoBehaviour
 
     public void OnDrop(SCR_Ficheperso1 fiche)
     {
-        fiche.transform.position = P1.position;
+        if(posQuete[0]==null)
+        {
+            fiche.MakeSmall(true);
+            fiche.transform.position = new Vector3(P1.position.x, P1.position.y,-1);
+            posQuete[0] = fiche;
+            
+        }
+        else if(posQuete[1] == null)
+        {
+            fiche.MakeSmall(true);
+            fiche.transform.position = new Vector3(P2.position.x, P2.position.y, -1);
+            posQuete[1] = fiche;
+        }
+
+    }
+
+    public void pickUp(SCR_Ficheperso1 fiche)
+    {
+        if (posQuete[0] == fiche)
+        {
+            fiche.MakeSmall(false);
+            posQuete[0] = null;
+
+        }
+        else if (posQuete[1] == fiche)
+        {
+            fiche.MakeSmall(false);
+            posQuete[1] = null;
+        }
     }
 }

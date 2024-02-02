@@ -2231,6 +2231,191 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!1 &372621155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 372621157}
+  - component: {fileID: 372621156}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &372621156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372621155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95aed838d5ef3654c8739994e4f2fcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - label: Grab_1
+    clip:
+    - {fileID: 8300000, guid: 5f45b7859342528439e64b6ff2cb04e4, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - label: Rape
+    clip:
+    - {fileID: 8300000, guid: d7a47bbcf8894d14883e24d185185242, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - label: Grab_2
+    clip:
+    - {fileID: 8300000, guid: 5f45b7859342528439e64b6ff2cb04e4, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - label: Drop
+    clip:
+    - {fileID: 8300000, guid: c17ec66c7e0574a478481aa55f185d9e, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 2
+    pitch: 1
+  - label: Finish
+    clip:
+    - {fileID: 8300000, guid: f8c6048d391b40c4bb176c6a53fe5352, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - label: Finish_Presse
+    clip:
+    - {fileID: 8300000, guid: f8c6048d391b40c4bb176c6a53fe5352, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - label: Presse
+    clip:
+    - {fileID: 8300000, guid: 621f80b08cda6f444b4822d96885e774, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - label: Trancheuse_1
+    clip:
+    - {fileID: 8300000, guid: ef8e7ee7e2d352744a033469fab26498, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - label: Completion Mortier
+    clip:
+    - {fileID: 8300000, guid: f8c6048d391b40c4bb176c6a53fe5352, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 1
+    pitch: 1
+  - label: Mortier
+    clip:
+    - {fileID: 8300000, guid: 7e1683a0f16aa954fb77a37d764d4ff4, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 2
+    pitch: 1
+  - label: GrabPilon
+    clip:
+    - {fileID: 8300000, guid: e0e6c62673bf2934689dc8826dd98147, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 2
+    pitch: 1
+  - label: PickItem
+    clip:
+    - {fileID: 8300000, guid: eac1bc8c552e26e4ea953b76d4829e03, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 2
+    pitch: 1
+  - label: Transition
+    clip:
+    - {fileID: 8300000, guid: f76d2be4c56f62b42be53dce67ced73c, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 2
+    pitch: 1
+  - label: Transitionback
+    clip:
+    - {fileID: 8300000, guid: f76d2be4c56f62b42be53dce67ced73c, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 2
+    pitch: 1
+  - label: CompletionTrancheuse
+    clip:
+    - {fileID: 8300000, guid: f8c6048d391b40c4bb176c6a53fe5352, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 2
+    pitch: 1
+  - label: ReisistenceTrancheuse
+    clip:
+    - {fileID: 8300000, guid: 0410f660eb77a6a4e833a58e9da32575, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 2
+    pitch: 1
+  - label: DropItemTasse
+    clip:
+    - {fileID: 8300000, guid: a1759cd0da0df1449b52c08d323095e9, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 2
+    pitch: 1
+  - label: Transibouilloire
+    clip:
+    - {fileID: 8300000, guid: f76d2be4c56f62b42be53dce67ced73c, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 2
+    pitch: 1
+  - label: BouilloireVersement
+    clip:
+    - {fileID: 8300000, guid: 484353d317e93294bbd748c136eb0c9f, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 2
+    pitch: 1
+  - label: SwiftPage
+    clip:
+    - {fileID: 8300000, guid: fd74d1b9a1f66c04898cd1bf0ab401a6, type: 3}
+    source: {fileID: 0}
+    loop: 1
+    volume: 2
+    pitch: 1
+--- !u!4 &372621157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372621155}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.5830052, y: 0.5582998, z: 4.0168543}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &389262799 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8021761869534364603, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
@@ -3171,6 +3356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1033381664}
   - component: {fileID: 1033381663}
+  - component: {fileID: 1033381665}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -3255,6 +3441,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1033381665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033381662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &1039385170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 308204825742221933, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
@@ -3939,6 +4148,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 372621157}
   - {fileID: 2006695525}
   - {fileID: 1033381664}
   - {fileID: 1341350160}
