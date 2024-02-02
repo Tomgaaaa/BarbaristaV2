@@ -5950,7 +5950,7 @@ MonoBehaviour:
   colliderManipulation: {fileID: 1250482042}
   colliderDrop: {fileID: 918939134}
   refPilon: {fileID: 1250482041}
-  tempsNecessaireBoyage: 1.5
+  tempsNecessaireBoyage: 1.2
   velocityNecessaireBroyage: 0.6
   colliderPilon: {fileID: 1250482042}
   colliderBordDMortier: {fileID: 50445614}
@@ -11495,6 +11495,9 @@ MonoBehaviour:
   colliderManipulation: {fileID: 1930612887}
   colliderDrop: {fileID: 1930612886}
   couteau: {fileID: 79334856}
+  mouseVelocity: 0
+  forceRotation: 10
+  totalRotation: 0
   nombreDeCoupeNecessaire: 3
 --- !u!61 &1930612886
 BoxCollider2D:

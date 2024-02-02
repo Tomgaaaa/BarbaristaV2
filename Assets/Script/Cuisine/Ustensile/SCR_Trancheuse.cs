@@ -11,10 +11,13 @@ public class SCR_Trancheuse : SCR_Ustensile
 
     // pour la partie drag
     private Vector3 lastMousePos;
-    public float RotZ;
+    private float mouseVelocity;
+    private float forceRotation;
+    [SerializeField] private float initialForceRotation = 10;
+    private float totalRotation;
     private Tweener tweenRotationDrag;
 
-    private float lagSpeed = 1f; // vitesse de lag a laquelle le couteau suit le curseur
+    //private float lagSpeed = 1f; // vitesse de lag a laquelle le couteau suit le curseur
 
     [SerializeField] private int nombreDeCoupeNecessaire; // pour realiser la transformation
     private int currentNombreCoupe; // le nombre de coup mis actuellement
@@ -41,42 +44,52 @@ public class SCR_Trancheuse : SCR_Ustensile
 
             base.OnMouseDrag();
 
-            RotZ = 0f;
+            mouseVelocity = 0f;
             
             Vector3 diffMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition) - lastMousePos; // calcul le vecteur direction entre la derniere position de la souris et sa position actuelle
-            RotZ += diffMousePos.x + diffMousePos.y; // valeur positive si on va a droite ou haut et negative si on va a gauche ou bas
-            float rotzClamp = Mathf.Clamp(RotZ, -1, 0); // clamp la valeur pour trancher d'un coup si on fait un mouvement rapide
-            RotZ = rotzClamp; // permet que RotZ est la valeur max du clamp
+            mouseVelocity += diffMousePos.x + diffMousePos.y; // valeur positive si on va a droite ou haut et negative si on va a gauche ou bas
+            float mouseClamp = Mathf.Clamp(mouseVelocity, -1, 0); // clamp la valeur pour trancher d'un coup si on fait un mouvement rapide
+            mouseVelocity = mouseClamp; // permet que mouseVelocity est la valeur max du clamp
 
-            float rotationXRemap = Remap(rotzClamp, 0, -60, -51, -5); // passe la valeur entre 0 et -1 a une valeur entre -51 et -5 qui sont la rotation minimum et maximum du couteau
+
+            #region ancienne version
+            /* pour la V1 float rotationXRemap = Remap(valueRotation, 0, -10, -51, -5); // passe la valeur entre 0 et -1 a une valeur entre -51 et -5 qui sont la rotation minimum et maximum du couteau
 
 
             if(couteau.rotation.eulerAngles.z - 360 < -25) // si le couteau est au début de sa rotation
             {
                 lagSpeed = 0.5f; // pas trop de lag car il n'est pas au niveau de l'ingrédient
-                
+               
             }
             else
             {
                 lagSpeed = 1.2f; // si il arrive au niveau de l'ingrédient, le couteau met + de temps a atteindre sa rotation cible, donne un effet de forcage 
-                
-                
+            }
 
+            // lerp la rotation entre sa rotation actuelle et sa rotation souhaité divisé par le lag pour la durée
+            //couteau.rotation = Quaternion.Lerp(couteau.rotation,  Quaternion.Euler(0, 0, rotationXRemap), Time.deltaTime / lagSpeed);
 
+            */
+            #endregion
 
+            if (couteau.rotation.eulerAngles.z - 360 < -40) // si le couteau est au début de sa rotation
+            {
+                forceRotation = initialForceRotation; // pas trop de lag car il n'est pas au niveau de l'ingrédient
+
+            }
+            else
+            {
+                forceRotation = initialForceRotation/2.5f; // si il arrive au niveau de l'ingrédient, le couteau met + de temps a atteindre sa rotation cible, donne un effet de forcage 
             }
 
 
 
-            
-            // lerp la rotation entre sa rotation actuelle et sa rotation souhaité divisé par le lag pour la durée
-            couteau.rotation = Quaternion.Lerp(couteau.rotation,  Quaternion.Euler(0, 0, rotationXRemap), Time.deltaTime / lagSpeed);
 
-            
-
-
-            //tweenRotationDrag = baseTrancheuse.DORotate(new Vector3(0,0,rotationXRemap), 1.5f);
-
+            if (totalRotation > -45 && !needReset)
+            {
+                totalRotation -= mouseVelocity * -forceRotation;
+                couteau.Rotate(new Vector3(0, 0, mouseVelocity * -forceRotation));
+            }
 
 
 
@@ -93,7 +106,7 @@ public class SCR_Trancheuse : SCR_Ustensile
                 needReset = true; // empeche de rester en bas de la rotation et de spam des petits accoups
                 currentNombreCoupe++; // ajoute 1 au nombre de ecoupe effectue
                 
-
+                totalRotation = 0f;
 
                 if (currentNombreCoupe == nombreDeCoupeNecessaire) // si on a atteint le nombre de coupe necessaire
                 {
@@ -114,10 +127,12 @@ public class SCR_Trancheuse : SCR_Ustensile
         base.OnMouseUp();
         tweenRotationDrag.Kill();
         //baseTrancheuse.rotation = Quaternion.Euler(0, 0, -51f);
-        
+
+        totalRotation = 0f;
+
 
         tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, -51), 0.8f) ; // si le joueur relache le clique, le couteau se repositionne à sa rotation intial
-        RotZ = 0; // reset la valeur pour pas que quand on clique a nouveau, le couteau reprenne sa position ou on l'a lache
+        mouseVelocity = 0; // reset la valeur pour pas que quand on clique a nouveau, le couteau reprenne sa position ou on l'a lache
     }
   
 
