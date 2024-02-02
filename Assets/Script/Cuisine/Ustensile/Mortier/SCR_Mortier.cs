@@ -42,8 +42,10 @@ public class SCR_Mortier : SCR_Ustensile
     {
         base.FinishManipulation();
         colliderPilon.enabled = false; // désactive les colliders de manipulation
-        colliderBordDMortier.SetActive(false); // pareil
         AudioManager.instanceAM.Play("Completion Mortier");
+
+        ingredientCollider.enabled = false;
+
     }
 
     public void InitPilon()
@@ -62,8 +64,18 @@ public class SCR_Mortier : SCR_Ustensile
 
     public override void PickUpFromContenant()
     {
-        base.PickUpFromContenant();
+        colliderPilon.enabled = false; // désactive les colliders de manipulation
+        colliderBordDMortier.SetActive(false); // pareil
+
         ingredientCollider.isTrigger = false;
+        base.PickUpFromContenant();
+
+    }
+
+    public void LockIngredient()
+    {
+         ingredientDrop.SetHasBeenTransformed(true);
+        //ingredientCollider.enabled = false;
 
     }
 

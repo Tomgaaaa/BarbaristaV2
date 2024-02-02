@@ -54,6 +54,8 @@ public class SCR_Pilon : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); // on passe l'objet sur ce layer pour qu'il garde ces collisions mais pas les Cast
         AudioManager.instanceAM.Play("GrabPilon");
 
+        refMortier.LockIngredient();
+
         lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
     }
 
