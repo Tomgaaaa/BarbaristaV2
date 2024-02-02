@@ -92,6 +92,8 @@ public class SCR_Tasse : SCR_Contenant
         refHexagone.UpdateStat(dicoStatBoisson);
         allVisuelle.SetActive(true);
 
+        AudioManager.instanceAM.Play("Preparationfini");
+
 
 
     }

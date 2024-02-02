@@ -127,6 +127,7 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
         else // si on a plus de stock
         {
             Debug.Log("out of stock");
+            AudioManager.instanceAM.Play("Outofstock");
         }
 
     }

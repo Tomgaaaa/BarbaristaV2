@@ -93,7 +93,7 @@ public class AudioManager : MonoBehaviour
 
 
     // prend le parametre volume (de base a 1), pour varier le volume lorsqu'on rate la caisse
-    public void Play(string name, float volume = 1)
+    public void Play(string name)
     {
         // cherche parmis l'array sounds un élément qui a un label = au parametre name
         SoundSettings s = System.Array.Find(sounds, sound => sound.label == name);
@@ -109,7 +109,7 @@ public class AudioManager : MonoBehaviour
         s.source.clip = s.clip[Random.Range(0, s.clip.Length)];
 
         // set le volume de la source à la valeur Random reçu comme parametre
-        s.source.volume = volume;
+
 
        
 
