@@ -804,6 +804,7 @@ MonoBehaviour:
   - {fileID: 1302130380}
   refHexagone: {fileID: 1199640090}
   allVisuelle: {fileID: 1711136031}
+  textNmbIngredient: {fileID: 0}
 --- !u!4 &62186167
 Transform:
   m_ObjectHideFlags: 0
@@ -13695,6 +13696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93719fb026bc45e4380de778c212cb82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropdownUI: {fileID: 0}
 --- !u!4 &1507260633
 Transform:
   m_ObjectHideFlags: 0
@@ -15256,7 +15258,6 @@ MonoBehaviour:
   _sCursorHoverON: {fileID: 21300000, guid: e2a922bc8e5cc2742af83e1994a0752d, type: 3}
   _sCursorOff: {fileID: 21300000, guid: df55a9263e9736f4985f9a61f3362567, type: 3}
   _sCursorON: {fileID: 21300000, guid: b70f0803e4a657d43a94e790b4e3f6d1, type: 3}
-  overrideUpdate: 0
   mutiplicateurZoom: 0.35
 --- !u!212 &1851757408
 SpriteRenderer:
@@ -16762,6 +16763,10 @@ PrefabInstance:
       propertyPath: sounds.Array.data[21].volume
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.data[16].clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 080b0c96b92c4724aa43fc79f7273c78, type: 3}
     - target: {fileID: 5600810787663899684, guid: f24241cf80e57c340ae502865cd02228, type: 3}
       propertyPath: m_Name
       value: AudioManager
