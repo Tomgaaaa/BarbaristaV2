@@ -67,6 +67,9 @@ public class SCR_Tasse : SCR_Contenant
         // a mettre quand l'eau a ete versée
         UpdateVisuelle(ingredientDrop.GetCR_SO_Ingredient());
 
+
+        SCR_Cursor.instanceCursor.ChangeClickOff(true);
+
         if(listIngredientsUtilises.Count == 3) // si il y a 3 ingrédient dans la tasse 
         {
             SCR_CuisineManager.instanceCM.TransitionBouilloire(false);

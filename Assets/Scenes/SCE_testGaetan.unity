@@ -11317,6 +11317,63 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &973207951
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5600810787663899684, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108050171013023503, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.5830052
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108050171013023503, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5582998
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108050171013023503, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.0168543
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108050171013023503, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108050171013023503, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108050171013023503, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108050171013023503, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108050171013023503, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108050171013023503, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9108050171013023503, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f24241cf80e57c340ae502865cd02228, type: 3}
 --- !u!4 &995201578 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5282096684880727199, guid: 5c5ad75d6c3851047a22b0557fa28b6e, type: 3}
@@ -13373,191 +13430,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325132098}
   m_CullTransparentMesh: 1
---- !u!1 &1353253422
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1353253424}
-  - component: {fileID: 1353253423}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1353253423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1353253422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95aed838d5ef3654c8739994e4f2fcef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - label: Grab_1
-    clip:
-    - {fileID: 8300000, guid: 5f45b7859342528439e64b6ff2cb04e4, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 1
-    pitch: 1
-  - label: Rape
-    clip:
-    - {fileID: 8300000, guid: d7a47bbcf8894d14883e24d185185242, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 1
-    pitch: 1
-  - label: Grab_2
-    clip:
-    - {fileID: 8300000, guid: 5f45b7859342528439e64b6ff2cb04e4, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 1
-    pitch: 1
-  - label: Drop
-    clip:
-    - {fileID: 8300000, guid: c17ec66c7e0574a478481aa55f185d9e, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 2
-    pitch: 1
-  - label: Finish
-    clip:
-    - {fileID: 8300000, guid: f8c6048d391b40c4bb176c6a53fe5352, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 1
-    pitch: 1
-  - label: Finish_Presse
-    clip:
-    - {fileID: 8300000, guid: f8c6048d391b40c4bb176c6a53fe5352, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 1
-    pitch: 1
-  - label: Presse
-    clip:
-    - {fileID: 8300000, guid: 621f80b08cda6f444b4822d96885e774, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 1
-    pitch: 1
-  - label: Trancheuse_1
-    clip:
-    - {fileID: 8300000, guid: ef8e7ee7e2d352744a033469fab26498, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 1
-    pitch: 1
-  - label: Completion Mortier
-    clip:
-    - {fileID: 8300000, guid: f8c6048d391b40c4bb176c6a53fe5352, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 1
-    pitch: 1
-  - label: Mortier
-    clip:
-    - {fileID: 8300000, guid: 7e1683a0f16aa954fb77a37d764d4ff4, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 2
-    pitch: 1
-  - label: GrabPilon
-    clip:
-    - {fileID: 8300000, guid: e0e6c62673bf2934689dc8826dd98147, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 2
-    pitch: 1
-  - label: PickItem
-    clip:
-    - {fileID: 8300000, guid: eac1bc8c552e26e4ea953b76d4829e03, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 2
-    pitch: 1
-  - label: Transition
-    clip:
-    - {fileID: 8300000, guid: f76d2be4c56f62b42be53dce67ced73c, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 2
-    pitch: 1
-  - label: Transitionback
-    clip:
-    - {fileID: 8300000, guid: f76d2be4c56f62b42be53dce67ced73c, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 2
-    pitch: 1
-  - label: CompletionTrancheuse
-    clip:
-    - {fileID: 8300000, guid: f8c6048d391b40c4bb176c6a53fe5352, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 2
-    pitch: 1
-  - label: ReisistenceTrancheuse
-    clip:
-    - {fileID: 8300000, guid: 0410f660eb77a6a4e833a58e9da32575, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 2
-    pitch: 1
-  - label: DropItemTasse
-    clip:
-    - {fileID: 8300000, guid: a1759cd0da0df1449b52c08d323095e9, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 2
-    pitch: 1
-  - label: Transibouilloire
-    clip:
-    - {fileID: 8300000, guid: f76d2be4c56f62b42be53dce67ced73c, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 2
-    pitch: 1
-  - label: BouilloireVersement
-    clip:
-    - {fileID: 8300000, guid: 484353d317e93294bbd748c136eb0c9f, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 2
-    pitch: 1
-  - label: SwiftPage
-    clip:
-    - {fileID: 8300000, guid: fd74d1b9a1f66c04898cd1bf0ab401a6, type: 3}
-    source: {fileID: 0}
-    loop: 1
-    volume: 2
-    pitch: 1
---- !u!4 &1353253424
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1353253422}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5830052, y: 0.5582998, z: 4.0168543}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369826594
 GameObject:
   m_ObjectHideFlags: 0
@@ -17154,6 +17026,6 @@ SceneRoots:
   - {fileID: 739466016}
   - {fileID: 602201630}
   - {fileID: 1517721847}
-  - {fileID: 1353253424}
   - {fileID: 379999471}
   - {fileID: 1676991221}
+  - {fileID: 973207951}
