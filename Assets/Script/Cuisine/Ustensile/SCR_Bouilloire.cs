@@ -36,9 +36,12 @@ public class SCR_Bouilloire : SCR_Ustensile
         lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         AudioManager.instanceAM.Play("BouilloireVersement");
 
-        Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
+        /*Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
 
-        Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
+        Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);*/
+
+        SCR_Cursor.instanceCursor.ChangeHoverOn(true);
+
 
     }
 
@@ -79,7 +82,12 @@ public class SCR_Bouilloire : SCR_Ustensile
 
     public override void OnMouseUp()
     {
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+        base.OnMouseUp();
+
+        //Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+
+
 
         contenantBouilloire.transform.DOLocalRotate(startRotationBouilloire, 1f); // reset la rotation de la bouilloire àa sa rotation initial
         RotZ = 0f; // permet que quand on clique a nouveau sur la bouilloire la rotation reprenne a 0

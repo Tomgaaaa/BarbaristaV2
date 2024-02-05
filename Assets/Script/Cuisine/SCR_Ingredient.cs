@@ -185,12 +185,22 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
         }
 
-        if (rayHit.transform.GetComponent<SCR_Contenant>() && rayHit.transform.GetComponent<SCR_Ustensile>() == null) // si on a relaché l'objet sur un contenant et qu'il ne s'agit pas d'un ustensile
+
+        if (rayHit.transform.GetComponent<SCR_Tasse>() && myIngredient.actualStateSO!=enumEtatIgredient.Nature) // si on a relaché l'objet sur un ustensile 
         {
             SCR_Contenant contenantDrop = rayHit.transform.GetComponent<SCR_Contenant>(); // stock le contenant dans une var
             contenantDrop.OnDrop(this); // appelle la fonction onDrop du contenant
 
         }
+
+
+
+        /*if (rayHit.transform.GetComponent<SCR_Contenant>() && rayHit.transform.GetComponent<SCR_Ustensile>() == null) // si on a relaché l'objet sur un contenant et qu'il ne s'agit pas d'un ustensile
+        {
+            SCR_Contenant contenantDrop = rayHit.transform.GetComponent<SCR_Contenant>(); // stock le contenant dans une var
+            contenantDrop.OnDrop(this); // appelle la fonction onDrop du contenant
+
+        }*/
 
 
 

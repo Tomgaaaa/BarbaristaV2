@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SCR_Tasse : SCR_Contenant
 {
@@ -42,6 +43,8 @@ public class SCR_Tasse : SCR_Contenant
 
     [SerializeField] private GameObject allVisuelle;
 
+    [SerializeField] private Text textNmbIngredient;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -52,6 +55,8 @@ public class SCR_Tasse : SCR_Contenant
     public override void OnDrop(SCR_Ingredient ingredientDropParameter)
     {
         base.OnDrop(ingredientDropParameter);
+
+        textNmbIngredient.text = nmbIngredientIn + " /3";
 
         listIngredientsUtilises.Add(ingredientDropParameter); // ajoute l'ingrédient drop sur la tasse a la liste des ingrédients utilisés pour la boisson
         AudioManager.instanceAM.Play("DropItemTasse");
@@ -64,6 +69,7 @@ public class SCR_Tasse : SCR_Contenant
 
         if(listIngredientsUtilises.Count == 3) // si il y a 3 ingrédient dans la tasse 
         {
+            SCR_CuisineManager.instanceCM.TransitionBouilloire(false);
             refBouilloire.UnlockBouilloire(); // alors on débloque le fait de pouvoir manipuler la bouilloire
         }
     }
@@ -79,10 +85,10 @@ public class SCR_Tasse : SCR_Contenant
         }
 
 
-        foreach (KeyValuePair<enumResistance, float> resistance in dicoStatBoisson) // c'est juste pour debug
+      /*  foreach (KeyValuePair<enumResistance, float> resistance in dicoStatBoisson) // c'est juste pour debug
         {
             Debug.Log("Stat " + resistance.Key + " : " + resistance.Value);
-        }
+        }*/
 
     }
 
@@ -177,5 +183,7 @@ public class SCR_Tasse : SCR_Contenant
 
         allVisuelle.SetActive(false);
         nmbIngredientIn = 0;
+        textNmbIngredient.text = nmbIngredientIn + " /3";
+
     }
 }

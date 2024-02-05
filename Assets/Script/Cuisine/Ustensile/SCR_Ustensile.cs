@@ -78,7 +78,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
             Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);*/
 
 
-            SCR_Cursor.instanceCursor.ChangeHoverOff(false);
+            SCR_Cursor.instanceCursor.ChangeHoverOff(true);
 
         }
     }

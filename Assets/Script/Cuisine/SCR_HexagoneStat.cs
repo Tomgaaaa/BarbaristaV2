@@ -99,7 +99,6 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 
         }
         Vector3 newPositionThermique = dicoEmplacementPoint[enumResistance.Thermique][0].position;
-        Debug.Log(newPositionThermique);
 
         float thermiqueX = Remap(statAfficheParameter[enumResistance.Thermique], -200, 1500, dicoEmplacementPoint[enumResistance.Thermique][0].position.x, dicoEmplacementPoint[enumResistance.Thermique][1].position.x);
         float thermiqueY = Remap(statAfficheParameter[enumResistance.Thermique], -200, 1500, dicoEmplacementPoint[enumResistance.Thermique][0].position.y, dicoEmplacementPoint[enumResistance.Thermique][1].position.y);
