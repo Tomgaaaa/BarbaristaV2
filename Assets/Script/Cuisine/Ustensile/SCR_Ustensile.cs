@@ -47,9 +47,13 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
             ingredientDrop.SetHasBeenTransformed(true);
             ingredientCollider.enabled = false;
 
-            Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
+            /*Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
 
-            Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
+            Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);*/
+
+
+            SCR_Cursor.instanceCursor.ChangeHoverOn(true);
+
         }
     }
 
@@ -59,8 +63,9 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
 
         if (inManipulation)
         {
+            SCR_Cursor.instanceCursor.ChangeClickOff(false);
 
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+           // Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
 
     }
@@ -68,9 +73,13 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     {
         if (inManipulation && !isMaintenu)
         {
-            Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
+            /*Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
 
-            Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
+            Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);*/
+
+
+            SCR_Cursor.instanceCursor.ChangeHoverOff(false);
+
         }
     }
 
@@ -83,8 +92,9 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     {
         if (inManipulation && !isMaintenu)
         {
+            SCR_Cursor.instanceCursor.ChangeClickOff(false);
 
-            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            //Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     }
     public virtual void OnMouseDrag()
