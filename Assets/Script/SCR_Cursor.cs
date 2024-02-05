@@ -34,7 +34,7 @@ public class SCR_Cursor : MonoBehaviour
         mainCam = Camera.main;
         myRenderer = gameObject.GetComponent<SpriteRenderer>();
 
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     private void Update()
