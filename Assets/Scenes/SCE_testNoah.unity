@@ -15704,6 +15704,7 @@ MonoBehaviour:
   colliderDrop: {fileID: 1948983552}
   roueCrante: {fileID: 227817011}
   nombreDeTourNecessaire: 3
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!61 &1948983552
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16426,7 +16427,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.09, y: 5.43}
+    oldSize: {x: 0.69666666, y: 1.81}
     newSize: {x: 2.09, y: 5.43}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -16747,26 +16748,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
-      propertyPath: sounds.Array.data[3].pitch
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
-      propertyPath: sounds.Array.data[19].volume
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
-      propertyPath: sounds.Array.data[20].volume
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
-      propertyPath: sounds.Array.data[21].volume
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
-      propertyPath: sounds.Array.data[16].clip.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 080b0c96b92c4724aa43fc79f7273c78, type: 3}
     - target: {fileID: 5600810787663899684, guid: f24241cf80e57c340ae502865cd02228, type: 3}
       propertyPath: m_Name
       value: AudioManager
