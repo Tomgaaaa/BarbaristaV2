@@ -88,7 +88,7 @@ public class SCR_Tasse : SCR_Contenant
         }
 
 
-      /*  foreach (KeyValuePair<enumResistance, float> resistance in dicoStatBoisson) // c'est juste pour debug
+      /* foreach (KeyValuePair<enumResistance, float> resistance in dicoStatBoisson) // c'est juste pour debug
         {
             Debug.Log("Stat " + resistance.Key + " : " + resistance.Value);
         }*/

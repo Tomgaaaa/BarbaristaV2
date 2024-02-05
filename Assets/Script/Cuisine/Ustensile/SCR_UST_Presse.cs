@@ -13,12 +13,15 @@ public class SCR_UST_Presse : SCR_Ustensile
     private int nmbDeTour; // nombre de tour réalisé
     [SerializeField] private int nombreDeTourNecessaire; // nombre de tour necessaire avant de transfoirmer un ingredient
     private bool Isplayingsound = false;
+
+    public Quaternion rotation;
+
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         etatApresTransformation = enumEtatIgredient.Presse; // vus que c'est le script Presse, l'etat de transformation sera pressé 
-
+        currentRotation = 360;
     }
 
    
@@ -35,7 +38,7 @@ public class SCR_UST_Presse : SCR_Ustensile
             Quaternion rotationVirtuelle = Quaternion.Euler(0, 0, rotZ); // Vector 3 avec pour Z la rotation de la roue qui vise le curseur
 
 
-
+            rotation = rotationVirtuelle;
             //roueCrante.rotation = Quaternion.Euler(0,0, rotZ);
             /*if(roueCrante.eulerAngles.z < endRotation + 10 && roueCrante.eulerAngles.z > endRotation )
             {
@@ -49,7 +52,7 @@ public class SCR_UST_Presse : SCR_Ustensile
 
             // si la rotation virtuelle est plus petite que la rotation actuelle + 10 mais qu'elle est supérieur a la rotation actuelle
             // ou si la rotation actuelle est superieur a 355 et que la rotation virtuelle est superieur a 0
-            if (rotationVirtuelle.eulerAngles.z < currentRotation + 20 && rotationVirtuelle.eulerAngles.z > currentRotation || currentRotation > 355 && rotationVirtuelle.eulerAngles.z > 0)
+            if (rotationVirtuelle.eulerAngles.z > currentRotation - 20 && rotationVirtuelle.eulerAngles.z < currentRotation )
             {
                 if (!Isplayingsound)
                 {
@@ -62,17 +65,18 @@ public class SCR_UST_Presse : SCR_Ustensile
                 currentRotation = roueCrante.eulerAngles.z; // la rotation se met a jour
 
 
-                if (currentRotation > 355) // si la rotation est superieur a 355, un tour a ete realise
+                if (currentRotation < 5) // si la rotation est superieur a 355, un tour a ete realise
                 {
 
-                    currentRotation = 0; // on reset la rotation 
+                    currentRotation = 360; // on reset la rotation 
                     nmbDeTour++; // on ajoute 1 au nombre de tour effectué
                     AudioManager.instanceAM.Play("Presse");
                     if (nmbDeTour >= nombreDeTourNecessaire) // si on a realise le nombre de tour necessaire
                     {
                         FinishManipulation(); // alors on a finit de manipuler
                         nmbDeTour = 0; // on reset le nombre de tour pour le prochain ingrédient
-                        currentRotation = 0; // on reset la rotation
+                        currentRotation = 360;
+
                         roueCrante.rotation = Quaternion.Euler(0, 0, 0); // on reset la rotation de la roue
 
                     }

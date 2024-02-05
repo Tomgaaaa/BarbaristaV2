@@ -34,6 +34,9 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
     private GameObject pageToDestroy;
 
+    [SerializeField] private GameObject BGClickable;
+    [SerializeField] private GameObject ButtonCompendium;
+
     private void Awake() // singleton toi meme tu sais
     {
         if (instanceMComp == null)
@@ -108,12 +111,14 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
     public void OpenComp()
     {
-        Debug.Log("Hallo");
-        
+        BGClickable.SetActive(true);
+        ButtonCompendium.SetActive(false);
         pageToDestroy = Instantiate(dicoPage[actualPage], transform);
     }
     public void CloseComp()
     {
+        BGClickable.SetActive(false);
+        ButtonCompendium.SetActive(true);
 
         if (pageToDestroy != null)
             Destroy(pageToDestroy);

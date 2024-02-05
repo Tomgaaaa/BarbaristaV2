@@ -93,6 +93,7 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 
                 dicoResistanceTrasnform[pair.Key].DOMove(newPosition, 3f);
 
+                
             }
             
 
