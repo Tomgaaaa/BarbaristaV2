@@ -2,8 +2,12 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+
+[RequireComponent(typeof( EventTrigger))]
+[RequireComponent(typeof( SCR_CustomButton))]
 public class SCR_ButtonDiorama : MonoBehaviour
 {
     [Header("Ancien")]

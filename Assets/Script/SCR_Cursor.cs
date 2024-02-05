@@ -17,9 +17,13 @@ public class SCR_Cursor : MonoBehaviour
 
     private Vector2 cursorOffset = new Vector2(0.1f, -0.2f);
 
-    public bool overrideUpdate = false;
+    private bool overrideUpdate = false;
 
     public float mutiplicateurZoom;
+
+    private bool inZoom;
+
+
 
     private void Awake()
     {
@@ -54,11 +58,22 @@ public class SCR_Cursor : MonoBehaviour
 
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCam.ScreenPointToRay(Input.mousePosition)); // cast pour avoir la world position de la souris
 
-        transform.position = rayHit.point + cursorOffset;
+        if(inZoom)
+        {
+            transform.position = rayHit.point + (cursorOffset / 2.3f);
+
+        }
+        else
+        {
+            transform.position = rayHit.point + cursorOffset;
+        }
+
     }
 
     public void ZoomCamera()
     {
+        inZoom = true;
+
        Vector3 newScale = new Vector3(transform.localScale.x * mutiplicateurZoom, transform.localScale.y * mutiplicateurZoom, transform.localScale.z* mutiplicateurZoom);
        transform.DOScale(newScale, 1f);
 
@@ -69,6 +84,8 @@ public class SCR_Cursor : MonoBehaviour
 
     public void DeZoomCamera()
     {
+        inZoom = false;
+
         Vector3 newScale = new Vector3(transform.localScale.x / mutiplicateurZoom, transform.localScale.y / mutiplicateurZoom, transform.localScale.z / mutiplicateurZoom);
         transform.DOScale(newScale, 1f);
 
