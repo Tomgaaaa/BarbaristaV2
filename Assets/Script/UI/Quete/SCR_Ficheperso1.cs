@@ -26,7 +26,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
     void Start()
     {
-        hexStat.UpdateStat(perso.dicoResistance);
+        hexStat.UpdateStat(perso.dicoResistance,true);
         
         mainCamera = Camera.main;
     }

@@ -102,7 +102,7 @@ public class SCR_CuisineManager : MonoBehaviour
             { enumResistance.Lethargique, 0 },
 
         };
-        refHexagone.UpdateStat(dicoStatBoisson);
+        refHexagone.UpdateStat(dicoStatBoisson,true);
         hexagone.gameObject.SetActive(true);
 
     }

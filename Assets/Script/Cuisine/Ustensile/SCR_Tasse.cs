@@ -107,7 +107,7 @@ public class SCR_Tasse : SCR_Contenant
 
     public void FinishBoisson()
     {
-        refHexagone.UpdateStat(dicoStatBoisson);
+        refHexagone.UpdateStat(dicoStatBoisson,false);
         allVisuelle.SetActive(true);
 
         AudioManager.instanceAM.Play("Preparationfini");
