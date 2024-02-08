@@ -180,10 +180,10 @@ public class SCR_Tasse : SCR_Contenant
             dicoStatBoisson[enumResistance.Toxique] = 0;
             dicoStatBoisson[enumResistance.Electrique] = 0;
             dicoStatBoisson[enumResistance.Lethargique] = 0;
-        
 
 
 
+        listIngredientsUtilises.Clear();
         allVisuelle.SetActive(false);
         nmbIngredientIn = 0;
         textNmbIngredient.text = nmbIngredientIn + " /3";
