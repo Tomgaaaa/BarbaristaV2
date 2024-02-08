@@ -1,7 +1,6 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class SCR_CuisineManager : MonoBehaviour
@@ -33,8 +32,9 @@ public class SCR_CuisineManager : MonoBehaviour
     [SerializeField] private SCR_Tasse refTasse;
     [SerializeField] private SCR_HexagoneStat refHexagone;
 
+    private SCR_MasterQuete queteCuisine;
 
-    [SerializeField] Camera camCuisine;
+
 
     private void Awake()
     {
@@ -42,7 +42,6 @@ public class SCR_CuisineManager : MonoBehaviour
             instanceCM = this;
         else
             Destroy(gameObject);
-
 
     }
 
@@ -107,6 +106,10 @@ public class SCR_CuisineManager : MonoBehaviour
 
     }
 
+    public void SwitchToCuisine()
+    {
+        queteCuisine.SetCurrentQuete(SCR_QueteManager.instanceQueteManager.GetCurrentQuete());
+    }
 
 
 }

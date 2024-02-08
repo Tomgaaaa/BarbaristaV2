@@ -105,7 +105,7 @@ public class SCR_MasterQuete : MonoBehaviour
     }
     #endregion
 
-    public void GetCurrentQuete(SO_Quete currentQueteParameter) 
+    public void SetCurrentQuete(SO_Quete currentQueteParameter) 
     {
         myQueteSo = currentQueteParameter;
         InitialisationQuete();

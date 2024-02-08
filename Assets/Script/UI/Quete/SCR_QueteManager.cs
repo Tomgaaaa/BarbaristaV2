@@ -9,7 +9,8 @@ public class SCR_QueteManager : MonoBehaviour
 
     public static SCR_QueteManager instanceQueteManager;
 
-    public SO_Quete currentQuete;
+    [SerializeField] SO_Quete currentQuete;
+    private SO_Quete currentQueteInstance;
 
     private List<SO_Quete> listAncienneQuete;
 
@@ -25,6 +26,9 @@ public class SCR_QueteManager : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+
+
+        currentQueteInstance = Instantiate(currentQuete);
 
     }
 
@@ -57,17 +61,17 @@ public class SCR_QueteManager : MonoBehaviour
 
     public void AddBoisson(SO_Boisson boissonParameter)
     {
-        currentQuete.boissonsServis.Add(boissonParameter);
+        currentQueteInstance.boissonsServis.Add(boissonParameter);
     }
 
 
-
+    public SO_Quete GetCurrentQuete() { return currentQueteInstance; }
 
 #if UNITY_EDITOR
     [ContextMenu("SayDicoStat")]
     private void SayStat()
     {
-        foreach (KeyValuePair<enumResistance, float> resistance in currentQuete.boissonsServis[0].dicoResistanceBoisson) // c'est juste pour debug
+        foreach (KeyValuePair<enumResistance, float> resistance in currentQueteInstance.boissonsServis[0].dicoResistanceBoisson) // c'est juste pour debug
         {
             Debug.Log("Stat " + resistance.Key + " : " + resistance.Value);
         }
