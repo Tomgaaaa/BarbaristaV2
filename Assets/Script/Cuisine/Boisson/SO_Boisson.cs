@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SO_Boisson : ScriptableObject
+public class SO_Boisson : ScriptableObject 
 {
     public List<SCR_Ingredient> listIngredientsUtilises;
 
@@ -21,5 +21,10 @@ public class SO_Boisson : ScriptableObject
     
     }; // dictionnaire des resistances, on associe une resistance à un float, float psk pour bouger dans l'hexagone il faut un float
 
+    public void CreateBoisson(List<SCR_Ingredient> listIngredientParameter, Dictionary<enumResistance, float> dicoResistanceParameter)
+    {
+        listIngredientsUtilises = listIngredientParameter;
+        dicoResistanceBoisson = dicoResistanceParameter;
+    }
 
 }

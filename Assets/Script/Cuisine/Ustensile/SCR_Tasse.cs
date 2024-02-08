@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -73,7 +74,14 @@ public class SCR_Tasse : SCR_Contenant
         if(listIngredientsUtilises.Count == 3) // si il y a 3 ingrédient dans la tasse 
         {
             SCR_CuisineManager.instanceCM.TransitionBouilloire(false);
+            
             refBouilloire.UnlockBouilloire(); // alors on débloque le fait de pouvoir manipuler la bouilloire
+
+            SO_Boisson boisson = ScriptableObject.CreateInstance<SO_Boisson>();
+
+            
+            boisson.CreateBoisson(listIngredientsUtilises, dicoStatBoisson);
+            SCR_QueteManager.instanceQueteManager.AddBoisson(boisson);
         }
     }
 
@@ -94,6 +102,7 @@ public class SCR_Tasse : SCR_Contenant
         }*/
 
     }
+
 
 
     public void FinishBoisson()
