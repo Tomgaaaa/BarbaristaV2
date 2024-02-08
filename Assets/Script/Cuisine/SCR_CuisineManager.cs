@@ -33,12 +33,16 @@ public class SCR_CuisineManager : MonoBehaviour
     [SerializeField] private SCR_Tasse refTasse;
     [SerializeField] private SCR_HexagoneStat refHexagone;
 
+
+    [SerializeField] Camera camCuisine;
+
     private void Awake()
     {
         if (instanceCM == null)
             instanceCM = this;
         else
             Destroy(gameObject);
+
 
     }
 

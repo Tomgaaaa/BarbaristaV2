@@ -44,7 +44,6 @@ public class SCR_Ficheperso1 : MonoBehaviour
     private void OnMouseDown()
     {
 
-        Debug.Log("Hallo2");
         spriteRender.sortingOrder = spriteRender.sortingOrder + 1;
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition));

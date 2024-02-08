@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class SCR_MasterQuete : MonoBehaviour
 {
-    [SerializeField] SO_Quete queteInfo;
+    [SerializeField] SO_Quete myQueteSo;
 
     [SerializeField] Text titre;
     [SerializeField] Text description;
+    [SerializeField] Text infoEventTexte;
 
     [SerializeField] Image illu;
 
@@ -24,24 +25,38 @@ public class SCR_MasterQuete : MonoBehaviour
 
     private void Awake()
     {
-        
-        titre.text = queteInfo.titre;
-        description.text = queteInfo.description;
-        illu.sprite = queteInfo.illustration;
-
-        foreach(Image etoile in queteInfo.difficulty)
+        if(myQueteSo != null)
         {
-            Instantiate<Image>(queteInfo.difficulty[0], diff);
-        }
-
-        for (int i = 0; i < queteInfo.reward.Count;i++)
-        {
-            
-            Instantiate<Image>(queteInfo.reward[i], reward);
+            InitialisationQuete();
             
         }
     }
 
+
+    private void InitialisationQuete()
+    {
+        titre.text = myQueteSo.titre;
+        description.text = myQueteSo.description;
+        illu.sprite = myQueteSo.illustration;
+
+
+
+
+        for (int i = 0; i < myQueteSo.difficulty.Count; i++)
+        {
+            Instantiate<Image>(myQueteSo.difficulty[0], diff);
+
+        }
+
+        for (int i = 0; i < myQueteSo.reward.Count; i++)
+        {
+
+            Instantiate<Image>(myQueteSo.reward[i], reward);
+
+        }
+    }
+
+    #region pour le cote tableau
     public void OnDrop(SCR_Ficheperso1 fiche)
     {
         if(posQuete[0]==null)
@@ -58,10 +73,21 @@ public class SCR_MasterQuete : MonoBehaviour
             posQuete[1] = fiche;
         }
 
+        if (posQuete[0]!=null && posQuete[1]!=null)
+        {
+            SCR_QueteManager.instanceQueteManager.UnlockConfirmButton(true);
+        }
+       
     }
 
     public void pickUp(SCR_Ficheperso1 fiche)
     {
+        if (posQuete[0] != null && posQuete[1] != null)
+        {
+            SCR_QueteManager.instanceQueteManager.UnlockConfirmButton(false);
+        }
+
+
         if (posQuete[0] == fiche)
         {
             fiche.MakeSmall(false);
@@ -73,5 +99,15 @@ public class SCR_MasterQuete : MonoBehaviour
             fiche.MakeSmall(false);
             posQuete[1] = null;
         }
+        
+        
+        
+    }
+    #endregion
+
+    public void GetCurrentQuete(SO_Quete currentQueteParameter) 
+    {
+        myQueteSo = currentQueteParameter;
+        InitialisationQuete();
     }
 }
