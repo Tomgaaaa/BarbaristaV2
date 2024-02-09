@@ -7,12 +7,12 @@ public class SCR_Ficheperso1 : MonoBehaviour
     Camera mainCamera;
     bool OnQuest = false;
     [SerializeField] GameObject FullPic;
-    [SerializeField] GameObject profilMini;
-    [SerializeField] GameObject profilMaxi;
+    [SerializeField] SpriteRenderer profilMini;
+    [SerializeField] SpriteRenderer profilMaxi;
     [SerializeField] GameObject Maxi;
     bool cantPlace = false;
     [SerializeField] SO_Personnage perso;
-    [SerializeField] SortingGroup spriteRender;
+    private SortingGroup spriteRender;
     [SerializeField] SCR_HexagoneStat hexStat;
    
 
@@ -20,8 +20,8 @@ public class SCR_Ficheperso1 : MonoBehaviour
     {
        
       
-        profilMaxi.GetComponent<SpriteRenderer>().sprite = perso.profil;
-        profilMini.GetComponentInChildren<SpriteRenderer>().sprite = perso.profil;
+
+        spriteRender = GetComponent<SortingGroup>();
     }
 
     void Start()
@@ -115,6 +115,18 @@ public class SCR_Ficheperso1 : MonoBehaviour
             Maxi.SetActive(true);
         }
        
+    }
+
+    private void UpdatePerso()
+    {
+        profilMaxi.sprite = perso.profil;
+        profilMini.sprite = perso.profil;
+    }
+
+    public void SetSoPerso(SO_Personnage persoParameter)
+    {
+        perso = persoParameter;
+        UpdatePerso();
     }
 
 

@@ -15,7 +15,7 @@ public enum enumEtatIgredient {Nature, Tranche, Rape, Presse, Broye  } // enum d
 public enum enumResistance { Thermique, Hemorragique, Toxique, Cryogenique,   Electrique, Lethargique  } // enum des differentes resistances, utilisé dans les SO d'ingrédients pour définir leur stats
 
 
-
+public enum enumPerso { Samuel, Vikram, Saori, Elira}
 
 
 public class SCR_AllEnum : MonoBehaviour
