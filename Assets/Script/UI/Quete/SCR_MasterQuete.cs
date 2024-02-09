@@ -23,6 +23,9 @@ public class SCR_MasterQuete : MonoBehaviour
     public bool posP1;
     public bool posP2;
 
+    private bool isSelected = false;
+    [SerializeField] private GameObject selectedTamp;
+
     private void Awake()
     {
         if(myQueteSo != null)
@@ -56,27 +59,56 @@ public class SCR_MasterQuete : MonoBehaviour
         }
     }
 
+
+
+    private void OnMouseDown()
+    {
+        if (SCR_QueteManager.instanceQueteManager.GetQueteCount() < 2 && !isSelected)
+        {
+            isSelected = true;
+            selectedTamp.SetActive(true);
+            SCR_QueteManager.instanceQueteManager.AddCurrentQuete(this);
+        }
+        else if (isSelected)
+        {
+            isSelected = false;
+            selectedTamp.SetActive(false);
+            SCR_QueteManager.instanceQueteManager.AddCurrentQuete(this, true);
+        }
+
+
+
+    }
+
     #region pour le cote tableau
     public void OnDrop(SCR_Ficheperso1 fiche)
     {
-        if(posQuete[0]==null)
-        {
-            fiche.MakeSmall(true);
-            fiche.transform.position = new Vector3(P1.position.x, P1.position.y,-1);
-            posQuete[0] = fiche;
-            
-        }
-        else if(posQuete[1] == null)
-        {
-            fiche.MakeSmall(true);
-            fiche.transform.position = new Vector3(P2.position.x, P2.position.y, -1);
-            posQuete[1] = fiche;
-        }
 
-        if (posQuete[0]!=null && posQuete[1]!=null)
+        if(isSelected)
         {
-            SCR_QueteManager.instanceQueteManager.UnlockConfirmButton(true);
+            if (posQuete[0] == null)
+            {
+                fiche.MakeSmall(true);
+                fiche.transform.position = new Vector3(P1.position.x, P1.position.y, -1);
+                posQuete[0] = fiche;
+
+            }
+            else if (posQuete[1] == null)
+            {
+                fiche.MakeSmall(true);
+                fiche.transform.position = new Vector3(P2.position.x, P2.position.y, -1);
+                posQuete[1] = fiche;
+            }
+
+            if (posQuete[0] != null && posQuete[1] != null)
+            {
+                //SCR_QueteManager.instanceQueteManager.UnlockConfirmButton(true);
+            }
+
         }
+       
+
+        
        
     }
 
@@ -84,7 +116,7 @@ public class SCR_MasterQuete : MonoBehaviour
     {
         if (posQuete[0] != null && posQuete[1] != null)
         {
-            SCR_QueteManager.instanceQueteManager.UnlockConfirmButton(false);
+            //SCR_QueteManager.instanceQueteManager.UnlockConfirmButton(false);
         }
 
 
@@ -105,6 +137,8 @@ public class SCR_MasterQuete : MonoBehaviour
     }
     #endregion
 
+
+    public SO_Quete GetQuete() { return myQueteSo; }
     public void SetCurrentQuete(SO_Quete currentQueteParameter) 
     {
         myQueteSo = currentQueteParameter;
