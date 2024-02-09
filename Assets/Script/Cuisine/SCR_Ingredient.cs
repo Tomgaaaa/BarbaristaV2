@@ -71,7 +71,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
     {
         gameObject.name = myIngredient.name; // change le nom de l'objet avec le nom du SO renseigné
         mySpriteRenderer.sprite = myIngredient.mySpriteSO; // change le sprite avec le sprite du SO ingrédient renseigné
-        GetComponent<BoxCollider2D>().size = mySpriteRenderer.size;
+       // GetComponent<BoxCollider2D>().size = mySpriteRenderer.size;
 
        
     }
