@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
-public class SCR_MasterQuete : MonoBehaviour
+public class SCR_QueteTableau : MonoBehaviour
 {
     [SerializeField] SO_Quete myQueteSo;
 
@@ -38,7 +38,7 @@ public class SCR_MasterQuete : MonoBehaviour
     }
 
 
-    private void InitialisationQuete()
+    public void InitialisationQuete()
     {
         titre.text = myQueteSo.titre;
         description.text = myQueteSo.description;

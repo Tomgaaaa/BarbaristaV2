@@ -52,9 +52,9 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
   
 
-        if(rayHit.transform.GetComponent<SCR_MasterQuete>())
+        if(rayHit.transform.GetComponent<SCR_QueteTableau>())
         {
-            SCR_MasterQuete mQuete = rayHit.transform.GetComponent<SCR_MasterQuete>();
+            SCR_QueteTableau mQuete = rayHit.transform.GetComponent<SCR_QueteTableau>();
             
             mQuete.pickUp(this);
         }
@@ -66,9 +66,9 @@ public class SCR_Ficheperso1 : MonoBehaviour
         spriteRender.sortingOrder = spriteRender.sortingOrder-1;
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition)); // créer un Cast pour savoir si on a relaché l'ingrédient sur quelque chose
        
-        if (rayHit.transform.GetComponent<SCR_MasterQuete>())
+        if (rayHit.transform.GetComponent<SCR_QueteTableau>())
         {
-            SCR_MasterQuete mQuete = rayHit.transform.GetComponent<SCR_MasterQuete>();
+            SCR_QueteTableau mQuete = rayHit.transform.GetComponent<SCR_QueteTableau>();
             mQuete.OnDrop(this);
             hexStat.UpdateLine();
             

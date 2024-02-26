@@ -32,7 +32,7 @@ public class SCR_CuisineManager : MonoBehaviour
     [SerializeField] private SCR_Tasse refTasse;
     [SerializeField] private SCR_HexagoneStat refHexagone;
 
-    private SCR_MasterQuete queteCuisine;
+    [SerializeField] private SCR_QueteTableau queteCuisine;
 
 
 
@@ -54,6 +54,9 @@ public class SCR_CuisineManager : MonoBehaviour
         startPositionHexagone = hexagone.transform.position; // stock la position initial du volet
         startPositionAllUstensile = allUstensile.position;
 
+
+        queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete()[0]);
+        queteCuisine.InitialisationQuete();
     }
 
 
@@ -106,10 +109,7 @@ public class SCR_CuisineManager : MonoBehaviour
 
     }
 
-    public void SwitchToCuisine()
-    {
-        queteCuisine.SetCurrentQuete(SCR_QueteManager.instanceQueteManager.GetCurrentQuete());
-    }
+    
 
 
 }

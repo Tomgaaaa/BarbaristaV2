@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using DG.Tweening;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class SCR_QueteManager : MonoBehaviour
 {
@@ -11,21 +12,21 @@ public class SCR_QueteManager : MonoBehaviour
     public static SCR_QueteManager instanceQueteManager;
 
     [SerializeField] private List<SO_Quete> listAllQuete;
-    private List<SCR_MasterQuete> listQuetePropose = new List<SCR_MasterQuete>();
+    private List<SCR_QueteTableau> listQuetePropose = new List<SCR_QueteTableau>();
 
     [SerializeField] private List<Transform> listTransformSpawn;
 
     [Header("Spawn")]
-    [SerializeField] private SCR_MasterQuete prefabQuete;
+    [SerializeField] private SCR_QueteTableau prefabQuete;
     [SerializeField] private SCR_Ficheperso1 prefabFichePerso;
     [SerializeField] private Transform parentFichePerso;
     private List<SCR_Ficheperso1> listFichepersoPropose = new List<SCR_Ficheperso1>();
     private List<SCR_Ficheperso1> listFichepersoUtilise = new List<SCR_Ficheperso1>();
-    [SerializeField] private List<SO_Personnage> listPerso;
+    [SerializeField] private List<SO_Personnage> listSoPerso;
     private List<Vector3> startPositionPerso = new List<Vector3>();
 
 
-    private List<SCR_MasterQuete> listCurrentQueteInstance = new List<SCR_MasterQuete>();
+    private List<SCR_QueteTableau> listCurrentQueteInstance = new List<SCR_QueteTableau>();
     private int etapeQuete = 0;
     private bool firstIsHigher = true;
     private List<SO_Quete> listAncienneQuete;
@@ -39,7 +40,7 @@ public class SCR_QueteManager : MonoBehaviour
 
 
     [Header("Animation")]
-    private Dictionary<SCR_MasterQuete, Vector3> backupTransformQuete = new Dictionary<SCR_MasterQuete, Vector3>();
+    private Dictionary<SCR_QueteTableau, Vector3> backupTransformQuete = new Dictionary<SCR_QueteTableau, Vector3>();
     [SerializeField] private Transform positionOffQuete;
     [SerializeField] private Transform positionSelectQuete;
 
@@ -65,7 +66,7 @@ public class SCR_QueteManager : MonoBehaviour
     {
         for (int i = 0; i < 4; i++)
         {
-            SCR_MasterQuete ms = Instantiate(prefabQuete,transform);
+            SCR_QueteTableau ms = Instantiate(prefabQuete,transform);
             ms.SetCurrentQuete(listAllQuete[Random.Range(0, listAllQuete.Count)]);
             ms.transform.position = listTransformSpawn[i].position;
             listQuetePropose.Add(ms);
@@ -80,7 +81,7 @@ public class SCR_QueteManager : MonoBehaviour
         {
             SCR_Ficheperso1 fichePerso = Instantiate(prefabFichePerso, parentFichePerso);
             listFichepersoPropose.Add(fichePerso);
-            fichePerso.SetSoPerso(listPerso[i]); 
+            fichePerso.SetSoPerso(listSoPerso[i]); 
             startPositionPerso.Add(fichePerso.transform.position);
 
         }
@@ -254,9 +255,19 @@ public class SCR_QueteManager : MonoBehaviour
     public void ConfirmSelectionPersos()
     {
         Debug.Log("Go cuisine");
+
+        foreach(SCR_QueteTableau masterQuete in listCurrentQueteInstance)
+        {
+            SCR_DATA.instanceData.SetListCurrentQuest(masterQuete.GetQuete());
+
+
+
+        }
+
+        SceneManager.LoadScene(1);
     }
 
-    public void AddCurrentQuete(SCR_MasterQuete currentQueteParameter, bool removeParameter = false) 
+    public void AddCurrentQuete(SCR_QueteTableau currentQueteParameter, bool removeParameter = false) 
     {
         if (!removeParameter)
         {

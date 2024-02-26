@@ -21,8 +21,10 @@ public class SCR_DATA : MonoBehaviour
     }
 
 
-    public void SetListCurrentQuest(List<SO_Quete> listParameter)
+    public void SetListCurrentQuest(SO_Quete SoQueteParameter)
     {
-        listCurrentQuete = listParameter;
+        listCurrentQuete.Add(SoQueteParameter);
     }
+
+    public List<SO_Quete> GetCurrentQuete() { return listCurrentQuete; }
 }
