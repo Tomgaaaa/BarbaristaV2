@@ -5,23 +5,22 @@ using UnityEngine.Rendering;
 public class SCR_Ficheperso1 : MonoBehaviour
 {
     Camera mainCamera;
-    bool OnQuest = false;
     [SerializeField] GameObject FullPic;
     [SerializeField] SpriteRenderer profilMini;
     [SerializeField] SpriteRenderer profilMaxi;
     [SerializeField] GameObject Maxi;
-    bool cantPlace = false;
+    private bool canMove = true;
     [SerializeField] SO_Personnage perso;
     private SortingGroup spriteRender;
     [SerializeField] SCR_HexagoneStat hexStat;
+
+    private Vector3 initialScale;
    
 
     private void Awake()
     {
-       
-      
-
         spriteRender = GetComponent<SortingGroup>();
+        initialScale = transform.localScale;
     }
 
     void Start()
@@ -35,6 +34,8 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        if (!canMove) { return; }
+
         hexStat.UpdateLine();
         transform.position = new Vector3 (mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y,0) ;
 
@@ -43,6 +44,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (!canMove) { return; }
 
         spriteRender.sortingOrder = spriteRender.sortingOrder + 1;
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
@@ -67,50 +69,28 @@ public class SCR_Ficheperso1 : MonoBehaviour
         if (rayHit.transform.GetComponent<SCR_MasterQuete>())
         {
             SCR_MasterQuete mQuete = rayHit.transform.GetComponent<SCR_MasterQuete>();
-
-            if (OnQuest == true )
-            {      
-                    mQuete.OnDrop(this);
-                hexStat.UpdateLine();
-            }
-            else if(OnQuest != true && cantPlace == false)
-            {
-                
-                OnQuest = true;
-                   
-                 mQuete.OnDrop(this);
-                hexStat.UpdateLine();
-            }
-            else
-            {
-                Debug.Log("CantPlace");
-            }
+            mQuete.OnDrop(this);
+            hexStat.UpdateLine();
+            
+            
             
         }
-        else
-        {
-            if(OnQuest == true)
-            {
-                OnQuest = false;
-                
-            }
-            
-        }
+       
 
         gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
     public void MakeSmall(bool etat)
     {
-        if(etat == true)
+        if(etat)
         {
-            gameObject.transform.localScale = gameObject.transform.localScale / 2.5f;
+            transform.localScale = initialScale / 2.5f;
             FullPic.SetActive(true);
             Maxi.SetActive(false);
         }
         else
         {
-            gameObject.transform.localScale = gameObject.transform.localScale * 2.5f;
+            transform.localScale  = initialScale;
             FullPic.SetActive(false);
             Maxi.SetActive(true);
         }
@@ -130,4 +110,5 @@ public class SCR_Ficheperso1 : MonoBehaviour
     }
 
 
+    public void SetCanMove(bool canMoveParameter) { canMove = canMoveParameter; }
 }
