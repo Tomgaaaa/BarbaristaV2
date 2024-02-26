@@ -9,6 +9,10 @@ public class SCR_Trancheuse : SCR_Ustensile
 
     [SerializeField] private Transform couteau; // reference au couteau qu'on rotate
 
+    [SerializeField] private float rotationMin = 0f;
+    [SerializeField] private float rotationMax = 100f;
+
+
     // pour la partie drag
     private Vector3 lastMousePos;
     private float mouseVelocity;
@@ -72,7 +76,7 @@ public class SCR_Trancheuse : SCR_Ustensile
             */
             #endregion
 
-            if (couteau.rotation.eulerAngles.z - 360 < -40) // si le couteau est au début de sa rotation
+            if (couteau.rotation.eulerAngles.z < 40) // si le couteau est au début de sa rotation
             {
                 forceRotation = initialForceRotation; // pas trop de lag car il n'est pas au niveau de l'ingrédient
 
@@ -85,7 +89,7 @@ public class SCR_Trancheuse : SCR_Ustensile
 
 
 
-            if (totalRotation > -45 && !needReset)
+            if (totalRotation > -rotationMax && !needReset)
             {
                 totalRotation -= mouseVelocity * -forceRotation;
                 couteau.Rotate(new Vector3(0, 0, mouseVelocity * -forceRotation));
@@ -93,15 +97,18 @@ public class SCR_Trancheuse : SCR_Ustensile
 
 
 
-
-            if (couteau.rotation.eulerAngles.z - 360 < -50 && needReset) // si le couteau est revenu à sa rotation initial, il peut effectuer une nouvelle decoupe
+            // -50 = le plus haut/ rotation initial
+            if (couteau.rotation.eulerAngles.z <= rotationMin && needReset) // si le couteau est revenu à sa rotation initial, il peut effectuer une nouvelle decoupe
             {
                 needReset = false;
                 
 
             }
-            if(couteau.eulerAngles.z - 360 > -10 && !needReset ) // si le couteau est arrivé a la fin de sa course, il doit revenir a sa rotation initial, pour pas juste faire des petits accoups
+
+            // -10 = position de fin / rotation finale
+            if(couteau.eulerAngles.z > rotationMax && !needReset ) // si le couteau est arrivé a la fin de sa course, il doit revenir a sa rotation initial, pour pas juste faire des petits accoups
             {
+                Debug.Log("ici");
                 AudioManager.instanceAM.Play("Trancheuse_1");
                 needReset = true; // empeche de rester en bas de la rotation et de spam des petits accoups
                 currentNombreCoupe++; // ajoute 1 au nombre de ecoupe effectue
@@ -131,7 +138,8 @@ public class SCR_Trancheuse : SCR_Ustensile
         totalRotation = 0f;
 
 
-        tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, -51), 0.8f) ; // si le joueur relache le clique, le couteau se repositionne à sa rotation intial
+        //tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, -51), 0.8f) ; // si le joueur relache le clique, le couteau se repositionne à sa rotation intial
+        tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, 0), 0.8f) ; // si le joueur relache le clique, le couteau se repositionne à sa rotation intial
         mouseVelocity = 0; // reset la valeur pour pas que quand on clique a nouveau, le couteau reprenne sa position ou on l'a lache
     }
   
