@@ -9,16 +9,20 @@ public class SCR_QueteTableau : MonoBehaviour
 {
     [SerializeField] private protected SO_Quete myQueteSo;
 
-    [SerializeField] Text titre;
-    [SerializeField] Text description;
-    [SerializeField] Text infoEventTexte;
+    [SerializeField] private Text titre;
+    [SerializeField] private Text description;
+    [SerializeField] private Text infoEventTexte;
 
-    [SerializeField] Image illu;
+    [SerializeField] private Image illu;
 
-    [SerializeField] Transform reward;
-    [SerializeField] Transform diff;
-    [SerializeField] Transform P1;
-    [SerializeField] Transform P2;
+    [SerializeField] private Transform reward;
+    private List<Image> listRewardInstance = new List<Image>();
+
+    [SerializeField] private Transform diff;
+    private protected List<Image> listDifficultyInstance = new List<Image>();
+
+    [SerializeField] private Transform P1;
+    [SerializeField] private Transform P2;
 
     public Dictionary<int, SCR_Ficheperso1> posQuete = new Dictionary<int, SCR_Ficheperso1>() { { 0,null},{ 1, null} };
 
@@ -47,14 +51,14 @@ public class SCR_QueteTableau : MonoBehaviour
 
         for (int i = 0; i < myQueteSo.difficulty.Count; i++)
         {
-            Instantiate<Image>(myQueteSo.difficulty[0], diff);
+            listDifficultyInstance.Add( Instantiate<Image>(myQueteSo.difficulty[0], diff));
 
         }
 
         for (int i = 0; i < myQueteSo.reward.Count; i++)
         {
 
-            Instantiate<Image>(myQueteSo.reward[i], reward);
+            listRewardInstance.Add(Instantiate<Image>(myQueteSo.reward[i], reward));
 
         }
     }

@@ -34,6 +34,8 @@ public class SCR_CuisineManager : MonoBehaviour
 
     [SerializeField] private SCR_QueteCuisine queteCuisine;
 
+    [SerializeField] private GameObject buttonValideBoisson;
+
 
 
     private void Awake()
@@ -85,6 +87,26 @@ public class SCR_CuisineManager : MonoBehaviour
         hexagone.gameObject.SetActive(false);
         hexagone.transform.DOLocalMove(startPositionHexagone, 1f).OnComplete(ResetBoisson);
 
+    }
+
+    public void hasFinishPreparation()
+    {
+        buttonValideBoisson.gameObject.SetActive(true);
+    }
+
+    public void NextQuete()
+    {
+        buttonValideBoisson.gameObject.SetActive(false);
+        UnLockIngredient();
+        ResetBoisson();
+
+
+        SCR_DATA.instanceData.GetCurrentQuete()[SCR_DATA.instanceData.GetEtape()].boissonsServis.Add(refTasse.GetBoissonSo());
+        SCR_DATA.instanceData.EtapeUp();
+
+
+        queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete()[SCR_DATA.instanceData.GetEtape()]);
+        queteCuisine.InitialisationQuete();
     }
 
     public void ResetBoisson()

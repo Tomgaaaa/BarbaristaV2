@@ -108,7 +108,6 @@ public class SCR_Trancheuse : SCR_Ustensile
             // -10 = position de fin / rotation finale
             if(couteau.eulerAngles.z > rotationMax && !needReset ) // si le couteau est arrivé a la fin de sa course, il doit revenir a sa rotation initial, pour pas juste faire des petits accoups
             {
-                Debug.Log("ici");
                 AudioManager.instanceAM.Play("Trancheuse_1");
                 needReset = true; // empeche de rester en bas de la rotation et de spam des petits accoups
                 currentNombreCoupe++; // ajoute 1 au nombre de ecoupe effectue

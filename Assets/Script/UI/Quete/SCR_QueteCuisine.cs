@@ -13,6 +13,12 @@ public class SCR_QueteCuisine : SCR_QueteTableau
 
     public override void InitialisationQuete()
     {
+        foreach(Image ImageDiff in listDifficultyInstance)
+        {
+            Destroy(ImageDiff.gameObject);
+        }
+       listDifficultyInstance.Clear();
+
         base.InitialisationQuete();
 
         imageP1.sprite = myQueteSo.persosEnvoyes[0].profil;

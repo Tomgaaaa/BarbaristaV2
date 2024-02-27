@@ -27,5 +27,15 @@ public class SCR_DATA : MonoBehaviour
 
     public List<SO_Quete> GetCurrentQuete() { return listCurrentQuete; }
     public int GetEtape() {  return etape; }
-    public void SetEtape(int newEtapeParameter) { etape = newEtapeParameter; }
+    public void EtapeUp() 
+    { 
+        if(etape == 0)
+        {
+            etape ++;
+        }
+        else if(etape == 1)
+        {
+            etape = 0;
+        }
+    }
 }

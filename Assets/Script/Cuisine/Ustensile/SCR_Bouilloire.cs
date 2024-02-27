@@ -98,6 +98,7 @@ public class SCR_Bouilloire : SCR_Ustensile
     {
  
         OnMouseUp(); // reset la rotation de la bouilloire
+        eauVerse = 0f; // reset la valeur d'eau versé
 
         refTasse.FinishBoisson();
 

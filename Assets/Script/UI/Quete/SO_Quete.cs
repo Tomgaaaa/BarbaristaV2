@@ -26,6 +26,8 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
 
     public void OnAfterDeserialize() // fonction qui permet d'associer les listes (qu'on voit) aux dictionaires (qu'on ne voit pas)
     {
+        persosEnvoyes.Clear();
+        boissonsServis.Clear();
 
         dicoResistance = new Dictionary<enumResistance, float>();
         foreach (dicoResistanceClass item in listDicoResistance)

@@ -12,19 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8434f564fa9284c4daf1f3d57a95994f, type: 3}
   m_Name: Quete2
   m_EditorClassIdentifier: 
-  listDicoResistance:
-  - key: 0
-    value: 0
-  - key: 1
-    value: 0
-  - key: 2
-    value: 200
-  - key: 3
-    value: 500
-  - key: 4
-    value: 0
-  - key: 5
-    value: 0
+  listDicoResistance: []
   titre: Etablir campement
   difficulty:
   - {fileID: 5714345362990764630, guid: be8844bb1ac8b3045b86a3c192c94e5d, type: 3}
@@ -32,7 +20,10 @@ MonoBehaviour:
   - {fileID: 5714345362990764630, guid: be8844bb1ac8b3045b86a3c192c94e5d, type: 3}
   illustration: {fileID: 21300000, guid: 58452c4385f52b94cb2bde95a77add9c, type: 3}
   description: Attention aux geysers
+  infoEvenement: 
   reward:
   - {fileID: 4676549998668992486, guid: c88cd865e6c6da8489c5605d7cbd7a00, type: 3}
   - {fileID: 4274250219671485390, guid: 7804302650bb9554cb6a634fb800116a, type: 3}
   - {fileID: 2348880183361936524, guid: d082d760fa3070e489ff0daa2dd25777, type: 3}
+  persosEnvoyes: []
+  boissonsServis: []

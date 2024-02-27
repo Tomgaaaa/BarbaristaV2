@@ -110,8 +110,10 @@ public class SCR_Tasse : SCR_Contenant
         refHexagone.UpdateStat(dicoStatBoisson,false);
         allVisuelle.SetActive(true);
 
+        SCR_CuisineManager.instanceCM.hasFinishPreparation();
         AudioManager.instanceAM.Play("Preparationfini");
 
+       
 
 
     }
@@ -197,5 +199,13 @@ public class SCR_Tasse : SCR_Contenant
         nmbIngredientIn = 0;
         textNmbIngredient.text = nmbIngredientIn + " /3";
 
+    }
+
+
+    public SO_Boisson GetBoissonSo() 
+    {
+        SO_Boisson instanceSo = ScriptableObject.CreateInstance<SO_Boisson>();
+        instanceSo.CreateBoisson(listIngredientsUtilises, dicoStatBoisson);
+        return instanceSo;
     }
 }
