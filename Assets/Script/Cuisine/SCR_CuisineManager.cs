@@ -32,7 +32,7 @@ public class SCR_CuisineManager : MonoBehaviour
     [SerializeField] private SCR_Tasse refTasse;
     [SerializeField] private SCR_HexagoneStat refHexagone;
 
-    [SerializeField] private SCR_QueteTableau queteCuisine;
+    [SerializeField] private SCR_QueteCuisine queteCuisine;
 
 
 

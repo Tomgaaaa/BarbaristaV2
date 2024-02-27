@@ -9,7 +9,7 @@ public class SCR_DATA : MonoBehaviour
 
     [SerializeField] private List<SO_Quete> listCurrentQuete;
 
-    public int etape;
+    private int etape;
 
 
     private void Awake()
@@ -23,11 +23,9 @@ public class SCR_DATA : MonoBehaviour
     }
 
 
-    public void SetListCurrentQuest(SO_Quete SoQueteParameter)
-    {
-        listCurrentQuete.Add(SoQueteParameter);
-    }
+    public void SetListCurrentQuest(SO_Quete SoQueteParameter) { listCurrentQuete.Add(SoQueteParameter);}
 
     public List<SO_Quete> GetCurrentQuete() { return listCurrentQuete; }
     public int GetEtape() {  return etape; }
+    public void SetEtape(int newEtapeParameter) { etape = newEtapeParameter; }
 }

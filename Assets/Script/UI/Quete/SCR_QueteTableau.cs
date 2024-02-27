@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class SCR_QueteTableau : MonoBehaviour
 {
-    [SerializeField] SO_Quete myQueteSo;
+    [SerializeField] private protected SO_Quete myQueteSo;
 
     [SerializeField] Text titre;
     [SerializeField] Text description;
@@ -38,7 +38,7 @@ public class SCR_QueteTableau : MonoBehaviour
     }
 
 
-    public void InitialisationQuete()
+    public virtual void InitialisationQuete()
     {
         titre.text = myQueteSo.titre;
         description.text = myQueteSo.description;
@@ -111,6 +111,7 @@ public class SCR_QueteTableau : MonoBehaviour
             fiche.MakeSmall(true);
             fiche.transform.position = new Vector3(P1.position.x, P1.position.y, -1);
             posQuete[0] = fiche;
+            myQueteSo.persosEnvoyes.Add(fiche.GetSoPerso());
 
             SCR_QueteManager.instanceQueteManager.AddRemovePersosUtilise(fiche, true);
 
@@ -123,6 +124,8 @@ public class SCR_QueteTableau : MonoBehaviour
             fiche.MakeSmall(true);
             fiche.transform.position = new Vector3(P2.position.x, P2.position.y, -1);
             posQuete[1] = fiche;
+            myQueteSo.persosEnvoyes.Add(fiche.GetSoPerso());
+
 
             SCR_QueteManager.instanceQueteManager.AddRemovePersosUtilise(fiche, true);
 
@@ -146,6 +149,8 @@ public class SCR_QueteTableau : MonoBehaviour
 
             fiche.MakeSmall(false);
             posQuete[0] = null;
+            myQueteSo.persosEnvoyes.Remove(fiche.GetSoPerso());
+
 
         }
         else if (posQuete[1] == fiche)
@@ -156,10 +161,12 @@ public class SCR_QueteTableau : MonoBehaviour
 
             fiche.MakeSmall(false);
             posQuete[1] = null;
+            myQueteSo.persosEnvoyes.Remove(fiche.GetSoPerso());
+
         }
-        
-        
-        
+
+
+
     }
     #endregion
 
@@ -184,6 +191,8 @@ public class SCR_QueteTableau : MonoBehaviour
 
         posQuete[0] = null;
         posQuete[1] = null;
+        myQueteSo.persosEnvoyes.Clear();
+
     }
 
     public SO_Quete GetQuete() { return myQueteSo; }

@@ -19,8 +19,8 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
     public List<Image> reward;
 
 
-    public List<SO_Personnage> persosEnvoyes;
-    public List<SO_Boisson> boissonsServis;
+    public List<SO_Personnage> persosEnvoyes = new List<SO_Personnage>();
+    public List<SO_Boisson> boissonsServis = new List<SO_Boisson>();
     public Dictionary<enumResistance, float> dicoResistanceJoueur; // dictionnaire des resistances, stat que le joueur a fait 
 
 

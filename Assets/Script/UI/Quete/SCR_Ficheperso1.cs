@@ -111,4 +111,5 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
 
     public void SetCanMove(bool canMoveParameter) { canMove = canMoveParameter; }
+    public SO_Personnage GetSoPerso() { return perso; }
 }

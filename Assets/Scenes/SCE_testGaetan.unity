@@ -8988,7 +8988,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.17, y: 1.88}
+    oldSize: {x: 1.4466667, y: 1.2533333}
     newSize: {x: 3.03, y: 1.79}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -10294,6 +10294,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688028129}
   m_CullTransparentMesh: 1
+--- !u!114 &727775057 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2358434484928719155, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 1703109455}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &727775058 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6637989030235875928, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
+  m_PrefabInstance: {fileID: 1703109455}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &739466012
 GameObject:
   m_ObjectHideFlags: 0
@@ -11793,7 +11815,7 @@ Transform:
   m_GameObject: {fileID: 918939131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.2, y: 1.3, z: 0.72}
+  m_LocalPosition: {x: -7.73, y: -3.01, z: 0.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12005,29 +12027,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &939248837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 396123368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de0ee805a22909a49aa73418a767b13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myQueteSo: {fileID: 0}
-  titre: {fileID: 2074382340}
-  description: {fileID: 1985199416}
-  infoEventTexte: {fileID: 0}
-  illu: {fileID: 1891812636}
-  reward: {fileID: 1640079961}
-  diff: {fileID: 467902416}
-  P1: {fileID: 1640079961}
-  P2: {fileID: 1640079961}
-  selectedTamp: {fileID: 0}
-  greyMask: {fileID: 0}
 --- !u!1 &940828106
 GameObject:
   m_ObjectHideFlags: 0
@@ -14847,6 +14846,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1309622063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396123368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8541ac8ed46e9044eaaf2f2b0f533d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myQueteSo: {fileID: 0}
+  titre: {fileID: 2074382340}
+  description: {fileID: 1985199416}
+  infoEventTexte: {fileID: 366252070}
+  illu: {fileID: 1891812636}
+  reward: {fileID: 0}
+  diff: {fileID: 467902416}
+  P1: {fileID: 0}
+  P2: {fileID: 0}
+  selectedTamp: {fileID: 0}
+  greyMask: {fileID: 0}
+  imageP1: {fileID: 727775057}
+  imageP2: {fileID: 727775058}
 --- !u!1 &1323087552
 GameObject:
   m_ObjectHideFlags: 0
@@ -19305,7 +19329,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5889041622656813630, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 939248837}
+      addedObject: {fileID: 1309622063}
     - targetCorrespondingSourceObject: {fileID: 8958335214924464153, guid: 3313e3ee800a4ce43802209c097b296b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1703109474}
@@ -21518,7 +21542,7 @@ MonoBehaviour:
   emplacementHexagone: {fileID: 903197204}
   refTasse: {fileID: 567218936}
   refHexagone: {fileID: 621068198}
-  queteCuisine: {fileID: 939248837}
+  queteCuisine: {fileID: 1309622063}
 --- !u!4 &2096960045
 Transform:
   m_ObjectHideFlags: 0
