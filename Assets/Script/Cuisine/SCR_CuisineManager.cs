@@ -55,7 +55,7 @@ public class SCR_CuisineManager : MonoBehaviour
         startPositionAllUstensile = allUstensile.position;
 
 
-        queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete()[0]);
+        queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete()[SCR_DATA.instanceData.GetEtape()]);
         queteCuisine.InitialisationQuete();
     }
 

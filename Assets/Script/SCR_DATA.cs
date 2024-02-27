@@ -9,6 +9,8 @@ public class SCR_DATA : MonoBehaviour
 
     [SerializeField] private List<SO_Quete> listCurrentQuete;
 
+    public int etape;
+
 
     private void Awake()
     {
@@ -27,4 +29,5 @@ public class SCR_DATA : MonoBehaviour
     }
 
     public List<SO_Quete> GetCurrentQuete() { return listCurrentQuete; }
+    public int GetEtape() {  return etape; }
 }
