@@ -45,24 +45,29 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
                 dicoEmplacementPoint.Add(item.key, item.value);
             }
         }
+
+
+        
     }
 
     #endregion
-    [SerializeField] private UILineRenderer lineRenderUI;
 
     [SerializeField] private List<dicoResistanceTransformClass> listDicoResistanceTransform; // permet de visualiser le dico des résistances, en private psk on a pas besoin d'y toucher, c'est juste pour visualiser en éditor
 
     [SerializeField] private List<dicoEmplacementPointClass> listDicoEmplacementPoint; // permet de visualiser le dico des résistances, en private psk on a pas besoin d'y toucher, c'est juste pour visualiser en éditor
 
+   
     private bool canUpdateLine;
+    private bool canUpdateLineUI;
 
-    private LineRenderer ln;
+    [SerializeField] private LineRenderer ln;
+    [SerializeField] private UILineRenderer lineRenderUI;
 
 
 
     private void Start()
     {
-        ln = dicoResistanceTrasnform[enumResistance.Thermique].GetComponent<LineRenderer>();
+        //ln = dicoResistanceTrasnform[enumResistance.Thermique].GetComponent<LineRenderer>();
     }
 
     private void Update()
@@ -76,11 +81,21 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 
         }
 
+        if (canUpdateLineUI)
+        {
+            UpdateLineUI();
 
+        }
     }
-    public void UpdateStat(Dictionary<enumResistance,float> statAfficheParameter, bool instantDeplacementParameter)
+    public void UpdateStat(Dictionary<enumResistance,float> statAfficheParameter, bool instantDeplacementParameter, bool inUI = false)
     {
-        canUpdateLine = true;
+
+        if (inUI)
+            canUpdateLineUI = true;
+        else
+            canUpdateLine = true;
+        
+
 
         foreach(KeyValuePair<enumResistance,float> pair in statAfficheParameter)
         {
@@ -126,8 +141,9 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
             dicoResistanceTrasnform[enumResistance.Thermique].DOMove(newPositionA, 3f).OnComplete(Lock);
 
         }
-
     }
+
+    
 
 
 #if UNITY_EDITOR
@@ -135,8 +151,16 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 
     private void UpdateLineEditor()
     {
-        UpdateStat(new Dictionary<enumResistance, float> { { enumResistance.Thermique, 450 } },false);
-        UpdateLineUI();
+        UpdateStat(new Dictionary<enumResistance, float> { 
+            { enumResistance.Thermique, 750 } ,
+            { enumResistance.Hemorragique, 750 } ,
+            { enumResistance.Toxique, 750 } ,
+            { enumResistance.Cryogenique, 750 } ,
+            { enumResistance.Electrique, 750 } ,
+            { enumResistance.Lethargique, 750 } 
+        },false,true);
+
+        
     }
 #endif
 
@@ -155,13 +179,15 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 
     public void UpdateLineUI()
     {
-        lineRenderUI.points[0] = new Vector2(dicoResistanceTrasnform[enumResistance.Thermique].position.x, dicoResistanceTrasnform[enumResistance.Thermique].position.y);
-        lineRenderUI.points[1] = new Vector2(dicoResistanceTrasnform[enumResistance.Hemorragique].position.x, dicoResistanceTrasnform[enumResistance.Hemorragique].position.y);
-        lineRenderUI.points[2] = new Vector2(dicoResistanceTrasnform[enumResistance.Toxique].position.x, dicoResistanceTrasnform[enumResistance.Toxique].position.y);
-        lineRenderUI.points[3] = new Vector2(dicoResistanceTrasnform[enumResistance.Cryogenique].position.x, dicoResistanceTrasnform[enumResistance.Cryogenique].position.y);
-        lineRenderUI.points[4] = new Vector2(dicoResistanceTrasnform[enumResistance.Electrique].position.x, dicoResistanceTrasnform[enumResistance.Electrique].position.y);
-        lineRenderUI.points[5] = new Vector2(dicoResistanceTrasnform[enumResistance.Lethargique].position.x, dicoResistanceTrasnform[enumResistance.Lethargique].position.y);
-        lineRenderUI.points[6] = new Vector2(dicoResistanceTrasnform[enumResistance.Thermique].position.x, dicoResistanceTrasnform[enumResistance.Thermique].position.y);
+        lineRenderUI.points[0] = new Vector2(dicoResistanceTrasnform[enumResistance.Thermique].localPosition.x, dicoResistanceTrasnform[enumResistance.Thermique].localPosition.y);
+        lineRenderUI.points[1] = new Vector2(dicoResistanceTrasnform[enumResistance.Hemorragique].localPosition.x, dicoResistanceTrasnform[enumResistance.Hemorragique].localPosition.y);
+        lineRenderUI.points[2] = new Vector2(dicoResistanceTrasnform[enumResistance.Toxique].localPosition.x, dicoResistanceTrasnform[enumResistance.Toxique].localPosition.y);
+        lineRenderUI.points[3] = new Vector2(dicoResistanceTrasnform[enumResistance.Cryogenique].localPosition.x, dicoResistanceTrasnform[enumResistance.Cryogenique].localPosition.y);
+        lineRenderUI.points[4] = new Vector2(dicoResistanceTrasnform[enumResistance.Electrique].localPosition.x, dicoResistanceTrasnform[enumResistance.Electrique].localPosition.y);
+        lineRenderUI.points[5] = new Vector2(dicoResistanceTrasnform[enumResistance.Lethargique].localPosition.x, dicoResistanceTrasnform[enumResistance.Lethargique].localPosition.y);
+        lineRenderUI.points[6] = new Vector2(dicoResistanceTrasnform[enumResistance.Thermique].localPosition.x, dicoResistanceTrasnform[enumResistance.Thermique].localPosition.y);
+
+        lineRenderUI.SetAllDirty();
     }
 
     private void Lock()

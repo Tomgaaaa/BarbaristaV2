@@ -12,7 +12,7 @@ using UnityEngine.UI;
         public Gradient colorGrad;
 
 
-    
+   
         protected override void OnPopulateMesh(VertexHelper vh)
         {
             vh.Clear();

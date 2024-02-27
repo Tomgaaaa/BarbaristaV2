@@ -825,6 +825,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8967084200910327938, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967084200910327938, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967084200910327938, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4892298453568417611}
+    - target: {fileID: 8967084200910327938, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967084200910327938, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToPage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967084200910327938, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SCR_Page, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967084200910327938, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1724005644779816483, guid: da38482d5b2adb14ca811922e87992d0, type: 3}
+    - target: {fileID: 8967084200910327938, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8692618654571279293, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}

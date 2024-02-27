@@ -16,7 +16,10 @@ public enum enumPage
    
 
     SommaireIngredient,
-    Shembo, Frejal, Kleck, Siarym, Phylliul, Scolk  
+    Shembo, Frejal, Kleck, Siarym, Phylliul, Scolk ,
+
+    SommaireAlmanach,
+    FichePerso1
 }
 
 public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceiver
