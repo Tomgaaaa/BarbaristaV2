@@ -48,6 +48,7 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
     }
 
     #endregion
+    [SerializeField] private UILineRenderer lineRenderUI;
 
     [SerializeField] private List<dicoResistanceTransformClass> listDicoResistanceTransform; // permet de visualiser le dico des résistances, en private psk on a pas besoin d'y toucher, c'est juste pour visualiser en éditor
 
@@ -134,7 +135,8 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 
     private void UpdateLineEditor()
     {
-        UpdateLine();
+        UpdateStat(new Dictionary<enumResistance, float> { { enumResistance.Thermique, 450 } },false);
+        UpdateLineUI();
     }
 #endif
 
@@ -148,8 +150,19 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
         ln.SetPosition(4, new Vector3(dicoResistanceTrasnform[enumResistance.Electrique].position.x, dicoResistanceTrasnform[enumResistance.Electrique].position.y, -1));
         ln.SetPosition(5, new Vector3(dicoResistanceTrasnform[enumResistance.Lethargique].position.x, dicoResistanceTrasnform[enumResistance.Lethargique].position.y, -1));
         
+
     }
 
+    public void UpdateLineUI()
+    {
+        lineRenderUI.points[0] = new Vector2(dicoResistanceTrasnform[enumResistance.Thermique].position.x, dicoResistanceTrasnform[enumResistance.Thermique].position.y);
+        lineRenderUI.points[1] = new Vector2(dicoResistanceTrasnform[enumResistance.Hemorragique].position.x, dicoResistanceTrasnform[enumResistance.Hemorragique].position.y);
+        lineRenderUI.points[2] = new Vector2(dicoResistanceTrasnform[enumResistance.Toxique].position.x, dicoResistanceTrasnform[enumResistance.Toxique].position.y);
+        lineRenderUI.points[3] = new Vector2(dicoResistanceTrasnform[enumResistance.Cryogenique].position.x, dicoResistanceTrasnform[enumResistance.Cryogenique].position.y);
+        lineRenderUI.points[4] = new Vector2(dicoResistanceTrasnform[enumResistance.Electrique].position.x, dicoResistanceTrasnform[enumResistance.Electrique].position.y);
+        lineRenderUI.points[5] = new Vector2(dicoResistanceTrasnform[enumResistance.Lethargique].position.x, dicoResistanceTrasnform[enumResistance.Lethargique].position.y);
+        lineRenderUI.points[6] = new Vector2(dicoResistanceTrasnform[enumResistance.Thermique].position.x, dicoResistanceTrasnform[enumResistance.Thermique].position.y);
+    }
 
     private void Lock()
     {
