@@ -6,12 +6,45 @@ using DG.Tweening;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
-public class SCR_QueteManager : MonoBehaviour
+public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 {
 
     public static SCR_QueteManager instanceQueteManager;
 
     [SerializeField] private List<SO_Quete> listAllQuete;
+
+
+    #region Dico
+
+
+
+    [System.Serializable] public class dicoJourQueteClass : TemplateDico<int, List<SO_Quete>> { };
+    private Dictionary<int, List<SO_Quete>> dicoJourQuete;
+
+    [SerializeField] private List<dicoJourQueteClass> listDicoJourQuete; // permet de visualiser le dico des résistances, en private psk on a pas besoin d'y toucher, c'est juste pour visualiser en éditor
+
+
+
+    public void OnBeforeSerialize()
+    {
+    }
+
+    public void OnAfterDeserialize()
+    {
+        dicoJourQuete = new Dictionary<int, List<SO_Quete>>();
+
+        foreach (dicoJourQueteClass item in listDicoJourQuete)
+        {
+            if (!dicoJourQuete.ContainsKey(item.key))
+            {
+                dicoJourQuete.Add(item.key, item.value);
+            }
+        }
+    }
+
+    #endregion
+
+
     private List<SCR_QueteTableau> listQuetePropose = new List<SCR_QueteTableau>();
 
     [SerializeField] private List<Transform> listTransformSpawn;
@@ -53,10 +86,15 @@ public class SCR_QueteManager : MonoBehaviour
             Destroy(gameObject);
 
 
+        
+        
+    }
+
+    private void Start()
+    {
         SpawnQuete();
         SpawnPerso();
 
-        
         
     }
 
@@ -64,10 +102,11 @@ public class SCR_QueteManager : MonoBehaviour
     [ContextMenu("SpawnQuete")]
     private void SpawnQuete()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < dicoJourQuete[SCR_DATA.instanceData.GetJour()].Count; i++)
         {
             SCR_QueteTableau ms = Instantiate(prefabQuete,transform);
-            ms.SetCurrentQuete(listAllQuete[Random.Range(0, listAllQuete.Count)]);
+            //ms.SetCurrentQuete(listAllQuete[Random.Range(0, listAllQuete.Count)]);
+            ms.SetCurrentQuete(dicoJourQuete[SCR_DATA.instanceData.GetJour()][i]);
             ms.transform.position = listTransformSpawn[i].position;
             listQuetePropose.Add(ms);
             backupTransformQuete.Add(listQuetePropose[i], listQuetePropose[i].transform.position);
@@ -318,7 +357,5 @@ public class SCR_QueteManager : MonoBehaviour
 
     public int GetQueteCount() { return listCurrentQueteInstance.Count;}
 
-
-
-
+    
 }

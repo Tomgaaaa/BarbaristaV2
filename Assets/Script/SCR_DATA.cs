@@ -11,6 +11,8 @@ public class SCR_DATA : MonoBehaviour
 
     private int etape;
 
+    private int jour = 1;
+
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class SCR_DATA : MonoBehaviour
 
     public List<SO_Quete> GetCurrentQuete() { return listCurrentQuete; }
     public int GetEtape() {  return etape; }
+    public int GetJour() {  return jour; }
     public void EtapeUp() 
     { 
         if(etape == 0)

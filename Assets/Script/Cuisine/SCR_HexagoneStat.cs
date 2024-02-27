@@ -60,8 +60,8 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
     private bool canUpdateLine;
     private bool canUpdateLineUI;
 
-    [SerializeField] private LineRenderer ln;
-    [SerializeField] private UILineRenderer lineRenderUI;
+    [SerializeField] private LineRenderer ln = null;
+    [SerializeField] private UILineRenderer lineRenderUI = null;
 
 
 
