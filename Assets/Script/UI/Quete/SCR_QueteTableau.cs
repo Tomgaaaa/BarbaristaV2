@@ -77,6 +77,7 @@ public class SCR_QueteTableau : MonoBehaviour
             isSelected = true;
             selectedTamp.SetActive(true);
             SCR_QueteManager.instanceQueteManager.AddCurrentQuete(this);
+            
         }
         else if (isSelected)
         {
@@ -84,8 +85,7 @@ public class SCR_QueteTableau : MonoBehaviour
             selectedTamp.SetActive(false);
             SCR_QueteManager.instanceQueteManager.AddCurrentQuete(this, true);
         }
-
-
+        AudioManager.instanceAM.Play("Selection");
 
     }
 
@@ -209,6 +209,7 @@ public class SCR_QueteTableau : MonoBehaviour
     {
         myQueteSo = currentQueteParameter;
         InitialisationQuete();
+        
     }
 
     public void SetInChoixPerso(bool inChoixPersoParameter) { inChoixPerso = inChoixPersoParameter; }
