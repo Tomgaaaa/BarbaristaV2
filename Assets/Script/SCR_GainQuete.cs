@@ -88,9 +88,16 @@ public class SCR_GainQuete : MonoBehaviour
         foreach(KeyValuePair<enumResistance, float> enumR in perso1.dicoResistance)
         {
             statCalcule[enumR.Key] = (perso1.dicoResistance[enumR.Key] + boisson1.dicoResistanceBoisson[enumR.Key])* 100/ queteUtilise.dicoResistanceDifficulte[enumR.Key];
-            moyennePerso1 += statCalcule[enumR.Key];
+            //moyennePerso1 += statCalcule[enumR.Key];
         }
-        moyennePerso1 = moyennePerso1 / 6;
+        //moyennePerso1 = moyennePerso1 / 6;
+
+
+        foreach (KeyValuePair<enumResistance, float> resistance in statCalcule) // c'est juste pour debug
+        {
+            Debug.Log("Stat " + resistance.Key + " : " + resistance.Value);
+        }
+        
     }
 
 }
