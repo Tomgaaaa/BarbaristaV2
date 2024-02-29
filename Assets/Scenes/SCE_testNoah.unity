@@ -21921,6 +21921,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.size
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.data[21].label
+      value: FichePerso
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.data[21].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.data[21].volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.data[21].clip.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.data[21].clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 740e2864d79f5bf459fc064a453ad53d, type: 3}
     - target: {fileID: 5600810787663899684, guid: f24241cf80e57c340ae502865cd02228, type: 3}
       propertyPath: m_Name
       value: AudioManager

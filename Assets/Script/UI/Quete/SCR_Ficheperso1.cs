@@ -38,7 +38,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
         hexStat.UpdateLine();
         transform.position = new Vector3 (mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y,0) ;
-
+        
 
     }
 
@@ -49,14 +49,15 @@ public class SCR_Ficheperso1 : MonoBehaviour
         spriteRender.sortingOrder = spriteRender.sortingOrder + 1;
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition));
+        AudioManager.instanceAM.Play("FichePerso");
 
-  
 
-        if(rayHit.transform.GetComponent<SCR_QueteTableau>())
+        if (rayHit.transform.GetComponent<SCR_QueteTableau>())
         {
             SCR_QueteTableau mQuete = rayHit.transform.GetComponent<SCR_QueteTableau>();
-            
+           
             mQuete.pickUp(this);
+            
         }
   
     }
@@ -71,9 +72,9 @@ public class SCR_Ficheperso1 : MonoBehaviour
             SCR_QueteTableau mQuete = rayHit.transform.GetComponent<SCR_QueteTableau>();
             mQuete.OnDrop(this);
             hexStat.UpdateLine();
-            
-            
-            
+            AudioManager.instanceAM.Play("FichePersoLacher");
+
+
         }
        
 
