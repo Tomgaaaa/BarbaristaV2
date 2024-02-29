@@ -183,12 +183,30 @@ public class SCR_Tasse : SCR_Contenant
     public void ResetBoisson()
     {
 
+        
+
             dicoStatBoisson[enumResistance.Hemorragique] = 0;
             dicoStatBoisson[enumResistance.Cryogenique] = 0;
             dicoStatBoisson[enumResistance.Thermique] = 0;
             dicoStatBoisson[enumResistance.Toxique] = 0;
             dicoStatBoisson[enumResistance.Electrique] = 0;
             dicoStatBoisson[enumResistance.Lethargique] = 0;
+
+
+         foreach(SpriteRenderer spriteR in listBroyeDejaUtilise)
+        {
+            spriteR.gameObject.SetActive(false);
+        }
+
+        foreach (SpriteRenderer spriteR in listRapeDejaUtilise)
+        {
+            spriteR.gameObject.SetActive(false);
+        }
+
+        foreach (SpriteRenderer spriteR in listTrancheDejaUtilise)
+        {
+            spriteR.gameObject.SetActive(false);
+        }
 
         listBroyeDejaUtilise.Clear();
         listRapeDejaUtilise.Clear();
@@ -205,12 +223,6 @@ public class SCR_Tasse : SCR_Contenant
     public SO_Boisson GetBoissonSo() 
     {
         SO_Boisson instanceSo = ScriptableObject.CreateInstance<SO_Boisson>();
-
-        foreach (SCR_Ingredient ingredient in listIngredientsUtilises)
-        {
-            Debug.Log("popopopopopopo");
-            listIngredientsUtilises.Add(ingredient);
-        }
 
         instanceSo.CreateBoisson(listIngredientsUtilises, dicoStatBoisson);
         return instanceSo;

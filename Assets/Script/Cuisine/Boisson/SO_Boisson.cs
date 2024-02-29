@@ -24,14 +24,12 @@ public class SO_Boisson : ScriptableObject
     public void CreateBoisson(List<SCR_Ingredient> listIngredientParameter, Dictionary<enumResistance, float> dicoResistanceParameter)
     {
 
-        
+        listIngredientsUtilises = listIngredientParameter;
+
         dicoResistanceBoisson = dicoResistanceParameter;
     }
 
-    public void AddIngredient(SCR_Ingredient ingredientParameter)
-    {
-        listIngredientsUtilises.Add(ingredientParameter);
-    }
+   
     public Dictionary<enumResistance, float> GetStat() => dicoResistanceBoisson;
    
 

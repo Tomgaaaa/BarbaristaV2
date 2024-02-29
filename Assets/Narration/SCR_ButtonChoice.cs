@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SCR_ButtonChoice : MonoBehaviour
 {
@@ -15,4 +16,27 @@ public class SCR_ButtonChoice : MonoBehaviour
     {
         
     }
+
+
+    public void SkipVN()
+    {
+        if(SCR_DATA.instanceData.GetEtapeQuete() == 1)
+        {
+            SceneManager.LoadScene(0);
+            SCR_DATA.instanceData.EtapeQueteUp();
+            SCR_DATA.instanceData.EtapePersoUp();
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+            SCR_DATA.instanceData.EtapeQueteUp();
+            SCR_DATA.instanceData.EtapePersoUp();
+            SCR_DATA.instanceData.JourUP();
+        }
+
+
+        
+    }
+
+   
 }

@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SCR_CuisineManager : MonoBehaviour
 {
@@ -99,8 +100,7 @@ public class SCR_CuisineManager : MonoBehaviour
     public void NextBoisson()// fonction appeller par le bouton qui s'affiche quand on a finit de preparer une boisson
     {
         buttonValideBoisson.gameObject.SetActive(false);
-        UnLockIngredient();
-        ResetBoisson();
+        
 
 
 
@@ -108,8 +108,6 @@ public class SCR_CuisineManager : MonoBehaviour
 
         SCR_DATA.instanceData.GetCurrentQuete().boissonsServis.Add(refTasse.GetBoissonSo());
 
-
-        Debug.Log(SCR_DATA.instanceData.GetCurrentQuete().boissonsServis[0].listIngredientsUtilises.Count) ;
 
         if(SCR_DATA.instanceData.GetEtapePerso() == 0)
         {
@@ -121,10 +119,10 @@ public class SCR_CuisineManager : MonoBehaviour
         {
             // switch a la partie VN
             Debug.Log("perso 2 servis faut passer au VN");
+            SceneManager.LoadScene(4);
 
             // ça faudra pas le mettre la 
-            SCR_DATA.instanceData.EtapeQueteUp();
-            SCR_DATA.instanceData.EtapePersoUp();
+            
             queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete());
             queteCuisine.InitialisationQuete();
 
@@ -133,7 +131,8 @@ public class SCR_CuisineManager : MonoBehaviour
 
         }
 
-
+        UnLockIngredient();
+        ResetBoisson();
         queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete()); // met a jour la quete sur le tableau de la cuisine
     }
 

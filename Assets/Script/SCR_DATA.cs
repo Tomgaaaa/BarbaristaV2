@@ -29,11 +29,12 @@ public class SCR_DATA : MonoBehaviour
     public void SetListCurrentQuest(SO_Quete SoQueteParameter) { listCurrentQuete.Add(SoQueteParameter);}
 
     public SO_Quete GetCurrentQuete() { return listCurrentQuete[etapeQuete]; }
+    public List<SO_Quete> GetListCurrentQuete() { return listCurrentQuete; }
     public int GetEtapeQuete() {  return etapeQuete; }
     public int GetEtapePerso() {  return etapePerso; }
     public int GetJour() {  return jour; }
-    public void JourUP() { jour ++; }
-    public void EtapePersoUp() // fonction appeller quand on a finit une boisson pour mettre a jour l'etape perso
+    public void JourUP() {   jour++; }
+    public void EtapePersoUp() // fonction appellé quand on a finit une boisson pour mettre a jour l'etape perso
     { 
         if(etapePerso == 0)
         {
@@ -45,11 +46,15 @@ public class SCR_DATA : MonoBehaviour
         }
     }
 
-    public void EtapeQueteUp() // fonction appeller quand on a finit une boisson pour mettre a jour l'etape de quete 
+    public void EtapeQueteUp() // fonction appellé quand on a finit une boisson pour mettre a jour l'etape de quete 
     {
         if (etapeQuete == 0)
         {
             etapeQuete++;
+        }
+        else if(etapeQuete == 1 )
+        {
+            etapeQuete = 0;
         }
         else
             Debug.Log(" y a un bleme");
