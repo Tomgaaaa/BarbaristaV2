@@ -10,7 +10,7 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
     [System.Serializable] public class dicoResistanceClass : TemplateDico<enumResistance, float> { };
     [SerializeField] private List<dicoResistanceClass> listDicoResistance; // permet de visualiser le dico des résistances, en private psk on a pas besoin d'y toucher, c'est juste pour visualiser en éditor
 
-    public Dictionary<enumResistance, float> dicoResistance; // dictionnaire des resistances, on associe une resistance à un float, float psk pour bouger dans l'hexagone il faut un float
+    public Dictionary<enumResistance, float> dicoResistanceDifficulte; // dictionnaire des resistances, on associe une resistance à un float, float psk pour bouger dans l'hexagone il faut un float
     public string titre;
     public List<Image> difficulty;
     public Sprite illustration; 
@@ -21,7 +21,8 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
 
     public List<SO_Personnage> persosEnvoyes = new List<SO_Personnage>();
     public List<SO_Boisson> boissonsServis = new List<SO_Boisson>();
-    public Dictionary<enumResistance, float> dicoResistanceJoueur; // dictionnaire des resistances, stat que le joueur a fait 
+    
+    
 
 
     public void OnAfterDeserialize() // fonction qui permet d'associer les listes (qu'on voit) aux dictionaires (qu'on ne voit pas)
@@ -29,12 +30,13 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
         persosEnvoyes.Clear();
         boissonsServis.Clear();
 
-        dicoResistance = new Dictionary<enumResistance, float>();
+
+        dicoResistanceDifficulte = new Dictionary<enumResistance, float>();
         foreach (dicoResistanceClass item in listDicoResistance)
         {
-            if (!dicoResistance.ContainsKey(item.key))
+            if (!dicoResistanceDifficulte.ContainsKey(item.key))
             {
-                dicoResistance.Add(item.key, item.value);
+                dicoResistanceDifficulte.Add(item.key, item.value);
             }
         }
     }
@@ -42,6 +44,18 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
     public void OnBeforeSerialize()
     {
         
+    }
+
+    public void Init(Dictionary<enumResistance, float> dicoResistanceDifficulteParameter,string titreParameter, List<Image> difficultyParameter, Sprite illustrationParameter, string descriptionParameter, string infoEvenementParameter, List<Image> rewardParameter)
+    {
+        dicoResistanceDifficulte = dicoResistanceDifficulteParameter;
+        titre = titreParameter;
+        difficulty = difficultyParameter;
+        illustration = illustrationParameter;
+        description = descriptionParameter;
+        infoEvenement = infoEvenementParameter;
+        reward = rewardParameter;
+
     }
     
 

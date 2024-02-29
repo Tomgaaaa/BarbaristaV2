@@ -9,7 +9,8 @@ public class SCR_DATA : MonoBehaviour
 
     [SerializeField] private List<SO_Quete> listCurrentQuete;
 
-    private int etape;
+    private int etapeQuete; // index indiquant laquelle des 2 quetes on est en train de preparer
+    private int etapePerso; // index indiquant quel perso on est en train de servir
 
     private int jour = 1;
 
@@ -27,18 +28,31 @@ public class SCR_DATA : MonoBehaviour
 
     public void SetListCurrentQuest(SO_Quete SoQueteParameter) { listCurrentQuete.Add(SoQueteParameter);}
 
-    public List<SO_Quete> GetCurrentQuete() { return listCurrentQuete; }
-    public int GetEtape() {  return etape; }
+    public SO_Quete GetCurrentQuete() { return listCurrentQuete[etapeQuete]; }
+    public int GetEtapeQuete() {  return etapeQuete; }
+    public int GetEtapePerso() {  return etapePerso; }
     public int GetJour() {  return jour; }
-    public void EtapeUp() 
+    public void JourUP() { jour ++; }
+    public void EtapePersoUp() // fonction appeller quand on a finit une boisson pour mettre a jour l'etape perso
     { 
-        if(etape == 0)
+        if(etapePerso == 0)
         {
-            etape ++;
+            etapePerso++;
         }
-        else if(etape == 1)
+        else if(etapePerso == 1)
         {
-            etape = 0;
+            etapePerso = 0; 
         }
+    }
+
+    public void EtapeQueteUp() // fonction appeller quand on a finit une boisson pour mettre a jour l'etape de quete 
+    {
+        if (etapeQuete == 0)
+        {
+            etapeQuete++;
+        }
+        else
+            Debug.Log(" y a un bleme");
+       
     }
 }

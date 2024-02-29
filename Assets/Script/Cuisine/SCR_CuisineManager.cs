@@ -37,7 +37,6 @@ public class SCR_CuisineManager : MonoBehaviour
     [SerializeField] private GameObject buttonValideBoisson;
 
 
-
     private void Awake()
     {
         if (instanceCM == null)
@@ -57,8 +56,11 @@ public class SCR_CuisineManager : MonoBehaviour
         startPositionAllUstensile = allUstensile.position;
 
 
-        queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete()[SCR_DATA.instanceData.GetEtape()]);
+        queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete());
         queteCuisine.InitialisationQuete();
+
+
+
     }
 
 
@@ -89,24 +91,50 @@ public class SCR_CuisineManager : MonoBehaviour
 
     }
 
-    public void hasFinishPreparation()
+    public void hasFinishPreparation() // fonction appeller quand on a finit de mettre de l'eau dans la tasse
     {
-        buttonValideBoisson.gameObject.SetActive(true);
+        buttonValideBoisson.gameObject.SetActive(true); // bouton qui permet de passer a la prochaine boisson / quete
     }
 
-    public void NextQuete()
+    public void NextBoisson()// fonction appeller par le bouton qui s'affiche quand on a finit de preparer une boisson
     {
         buttonValideBoisson.gameObject.SetActive(false);
         UnLockIngredient();
         ResetBoisson();
 
 
-        SCR_DATA.instanceData.GetCurrentQuete()[SCR_DATA.instanceData.GetEtape()].boissonsServis.Add(refTasse.GetBoissonSo());
-        SCR_DATA.instanceData.EtapeUp();
 
 
-        queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete()[SCR_DATA.instanceData.GetEtape()]);
-        queteCuisine.InitialisationQuete();
+
+        SCR_DATA.instanceData.GetCurrentQuete().boissonsServis.Add(refTasse.GetBoissonSo());
+
+
+        Debug.Log(SCR_DATA.instanceData.GetCurrentQuete().boissonsServis[0].listIngredientsUtilises.Count) ;
+
+        if(SCR_DATA.instanceData.GetEtapePerso() == 0)
+        {
+            SCR_DATA.instanceData.EtapePersoUp();
+            Debug.Log("perso 1 servis");
+
+        }
+        else if(SCR_DATA.instanceData.GetEtapePerso() == 1)
+        {
+            // switch a la partie VN
+            Debug.Log("perso 2 servis faut passer au VN");
+
+            // ça faudra pas le mettre la 
+            SCR_DATA.instanceData.EtapeQueteUp();
+            SCR_DATA.instanceData.EtapePersoUp();
+            queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete());
+            queteCuisine.InitialisationQuete();
+
+            
+
+
+        }
+
+
+        queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete()); // met a jour la quete sur le tableau de la cuisine
     }
 
     public void ResetBoisson()

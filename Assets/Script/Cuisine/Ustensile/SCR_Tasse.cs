@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SCR_Tasse : SCR_Contenant
 {
 
-    [SerializeField] private List<SCR_Ingredient> listIngredientsUtilises; // liste des ingrédients qui ont ete drop dans la tasse, sera utilise pour l'historique
+    [SerializeField] private List<SCR_Ingredient> listIngredientsUtilises = new List<SCR_Ingredient>(); // liste des ingrédients qui ont ete drop dans la tasse, sera utilise pour l'historique
     private Dictionary<enumResistance, float> dicoStatBoisson = new Dictionary<enumResistance, float>()
     {
         { enumResistance.Cryogenique, 0 },
@@ -77,11 +77,7 @@ public class SCR_Tasse : SCR_Contenant
             
             refBouilloire.UnlockBouilloire(); // alors on débloque le fait de pouvoir manipuler la bouilloire
 
-            SO_Boisson boisson = ScriptableObject.CreateInstance<SO_Boisson>();
-
-            
-            boisson.CreateBoisson(listIngredientsUtilises, dicoStatBoisson);
-            SCR_QueteManager.instanceQueteManager.AddBoisson(boisson);
+           
         }
     }
 
@@ -113,7 +109,9 @@ public class SCR_Tasse : SCR_Contenant
         SCR_CuisineManager.instanceCM.hasFinishPreparation();
         AudioManager.instanceAM.Play("Preparationfini");
 
-       
+
+
+        
 
 
     }
@@ -192,7 +190,9 @@ public class SCR_Tasse : SCR_Contenant
             dicoStatBoisson[enumResistance.Electrique] = 0;
             dicoStatBoisson[enumResistance.Lethargique] = 0;
 
-
+        listBroyeDejaUtilise.Clear();
+        listRapeDejaUtilise.Clear();
+        listTrancheDejaUtilise.Clear();
 
         listIngredientsUtilises.Clear();
         allVisuelle.SetActive(false);
@@ -205,6 +205,13 @@ public class SCR_Tasse : SCR_Contenant
     public SO_Boisson GetBoissonSo() 
     {
         SO_Boisson instanceSo = ScriptableObject.CreateInstance<SO_Boisson>();
+
+        foreach (SCR_Ingredient ingredient in listIngredientsUtilises)
+        {
+            Debug.Log("popopopopopopo");
+            listIngredientsUtilises.Add(ingredient);
+        }
+
         instanceSo.CreateBoisson(listIngredientsUtilises, dicoStatBoisson);
         return instanceSo;
     }

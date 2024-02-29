@@ -115,6 +115,7 @@ public class SCR_QueteTableau : MonoBehaviour
             fiche.MakeSmall(true);
             fiche.transform.position = new Vector3(P1.position.x, P1.position.y, -1);
             posQuete[0] = fiche;
+
             myQueteSo.persosEnvoyes.Add(fiche.GetSoPerso());
 
             SCR_QueteManager.instanceQueteManager.AddRemovePersosUtilise(fiche, true);
@@ -128,6 +129,7 @@ public class SCR_QueteTableau : MonoBehaviour
             fiche.MakeSmall(true);
             fiche.transform.position = new Vector3(P2.position.x, P2.position.y, -1);
             posQuete[1] = fiche;
+
             myQueteSo.persosEnvoyes.Add(fiche.GetSoPerso());
 
 
@@ -153,6 +155,7 @@ public class SCR_QueteTableau : MonoBehaviour
 
             fiche.MakeSmall(false);
             posQuete[0] = null;
+
             myQueteSo.persosEnvoyes.Remove(fiche.GetSoPerso());
 
 
@@ -165,6 +168,7 @@ public class SCR_QueteTableau : MonoBehaviour
 
             fiche.MakeSmall(false);
             posQuete[1] = null;
+
             myQueteSo.persosEnvoyes.Remove(fiche.GetSoPerso());
 
         }
@@ -195,6 +199,7 @@ public class SCR_QueteTableau : MonoBehaviour
 
         posQuete[0] = null;
         posQuete[1] = null;
+
         myQueteSo.persosEnvoyes.Clear();
 
     }

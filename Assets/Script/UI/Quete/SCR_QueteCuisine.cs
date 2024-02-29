@@ -20,7 +20,8 @@ public class SCR_QueteCuisine : SCR_QueteTableau
        listDifficultyInstance.Clear();
 
         base.InitialisationQuete();
-
+        
+        
         imageP1.sprite = myQueteSo.persosEnvoyes[0].profil;
         imageP2.sprite = myQueteSo.persosEnvoyes[1].profil;
     }

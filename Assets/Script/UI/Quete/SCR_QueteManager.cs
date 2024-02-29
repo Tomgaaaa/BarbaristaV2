@@ -23,8 +23,6 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
     [SerializeField] private List<dicoJourQueteClass> listDicoJourQuete; // permet de visualiser le dico des résistances, en private psk on a pas besoin d'y toucher, c'est juste pour visualiser en éditor
 
-
-
     public void OnBeforeSerialize()
     {
     }
@@ -95,7 +93,6 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         SpawnQuete();
         SpawnPerso();
 
-        
     }
 
 #if UNITY_EDITOR
@@ -104,9 +101,17 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     {
         for (int i = 0; i < dicoJourQuete[SCR_DATA.instanceData.GetJour()].Count; i++)
         {
+
+
             SCR_QueteTableau ms = Instantiate(prefabQuete,transform);
-            //ms.SetCurrentQuete(listAllQuete[Random.Range(0, listAllQuete.Count)]);
-            ms.SetCurrentQuete(dicoJourQuete[SCR_DATA.instanceData.GetJour()][i]);
+
+            SO_Quete queteInstance = ScriptableObject.CreateInstance<SO_Quete>();
+            SO_Quete queteChoisis = dicoJourQuete[SCR_DATA.instanceData.GetJour()][i];
+            queteInstance.Init(queteChoisis.dicoResistanceDifficulte,queteChoisis.titre,queteChoisis.difficulty,queteChoisis.illustration,queteChoisis.description,queteChoisis.infoEvenement,queteChoisis.reward);
+
+
+           // ms.SetCurrentQuete(dicoJourQuete[SCR_DATA.instanceData.GetJour()][i]);
+            ms.SetCurrentQuete(queteInstance);
             ms.transform.position = listTransformSpawn[i].position;
             listQuetePropose.Add(ms);
             backupTransformQuete.Add(listQuetePropose[i], listQuetePropose[i].transform.position);
@@ -293,7 +298,6 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
     public void ConfirmSelectionPersos()
     {
-        Debug.Log("Go cuisine");
 
         foreach(SCR_QueteTableau masterQuete in listCurrentQueteInstance)
         {
@@ -347,10 +351,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
     }  
 
-    public void AddBoisson(SO_Boisson boissonParameter)
-    {
-        listCurrentQueteInstance[etapeQuete].GetQuete().boissonsServis.Add(boissonParameter);
-    }
+   
 
 
     public SO_Quete GetCurrentQuete() { return listCurrentQueteInstance[etapeQuete].GetQuete(); }
