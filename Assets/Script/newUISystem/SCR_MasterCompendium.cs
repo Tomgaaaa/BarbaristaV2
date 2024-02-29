@@ -115,8 +115,10 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
     public void OpenComp()
     {
         BGClickable.SetActive(true);
+        AudioManager.instanceAM.Play("SesameOuvretoi");
         ButtonCompendium.SetActive(false);
         pageToDestroy = Instantiate(dicoPage[actualPage], transform);
+        
     }
     public void CloseComp()
     {
@@ -137,5 +139,6 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
     public void PopUpEnd()
     {
         infoBulle.gameObject.SetActive(false);
+        AudioManager.instanceAM.Play("Finish");
     }
 }
