@@ -139,6 +139,5 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
     public void PopUpEnd()
     {
         infoBulle.gameObject.SetActive(false);
-        AudioManager.instanceAM.Play("Finish");
     }
 }

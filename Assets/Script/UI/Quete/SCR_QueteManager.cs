@@ -149,7 +149,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             if (!listCurrentQueteInstance.Contains(listQuetePropose[i]))
             {
                 listQuetePropose[i].transform.DOMove(positionOffQuete.position, 2);
-
+                
             }
 
         }
@@ -169,7 +169,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         listCurrentQueteInstance[0].transform.DOMove(positionSelectQuete.position, 2);
         listCurrentQueteInstance[0].GetComponent<SpriteRenderer>().sortingOrder = 5;
         listCurrentQueteInstance[0].GetComponentInChildren<Canvas>().sortingOrder = 5;
-
+        AudioManager.instanceAM.Play("ValidationQuest");
+        AudioManager.instanceAM.Play("SwitchWhoosh");
 
     }
     public void RetourChoixQuete()
@@ -189,6 +190,9 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
             listQuetePropose[i].ResetPerso();
             //Destroy(listQuetePropose[i].gameObject);
+
+            AudioManager.instanceAM.Play("RetourChoixQuete");
+            AudioManager.instanceAM.Play("Retourwhoosh");
         }
 
 
@@ -262,8 +266,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             listCurrentQueteInstance[0].transform.DORotate(new Vector3(0, 0, 0), 1);
             listCurrentQueteInstance[1].transform.DORotate(new Vector3(0, 0, 35), 1);
         }
-        
 
+        AudioManager.instanceAM.Play("SwitchFiche");
 
 
     }
@@ -303,11 +307,12 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         {
             SCR_DATA.instanceData.SetListCurrentQuest(masterQuete.GetQuete());
 
-
+            AudioManager.instanceAM.Play("SelectConfirm");
 
         }
 
         SceneManager.LoadScene(1);
+        AudioManager.instanceAM.Play("switchCuisine");
     }
 
     public void AddCurrentQuete(SCR_QueteTableau currentQueteParameter, bool removeParameter = false) 

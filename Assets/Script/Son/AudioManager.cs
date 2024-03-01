@@ -53,7 +53,7 @@ public class AudioManager : MonoBehaviour
         // lance la fonction Init qui initialise les AudioSources 
         Init();
 
-
+        DontDestroyOnLoad(this);
     }
 
     private void Start()
