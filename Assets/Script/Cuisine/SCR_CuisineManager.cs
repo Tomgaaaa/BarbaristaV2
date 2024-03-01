@@ -100,8 +100,8 @@ public class SCR_CuisineManager : MonoBehaviour
     public void NextBoisson()// fonction appeller par le bouton qui s'affiche quand on a finit de preparer une boisson
     {
         buttonValideBoisson.gameObject.SetActive(false);
-        
 
+        AudioManager.instanceAM.Play("TransiDeuxiemeBoisson");
 
 
 
@@ -119,6 +119,7 @@ public class SCR_CuisineManager : MonoBehaviour
         {
             // switch a la partie VN
             Debug.Log("perso 2 servis faut passer au VN");
+            AudioManager.instanceAM.Play("PreparationFinish");
             SceneManager.LoadScene(4);
 
             // ça faudra pas le mettre la 

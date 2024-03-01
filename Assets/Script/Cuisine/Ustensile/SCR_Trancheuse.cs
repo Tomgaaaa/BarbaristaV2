@@ -79,11 +79,13 @@ public class SCR_Trancheuse : SCR_Ustensile
             if (couteau.rotation.eulerAngles.z < 40) // si le couteau est au début de sa rotation
             {
                 forceRotation = initialForceRotation; // pas trop de lag car il n'est pas au niveau de l'ingrédient
+                
 
             }
             else
             {
                 forceRotation = initialForceRotation/2.5f; // si il arrive au niveau de l'ingrédient, le couteau met + de temps a atteindre sa rotation cible, donne un effet de forcage 
+                
             }
 
 
@@ -111,7 +113,8 @@ public class SCR_Trancheuse : SCR_Ustensile
                 AudioManager.instanceAM.Play("Trancheuse_1");
                 needReset = true; // empeche de rester en bas de la rotation et de spam des petits accoups
                 currentNombreCoupe++; // ajoute 1 au nombre de ecoupe effectue
-                
+                AudioManager.instanceAM.Play("Craquement");
+
                 totalRotation = 0f;
 
                 if (currentNombreCoupe == nombreDeCoupeNecessaire) // si on a atteint le nombre de coupe necessaire
