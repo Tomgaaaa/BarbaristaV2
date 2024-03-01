@@ -112,20 +112,17 @@ public class SCR_CuisineManager : MonoBehaviour
         if(SCR_DATA.instanceData.GetEtapePerso() == 0)
         {
             SCR_DATA.instanceData.EtapePersoUp();
-            Debug.Log("perso 1 servis");
 
         }
         else if(SCR_DATA.instanceData.GetEtapePerso() == 1)
         {
             // switch a la partie VN
-            Debug.Log("perso 2 servis faut passer au VN");
             AudioManager.instanceAM.Play("PreparationFinish");
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene("SCE_VisualNovel");
 
-            // ça faudra pas le mettre la 
+     
             
-            queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete());
-            queteCuisine.InitialisationQuete();
+            
 
             
 

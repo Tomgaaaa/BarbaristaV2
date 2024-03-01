@@ -311,7 +311,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
         }
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("SCE_VisualNovel");
         AudioManager.instanceAM.Play("switchCuisine");
     }
 

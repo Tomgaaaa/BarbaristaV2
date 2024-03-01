@@ -12,7 +12,7 @@ public class SCR_DATA : MonoBehaviour
     private int etapeQuete; // index indiquant laquelle des 2 quetes on est en train de preparer
     private int etapePerso; // index indiquant quel perso on est en train de servir
 
-    public int jour = 1;
+    private int jour = 1;
 
 
     private void Awake()

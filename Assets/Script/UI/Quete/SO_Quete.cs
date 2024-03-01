@@ -21,7 +21,8 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
 
     public List<SO_Personnage> persosEnvoyes = new List<SO_Personnage>();
     public List<SO_Boisson> boissonsServis = new List<SO_Boisson>();
-    
+
+    public TextAsset myQueteInk;
     
 
 
