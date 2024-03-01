@@ -40,6 +40,8 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
     [SerializeField] private GameObject BGClickable;
     [SerializeField] private GameObject ButtonCompendium;
 
+    private bool isOpen;
+
     private void Awake() // singleton toi meme tu sais
     {
         if (instanceMComp == null)
@@ -54,6 +56,9 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
     public void PrevPage()
     {
+        if (actualPage == enumPage.Sommaire)
+            return;
+
         if (pageToDestroy != null)
             Destroy(pageToDestroy);
         actualPage--;
@@ -64,8 +69,15 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
     public void NextPage()
     {
+        
+        if (actualPage == enumPage.FichePerso1)
+            return;
+        
         if (pageToDestroy != null)
             Destroy(pageToDestroy);
+
+        
+
         actualPage++;
         pageToDestroy = Instantiate(dicoPage[actualPage], transform);
         AudioManager.instanceAM.Play("SwiftPage");
@@ -114,6 +126,7 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
     public void OpenComp()
     {
+        isOpen = true;
         BGClickable.SetActive(true);
         AudioManager.instanceAM.Play("SesameOuvretoi");
         ButtonCompendium.SetActive(false);
@@ -122,6 +135,7 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
     }
     public void CloseComp()
     {
+        isOpen = false;
         BGClickable.SetActive(false);
         ButtonCompendium.SetActive(true);
 
@@ -140,4 +154,6 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
     {
         infoBulle.gameObject.SetActive(false);
     }
+
+    public bool GetIsOpen() => isOpen;
 }

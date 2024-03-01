@@ -25,13 +25,13 @@ public class SCR_ButtonChoice : MonoBehaviour
             SceneManager.LoadScene(0);
             SCR_DATA.instanceData.EtapeQueteUp();
             SCR_DATA.instanceData.EtapePersoUp();
+            SCR_DATA.instanceData.JourUP();
         }
         else
         {
             SceneManager.LoadScene(1);
             SCR_DATA.instanceData.EtapeQueteUp();
             SCR_DATA.instanceData.EtapePersoUp();
-            SCR_DATA.instanceData.JourUP();
         }
 
 
