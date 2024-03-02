@@ -20,7 +20,7 @@ public class SCR_ButtonChoice : MonoBehaviour
 
     public void SkipVN()
     {
-        if(SCR_DATA.instanceData.GetEtapeQuete() == 1)
+        if(SCR_DATA.instanceData.GetEtapeQuest() == 1)
         {
             SceneManager.LoadScene(0);
             SCR_DATA.instanceData.EtapeQueteUp();

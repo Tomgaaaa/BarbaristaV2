@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SO_Boisson : ScriptableObject 
 {
-    public List<SCR_Ingredient> listIngredientsUtilises = new List<SCR_Ingredient>();
+    public List<SCR_Ingredient> listIngredientsUtilises = new List<SCR_Ingredient>(); // liste des ingrédients transformés utilisés pour créer la boisson 
 
-    public Sprite screenBoisson;
+    public Sprite screenBoisson; // ça on verra plus tard pour l'affichage dans l'historique
 
-    public Dictionary<enumResistance, float> dicoResistanceBoisson = new Dictionary<enumResistance, float>
+    public Dictionary<enumResistance, float> dicoResistanceBoisson = new Dictionary<enumResistance, float> // dico des resistances de la boisson, on l'initialise a 0 
     {
         { enumResistance.Electrique , 0f},
         { enumResistance.Hemorragique , 0f},
@@ -19,18 +19,18 @@ public class SO_Boisson : ScriptableObject
     
     
     
-    }; // dictionnaire des resistances, on associe une resistance à un float, float psk pour bouger dans l'hexagone il faut un float
+    }; 
 
-    public void CreateBoisson(List<SCR_Ingredient> listIngredientParameter, Dictionary<enumResistance, float> dicoResistanceParameter)
+    public void CreateBoisson(List<SCR_Ingredient> listIngredientParameter, Dictionary<enumResistance, float> dicoResistanceParameter) // fonction qui permet de creer la boisson (obviously)
     {
 
-        listIngredientsUtilises = listIngredientParameter;
+        listIngredientsUtilises = listIngredientParameter; // on recupere la liste des ingredient utilises
 
-        dicoResistanceBoisson = dicoResistanceParameter;
+        dicoResistanceBoisson = dicoResistanceParameter; // et le dico des resistances associés
     }
 
    
-    public Dictionary<enumResistance, float> GetStat() => dicoResistanceBoisson;
+    public Dictionary<enumResistance, float> GetStat() => dicoResistanceBoisson; // fonction pour recuperer les stats de la boisson
    
 
 }

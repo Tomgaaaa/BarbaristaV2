@@ -33,7 +33,7 @@ public class SCR_CuisineManager : MonoBehaviour
     [SerializeField] private SCR_Tasse refTasse;
     [SerializeField] private SCR_HexagoneStat refHexagone;
 
-    [SerializeField] private SCR_QueteCuisine queteCuisine;
+    [SerializeField] private SCR_QueteCuisine queteCuisine; // quete a gauche de l'ecran
 
     [SerializeField] private GameObject buttonValideBoisson;
 
@@ -57,8 +57,7 @@ public class SCR_CuisineManager : MonoBehaviour
         startPositionAllUstensile = allUstensile.position;
 
 
-        queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete());
-        queteCuisine.InitialisationQuete();
+        queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuest()); // update la quete a afficher avec celle qui est en cours
 
 
 
@@ -106,32 +105,25 @@ public class SCR_CuisineManager : MonoBehaviour
 
 
 
-        SCR_DATA.instanceData.GetCurrentQuete().boissonsServis.Add(refTasse.GetBoissonSo());
+        SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Add(refTasse.GetBoissonSo()); // ajoute la boisson preparer a la list des boissons servis de la quete
 
 
-        if(SCR_DATA.instanceData.GetEtapePerso() == 0)
+        if(SCR_DATA.instanceData.GetEtapePerso() == 0) // si on vient de servir le premier perso
         {
-            SCR_DATA.instanceData.EtapePersoUp();
+            SCR_DATA.instanceData.EtapePersoUp(); // alors on passe au persos d'apres
 
         }
-        else if(SCR_DATA.instanceData.GetEtapePerso() == 1)
+        else if(SCR_DATA.instanceData.GetEtapePerso() == 1) // si on vient de servir le deuxieme perso
         {
-            // switch a la partie VN
+            // salors on passe a la partie VN
             AudioManager.instanceAM.Play("PreparationFinish");
             SceneManager.LoadScene("SCE_VisualNovel");
-
-     
-            
-            
-
-            
-
 
         }
 
         UnLockIngredient();
         ResetBoisson();
-        queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuete()); // met a jour la quete sur le tableau de la cuisine
+        //eteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuest()); // met a jour la quete sur le tableau de la cuisine
     }
 
     public void ResetBoisson()

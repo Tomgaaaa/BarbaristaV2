@@ -22,7 +22,7 @@ public class SCR_StoryReader : MonoBehaviour
         story = new Story(textAsset.text);
         story.BindExternalFunction("FinishDialogue",(string name) => { ChangeScene(); });
 
-        if(SCR_DATA.instanceData.GetCurrentQuete().boissonsServis.Count == 2 )
+        if(SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2 )
         {
             story.ChoosePathString("Apresquete");
         }
@@ -41,21 +41,21 @@ public class SCR_StoryReader : MonoBehaviour
     
     private void ChangeScene()
     {
-        if (SCR_DATA.instanceData.GetCurrentQuete().boissonsServis.Count == 0)
+        if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 0)
         {
             SceneManager.LoadScene("SCE_Cuisine");
         }
-        else if(SCR_DATA.instanceData.GetEtapeQuete() == 0 && SCR_DATA.instanceData.GetCurrentQuete().boissonsServis.Count == 2)
+        else if(SCR_DATA.instanceData.GetEtapeQuest() == 0 && SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
         {
             SCR_DATA.instanceData.EtapeQueteUp();
             SCR_DATA.instanceData.EtapePersoUp();
 
-            story = new Story( SCR_DATA.instanceData.GetCurrentQuete().myQueteInk.text);
+            story = new Story( SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
             story.ChoosePathString("Avantquete");
             Next();
 
         }
-        else if(SCR_DATA.instanceData.GetEtapeQuete() == 1 && SCR_DATA.instanceData.GetCurrentQuete().boissonsServis.Count == 2)
+        else if(SCR_DATA.instanceData.GetEtapeQuest() == 1 && SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
         {
             SCR_DATA.instanceData.EtapeQueteUp();
             SCR_DATA.instanceData.EtapePersoUp();
