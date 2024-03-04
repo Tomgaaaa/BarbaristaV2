@@ -96,10 +96,11 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
     {
         if(ingredientAddParameter.stockSO == 0) // si le stock est a 0 il y a quelque truc a faire en +
         {
+            
 
             SpawnIngredient(ingredientAddParameter,true); // force le spawn d'un ingrédient car on veut en rajouter un
+            
 
-           
 
             GameObject etiquetteOutOfStock = dicoOutOfStock[ingredientAddParameter.myEnumIngredientSO]; // recupere quel objet OutOfStock il faut désactiver
             etiquetteOutOfStock.SetActive(false); // désactive le OutOfStock car on rajouter 1 au stock dans il n'est plus "out of stock"
@@ -127,7 +128,7 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
         else // si on a plus de stock
         {
             Debug.Log("out of stock");
-            AudioManager.instanceAM.Play("Outofstock");
+            AudioManager.instanceAM.Play("OutOfStock");
         }
 
     }

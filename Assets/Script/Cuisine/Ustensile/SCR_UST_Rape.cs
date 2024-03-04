@@ -37,17 +37,16 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
 
 
         lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-
         plaqueTargetJoint = refPlaque.gameObject.AddComponent<TargetJoint2D>();
         plaqueTargetJoint.frequency = frequenceJoint;
         plaqueTargetJoint.dampingRatio = dampingJoint;
         AudioManager.instanceAM.Play("Grab_2");
+        
     }
 
     public override void OnMouseUp()
     {
         base.OnMouseUp();
-
         Destroy(plaqueTargetJoint); plaqueTargetJoint = null;
         refPlaque.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         
@@ -59,15 +58,17 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
             base.OnMouseDrag();
             
             Vector3 diffMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition) - lastMousePos; // vecteur de direction entre la derniere position de la souris et sa position actuelle
+            
             PosX += diffMousePos.x; // positif quand on va vers le haut ou droite et negatif quand on va a gauche ou en bas
             float posxClamp = Mathf.Clamp(PosX, -1, 1); // clamp cette valeur à 1 car on veut on mouvement ver le haut ou droite pour effectuer la manipulation
             PosX = posxClamp; // RotZ prend la valeur max du clamp, pour que quand on soustrait, on soustrait depuis le max et pas du "surplus"
             float positionXRemap = Remap(posxClamp, -1, 1, -0.2f, 0.2f); // remap cette valeur avec les rotation min et max de la bouilloire
 
             plaqueTargetJoint.target = new Vector2(transform.position.x + positionXRemap, refPlaque.position.y);
-            
+            /*AudioManager.instanceAM.Play("Raper");*/
             if (diffMousePos.x != 0)
             {
+                
                 currentTempsPasse += Mathf.Abs(diffMousePos.x /10);
                 
 
