@@ -8,6 +8,7 @@ public class SCR_DATA : MonoBehaviour
     public static SCR_DATA instanceData;
 
     [SerializeField] private List<SO_Quete> listCurrentQuete;
+    public List<SO_Personnage> listPersos;
 
     private int etapeQuete; // index indiquant laquelle des 2 quetes on est en train de preparer
     private int etapePerso; // index indiquant quel perso on est en train de servir
@@ -27,8 +28,9 @@ public class SCR_DATA : MonoBehaviour
 
 
     public void SetListCurrentQuest(SO_Quete SoQueteParameter) { listCurrentQuete.Add(SoQueteParameter);} // fonction appeller lorsquu'on valide le choix des persos, jsp pk j'ai pas pus transferer de liste doncj'appelle cette fonction 2 fois
-
+    public void SetListPersos(List<SO_Personnage> listPersosParameter) { listPersos = listPersosParameter; }
     public SO_Quete GetCurrentQuest() { return listCurrentQuete[etapeQuete]; } // fonction pour avoir la quete actuelle entre les 2 choisis
+    public List<SO_Personnage> GetListPersos() { return listPersos; }
     public List<SO_Quete> GetListCurrentQuest() { return listCurrentQuete; } // fonction pour recuperer les 2 quetes choisis
     public int GetEtapeQuest() {  return etapeQuete; } // fonction pour recuperer l'etape de la quete, si on est en train de faire la premiere ou la deuxieme quete
     public int GetEtapePerso() {  return etapePerso; } // fonction pour recuperer  l'etape du perso, si on sert le premier ou le deuxieme client de la quete

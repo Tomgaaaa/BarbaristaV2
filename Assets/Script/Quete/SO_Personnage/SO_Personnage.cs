@@ -46,4 +46,16 @@ public class SO_Personnage : ScriptableObject, ISerializationCallbackReceiver
     }
 
 
+    public void Init(Dictionary<enumResistance,float> dicoResistanceParameter, Dictionary<enumPerso,int> dicoRelationParameter, string nameParameter, enumPerso myEnumParameter,Sprite spriteParameter) 
+    {
+        dicoResistance = dicoResistanceParameter;
+        dicoRelationPerso = dicoRelationParameter;
+        namePerso = nameParameter;
+        myEnumPerso = myEnumParameter;
+        profil = spriteParameter;
+    
+    
+    
+    }
+
 }

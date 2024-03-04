@@ -10,12 +10,12 @@ public class SCR_GainQuete : MonoBehaviour
     public float moyennePerso2;
 
 
-    public SO_Personnage personnage1;
-    public SO_Personnage personnage2;
-    public List<SCR_Ingredient> ingredientsUtilises;
-    public SO_Quete queteUtilise;
-    SO_Boisson boisson1R;
-    SO_Boisson boisson2R;
+    //public SO_Personnage personnage1;
+    //public SO_Personnage personnage2;
+    //public List<SCR_Ingredient> ingredientsUtilises;
+    //public SO_Quete queteUtilise;
+    //SO_Boisson boisson1R;
+    //SO_Boisson boisson2R;
 
     private Dictionary<enumResistance,float> dicoRes = new Dictionary<enumResistance, float>() // juste pour parcourir les enum
     {
@@ -30,7 +30,8 @@ public class SCR_GainQuete : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[0], false);
+        CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[1], false);
     }
 
     // Update is called once per frame
@@ -42,7 +43,7 @@ public class SCR_GainQuete : MonoBehaviour
 
 #if UNITY_EDITOR
     [ContextMenu("Calcule Quete")]
-    public void CalculQuete()
+   /* public void CalculQuete()
     {
         boisson1R = ScriptableObject.CreateInstance<SO_Boisson>();
         boisson2R = ScriptableObject.CreateInstance<SO_Boisson>();
@@ -69,7 +70,7 @@ public class SCR_GainQuete : MonoBehaviour
         boisson2R.CreateBoisson(ingredientsUtilises, statBoisson2);
 
         CalculeChanceQuete(queteUtilise,true);
-    }
+    }*/
 
 #endif
 
@@ -81,19 +82,17 @@ public class SCR_GainQuete : MonoBehaviour
 
 
         SO_Personnage perso1;
-        //perso1 = queteEffectueParameter.persosEnvoyes[0];
+        perso1 = queteEffectueParameter.persosEnvoyes[0];
         SO_Personnage perso2;
-        //perso2 = queteEffectueParameter.persosEnvoyes[1];
+        perso2 = queteEffectueParameter.persosEnvoyes[1];
 
-        SO_Boisson boisson1 = boisson1R;
-        //boisson1R = queteEffectueParameter.boissonsServis[0];
-        SO_Boisson boisson2 = boisson2R;
-        //boisson2R = queteEffectueParameter.boissonsServis[1];
+        SO_Boisson boisson1 = queteEffectueParameter.boissonsServis[0];
+        SO_Boisson boisson2 = queteEffectueParameter.boissonsServis[1];
 
         
     
-            perso1 = personnage1;  // a gerter
-            perso2 = personnage2;
+            /*perso1 = personnage1;  // a gerter
+            perso2 = personnage2;*/
 
 
 
@@ -167,6 +166,8 @@ public class SCR_GainQuete : MonoBehaviour
         if (RandomPick <= ReussiteMission)
         {
             hasWinMission = true;
+            AjoutXPRelation(queteEffectueParameter, ReussiteMission, hasWinMission);
+
             Debug.Log("Tu as reussi la mission, BRAVO" + hasWinMission);
 
         }
@@ -177,7 +178,6 @@ public class SCR_GainQuete : MonoBehaviour
         }
 
 
-        AjoutXPRelation(queteUtilise, ReussiteMission, hasWinMission);
 
     }
 
@@ -186,12 +186,12 @@ public class SCR_GainQuete : MonoBehaviour
     {
         
         SO_Personnage perso1;
-        //perso1 = queteUtiliseXP.persosEnvoyes[0];
-        perso1 = personnage1; // a gerter
+        perso1 = queteUtiliseXP.persosEnvoyes[0];
+        //perso1 = personnage1; // a gerter
 
         SO_Personnage perso2;
-        //perso2 = queteUtiliseXP.persosEnvoyes[1];
-        perso2 = personnage2; // a gerter
+        perso2 = queteUtiliseXP.persosEnvoyes[1];
+        //perso2 = personnage2; // a gerter
 
 
         #region Affection
@@ -220,8 +220,8 @@ public class SCR_GainQuete : MonoBehaviour
         #region XP
 
 
-        CalculeXP(personnage1);
-        CalculeXP(personnage2);
+        CalculeXP(perso1,queteUtiliseXP);
+        CalculeXP(perso2, queteUtiliseXP);
         /*for (int i = 0; i< queteUtilise.persosEnvoyes.Count; i++)
         {
             CalculeXP(queteUtilise.persosEnvoyes[i]);
@@ -232,15 +232,15 @@ public class SCR_GainQuete : MonoBehaviour
     }
 
 
-    private void CalculeXP(SO_Personnage persoUtilise)
+    private void CalculeXP(SO_Personnage persoUtilise,SO_Quete queteEffectueCalculParameter)
     {
 
         foreach (KeyValuePair<enumResistance, float> enumR in dicoRes)// in dicoPerso1 c'est juste pour lister toutes les enums qui existent
         {
-            if (queteUtilise.dicoResistanceDifficulte.ContainsKey(enumR.Key) && queteUtilise.dicoResistanceDifficulte[enumR.Key] != 0)
+            if (queteEffectueCalculParameter.dicoResistanceDifficulte.ContainsKey(enumR.Key) && queteEffectueCalculParameter.dicoResistanceDifficulte[enumR.Key] != 0)
             {
 
-                float differenceStatPerso2 = queteUtilise.dicoResistanceDifficulte[enumR.Key] - persoUtilise.dicoResistance[enumR.Key];
+                float differenceStatPerso2 = queteEffectueCalculParameter.dicoResistanceDifficulte[enumR.Key] - persoUtilise.dicoResistance[enumR.Key];
                 float xpGagnePerso2 = 0;
 
                 if (differenceStatPerso2 > 0 && differenceStatPerso2 < 250)

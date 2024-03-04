@@ -54,6 +54,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     private List<SCR_Ficheperso1> listFichepersoPropose = new List<SCR_Ficheperso1>(); // list des persos spawn, pour differencier ceux qui sont utilises et ceux qui ne le sont pas
     private List<SCR_Ficheperso1> listFichepersoUtilise = new List<SCR_Ficheperso1>(); // lsit des fiches persos selectiones
     [SerializeField] private List<SO_Personnage> listSoPerso; // list de tout les SO persos que l'on peut proposer
+    private List<SO_Personnage> listSoPersoInstancie = new List<SO_Personnage>(); // list de tout les SO persos que l'on a instancie
     private List<Vector3> startPositionPerso = new List<Vector3>(); // position de base des fiches persos
 
 
@@ -106,7 +107,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             SO_Quete queteChoisis = dicoJourQuete[SCR_DATA.instanceData.GetJour()][i]; // quete renseigne dans le dico quete / jour, on la recupere pour prendre ses infos
             
             // on transmet les infos de la quete selectionne a l'instance de SO, c'est l'equivalent de faire un copie coller de SO
-            queteInstance.Init(queteChoisis.dicoResistanceDifficulte,queteChoisis.titre,queteChoisis.difficulty,queteChoisis.illustration,queteChoisis.description,queteChoisis.infoEvenement,queteChoisis.reward);
+            queteInstance.Init(queteChoisis.dicoResistanceDifficulte,queteChoisis.titre,queteChoisis.difficulty,queteChoisis.illustration,queteChoisis.description,queteChoisis.infoEvenement,queteChoisis.reward, queteChoisis.myQueteInk);
 
 
            // ms.SetCurrentQuete(dicoJourQuete[SCR_DATA.instanceData.GetJour()][i]);
@@ -120,14 +121,45 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
     private void SpawnPerso()// a revoir
     {
+
+
+
         for (int i = 0; i < 4; i++)
         {
             SCR_Ficheperso1 fichePerso = Instantiate(prefabFichePerso, parentFichePerso);
             listFichepersoPropose.Add(fichePerso);
-            fichePerso.SetSoPerso(listSoPerso[i]); 
+
+
+            if (SCR_DATA.instanceData.GetListPersos().Count == 0)
+            {
+                SO_Personnage personnageInstance = ScriptableObject.CreateInstance<SO_Personnage>();
+                SO_Personnage personnageChoisi = listSoPerso[i];
+                personnageInstance.Init(personnageChoisi.dicoResistance, personnageChoisi.dicoRelationPerso, personnageChoisi.namePerso, personnageChoisi.myEnumPerso,personnageChoisi.profil);
+
+                fichePerso.SetSoPerso(personnageInstance);
+
+                listSoPersoInstancie.Add(personnageInstance);
+
+                if(i == 3)
+                {
+                    SCR_DATA.instanceData.SetListPersos(listSoPersoInstancie);
+                }
+
+
+            }
+            else
+            {
+                fichePerso.SetSoPerso(SCR_DATA.instanceData.GetListPersos()[i]);
+            }
+
+
             startPositionPerso.Add(fichePerso.transform.position);
 
         }
+
+
+        
+        
     }
 
 

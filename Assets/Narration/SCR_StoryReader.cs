@@ -14,12 +14,15 @@ public class SCR_StoryReader : MonoBehaviour
     [SerializeField] private GameObject prefabButton;
 
     private Story story;
+    public TextAsset debugQuete;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        story = new Story(textAsset.text);
+        story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
+        debugQuete = SCR_DATA.instanceData.GetCurrentQuest().myQueteInk;
+
         story.BindExternalFunction("FinishDialogue",(string name) => { ChangeScene(); });
 
         if(SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2 )
@@ -33,11 +36,7 @@ public class SCR_StoryReader : MonoBehaviour
         Next();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
     
     private void ChangeScene()
     {
@@ -51,8 +50,11 @@ public class SCR_StoryReader : MonoBehaviour
             SCR_DATA.instanceData.EtapePersoUp();
 
             story = new Story( SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
+            debugQuete = SCR_DATA.instanceData.GetCurrentQuest().myQueteInk;
+            story.BindExternalFunction("FinishDialogue", (string name) => { ChangeScene(); });
+
             story.ChoosePathString("Avantquete");
-            Next();
+            //Next();
 
         }
         else if(SCR_DATA.instanceData.GetEtapeQuest() == 1 && SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)

@@ -47,7 +47,7 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
         
     }
 
-    public void Init(Dictionary<enumResistance, float> dicoResistanceDifficulteParameter,string titreParameter, List<Image> difficultyParameter, Sprite illustrationParameter, string descriptionParameter, string infoEvenementParameter, List<Image> rewardParameter)
+    public void Init(Dictionary<enumResistance, float> dicoResistanceDifficulteParameter,string titreParameter, List<Image> difficultyParameter, Sprite illustrationParameter, string descriptionParameter, string infoEvenementParameter, List<Image> rewardParameter,TextAsset textInkParameter)
     {
         dicoResistanceDifficulte = dicoResistanceDifficulteParameter;
         titre = titreParameter;
@@ -56,6 +56,7 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
         description = descriptionParameter;
         infoEvenement = infoEvenementParameter;
         reward = rewardParameter;
+        myQueteInk = textInkParameter;
 
     }
     
