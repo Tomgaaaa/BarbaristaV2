@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8434f564fa9284c4daf1f3d57a95994f, type: 3}
+  m_Name: Quete4
+  m_EditorClassIdentifier: 
+  listDicoResistance:
+  - key: 2
+    value: 1150
+  - key: 1
+    value: 150
+  titre: "R\xE9colte de plante toxique pour cr\xE9ation d'enduit pour armes"
+  difficulty:
+  - {fileID: 5714345362990764630, guid: be8844bb1ac8b3045b86a3c192c94e5d, type: 3}
+  - {fileID: 5714345362990764630, guid: be8844bb1ac8b3045b86a3c192c94e5d, type: 3}
+  - {fileID: 5714345362990764630, guid: be8844bb1ac8b3045b86a3c192c94e5d, type: 3}
+  illustration: {fileID: 21300000, guid: 991a56718e3328b4d9036c151ef2b8fe, type: 3}
+  description: "R\xE9cup\xE9rer des fleurs de Venenata pour en extraire leur poison,
+    nous en auront besoins pour combattre l'Omega"
+  infoEvenement: "Matin -- Venteux -- P\xE9riode de floraison des Venenata Pollinis
+    -- 0m"
+  reward:
+  - {fileID: 4676549998668992486, guid: c88cd865e6c6da8489c5605d7cbd7a00, type: 3}
+  - {fileID: 4676549998668992486, guid: c88cd865e6c6da8489c5605d7cbd7a00, type: 3}
+  - {fileID: 4676549998668992486, guid: c88cd865e6c6da8489c5605d7cbd7a00, type: 3}
+  - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
+  - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
+  persosEnvoyes: []
+  boissonsServis: []
+  myQueteInk: {fileID: 0}

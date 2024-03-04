@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8434f564fa9284c4daf1f3d57a95994f, type: 3}
+  m_Name: Quete5
+  m_EditorClassIdentifier: 
+  listDicoResistance:
+  - key: 4
+    value: 200
+  - key: 5
+    value: 350
+  titre: Mission de sauvetage
+  difficulty:
+  - {fileID: 5242678549626145098, guid: edc03b6f9ca3bec4ba11f09d2d8b0002, type: 3}
+  illustration: {fileID: 21300000, guid: a69fdbe7cbc32664eb2729e264224427, type: 3}
+  description: "Evacuation d'une \xE9quipe blesser se trouvant  vers un avant-poste
+    isol\xE9"
+  infoEvenement: "Matin -- L\xE9g\xE8re brume -- aucun \xE9v\xE8nement -- -30m"
+  reward:
+  - {fileID: 4274250219671485390, guid: 7804302650bb9554cb6a634fb800116a, type: 3}
+  - {fileID: 4274250219671485390, guid: 7804302650bb9554cb6a634fb800116a, type: 3}
+  persosEnvoyes: []
+  boissonsServis: []
+  myQueteInk: {fileID: 0}
