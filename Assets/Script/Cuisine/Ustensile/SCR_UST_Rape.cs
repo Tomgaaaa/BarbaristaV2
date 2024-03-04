@@ -75,9 +75,9 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
                 if (currentTempsPasse >= tempsNecessaire)
                 {
                     FinishManipulation();
+                    AudioManager.instanceAM.Play("RaperFini");
                     refPlaque.DOLocalMoveX(0, 0.5f);
                     currentTempsPasse = 0;
-                    AudioManager.instanceAM.Play("Finish");
                 }
             }
 
