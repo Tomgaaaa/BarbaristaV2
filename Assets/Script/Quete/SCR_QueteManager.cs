@@ -140,7 +140,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
                 listSoPersoInstancie.Add(personnageInstance);
 
-                if(i == 3)
+
+               if(i == 3)
                 {
                     SCR_DATA.instanceData.SetListPersos(listSoPersoInstancie);
                 }

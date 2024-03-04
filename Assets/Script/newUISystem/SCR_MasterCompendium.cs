@@ -19,13 +19,13 @@ public enum enumPage
     Shembo, Frejal, Kleck, Siarym, Phylliul, Scolk ,
 
     SommaireAlmanach,
+    Sociagramme,
     FichePerso1
 }
 
 public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceiver
 {
     [SerializeField] private RectTransform infoBulle;
-    private List<GameObject> listPage;
     [SerializeField] private enumPage actualPage;
     [System.Serializable] public class dicoPageClass : TemplateDico<enumPage, GameObject> { };
 

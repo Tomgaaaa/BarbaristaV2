@@ -8,7 +8,7 @@ public class SCR_DATA : MonoBehaviour
     public static SCR_DATA instanceData;
 
     [SerializeField] private List<SO_Quete> listCurrentQuete;
-    public List<SO_Personnage> listPersos;
+    private List<SO_Personnage> listPersos = new List<SO_Personnage>();
 
     private int etapeQuete; // index indiquant laquelle des 2 quetes on est en train de preparer
     private int etapePerso; // index indiquant quel perso on est en train de servir

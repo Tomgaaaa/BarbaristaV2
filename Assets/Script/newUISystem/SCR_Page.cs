@@ -29,4 +29,6 @@ public class SCR_Page : SCR_PoolItem
     {
         SCR_MasterCompendium.instanceMComp.CloseComp();
     }
+
+  
 }
