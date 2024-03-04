@@ -1,6 +1,7 @@
 using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,31 +10,48 @@ public class SCR_StoryReader : MonoBehaviour
 {
 
     [SerializeField] private TextAsset textAsset;
-    [SerializeField] private Text textUI;
+    [SerializeField] private TextMeshProUGUI textUI;
     [SerializeField] private GridLayoutGroup groupLayout;
     [SerializeField] private GameObject prefabButton;
 
     private Story story;
-    public TextAsset debugQuete;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
-        debugQuete = SCR_DATA.instanceData.GetCurrentQuest().myQueteInk;
 
-        story.BindExternalFunction("FinishDialogue",(string name) => { ChangeScene(); });
 
-        if(SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2 )
+        if (SCR_DATA.instanceData == null)
         {
+            story = new Story(textAsset.text);
+            story.BindExternalFunction("FinishDialogue", (string name) => { ChangeScene(); });
+
             story.ChoosePathString("Apresquete");
+
+
         }
         else
         {
-            story.ChoosePathString("Avantquete");
+            story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
+            story.BindExternalFunction("FinishDialogue", (string name) => { ChangeScene(); });
+
+            if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
+            {
+                story.ChoosePathString("Apresquete");
+            }
+            else
+            {
+                story.ChoosePathString("Avantquete");
+            }
         }
-        Next();
+
+
+            Next();
+        
+
+
+       
     }
 
     
@@ -50,7 +68,6 @@ public class SCR_StoryReader : MonoBehaviour
             SCR_DATA.instanceData.EtapePersoUp();
 
             story = new Story( SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
-            debugQuete = SCR_DATA.instanceData.GetCurrentQuest().myQueteInk;
             story.BindExternalFunction("FinishDialogue", (string name) => { ChangeScene(); });
 
             story.ChoosePathString("Avantquete");
