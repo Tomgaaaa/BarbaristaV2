@@ -345,7 +345,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         }
 
         SceneManager.LoadScene("SCE_VisualNovel");
-        AudioManager.instanceAM.Play("switchCuisine");
+        AudioManager.instanceAM.Play("switchVN");
+        AudioManager.instanceAM.Play("ConfirmSwitchVN");
     }
 
     public void AddCurrentQuete(SCR_QueteTableau currentQueteParameter, bool removeParameter = false) // fonction appeler lorsqu'on clique sur une des quetes dans la partie choix de quete

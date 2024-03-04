@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2156,7 +2156,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
       propertyPath: sounds.Array.size
-      value: 37
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
       propertyPath: sounds.Array.data[21].label
@@ -2240,7 +2240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
       propertyPath: sounds.Array.data[31].label
-      value: switchCuisine
+      value: switchVN
       objectReference: {fileID: 0}
     - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
       propertyPath: sounds.Array.data[31].pitch
@@ -2284,6 +2284,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
       propertyPath: sounds.Array.data[36].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.data[37].label
+      value: ConfirmSwitchVN
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.data[37].pitch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
@@ -2351,6 +2359,10 @@ PrefabInstance:
       value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.data[37].volume
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
       propertyPath: sounds.Array.data[21].clip.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2412,6 +2424,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
       propertyPath: sounds.Array.data[36].clip.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.data[37].clip.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
@@ -2482,6 +2498,10 @@ PrefabInstance:
       propertyPath: sounds.Array.data[36].clip.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: d7a47bbcf8894d14883e24d185185242, type: 3}
+    - target: {fileID: 2490495769400007695, guid: f24241cf80e57c340ae502865cd02228, type: 3}
+      propertyPath: sounds.Array.data[37].clip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 66320852cc192da409a73eecae568c27, type: 3}
     - target: {fileID: 5600810787663899684, guid: f24241cf80e57c340ae502865cd02228, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -2982,6 +3002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listCurrentQuete: []
+  listPersos: []
 --- !u!4 &1499374471
 Transform:
   m_ObjectHideFlags: 0
