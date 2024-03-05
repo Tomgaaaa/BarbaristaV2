@@ -10,26 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8434f564fa9284c4daf1f3d57a95994f, type: 3}
-  m_Name: Quete3
+  m_Name: Quete7
   m_EditorClassIdentifier: 
   listDicoResistance:
   - key: 0
-    value: 600
-  - key: 5
+    value: 550
+  - key: 1
     value: 200
-  titre: Chasse de Deshrog
+  - key: 5
+    value: 100
+  titre: "Op\xE9ration d'extraction de souffre "
   difficulty:
   - {fileID: 4570840594448659201, guid: eff904f05ad8777418098e83f531bcdd, type: 3}
   - {fileID: 4570840594448659201, guid: eff904f05ad8777418098e83f531bcdd, type: 3}
-  illustration: {fileID: 21300000, guid: 1e1a17abb646ca54a944037e3a4d7ac1, type: 3}
-  description: "On manque d'\xE9nergie pour faire chauffer les fonderies, ramener
-    des coeurs de Deshrog pour les alimenter."
-  infoEvenement: "Basalte -- Nuit -- Pluie de cendre -- Augmentation de l'activit\xE9
-    volcanique -- -25m"
+  illustration: {fileID: 21300000, guid: 58452c4385f52b94cb2bde95a77add9c, type: 3}
+  description: 'Extraction de minerai de souffre pour confection de poudre noir '
+  infoEvenement: "Souffre -- Aube -- Nuageux -- aucun \xE9v\xE8nement -- -20m"
   reward:
   - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
   - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
-  - {fileID: 1680751885737224889, guid: 31c9f4add7b764744a8c17e6ac6b654c, type: 3}
+  - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
+  - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
   persosEnvoyes: []
   boissonsServis: []
   myQueteInk: {fileID: 0}

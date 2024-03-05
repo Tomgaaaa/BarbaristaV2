@@ -13,20 +13,23 @@ MonoBehaviour:
   m_Name: Quete5
   m_EditorClassIdentifier: 
   listDicoResistance:
-  - key: 4
-    value: 200
+  - key: 0
+    value: 750
   - key: 5
-    value: 350
-  titre: Mission de sauvetage
+    value: 100
+  titre: "Enquete sur une cartographie obsol\xE8te "
   difficulty:
-  - {fileID: 5242678549626145098, guid: edc03b6f9ca3bec4ba11f09d2d8b0002, type: 3}
-  illustration: {fileID: 21300000, guid: a69fdbe7cbc32664eb2729e264224427, type: 3}
-  description: "Evacuation d'une \xE9quipe blesser se trouvant  vers un avant-poste
-    isol\xE9"
-  infoEvenement: "Matin -- L\xE9g\xE8re brume -- aucun \xE9v\xE8nement -- -30m"
+  - {fileID: 4570840594448659201, guid: eff904f05ad8777418098e83f531bcdd, type: 3}
+  - {fileID: 4570840594448659201, guid: eff904f05ad8777418098e83f531bcdd, type: 3}
+  illustration: {fileID: 21300000, guid: 10bfbf716f4919d498e571a505955c45, type: 3}
+  description: "Occurrence d'\xE9v\xE9nement \xE9trange, des balises ont disparue
+    et les cartes ne sont plus \xE0 jour, ont nous rapporte plusieurs roches qui
+    aurait changer d'emplacement "
+  infoEvenement: "Rocheux -- Journ\xE9e -- Ensoleiller -- Rocher mouvant -- 0m"
   reward:
-  - {fileID: 4274250219671485390, guid: 7804302650bb9554cb6a634fb800116a, type: 3}
-  - {fileID: 4274250219671485390, guid: 7804302650bb9554cb6a634fb800116a, type: 3}
+  - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
+  - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
+  - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
   persosEnvoyes: []
   boissonsServis: []
   myQueteInk: {fileID: 0}

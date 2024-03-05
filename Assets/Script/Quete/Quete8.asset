@@ -10,21 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8434f564fa9284c4daf1f3d57a95994f, type: 3}
-  m_Name: Quete1
+  m_Name: Quete8
   m_EditorClassIdentifier: 
   listDicoResistance:
   - key: 3
-    value: 400
-  titre: 'Expedition : Recherche d''un filon d''Alatium'
+    value: 300
+  - key: 1
+    value: 250
+  - key: 0
+    value: 150
+  titre: "S\xE9curisation d'un terrain pour un avant poste "
   difficulty:
   - {fileID: 5242678549626145098, guid: edc03b6f9ca3bec4ba11f09d2d8b0002, type: 3}
-  illustration: {fileID: 21300000, guid: 517d59fed06683342bdf1d6a8570fb00, type: 3}
-  description: "Besoin de m\xE9taux urgent pour fabriquer armures plus r\xE9sistantes."
-  infoEvenement: "Montagne -- Gr\xEAle -- Faune calme  -- Arriv\xE9e en journ\xE9e
-    -- 40m"
+  illustration: {fileID: 21300000, guid: feb8ab8c32c43ac47a61d68e36cb23d4, type: 3}
+  description: "S\xE9curisations d'une for\xEAt pour construction  d'un avant poste
+    afin de r\xE9cup\xE9rer du bois robuste. "
+  infoEvenement: "Ta\xEFga -- Journ\xE9e -- Neige -- Ecorce d'arbres liqu\xE9fier
+    -- 0m"
   reward:
   - {fileID: 2348880183361936524, guid: d082d760fa3070e489ff0daa2dd25777, type: 3}
   - {fileID: 2348880183361936524, guid: d082d760fa3070e489ff0daa2dd25777, type: 3}
   persosEnvoyes: []
   boissonsServis: []
-  myQueteInk: {fileID: 4900000, guid: 966f7877318dfff4baaebcec240982db, type: 3}
+  myQueteInk: {fileID: 0}

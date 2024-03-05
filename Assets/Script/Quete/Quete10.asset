@@ -10,26 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8434f564fa9284c4daf1f3d57a95994f, type: 3}
-  m_Name: Quete3
+  m_Name: Quete10
   m_EditorClassIdentifier: 
   listDicoResistance:
+  - key: 2
+    value: 250
+  - key: 1
+    value: 300
   - key: 0
-    value: 600
-  - key: 5
-    value: 200
-  titre: Chasse de Deshrog
+    value: 300
+  titre: "R\xE9colte de s\xE8ve de Mangracier "
   difficulty:
   - {fileID: 4570840594448659201, guid: eff904f05ad8777418098e83f531bcdd, type: 3}
   - {fileID: 4570840594448659201, guid: eff904f05ad8777418098e83f531bcdd, type: 3}
-  illustration: {fileID: 21300000, guid: 1e1a17abb646ca54a944037e3a4d7ac1, type: 3}
-  description: "On manque d'\xE9nergie pour faire chauffer les fonderies, ramener
-    des coeurs de Deshrog pour les alimenter."
-  infoEvenement: "Basalte -- Nuit -- Pluie de cendre -- Augmentation de l'activit\xE9
-    volcanique -- -25m"
+  illustration: {fileID: 21300000, guid: 478c55dba64b24f41b6e09d28832a379, type: 3}
+  description: "R\xE9colte de s\xE8ve de Mangracier pour renforcer les armes et armures
+    pour percer la peau de l'Om\xE9ga plus facilement. "
+  infoEvenement: "Marais -- Soir -- Pluie -- P\xE9riode de reproduction des Phacoli\xE8res
+    -- 0m"
   reward:
-  - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
-  - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
   - {fileID: 1680751885737224889, guid: 31c9f4add7b764744a8c17e6ac6b654c, type: 3}
+  - {fileID: 4676549998668992486, guid: c88cd865e6c6da8489c5605d7cbd7a00, type: 3}
+  - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
+  - {fileID: 2725147649628674229, guid: a95283bc7198ed341b2c31d5d1be264b, type: 3}
   persosEnvoyes: []
   boissonsServis: []
   myQueteInk: {fileID: 0}
