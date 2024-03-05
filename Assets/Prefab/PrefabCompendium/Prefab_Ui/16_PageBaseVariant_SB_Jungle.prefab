@@ -758,6 +758,81 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &8923457040786901066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7479896898472212288}
+  - component: {fileID: 2126262339402290743}
+  - component: {fileID: 535022783439302329}
+  m_Layer: 5
+  m_Name: Phacoliere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7479896898472212288
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923457040786901066}
+  m_LocalRotation: {x: -0, y: -0, z: 0.01872763, w: -0.9998246}
+  m_LocalPosition: {x: 0, y: 0, z: 1.9176376}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1776795798591587257}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.146}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 77.99994, y: 302}
+  m_SizeDelta: {x: 139.241, y: 129.38}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2126262339402290743
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923457040786901066}
+  m_CullTransparentMesh: 1
+--- !u!114 &535022783439302329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923457040786901066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &4317036112869501650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -766,6 +841,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 92966263063154610, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 92966263063154610, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 302
+      objectReference: {fileID: 0}
+    - target: {fileID: 631922743493211286, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_Name
+      value: KerusculaImage
+      objectReference: {fileID: 0}
     - target: {fileID: 1357478711166640967, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -866,6 +953,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2645882154176448395, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_text
+      value: "Les kerusculas sont plus active le matin, tandit que les phacoli\xE8res
+        sortent de nuits."
+      objectReference: {fileID: 0}
     - target: {fileID: 3096782121366051729, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_Name
       value: 16_PageBaseVariant_SB_Jungle
@@ -933,6 +1025,14 @@ PrefabInstance:
     - target: {fileID: 4438833021110758453, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_Text
       value: Biome Feu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463452805212595718, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463452805212595718, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -139
       objectReference: {fileID: 0}
     - target: {fileID: 5595796535380290398, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1002,6 +1102,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2540385494150932843, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       insertIndex: 2
       addedObject: {fileID: 3972341233811243608}
+    - targetCorrespondingSourceObject: {fileID: 2540385494150932843, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 7479896898472212288}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
 --- !u!1 &1229706544532386115 stripped

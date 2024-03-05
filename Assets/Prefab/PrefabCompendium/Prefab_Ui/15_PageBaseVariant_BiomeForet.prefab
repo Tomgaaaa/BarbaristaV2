@@ -616,6 +616,141 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &4027623369713153883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 403816795172064656}
+  - component: {fileID: 5086047535461337199}
+  - component: {fileID: 364638376272217175}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &403816795172064656
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027623369713153883}
+  m_LocalRotation: {x: -0, y: 0, z: -0.018727632, w: -0.99982464}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3951381914630334617}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -11, y: -163}
+  m_SizeDelta: {x: 518.2831, y: 163.3795}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5086047535461337199
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027623369713153883}
+  m_CullTransparentMesh: 1
+--- !u!114 &364638376272217175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027623369713153883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "Le matins certains champignons lib\xE8res des spores aux propri\xE9t\xE9s
+    paralysantes."
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4279379767
+  m_fontColor: {r: 0.21698111, g: 0.15170342, b: 0.070621215, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4183115403411444940
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +1028,82 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &4595632512033313487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3951381914630334617}
+  - component: {fileID: 685790085806173350}
+  - component: {fileID: 1234144499213129791}
+  m_Layer: 5
+  m_Name: Venenata
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3951381914630334617
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595632512033313487}
+  m_LocalRotation: {x: -0, y: -0, z: 0.01872763, w: -0.9998246}
+  m_LocalPosition: {x: 0, y: 0, z: 1.9176376}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 403816795172064656}
+  m_Father: {fileID: 1776795798591587257}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.146}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -25}
+  m_SizeDelta: {x: 139.241, y: 129.38}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &685790085806173350
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595632512033313487}
+  m_CullTransparentMesh: 1
+--- !u!114 &1234144499213129791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4595632512033313487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5146567899257513323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,6 +2155,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 92966263063154610, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 306
+      objectReference: {fileID: 0}
     - target: {fileID: 1357478711166640967, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2044,6 +2259,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2645882154176448395, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_text
+      value: "Le matins certains champignons lib\xE8res des spores aux propri\xE9t\xE9s
+        paralysantes."
+      objectReference: {fileID: 0}
     - target: {fileID: 3096782121366051729, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_Name
       value: 15_PageBaseVariant_BiomeForet
@@ -2112,6 +2332,22 @@ PrefabInstance:
       propertyPath: m_Text
       value: Biome Foret
       objectReference: {fileID: 0}
+    - target: {fileID: 4463452805212595718, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 518.2831
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463452805212595718, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 163.3795
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463452805212595718, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463452805212595718, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -163
+      objectReference: {fileID: 0}
     - target: {fileID: 5595796535380290398, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2176,6 +2412,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7422016620189508245, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3253781907749094285}
+    - targetCorrespondingSourceObject: {fileID: 2540385494150932843, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 3951381914630334617}
     - targetCorrespondingSourceObject: {fileID: 2540385494150932843, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1673383117942400809}
