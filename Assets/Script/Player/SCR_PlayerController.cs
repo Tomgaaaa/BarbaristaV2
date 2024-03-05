@@ -25,17 +25,22 @@ public class SCR_PlayerController : MonoBehaviour
 
 
 
-            if(SceneManager.GetActiveScene().buildIndex == 1 && masterCompendium.GetIsOpen())
-            {
-                masterCompendium.CloseComp();
-                
-            }
-            else if (pauseMenu.GetInOption())
+            
+            if (pauseMenu.GetInOption())
             {
                 pauseMenu.LeaveOption();
             }
             else
             {
+                if (SceneManager.GetActiveScene().name == "SCE_Cuisine")
+                {
+                    if (masterCompendium.GetIsOpen())
+                    {
+                        masterCompendium.CloseComp();
+
+                    }
+
+                }
                 pauseMenu.Pause();
             }
 
