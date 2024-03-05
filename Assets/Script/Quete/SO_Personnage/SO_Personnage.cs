@@ -16,6 +16,7 @@ public class SO_Personnage : ScriptableObject, ISerializationCallbackReceiver
     public string namePerso;
     public enumPerso myEnumPerso;
     public Sprite profil;
+    public Sprite pleinPied;
 
     public void OnAfterDeserialize() // fonction qui permet d'associer les listes (qu'on voit) aux dictionaires (qu'on ne voit pas)
     {

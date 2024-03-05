@@ -459,7 +459,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1617192752925262912}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3070931588626990827}
+        m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
+        m_MethodName: GoToPage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1724005644779816483, guid: 38645778b6651ab4d8bf0d4ae6cd604a, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3761449610589554803
 GameObject:
   m_ObjectHideFlags: 0

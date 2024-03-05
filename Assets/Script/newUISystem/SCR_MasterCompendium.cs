@@ -19,8 +19,12 @@ public enum enumPage
     Shembo, Frejal, Kleck, Siarym, Phylliul, Scolk ,
 
     SommaireAlmanach,
+
+    FichePersoElira,
+    FichePersoSamuel,
+    FichePersoSaori,
+    FichePersoVikram,
     Sociagramme,
-    FichePerso1
 }
 
 public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceiver
@@ -70,8 +74,7 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
     public void NextPage()
     {
         
-        if (actualPage == enumPage.FichePerso1)
-            return;
+       
         
         if (pageToDestroy != null)
             Destroy(pageToDestroy);
