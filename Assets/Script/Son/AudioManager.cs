@@ -101,7 +101,9 @@ public class AudioManager : MonoBehaviour
         // si le name n'est pas trouvé on return pour pas bloquer le jeu
         if (s == null)
         {
+            AudioManager.instanceAM.Play("BarAlatea");
             Debug.LogWarning("Sound:" + name + "not found!");
+            
             return;
 
         }

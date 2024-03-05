@@ -140,6 +140,7 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
     {
         isOpen = false;
         BGClickable.SetActive(false);
+        AudioManager.instanceAM.Play("SesameFermetoi");
         ButtonCompendium.SetActive(true);
 
         if (pageToDestroy != null)

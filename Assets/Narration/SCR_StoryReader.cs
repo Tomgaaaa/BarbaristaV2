@@ -60,6 +60,7 @@ public class SCR_StoryReader : MonoBehaviour
     {
         if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 0)
         {
+            AudioManager.instanceAM.Play("SwitchToCuisine");
             SceneManager.LoadScene("SCE_Cuisine");
         }
         else if(SCR_DATA.instanceData.GetEtapeQuest() == 0 && SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)

@@ -107,6 +107,7 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
         }
 
         ingredientAddParameter.stockSO++; // rajoute 1 au stock
+        AudioManager.instanceAM.Play("ReposerItem");
         UpdateStockIngredient(ingredientAddParameter); // fonction expliqué ci-dessous
 
         
