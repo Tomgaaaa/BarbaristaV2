@@ -1353,6 +1353,7 @@ GameObject:
   - component: {fileID: 1899055515}
   - component: {fileID: 1899055514}
   - component: {fileID: 1899055513}
+  - component: {fileID: 1899055516}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -1865,6 +1866,23 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1899055516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899055509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d68c28ce7b16334a80fe39389408715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  source: {fileID: 0}
+  minSoundDelay: 0.07
+  interruptPreviousSound: 1
+  randomSequence: 0
+  sounds: []
 --- !u!1 &1920969714
 GameObject:
   m_ObjectHideFlags: 0
