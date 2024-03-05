@@ -9,17 +9,35 @@ public class SCR_PlayerController : MonoBehaviour
     [SerializeField] SCR_StoryReader storyReader;
     [SerializeField] SCR_MasterCompendium masterCompendium;
 
+    SCR_PauseMenu pauseMenu;
+
+    private void Start()
+    {
+        pauseMenu = GetComponentInChildren<SCR_PauseMenu>();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+
+
+
+
 
             if(SceneManager.GetActiveScene().buildIndex == 1 && masterCompendium.GetIsOpen())
             {
                 masterCompendium.CloseComp();
                 
             }
-
+            else if (pauseMenu.GetInOption())
+            {
+                pauseMenu.LeaveOption();
+            }
+            else
+            {
+                pauseMenu.Pause();
+            }
 
             //pause
         }
