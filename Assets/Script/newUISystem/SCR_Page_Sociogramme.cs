@@ -42,6 +42,15 @@ public class SCR_Page_Sociogramme : MonoBehaviour, ISerializationCallbackReceive
     [SerializeField] private List<Image> listImagePersoGauche;
     [SerializeField] private List<Image> listImagePersoDroite;
     [SerializeField] private List<Sprite> listSpritePerso;
+
+    [SerializeField] private List<RectTransform> listPointABJauge;
+
+    private SO_Personnage personnageSelectione;
+    private SO_Personnage personnageRelation1 = null;
+    private SO_Personnage personnageRelation2 = null;
+    private SO_Personnage personnageRelation3 = null;
+
+
     
     private void OnEnable()
     {
@@ -54,9 +63,9 @@ public class SCR_Page_Sociogramme : MonoBehaviour, ISerializationCallbackReceive
 
         foreach (KeyValuePair<SO_Personnage,List<dicoRelationPersoImageClass>> dico1 in dicoDeDicoRelation)
         {
-            foreach (dicoRelationPersoImageClass persoenRelation in dico1.Value)
+            foreach (dicoRelationPersoImageClass personeRelation in dico1.Value)
             {
-                persoenRelation.value.color = GetColor(dico1.Key, persoenRelation.key);
+                personeRelation.value.color = GetColor(dico1.Key, personeRelation.key);
             }
         }
 
@@ -68,24 +77,56 @@ public class SCR_Page_Sociogramme : MonoBehaviour, ISerializationCallbackReceive
         {
             return Color.red;
         }
-        else if (perso1Parameter.dicoRelationPerso[perso2Parameter] >= -1 && perso1Parameter.dicoRelationPerso[perso2Parameter] < 1)
+        else if (perso1Parameter.dicoRelationPerso[perso2Parameter] >= -1 && perso1Parameter.dicoRelationPerso[perso2Parameter] <= 1)
         {
             return Color.grey;
-        }else if (perso1Parameter.dicoRelationPerso[perso2Parameter] >= 1 && perso1Parameter.dicoRelationPerso[perso2Parameter] <= 2)
+        }else if (perso1Parameter.dicoRelationPerso[perso2Parameter] > 1 && perso1Parameter.dicoRelationPerso[perso2Parameter] <= 3)
         {
             return Color.green;
         }
 
-        return Color.white;
+        return Color.yellow;
     }
+
+
+    private void MoveCursorJauge(int indexListPoint, SO_Personnage persoRelation)
+    {
+        /*for (int i = 0; i < 9; i++)
+        {
+            float xNewPosition = ((listPointABJauge[i + 1].position.x - listPointABJauge[i].position.x) / 6) * 3 ;
+
+            listPointABJauge[i + 2].position = new Vector3(listPointABJauge[i].position.x + xNewPosition, listPointABJauge[i+2].position.y, 0);
+            i += 2;
+        }*/
+
+
+
+            float xNewPosition = ((listPointABJauge[indexListPoint + 1].position.x - listPointABJauge[indexListPoint].position.x) / 6) * (3 + personnageSelectione.dicoRelationPerso[persoRelation.myEnumPerso]);
+
+            listPointABJauge[indexListPoint + 2].position = new Vector3(listPointABJauge[indexListPoint].position.x + xNewPosition, listPointABJauge[indexListPoint + 2].position.y, 0);
+            indexListPoint += 2;
+        
+
+    }
+
 
     public void onClickPerso(int persoCliqueParameter)
     {
         List<Sprite> sprites = listSpritePerso;
 
-        SO_Personnage persoClique = SCR_DATA.instanceData.GetListPersos()[persoCliqueParameter];
+        personnageSelectione = SCR_DATA.instanceData.GetListPersos()[persoCliqueParameter];
 
-        sprites.Remove(persoClique.profil); // wtf ca n'a aucun sens quand je remove dans la list queje creer ca remove de listSpritePerso
+        List<int> indexListForPerso = new List<int> { 0,1,2,3};
+
+        indexListForPerso.Remove(persoCliqueParameter);
+        personnageRelation1 = SCR_DATA.instanceData.GetListPersos()[indexListForPerso[0]];
+        personnageRelation2 = SCR_DATA.instanceData.GetListPersos()[indexListForPerso[1]];
+        personnageRelation3 = SCR_DATA.instanceData.GetListPersos()[indexListForPerso[2]];
+       
+
+
+        int backupIndex = sprites.IndexOf(personnageSelectione.profil);
+        sprites.Remove(personnageSelectione.profil); // wtf ca n'a aucun sens quand je remove dans la list queje creer ca remove de listSpritePerso
 
 
 
@@ -93,15 +134,18 @@ public class SCR_Page_Sociogramme : MonoBehaviour, ISerializationCallbackReceive
         {
 
 
-            listImagePersoGauche[i].sprite = persoClique.profil;
+            listImagePersoGauche[i].sprite = personnageSelectione.profil;
 
 
             listImagePersoDroite[i].sprite = listSpritePerso[i];
 
             
         }
-        sprites.Add(persoClique.profil);
+        sprites.Insert(backupIndex, personnageSelectione.profil);
 
+        MoveCursorJauge(0, personnageRelation1);
+        MoveCursorJauge(3, personnageRelation2);
+        MoveCursorJauge(6, personnageRelation3);
 
     }
 }
