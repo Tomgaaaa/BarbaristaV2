@@ -66,13 +66,6 @@ MonoBehaviour:
     loop: 0
     volume: 1.5
     pitch: 1
-  - label: Finish
-    clip:
-    - {fileID: 8300000, guid: f81301e7728020342a7d942fb9ebc4f3, type: 3}
-    source: {fileID: 0}
-    loop: 0
-    volume: 1.5
-    pitch: 0.5
   - label: Finish_Presse
     clip:
     - {fileID: 8300000, guid: f8c6048d391b40c4bb176c6a53fe5352, type: 3}
@@ -103,7 +96,7 @@ MonoBehaviour:
     pitch: 1
   - label: Mortier
     clip:
-    - {fileID: 8300000, guid: 7e1683a0f16aa954fb77a37d764d4ff4, type: 3}
+    - {fileID: 8300000, guid: a21ed734d3e056a4fafd2d02120832f1, type: 3}
     source: {fileID: 0}
     loop: 0
     volume: 1.5
@@ -171,24 +164,164 @@ MonoBehaviour:
     loop: 0
     volume: 2
     pitch: 1
-  - label: AmbianceExterieure
-    clip:
-    - {fileID: 8300000, guid: 6a7b82ad6528e7a48b5b8c522c82f22c, type: 3}
-    source: {fileID: 0}
-    loop: 1
-    volume: 1.5
-    pitch: 1
-  - label: MusiqueAlatea
-    clip:
-    - {fileID: 8300000, guid: 7ab56f9ae10d0ee47b371c4e019776b0, type: 3}
-    source: {fileID: 0}
-    loop: 1
-    volume: 0.3
-    pitch: 1
   - label: Preparationfini
     clip:
-    - {fileID: 8300000, guid: 4eaf2b8fc4323c44ba44bf1fea275da0, type: 3}
+    - {fileID: 8300000, guid: f81301e7728020342a7d942fb9ebc4f3, type: 3}
     source: {fileID: 0}
     loop: 0
     volume: 0.1
+    pitch: 1
+  - label: FichePerso
+    clip:
+    - {fileID: 8300000, guid: e95c340809fc6b94f804be5deef69e02, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.1
+    pitch: 1
+  - label: FichePersoLacher
+    clip:
+    - {fileID: 8300000, guid: 9a9784c1efb70274c96f23e9181396b3, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.1
+    pitch: 1
+  - label: Selection
+    clip:
+    - {fileID: 8300000, guid: e95c340809fc6b94f804be5deef69e02, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.1
+    pitch: 1
+  - label: SesameOuvretoi
+    clip:
+    - {fileID: 8300000, guid: 630aedfd4568240478d3e9ad807fa9fe, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: SelectConfirm
+    clip:
+    - {fileID: 8300000, guid: 66320852cc192da409a73eecae568c27, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: SwitchFiche
+    clip:
+    - {fileID: 8300000, guid: 0e0a0877a3596d04292122fc08395911, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: RetourChoixQuete
+    clip:
+    - {fileID: 8300000, guid: aacce3a96839ff54f95a704b83426175, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: ValidationQuest
+    clip:
+    - {fileID: 8300000, guid: ca700ff3e6216c844a741d89f5cf8ca1, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.6
+    pitch: 1
+  - label: SwitchWhoosh
+    clip:
+    - {fileID: 8300000, guid: 7a788159b4d3c0a48ae3fb6601ec72cc, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: Retourwhoosh
+    clip:
+    - {fileID: 8300000, guid: 7a788159b4d3c0a48ae3fb6601ec72cc, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: switchVN
+    clip:
+    - {fileID: 8300000, guid: 7a788159b4d3c0a48ae3fb6601ec72cc, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: Craquement
+    clip:
+    - {fileID: 8300000, guid: 7f1d786889e48b146a5049eb2fda9fc3, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: PreparationFinish
+    clip:
+    - {fileID: 8300000, guid: 39189c685df567246b5fa054b7887ba7, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: TransiDeuxiemeBoisson
+    clip:
+    - {fileID: 8300000, guid: 7a788159b4d3c0a48ae3fb6601ec72cc, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: OutOfStock
+    clip:
+    - {fileID: 8300000, guid: 6478b0e703ea6d44683075b0f36312e4, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: Raper
+    clip:
+    - {fileID: 8300000, guid: d7a47bbcf8894d14883e24d185185242, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: ConfirmSwitchVN
+    clip:
+    - {fileID: 8300000, guid: 66320852cc192da409a73eecae568c27, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: RaperFini
+    clip:
+    - {fileID: 8300000, guid: f81301e7728020342a7d942fb9ebc4f3, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: SwitchToCuisine
+    clip:
+    - {fileID: 8300000, guid: 7a788159b4d3c0a48ae3fb6601ec72cc, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: BarAlatea
+    clip:
+    - {fileID: 8300000, guid: bebae67fcc292b84f911c17b3cba3a5a, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: SesameFermetoi
+    clip:
+    - {fileID: 8300000, guid: e3c00aef793e09b4388b7de7c951875d, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
+    pitch: 1
+  - label: ReposerItem
+    clip:
+    - {fileID: 8300000, guid: 5f45b7859342528439e64b6ff2cb04e4, type: 3}
+    source: {fileID: 0}
+    loop: 0
+    volume: 0.97
     pitch: 1
