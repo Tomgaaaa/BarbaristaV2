@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -87,13 +86,28 @@ public class SCR_HexagoneStat : MonoBehaviour, ISerializationCallbackReceiver
 
         }
     }
+
+    private void ToFalse()
+    {
+        canUpdateLine = false;
+        canUpdateLineUI = false;
+    }
+
     public void UpdateStat(Dictionary<enumResistance,float> statAfficheParameter, bool instantDeplacementParameter, bool inUI = false)
     {
 
         if (inUI)
+        {
             canUpdateLineUI = true;
+            Invoke("ToFalse",3);
+
+        }
         else
+        {
             canUpdateLine = true;
+            Invoke("ToFalse",3);
+
+        }
         
 
 
