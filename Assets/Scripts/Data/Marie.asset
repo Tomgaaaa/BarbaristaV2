@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b0085f48ca7d04287357fce0768021, type: 3}
+  m_Name: Marie
+  m_EditorClassIdentifier: 
+  tag: player
+  characterName: Player
+  characterColor: {r: 0.8301887, g: 0.246707, b: 0.246707, a: 1}
+  defaultExpression: neutral
+  expressions:
+  - expressionName: neutral
+    expressionSprite: {fileID: 21300000, guid: 77204472f5739d746b2d03f0e12e8e42, type: 3}

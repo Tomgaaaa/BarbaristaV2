@@ -43,7 +43,9 @@ public class SOCharacter : ScriptableObject, ISerializationCallbackReceiver
             //expressions.Clear();
         }
 
-        hexColor = characterColor.r.ToString("x2") + characterColor.g.ToString("x2") + characterColor.b.ToString("x2");
+        hexColor = "ff00ff";
+        // TODO: trouver le bon format int > hexa
+        //hexColor = characterColor.r.ToString("X4") + characterColor.g.ToString("X4") + characterColor.b.ToString("X4");
     }
 
     public Sprite GetFace(string faceName)
@@ -54,7 +56,9 @@ public class SOCharacter : ScriptableObject, ISerializationCallbackReceiver
         }
         else if (facesByName.ContainsKey(defaultExpression))
         {
-            Debug.LogWarning("Face " + faceName + " doesn't exist for " + characterName, this);
+            if (faceName != "")
+                Debug.LogWarning("Face " + faceName + " doesn't exist for " + characterName, this);
+
             return facesByName[defaultExpression];
         }
 

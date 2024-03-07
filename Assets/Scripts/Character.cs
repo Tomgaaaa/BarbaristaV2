@@ -2,16 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : Display2D
+namespace VNsup
 {
-    public SOCharacter details => definition;
-
-    [SerializeField] SOCharacter definition;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Character : Display2D
     {
-        gameObject.name = definition.tag;
-        mainImage.sprite = definition.GetDefaultFace();
+        public SOCharacter details => definition;
+
+        [SerializeField] SOCharacter definition;
+
+        // Start is called before the first frame update
+        protected override void Awake()
+        {
+            base.Awake();
+
+            if (!definition)
+            {
+                Debug.LogError("No definition set !", this.gameObject);
+                return;
+            }
+
+            inkTag = definition.tag;
+            gameObject.name = "Character_" + definition.tag;
+            mainImage.sprite = definition.GetDefaultFace();
+            GameObjectUtility.FindObjectOfType<VNEngine>()?.Add(this);
+        }
+
+        public void SetEmotion(string face)
+        {
+            mainImage.sprite = definition.GetFace(face);
+        }
     }
 }

@@ -1,4 +1,6 @@
-EXTERNAL FinishDialogue(string scene) 
+INCLUDE BarbaristaApi.ink
+
+
 
 
  ==Avantquete==

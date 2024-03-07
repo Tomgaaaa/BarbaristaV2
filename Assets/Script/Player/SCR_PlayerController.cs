@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VNsup;
 
 public class SCR_PlayerController : MonoBehaviour
 {
 
-    [SerializeField] SCR_StoryReader storyReader;
+    [SerializeField] StoryReader storyReader;
     [SerializeField] SCR_MasterCompendium masterCompendium;
 
     SCR_PauseMenu pauseMenu;

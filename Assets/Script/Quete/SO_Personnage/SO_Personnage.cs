@@ -15,6 +15,7 @@ public class SO_Personnage : ScriptableObject, ISerializationCallbackReceiver
 
     public string namePerso;
     public enumPerso myEnumPerso;
+    public SOCharacter characterPerso;
     public Sprite profil;
     public Sprite pleinPied;
 
@@ -47,16 +48,17 @@ public class SO_Personnage : ScriptableObject, ISerializationCallbackReceiver
     }
 
 
-    public void Init(Dictionary<enumResistance,float> dicoResistanceParameter, Dictionary<enumPerso,int> dicoRelationParameter, string nameParameter, enumPerso myEnumParameter,Sprite spriteParameter) 
+    public void Init(Dictionary<enumResistance,float> dicoResistanceParameter, Dictionary<enumPerso,int> dicoRelationParameter, string nameParameter, enumPerso myEnumParameter,Sprite spriteParameter, SOCharacter SoCharacterVnParameter) 
     {
         dicoResistance = dicoResistanceParameter;
         dicoRelationPerso = dicoRelationParameter;
         namePerso = nameParameter;
         myEnumPerso = myEnumParameter;
         profil = spriteParameter;
-    
-    
-    
+        characterPerso= SoCharacterVnParameter;
+
+
+
     }
 
 }

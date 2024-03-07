@@ -5,6 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Display2D : MonoBehaviour
 {
+    public string vnTag => inkTag;
+
+    [SerializeField] protected string inkTag;
+
     public SpriteRenderer mainImage { get; private set; }
 
     // Start is called before the first frame update
@@ -12,37 +16,40 @@ public class Display2D : MonoBehaviour
 
     protected virtual void Awake()
     {
+        if (string.IsNullOrEmpty(inkTag))
+            inkTag = gameObject.name;
+
         mainImage = GetComponent<SpriteRenderer>();
         mainImage.enabled = false;
         maxAlpha = mainImage.color.a;
     }
 
-    public void FadeIn(float time)
+    public virtual void FadeIn(float time)
     {
         StartCoroutine(ChangeAlpha(0f, maxAlpha, time));
     }
 
-    public void FadeOut(float time)
+    public virtual void FadeOut(float time)
     {
         StartCoroutine(ChangeAlpha(mainImage.color.a, 0f, time));
     }
 
-    public void FlipX()
+    public virtual void FlipX()
     {
         mainImage.flipX = !mainImage.flipX;
     }
 
-    public void FlipY()
+    public virtual void FlipY()
     {
         mainImage.flipY = !mainImage.flipY;
     }
 
-    public void Show()
+    public virtual void Show()
     {
         mainImage.enabled = true;
     }
 
-    public void Hide()
+    public virtual void Hide()
     {
         mainImage.enabled = false;
     }
@@ -74,5 +81,33 @@ public class Display2D : MonoBehaviour
         return new Color(c.r, c.g, c.b, a);
     }
 
+    public void Move(Transform target, float duration)
+    {
+        Vector3 origin = transform.position;
+        Vector3 destination = target.position;
 
+        StartCoroutine(MoveToPosition(transform, origin, destination, duration));
+    }
+
+    public void Move(Vector3 destination, float duration)
+    {
+        Vector3 origin = transform.position;
+
+        StartCoroutine(MoveToPosition(transform, origin, destination, duration));
+    }
+
+    static IEnumerator MoveToPosition(Transform t, Vector3 pos, Vector3 des, float duration)
+    {
+        float ellapsed = 0;
+
+        while (ellapsed < duration)
+        {
+            ellapsed += Time.deltaTime;
+            t.position = Vector3.Lerp(pos, des, ellapsed / duration);
+
+            yield return null;
+        }
+
+        t.position = des;
+    }
 }

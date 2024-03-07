@@ -134,7 +134,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             {
                 SO_Personnage personnageInstance = ScriptableObject.CreateInstance<SO_Personnage>();
                 SO_Personnage personnageChoisi = listSoPerso[i];
-                personnageInstance.Init(personnageChoisi.dicoResistance, personnageChoisi.dicoRelationPerso, personnageChoisi.namePerso, personnageChoisi.myEnumPerso,personnageChoisi.profil);
+                personnageInstance.Init(personnageChoisi.dicoResistance, personnageChoisi.dicoRelationPerso, personnageChoisi.namePerso, personnageChoisi.myEnumPerso,personnageChoisi.profil,personnageChoisi.characterPerso);
 
                 fichePerso.SetSoPerso(personnageInstance);
 
