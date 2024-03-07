@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SCR_Ambiance : MonoBehaviour
 {
+    [SerializeField] string sound;
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.instanceAM.Play("AmbianceExterieure");
-        AudioManager.instanceAM.Play("MusiqueAlatea");
+
+        AudioManager.instanceAM.Play(sound);
+        AudioManager.instanceAM.Play(sound);
        
     }
 

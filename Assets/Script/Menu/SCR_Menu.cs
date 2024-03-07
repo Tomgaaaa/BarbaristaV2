@@ -43,6 +43,7 @@ public class SCR_Menu : MonoBehaviour
         SceneManager.LoadScene("SCE_Quete");
         AudioManager.instanceAM.Play("CliquerTableauQuete");
         AudioManager.instanceAM.Play("TransiTableauQuete");
+        AudioManager.instanceAM.FadeOut("Menu",0);
         // transition + changement de scene
     }
 

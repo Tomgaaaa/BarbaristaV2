@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -101,9 +102,9 @@ public class AudioManager : MonoBehaviour
         // si le name n'est pas trouvé on return pour pas bloquer le jeu
         if (s == null)
         {
-            AudioManager.instanceAM.Play("BarAlatea");
-            Debug.LogWarning("Sound:" + name + "not found!");
             
+            Debug.LogWarning("Sound:" + name + "not found!");
+
             return;
 
         }
@@ -113,11 +114,14 @@ public class AudioManager : MonoBehaviour
         // set le volume de la source à la valeur Random reçu comme parametre
 
 
-       
+
 
         // indique à l'audio source, correspondant au parametre name, de play le clip choisit aleatoirement
         s.source.Play();
+     
     }
+
+
 
     public void Pause(string name)
     {
@@ -137,6 +141,35 @@ public class AudioManager : MonoBehaviour
         // indique à l'audio source, correspondant au parametre name, de play le clip choisit aleatoirement
         s.source.Pause();
     }
+
+  
+    public void FadeOut(string name, float value)
+    {
+        // cherche parmis l'array sounds un élément qui a un label = au parametre name
+        SoundSettings s = System.Array.Find(sounds, sound => sound.label == name);
+
+        // si le name n'est pas trouvé on return pour pas bloquer le jeu
+        if (s == null)
+        {
+            
+            Debug.LogWarning("Sound:" + name + "not found!");
+
+            return;
+
+        }
+        // choisis un son random parmis l'array de clip pour varié le clip
+        s.source.clip = s.clip[Random.Range(0, s.clip.Length)];
+
+        // set le volume de la source à la valeur Random reçu comme parametre
+
+
+
+
+        // indique à l'audio source, correspondant au parametre name, de play le clip choisit aleatoirement
+        s.source.DOFade(value, 4.5f);
+
+    }
+
 
 
 }
