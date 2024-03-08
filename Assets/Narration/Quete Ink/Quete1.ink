@@ -6,11 +6,79 @@ VAR Perso2 = "Random Dude 2"
 VAR EtapePresentationPerso = 1
 VAR EtapeReactionnPerso = 1
 
+VAR previousChemin = "vide"
+
+===Init(isAvantQuete)=== // fonction appellé aux debut du chargement de la scene VN pour deplacer Perso2 et le Flip
+ ~moveTo(Perso2,"Droite",0)
+ ~flipX(Perso2)
+ 
+ {
+ -isAvantQuete == true:
+-> Avantquete.PastInit // permet de renvoyer au chemin AvantQuete
+
+ -isAvantQuete == false: // permet de renvoyer au chemin ApresQuete
+-> Avantquete.PastInit
+}
+
+
+
+ ==Avantquete== // chapitre appellé lors du brief de la quete avant la cuisine
+
+
+->Init(true) // initialise la scene 
+
+
+
+=PastInit // chemin permettant d'esquiver l'Init 
+
+
+//dialogue avant que les personnages arrivent 
+ Sigg: Ho des nouveaux clients
+ 
+ 
+ 
+ ->BeforePresentation // renvoie au chemin ci dessous 
+ 
+
+ =BeforePresentation // chemin appellé lorsqu'on a finis une presentation pour faire la deuxime presentation / passer a la suite
+ 
+{
+-EtapePresentationPerso == 1 : // si je suis a l'etape 1, je presente le Perso 1
+->Presentation(Perso1)
+-EtapePresentationPerso == 2 :  // si je suis a l'etape 2, je presente le Perso 2
+->Presentation(Perso2)
+ }
+  // si j'ai passé l'étape 2, je ne rentre pas dans le if et je passe à la suite
+ 
+ 
+ // dialogue avant que les personnages reagissent a la quete
+ Sigg: Bon voici votre quete
+ : je vais vous préparer de superbes Thélixir
+ 
+ 
+ ->BeforeReaction //renvoi au chemin ci dessous
+ 
+ =BeforeReaction // chemin appellé lorsque les personnages ont finis de réagir
+ {
+-EtapeReactionnPerso == 1 : // si je suis à l'étape 1, le personnage 1 réagite à la quete
+->ReactionQuete(Perso1)
+-EtapeReactionnPerso == 2 : // si je suis à l'étape 2, le personnage 2 réagite à la quete
+->ReactionQuete(Perso2)
+ 
+ }
+ 
+ 
+ 
+ // dialogue apres la reaction des personnages
+Sigg:Allez hop au travail
 
 
 
 
-==Presentation(Perso)==
+ ~ FinishDialogue("cuisine")
+ ->END
+ 
+ ==Presentation(Perso)==
 
 ~fadeIn(Perso,1)
 
@@ -48,49 +116,10 @@ VAR EtapeReactionnPerso = 1
  }
  
  ~EtapePresentationPerso = EtapePresentationPerso + 1
-->Avantquete
-
-
- ==Avantquete==
- 
- Sigg: Ho un nouveau client
- 
- 
-{
--EtapePresentationPerso == 1 : 
-->Presentation(Perso1)
--EtapePresentationPerso == 2 : 
-->Presentation(Perso2)
- 
- }
- 
- Sigg: Bon voici votre quete
- : je vais vous préparer de superbes Thélixir
- 
- 
- 
- 
- {
--EtapeReactionnPerso == 1 : 
-->Presentation(Perso1)
--EtapeReactionnPerso == 2 : 
-->Presentation(Perso2)
- 
- }
- 
-//{Perso1}: hey salut Sigg
-//:j'ai besoins d'aide
-//:j'ai envie d'une bonne boisson
-//{Perso3}: Ne t'inquietes pas je vais te préparer un très bon Thélixir
-//:Allez hop au travail
+->Avantquete.BeforePresentation
 
 
 
-
- ~ FinishDialogue("cuisine")
- ->END
- 
- 
  ==ReactionQuete(Perso)==
  // ici faut du texte en fonction de la personne 
  {
@@ -121,10 +150,16 @@ VAR EtapeReactionnPerso = 1
  
  
   ~EtapeReactionnPerso = EtapeReactionnPerso + 1
-->Avantquete
+->Avantquete.BeforeReaction
+ 
+ 
  
  
   ==Apresquete==
+  
+  ->Init(false)
+  
+  =PastInit
 Sigg : Et voila
 Samuel : Haaaa merci
 Samuel : Je suis prêt à me battre maintenant

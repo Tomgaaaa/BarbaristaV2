@@ -97,7 +97,7 @@ namespace VNsup
                 story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
 
                 story.variablesState["Perso1"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[0].namePerso;
-                //story.variablesState["Perso2"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[1];
+                story.variablesState["Perso2"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[1].namePerso;
                 SetupGlobalMethods();
       
 
