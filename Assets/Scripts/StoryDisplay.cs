@@ -144,11 +144,15 @@ namespace VNsup
 
         public void SetStoryBoxActive(bool active)
         {
+            //faut faire truc ici
             storyBox.SetActive(active);
         }
 
         protected virtual void ChangeCharacter(string id)
         {
+
+            // ou ici
+
             SOCharacter charac = engine?.FindCharacterDefinition(id);
 
             if (charac != null)
