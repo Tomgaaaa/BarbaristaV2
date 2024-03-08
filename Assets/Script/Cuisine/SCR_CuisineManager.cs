@@ -117,6 +117,8 @@ public class SCR_CuisineManager : MonoBehaviour
         {
             // salors on passe a la partie VN
             AudioManager.instanceAM.Play("PreparationFinish");
+            AudioManager.instanceAM.FadeOut("CuisineAlatea", 0, 4.5f);
+            AudioManager.instanceAM.Play("BarAlatea");
             SceneManager.LoadScene("SCE_VisualNovel");
 
         }

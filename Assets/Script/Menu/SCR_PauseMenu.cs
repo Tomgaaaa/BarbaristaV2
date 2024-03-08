@@ -76,6 +76,9 @@ public class SCR_PauseMenu : MonoBehaviour
         //audioManager = FindObjectOfType<AudioManager>();
         //audioManager.Play("Menu");
         Time.timeScale = 1f;
+        AudioManager.instanceAM.FadeOut("BarAlatea", 0, 4.5f);
+        AudioManager.instanceAM.FadeOut("CuisineAlatea", 0, 4.5f);
+        AudioManager.instanceAM.Play("Menu");
         SceneManager.LoadScene("SCE_Menu");
     }
 

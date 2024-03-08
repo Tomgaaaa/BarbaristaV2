@@ -43,6 +43,9 @@ public class AudioManager : MonoBehaviour
     // singleton 
     public static AudioManager instanceAM;
 
+    SoundSettings backUpLastSound;
+    public float backUpLastVolume;
+
     private void Awake()
     {
         if (instanceAM == null)
@@ -143,7 +146,7 @@ public class AudioManager : MonoBehaviour
     }
 
   
-    public void FadeOut(string name, float value)
+    public void FadeOut(string name, float value, float duration)
     {
         // cherche parmis l'array sounds un élément qui a un label = au parametre name
         SoundSettings s = System.Array.Find(sounds, sound => sound.label == name);
@@ -165,11 +168,18 @@ public class AudioManager : MonoBehaviour
 
 
 
-        // indique à l'audio source, correspondant au parametre name, de play le clip choisit aleatoirement
-        s.source.DOFade(value, 4.5f);
+        backUpLastSound = s;
+        backUpLastVolume = s.volume;
+
+        s.source.DOFade(value, duration).OnComplete(ResetSound);
 
     }
 
+    private void ResetSound()
+    {
+        backUpLastSound.source.Stop();
+        backUpLastSound.volume= 1;
 
+    }
 
 }

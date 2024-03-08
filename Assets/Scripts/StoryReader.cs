@@ -4,6 +4,7 @@ using UnityEngine;
 using Ink.Runtime;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace VNsup
 {
@@ -200,6 +201,9 @@ namespace VNsup
             if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 0)
             {
                 AudioManager.instanceAM.Play("SwitchToCuisine");
+                AudioManager.instanceAM.Pause("BarAlatea");
+                
+                AudioManager.instanceAM.Play("CuisineAlatea");
                 SceneManager.LoadScene("SCE_Cuisine");
             }
             else if (SCR_DATA.instanceData.GetEtapeQuest() == 0 && SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)

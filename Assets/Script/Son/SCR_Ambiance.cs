@@ -10,7 +10,6 @@ public class SCR_Ambiance : MonoBehaviour
     {
 
         AudioManager.instanceAM.Play(sound);
-        AudioManager.instanceAM.Play(sound);
        
     }
 
