@@ -146,6 +146,7 @@ public class SCR_Pilon : MonoBehaviour
                 if(inMortier && Mathf.Abs(ddd.y) * 10 > velocityNecessairePilon)
                 {
                     currentTempsBroyage += Time.deltaTime; // alors on ajoute le temps que l'on passe en collision
+                   
 
                 }
 
@@ -157,11 +158,12 @@ public class SCR_Pilon : MonoBehaviour
                 if (currentTempsBroyage >= tempsNecessaireBoyagePilon) // si le temps actuelle de broyage et supérieur à celle necessaire alors on transforme l'ingrédient
                 {
                     refMortier.FinishManipulation();
+                    
                     inManipulation = false;
                     transform.DOMove(initialPosition, 0.5f);
                     transform.DORotate(Vector3.zero, 0.5f);
                     currentTempsBroyage = 0;
-
+                    
                 }
 
             }
@@ -218,6 +220,7 @@ public class SCR_Pilon : MonoBehaviour
         if (collision.gameObject.GetComponentInParent<SCR_Mortier>())
         {
             contactMortier = true;
+            
             AudioManager.instanceAM.Play("Mortier");
         }
         
