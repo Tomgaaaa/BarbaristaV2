@@ -53,7 +53,7 @@ VAR previousChemin = "vide"
  
  // dialogue avant que les personnages reagissent a la quete
  Sigg: Bon voici votre quete
- :Récolte d'Aloalgue pour fabriquer des baumes
+ :Récupération d'eau régénérante
  
  
  ->BeforeReaction //renvoi au chemin ci dessous
@@ -128,25 +128,25 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
- {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerai en récupéré pour sa collection personnelle.
+ {Perso}:Samuel est à la fois neutre et inquiet car aller chercher l’eau régénérante est une bonne chose mais en cette période il y a de temps en temps des tempêtes de neige et que la population de Frengs augmente dans ces grottes.
+
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
-  {Perso}:Élira espère vraiment que les Kerusculas ne leur poseront pas problème, elle n’a pas envie d’en tuer alors que ce n’est pas une nécessité.
-  :Elle a hâte que tous soit prêt pour aller chasser l’Oméga qui fait beaucoup de mal à la faune et la flore.
+  {Perso}:Élira est contente d’aller chercher de l’eau régénérante car cela montre à quel point la nature peut être bénéfique et qu’il faut tout faire pour la protéger. 
+
   
   
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
-  {Perso}:Saori s’exprime sur le fait qu’elle est contente d’aller récolter les Aloalgues car leur propriétés curative l’intéresse pour ses recherches mais l’idée d’aller dans une zone avec des Keruscula ne l’enchante pas car elle n’aime pas ces créatures.
+  {Perso}:Saori apprécie aussi le fait d’aller dans ces grottes car elle va pouvoir continuer à faire des analyse sur cette eaux aux propriétés surprenantes et très utiles.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
-  {Perso}:Vikram n’a pas du tout envie d’aller là-bas et de tomber sur les Keruscula, il les a en horreur car il est tombé dans un des nids et les bébé Kérusculas ont été partout sur lui. 
-  :Ça l’a <shake>traumatisé.</shake>
+  {Perso}:Vikram est excité car il vont très probablement affronter une horde de Freng et il a toujours voulu voir de plus près ces créature car il ne sait pas encore quelle trophée rapporter.
  
  }
  

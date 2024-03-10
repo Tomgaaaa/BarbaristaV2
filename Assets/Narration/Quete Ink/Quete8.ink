@@ -53,7 +53,7 @@ VAR previousChemin = "vide"
  
  // dialogue avant que les personnages reagissent a la quete
  Sigg: Bon voici votre quete
- :Récolte d'Aloalgue pour fabriquer des baumes
+ :Sécurisation d'un terrain pour un avant poste
  
  
  ->BeforeReaction //renvoi au chemin ci dessous
@@ -128,25 +128,27 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
- {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerai en récupéré pour sa collection personnelle.
+ {Perso}:Samuel est content de partir pour cette mission car il ne va pas faire que se battre contre les animaux hostile mais aussi aider à la construction d’une zone sécurisé.
+
+
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
-  {Perso}:Élira espère vraiment que les Kerusculas ne leur poseront pas problème, elle n’a pas envie d’en tuer alors que ce n’est pas une nécessité.
-  :Elle a hâte que tous soit prêt pour aller chasser l’Oméga qui fait beaucoup de mal à la faune et la flore.
+  {Perso}:Élira est contente d’aller là-bas car elle aime beaucoup la neige, la forêt qui s’y trouve et les Chokaros qu’elle trouve adorables (ps - elle aimerais en adopter un).
+
   
   
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
-  {Perso}:Saori s’exprime sur le fait qu’elle est contente d’aller récolter les Aloalgues car leur propriétés curative l’intéresse pour ses recherches mais l’idée d’aller dans une zone avec des Keruscula ne l’enchante pas car elle n’aime pas ces créatures.
+  {Perso}:Saori est plutôt neutre par rapport à cette mission sauf si elle pouvais récupérer de la fourrure de Chokaro.
+
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
-  {Perso}:Vikram n’a pas du tout envie d’aller là-bas et de tomber sur les Keruscula, il les a en horreur car il est tombé dans un des nids et les bébé Kérusculas ont été partout sur lui. 
-  :Ça l’a <shake>traumatisé.</shake>
+  {Perso}:Vikram râle encore car ils vont devoir retourner dans une zone froide mais bon sa mauvaise humeur est compensée par le fait qu’il y a des Chokaros et qu’il veut récupérer leur griffes comme trophée. 
  
  }
  

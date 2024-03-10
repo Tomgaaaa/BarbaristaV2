@@ -16,9 +16,16 @@ namespace VNsup
         public VNEngine engine { get; set; }
 
         [Header("Character")]
-        [SerializeField] protected CharacterNameView characterBox;
+        [SerializeField] protected CharacterNameView characterBoxCenter;
+        [SerializeField] protected CharacterNameView characterBoxLeft;
+        [SerializeField] protected CharacterNameView characterBoxRight;
+        CharacterNameView currentNameBox;
         [Header("Story")]
-        [SerializeField] protected StoryBoxView storyBox;
+        [SerializeField] protected StoryBoxView storyBoxCenter;
+        [SerializeField] protected StoryBoxView storyBoxLeft;
+        [SerializeField] protected StoryBoxView storyBoxRight;
+        StoryBoxView currentStoryBox;
+        private bool isRightTalking = true;
         [Header("Choices")]
         [SerializeField] protected ChoiceDisplay choicesView;
 
@@ -31,10 +38,17 @@ namespace VNsup
             base.Awake();
 
             lastCharacter = "";
+            currentStoryBox = storyBoxCenter;
+            currentNameBox = characterBoxCenter;
+            storyBoxLeft.Hide();
+            storyBoxRight.Hide();
+            characterBoxLeft.Hide();
+            characterBoxRight.Hide();
 
-            if (!characterBox)
+
+            if (!characterBoxCenter)
                 throw new MissingFieldException("StoryDisplay", "characterBox");
-            if (!storyBox)
+            if (!storyBoxCenter)
                 throw new MissingFieldException("StoryDisplay", "storyBox");
             if (!choicesView)
                 throw new MissingFieldException("StoryDisplay", "choicesView");
@@ -83,7 +97,7 @@ namespace VNsup
             else
                 SetCharacterBoxActive(false);
 
-            storyBox.SetLine(content);
+            currentStoryBox.SetLine(content);
         }
 
         public virtual void ShowChoices(List<Choice> currentChoices)
@@ -100,13 +114,13 @@ namespace VNsup
         {
             if (state)
             {
-                storyBox.Show();
+                currentStoryBox.Show();
                 choicesView.Hide();
             }
             else
             {
                 choicesView.Show();
-                storyBox.Hide();
+                currentStoryBox.Hide();
             }
         }
 
@@ -134,35 +148,59 @@ namespace VNsup
 
         protected virtual void SetNextButtonState(bool state)
         {
-            storyBox.SetInteractable(state);
+            storyBoxCenter.SetInteractable(state);
         }
 
         public void SetCharacterBoxActive(bool active)
         {
-            characterBox.SetActive(active);
+            currentNameBox.SetActive(active);
         }
 
         public void SetStoryBoxActive(bool active)
         {
             //faut faire truc ici
-            storyBox.SetActive(active);
+            currentStoryBox.SetActive(active);
         }
 
         protected virtual void ChangeCharacter(string id)
         {
-
             // ou ici
 
             SOCharacter charac = engine?.FindCharacterDefinition(id);
 
+            currentStoryBox.Hide();
+            currentNameBox.Hide();
+
+            if(charac.tag == "Sigg")
+            {
+                currentStoryBox = storyBoxCenter;
+                currentNameBox = characterBoxCenter;
+
+            }
+            else if(isRightTalking)
+            {
+                isRightTalking = false;
+                currentStoryBox = storyBoxLeft;
+                currentNameBox = characterBoxLeft;
+
+            }
+            else
+            {
+                isRightTalking = true;
+                currentStoryBox = storyBoxRight;
+                currentNameBox = characterBoxRight;
+
+            }
+            currentStoryBox.Show();
+
             if (charac != null)
             {
-                characterBox.SetName(charac.characterName, charac.characterColor);
+                currentNameBox.SetName(charac.characterName, charac.characterColor);
             }
             else
             {
                 Debug.LogWarning("Definition '" + id + "' not found.");
-                characterBox.SetName("? ? ?", Color.white * 0.5f);
+                currentNameBox.SetName("? ? ?", Color.white * 0.5f);
             }
         }
 

@@ -53,7 +53,7 @@ VAR previousChemin = "vide"
  
  // dialogue avant que les personnages reagissent a la quete
  Sigg: Bon voici votre quete
- :Récolte d'Aloalgue pour fabriquer des baumes
+ :Mission de sauvetage d'un avant-poste isolé
  
  
  ->BeforeReaction //renvoi au chemin ci dessous
@@ -128,25 +128,25 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
- {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerai en récupéré pour sa collection personnelle.
+ {Perso}:Samuel est inquièt pour les aventuriers et l’équipe blessée dans l’avant poste isolé dans la forêt bioluminescente car une brume toxique peut se lever et aggraver leur état.
+
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
-  {Perso}:Élira espère vraiment que les Kerusculas ne leur poseront pas problème, elle n’a pas envie d’en tuer alors que ce n’est pas une nécessité.
-  :Elle a hâte que tous soit prêt pour aller chasser l’Oméga qui fait beaucoup de mal à la faune et la flore.
+  {Perso}:Élira est inquiète pour les aventurier et l’équipe blessée dans l’avant post isolé dans la forêt bioluminescente car une brume toxique peut se lever et aggraver leur état ainsi que les Évispar qui sont très toxique. 
+
   
   
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
-  {Perso}:Saori s’exprime sur le fait qu’elle est contente d’aller récolter les Aloalgues car leur propriétés curative l’intéresse pour ses recherches mais l’idée d’aller dans une zone avec des Keruscula ne l’enchante pas car elle n’aime pas ces créatures.
+  {Perso}:Saori aime beaucoup cette forêt car elle est fasciné par les plantes bioluminescentes qui s’y trouvent mais n’aime pas les Évispars qui la dégoutent.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
-  {Perso}:Vikram n’a pas du tout envie d’aller là-bas et de tomber sur les Keruscula, il les a en horreur car il est tombé dans un des nids et les bébé Kérusculas ont été partout sur lui. 
-  :Ça l’a <shake>traumatisé.</shake>
+  {Perso}:Vikram dit qu’il ne s’inquiète pas pour eux et souhaite éliminer un un maximum de monstre pour les venger et éviter que d’autre ne les gène plus tard.
  
  }
  

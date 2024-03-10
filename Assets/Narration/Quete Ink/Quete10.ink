@@ -53,7 +53,7 @@ VAR previousChemin = "vide"
  
  // dialogue avant que les personnages reagissent a la quete
  Sigg: Bon voici votre quete
- :Récolte d'Aloalgue pour fabriquer des baumes
+ :Récolte de sève de Mangracier pour renforcer les armes et armures
  
  
  ->BeforeReaction //renvoi au chemin ci dessous
@@ -128,25 +128,25 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
- {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerai en récupéré pour sa collection personnelle.
+ {Perso}:Samuel n’aime pas l’idée d’aller dans ce biome car il y a pas mal de choses toxique là-bas et il est allergique à la sève de Magracier.
+
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
-  {Perso}:Élira espère vraiment que les Kerusculas ne leur poseront pas problème, elle n’a pas envie d’en tuer alors que ce n’est pas une nécessité.
-  :Elle a hâte que tous soit prêt pour aller chasser l’Oméga qui fait beaucoup de mal à la faune et la flore.
+  {Perso}:Élira n’aime pas trop l’idée d’aller dans le marais car même s’il y a de la vie là-bas, elle à simplement l’impression que tout y et pourris mais ils ont vraiment besoin de la sève.
+
   
   
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
-  {Perso}:Saori s’exprime sur le fait qu’elle est contente d’aller récolter les Aloalgues car leur propriétés curative l’intéresse pour ses recherches mais l’idée d’aller dans une zone avec des Keruscula ne l’enchante pas car elle n’aime pas ces créatures.
+  {Perso}:Saori n’apprécie vraiment pas aller dans les marais car il y a une odeur de putréfaction et elle n’a pas envie de finir recouverte d’eau croupie.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
-  {Perso}:Vikram n’a pas du tout envie d’aller là-bas et de tomber sur les Keruscula, il les a en horreur car il est tombé dans un des nids et les bébé Kérusculas ont été partout sur lui. 
-  :Ça l’a <shake>traumatisé.</shake>
+  {Perso}:Vikram n’aime pas vraiment les marais car il n’aime pas la vase qui les entrave lors de ses  déplacements en combats.
  
  }
  

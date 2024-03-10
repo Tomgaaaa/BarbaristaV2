@@ -53,7 +53,7 @@ VAR previousChemin = "vide"
  
  // dialogue avant que les personnages reagissent a la quete
  Sigg: Bon voici votre quete
- :Récolte d'Aloalgue pour fabriquer des baumes
+ :Opération d'extraction de souffre pour fabriquer de la poudre noir
  
  
  ->BeforeReaction //renvoi au chemin ci dessous
@@ -128,25 +128,25 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
- {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerai en récupéré pour sa collection personnelle.
+ {Perso}:Samuel trouve l’objectif de leur mission très utile car le souffre leur permettra de confectionner de la poudre noir pour des explosifs car ça à montré leur efficacité sur l’Oméga à l’époque.
+
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
-  {Perso}:Élira espère vraiment que les Kerusculas ne leur poseront pas problème, elle n’a pas envie d’en tuer alors que ce n’est pas une nécessité.
-  :Elle a hâte que tous soit prêt pour aller chasser l’Oméga qui fait beaucoup de mal à la faune et la flore.
+  {Perso}:Élira n’aime pas ce biome car elle à peur qu’il s’étende et ne perturbe l’harmonie naturel du reste de la planète car le souffre est très nocif pour les plantes et les animaux (sauf ceux qui s’y trouve) si sa voute cristalline venait à lâcher.
+
   
   
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
-  {Perso}:Saori s’exprime sur le fait qu’elle est contente d’aller récolter les Aloalgues car leur propriétés curative l’intéresse pour ses recherches mais l’idée d’aller dans une zone avec des Keruscula ne l’enchante pas car elle n’aime pas ces créatures.
+  {Perso}:Saori est satisfaite d’aller dans ce biome car elle pourras récupérer des échantillons de souffre pour savoir s’ils peuvent en faire plus qu’une poudre explosive et développer un engrais puissant.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
-  {Perso}:Vikram n’a pas du tout envie d’aller là-bas et de tomber sur les Keruscula, il les a en horreur car il est tombé dans un des nids et les bébé Kérusculas ont été partout sur lui. 
-  :Ça l’a <shake>traumatisé.</shake>
+  {Perso}:Vikram est impatient d’y aller car il à toujours voulu avoir des crocs de Cresholds car ils sont très stylé et font du feu quand les les frappe les uns contre les autres.
  
  }
  

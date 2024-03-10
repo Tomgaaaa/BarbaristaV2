@@ -33,7 +33,7 @@ VAR previousChemin = "vide"
 
 
 //dialogue avant que les personnages arrivent 
- Sigg: Ho des nouveaux clients
+ Sigg: Haaa les voila qui arrivent
  
  
  
@@ -52,8 +52,8 @@ VAR previousChemin = "vide"
  
  
  // dialogue avant que les personnages reagissent a la quete
- Sigg: Bon voici votre quete
- : je vais vous préparer de superbes Thélixir
+ Sigg: Bon voici votre quete.
+ :Recherche d'un filon de Alatium pour fabriquer des armures
  
  
  ->BeforeReaction //renvoi au chemin ci dessous
@@ -91,26 +91,25 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
- {Perso}: Hey c'est Samuel
+ {Perso}:Hey c'est Samuel
  : ça va ?
+
  
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
-  {Perso}: Hey c'est Elira
-  :je suis encore qu'un concept?
+  {Perso}: Je ne suis pas censé pouvoir etre affecté à cette quête.
   
   
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
-  {Perso}: Hey c'est Saori
-  : je suis une scientifique ... enfin je crois
+  {Perso}:Je ne suis pas censé pouvoir etre affecté à cette quête.
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
-  {Perso}: Hey c'est Vikram
+  {Perso}:Hey c'est Vikram
   : ça va le vieux ?
  
  }
@@ -128,23 +127,24 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
- {Perso}:Hu facile
+ {Perso}:Samuel, d’un ton <bounce>enjoué</bounce>, dit qu’il à hâte d’aller dans les montagnes pour extraire ce minerais car il a toujours voulu voir le minerais à l’état brut. 
+ :Grâce à ces minerais, ils pourront forger d’autre armes et améliorer leur armures en vue du combat contre l’Oméga, ce dernier ayant détruit la ville basse il y a plusieurs années.
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
-  {Perso}:Bon y go ?
+  {Perso}:Je ne suis pas censé pouvoir etre affecté à cette quête.
   
   
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
-  {Perso}:Let's go c'est parti
+  {Perso}:Je ne suis pas censé pouvoir etre affecté à cette quête.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
-  {Perso}:Un simple échauffement
+  {Perso}:Vikram déclara d’un air sombre que contrairement à Samuel, il n’a pas hâte d’aller se geler les miches sous la grêle. Très peu pour lui. Il n’aime pas le froid et en tremble d’avance.
  
  }
  
@@ -161,9 +161,7 @@ Sigg:Allez hop au travail
   
   =PastInit
 Sigg : Et voila
-Samuel : Haaaa merci
-Samuel : Je suis prêt à me battre maintenant
-Samuel : Mais où est Vikram ?
+:Bon courage
  ~ FinishDialogue("gainQuete")
 ->END
     

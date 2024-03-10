@@ -52,8 +52,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue avant que les personnages reagissent a la quete
- Sigg: Bon voici votre quete
- :Récolte d'Aloalgue pour fabriquer des baumes
+ Sigg:Chasse de Deshrog pour alimenter les chaufferies
  
  
  ->BeforeReaction //renvoi au chemin ci dessous
@@ -128,25 +127,23 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
- {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerai en récupéré pour sa collection personnelle.
+ {Perso}:Samuel n’aime pas trop l’idée d’aller profondément dans le basalte car avec l’activité volcanique il y a des risque d’effondrement.
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
-  {Perso}:Élira espère vraiment que les Kerusculas ne leur poseront pas problème, elle n’a pas envie d’en tuer alors que ce n’est pas une nécessité.
-  :Elle a hâte que tous soit prêt pour aller chasser l’Oméga qui fait beaucoup de mal à la faune et la flore.
+  {Perso}Élira est plutôt neutre par rapport à cette quête mais inquiète pour le fait que l’activité volcanique  car les Srégols seront plus actifs et elle n’as pas envie d’en tuer si ce n’est pas nécessaire.
   
   
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
-  {Perso}:Saori s’exprime sur le fait qu’elle est contente d’aller récolter les Aloalgues car leur propriétés curative l’intéresse pour ses recherches mais l’idée d’aller dans une zone avec des Keruscula ne l’enchante pas car elle n’aime pas ces créatures.
+  {Perso}:Saori dit qu’elle n’est pas très à l’aise à l’idée d’aller dans un biome chaud, elle supporte mal la chaleur et le feu lui rappel de mauvais souvenir lors de l’attaque de l’Oméga.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
-  {Perso}:Vikram n’a pas du tout envie d’aller là-bas et de tomber sur les Keruscula, il les a en horreur car il est tombé dans un des nids et les bébé Kérusculas ont été partout sur lui. 
-  :Ça l’a <shake>traumatisé.</shake>
+  {Perso}:Vikram à hâte d’aller affronter des Deshrogs car on lui a promis une nouvelle arme dès que les fonderies auraient de quoi fonctionner.
  
  }
  

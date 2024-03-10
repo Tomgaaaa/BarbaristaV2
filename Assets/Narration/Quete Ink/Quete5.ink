@@ -53,7 +53,7 @@ VAR previousChemin = "vide"
  
  // dialogue avant que les personnages reagissent a la quete
  Sigg: Bon voici votre quete
- :Récolte d'Aloalgue pour fabriquer des baumes
+ :Enquete sur une cartographie obsolète
  
  
  ->BeforeReaction //renvoi au chemin ci dessous
@@ -128,25 +128,26 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
- {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerai en récupéré pour sa collection personnelle.
+ {Perso}:Samuel est intrigué par les roches mouvantes il a hâte de découvrir pourquoi et espère que ce n’est pas quelque chose de dangereux.
+
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
-  {Perso}:Élira espère vraiment que les Kerusculas ne leur poseront pas problème, elle n’a pas envie d’en tuer alors que ce n’est pas une nécessité.
-  :Elle a hâte que tous soit prêt pour aller chasser l’Oméga qui fait beaucoup de mal à la faune et la flore.
+  {Perso}:Élira n’aime pas vraiment ce biome aride car il n’y a pas beaucoup de vie et les paysage sont moroses. 
+  Sigg:sigg lui rep que même si ça en a pas l’air, cette zone regorge de vie like carabos camouflé
+
   
   
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
-  {Perso}:Saori s’exprime sur le fait qu’elle est contente d’aller récolter les Aloalgues car leur propriétés curative l’intéresse pour ses recherches mais l’idée d’aller dans une zone avec des Keruscula ne l’enchante pas car elle n’aime pas ces créatures.
+  {Perso}:Saori est contente d’aller dans ce biome car elle peut y trouver des plantes à la sève glaçante quand celles-ci sont sont écrasées et elle veut les étudier pour faire des grenades cryogéniques.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
-  {Perso}:Vikram n’a pas du tout envie d’aller là-bas et de tomber sur les Keruscula, il les a en horreur car il est tombé dans un des nids et les bébé Kérusculas ont été partout sur lui. 
-  :Ça l’a <shake>traumatisé.</shake>
+  {Perso}:Vikram mentionne le Carabos qui peut être dangereux et dit qu’il s’en occupera s’il y en à un pour rapporter sa pince et l’avoir comme trophée.
  
  }
  
