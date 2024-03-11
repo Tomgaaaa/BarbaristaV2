@@ -374,7 +374,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -564.55994, y: -99.70001}
+  m_AnchoredPosition: {x: -659.9, y: -99.70001}
   m_SizeDelta: {x: 35.4371, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1100047717411892030
@@ -581,8 +581,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 108.3114}
+  m_AnchoredPosition: {x: -1.2663, y: -8.8638}
+  m_SizeDelta: {x: 484.8047, y: 82.9861}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &4134509998989231936
 CanvasRenderer:
@@ -625,7 +625,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jungle
+  m_Text: Jungle florissante
 --- !u!1 &8570698951755175186
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,7 +792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.146}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 77.99994, y: 302}
+  m_AnchoredPosition: {x: 82.99994, y: 245}
   m_SizeDelta: {x: 139.241, y: 129.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2126262339402290743
@@ -823,7 +823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6d3dc464632899b428ef34549a4a7c38, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -843,16 +843,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 92966263063154610, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -80
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 92966263063154610, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 302
+      value: 245
       objectReference: {fileID: 0}
     - target: {fileID: 631922743493211286, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_Name
       value: KerusculaImage
       objectReference: {fileID: 0}
+    - target: {fileID: 897768527528728987, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c80634413c2d5bf4ba02406f20f120bd, type: 3}
     - target: {fileID: 1357478711166640967, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -875,35 +879,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_Pivot.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1359.845
+      value: 1472.219
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 914.9764
+      value: 929.838
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -935,11 +939,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25
+      value: -3.375
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25
+      value: -51
       objectReference: {fileID: 0}
     - target: {fileID: 2046547772940916069, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -955,8 +959,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2645882154176448395, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_text
-      value: "Les kerusculas sont plus active le matin, tandit que les phacoli\xE8res
+      value: "Les<b> kerusculas </b>sont plus active le matin, tandit que les <b>phacoli\xE8res</b>
         sortent de nuits."
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645882154176448395, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_fontSize
+      value: 30.85
       objectReference: {fileID: 0}
     - target: {fileID: 3096782121366051729, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_Name
@@ -1027,12 +1035,20 @@ PrefabInstance:
       value: Biome Feu
       objectReference: {fileID: 0}
     - target: {fileID: 4463452805212595718, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 603.6145
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463452805212595718, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 105.0047
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463452805212595718, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 72
+      value: 66
       objectReference: {fileID: 0}
     - target: {fileID: 4463452805212595718, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -139
+      value: -134
       objectReference: {fileID: 0}
     - target: {fileID: 5595796535380290398, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
       propertyPath: m_AnchorMax.y
