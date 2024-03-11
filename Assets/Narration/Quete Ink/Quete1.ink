@@ -17,7 +17,7 @@ VAR previousChemin = "vide"
 -> Avantquete.PastInit // permet de renvoyer au chemin AvantQuete
 
  -isAvantQuete == false: // permet de renvoyer au chemin ApresQuete
--> Avantquete.PastInit
+-> Apresquete.PastInit
 }
 
 
@@ -32,7 +32,9 @@ VAR previousChemin = "vide"
 =PastInit // chemin permettant d'esquiver l'Init 
 
 
-//dialogue avant que les personnages arrivent 
+//dialogue avant que les personnages arrivent
+ ~playSound("I_ArrivéPnjAlerte")
+ ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -52,6 +54,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue avant que les personnages reagissent a la quete
+ ~playSound("I_ExpressionSigg")
  Sigg: Bon voici votre quete.
  :Recherche d'un filon de Alatium pour fabriquer des armures
  
@@ -91,6 +94,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
+  ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
  : ça va ?
 
@@ -98,17 +102,20 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
+ ~playSound("I_BonjourElira")
   {Perso}: Je ne suis pas censé pouvoir etre affecté à cette quête.
   
   
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
+ ~playSound("I_BonjourSaori")
   {Perso}:Je ne suis pas censé pouvoir etre affecté à cette quête.
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
+ ~playSound("I_BonjourVikram")
   {Perso}:Hey c'est Vikram
   : ça va le vieux ?
  
@@ -144,7 +151,9 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
+ ~playSound("I_Raler")
   {Perso}:Vikram déclara d’un air sombre que contrairement à Samuel, il n’a pas hâte d’aller se geler les miches sous la grêle. Très peu pour lui. Il n’aime pas le froid et en tremble d’avance.
+  
  
  }
  
