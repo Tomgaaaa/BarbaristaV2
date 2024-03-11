@@ -4,8 +4,6 @@ using UnityEngine;
 using Ink.Runtime;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.DebugUI;
-using Unity.VisualScripting;
 
 namespace VNsup
 {
@@ -89,11 +87,6 @@ namespace VNsup
 
             story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
 
-            story.variablesState["Perso1"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[0].namePerso;
-            story.variablesState["Perso2"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[1].namePerso;
-            storyDisplay.SetStringPerso(story.variablesState["Perso1"].ToString(), story.variablesState["Perso2"].ToString());
-
-            SetupGlobalMethods();
 
 
             if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
@@ -104,6 +97,13 @@ namespace VNsup
             {
                 story.ChoosePathString("Avantquete");
             }
+
+
+            story.variablesState["Perso1"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[0].namePerso;
+            story.variablesState["Perso2"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[1].namePerso;
+            storyDisplay.SetStringPerso(story.variablesState["Perso1"].ToString(), story.variablesState["Perso2"].ToString());
+
+            SetupGlobalMethods();
 
 
 
@@ -209,9 +209,15 @@ namespace VNsup
                 SCR_DATA.instanceData.EtapePersoUp();
 
                 story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
+
+                story.variablesState["Perso1"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[0].namePerso;
+                story.variablesState["Perso2"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[1].namePerso;
+                storyDisplay.SetStringPerso(story.variablesState["Perso1"].ToString(), story.variablesState["Perso2"].ToString());
+
                 SetupGlobalMethods();
                 story.ChoosePathString("Avantquete");
-                //Next();
+                
+                Next();
 
             }
             else if (SCR_DATA.instanceData.GetEtapeQuest() == 1 && SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
@@ -223,6 +229,7 @@ namespace VNsup
                 SceneManager.LoadScene("SCE_GainQuete");
 
             }
+
         }
 
     }

@@ -169,7 +169,7 @@ Sigg:Allez hop au travail
   ->Init(false)
   
   =PastInit
-Sigg : Et voila
+Sigg: Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")
 ->END

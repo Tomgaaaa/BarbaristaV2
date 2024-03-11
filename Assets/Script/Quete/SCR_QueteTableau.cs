@@ -47,6 +47,7 @@ public class SCR_QueteTableau : MonoBehaviour
         titre.text = myQueteSo.titre;
         description.text = myQueteSo.description;
         illu.sprite = myQueteSo.illustration;
+        infoEventTexte.text = myQueteSo.infoEvenement;
 
 
         for (int i = 0; i < myQueteSo.difficulty.Count; i++)

@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class SCR_GainQuete_UI : MonoBehaviour
 {
     [SerializeField] private Transform curseurAmitie;
+    private Vector3 initialPositionCurseur;
     [SerializeField] private List<Transform> listAmitieAB;
 
     [SerializeField] private SpriteRenderer spritePerso1;
@@ -36,6 +37,9 @@ public class SCR_GainQuete_UI : MonoBehaviour
 
     public void Loadpage(SO_Personnage Perso1Parameter, SO_Personnage Perso2Parameter)
     {
+        initialPositionCurseur = curseurAmitie.position;
+
+
         spritePerso1.sprite = Perso1Parameter.profil;
         spritePerso2.sprite = Perso2Parameter.profil;
 
@@ -51,7 +55,7 @@ public class SCR_GainQuete_UI : MonoBehaviour
     public void UpdateAmitie(SO_Personnage Perso1Parameter, SO_Personnage Perso2Parameter, bool instantDeplacement)
     {
         float distanceMinMax = (listAmitieAB[1].position.x - listAmitieAB[0].position.x) / 6;
-
+        curseurAmitie.position = initialPositionCurseur;
 
         if(instantDeplacement)
         {
@@ -98,8 +102,8 @@ public class SCR_GainQuete_UI : MonoBehaviour
         listButton[2].SetActive(true);
 
         textNmbQuete.text = "2/2";
-        gainQuete.CalculQuete2();
-        //gainQuete.CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[1]);
+        //gainQuete.CalculQuete2();
+        gainQuete.CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[1]);
     }
 
     public void RetourQuetePrecedente()
