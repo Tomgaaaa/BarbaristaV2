@@ -17,7 +17,7 @@ VAR previousChemin = "vide"
 -> Avantquete.PastInit // permet de renvoyer au chemin AvantQuete
 
  -isAvantQuete == false: // permet de renvoyer au chemin ApresQuete
--> Avantquete.PastInit
+-> Apresquete.PastInit
 }
 
 

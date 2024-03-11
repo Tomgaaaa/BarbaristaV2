@@ -32,20 +32,32 @@ namespace VNsup
         protected string content { get; set; }
         protected string lastCharacter { get; set; }
 
+
+        private string Perso1Name;
+        private string Perso2Name;
+        public void SetStringPerso(string perso1Parameter, string perso2Parameter)
+        {
+            Perso1Name = perso1Parameter; 
+            Perso2Name = perso2Parameter;
+
+        }
+
         // Start is called before the first frame update
         protected override void Awake()
         {
             base.Awake();
 
             lastCharacter = "";
+
+            #region rajouter
             currentStoryBox = storyBoxCenter;
             currentNameBox = characterBoxCenter;
             storyBoxLeft.Hide();
             storyBoxRight.Hide();
             characterBoxLeft.Hide();
             characterBoxRight.Hide();
-
-
+            
+#endregion
             if (!characterBoxCenter)
                 throw new MissingFieldException("StoryDisplay", "characterBox");
             if (!storyBoxCenter)
@@ -171,20 +183,21 @@ namespace VNsup
             currentStoryBox.Hide();
             currentNameBox.Hide();
 
-            if(charac.tag == "Sigg")
+
+            if (charac.tag == "Sigg")
             {
                 currentStoryBox = storyBoxCenter;
                 currentNameBox = characterBoxCenter;
 
             }
-            else if(isRightTalking)
+            else if(id == Perso1Name)
             {
                 isRightTalking = false;
                 currentStoryBox = storyBoxLeft;
                 currentNameBox = characterBoxLeft;
 
             }
-            else
+            else if(id == Perso2Name) 
             {
                 isRightTalking = true;
                 currentStoryBox = storyBoxRight;

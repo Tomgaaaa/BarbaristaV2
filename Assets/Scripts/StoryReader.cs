@@ -5,6 +5,7 @@ using Ink.Runtime;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
+using Unity.VisualScripting;
 
 namespace VNsup
 {
@@ -70,6 +71,7 @@ namespace VNsup
             storyDisplay.engine = engine;
             storyDisplay.ReadTags(story.globalTags, true);
 
+
         }
 
         private void OnEnable()
@@ -84,32 +86,26 @@ namespace VNsup
 
         public virtual void Start()
         {
-            if (SCR_DATA.instanceData == null)
+
+            story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
+
+            story.variablesState["Perso1"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[0].namePerso;
+            story.variablesState["Perso2"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[1].namePerso;
+            storyDisplay.SetStringPerso(story.variablesState["Perso1"].ToString(), story.variablesState["Perso2"].ToString());
+
+            SetupGlobalMethods();
+
+
+            if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
             {
-                
-
                 story.ChoosePathString("Apresquete");
-
-
             }
             else
             {
-                story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
-
-                story.variablesState["Perso1"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[0].namePerso;
-                story.variablesState["Perso2"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[1].namePerso;
-                SetupGlobalMethods();
-      
-
-                if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
-                {
-                    story.ChoosePathString("Apresquete");
-                }
-                else
-                {
-                    story.ChoosePathString("Avantquete");
-                }
+                story.ChoosePathString("Avantquete");
             }
+
+
 
             if (startOnAwake)
                 Next();
@@ -213,7 +209,7 @@ namespace VNsup
                 SCR_DATA.instanceData.EtapePersoUp();
 
                 story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
-
+                SetupGlobalMethods();
                 story.ChoosePathString("Avantquete");
                 //Next();
 

@@ -1071,7 +1071,7 @@ GameObject:
   - component: {fileID: 291479438}
   - component: {fileID: 291479437}
   - component: {fileID: 291479442}
-  - component: {fileID: 291479441}
+  - component: {fileID: 291479443}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1166,25 +1166,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &291479441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291479435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f85403a2f42abe648bc761e824269467, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterBoxCenter: {fileID: 593767858}
-  characterBoxLeft: {fileID: 223439953}
-  characterBoxRight: {fileID: 1499349167}
-  storyBoxCenter: {fileID: 268404476}
-  storyBoxLeft: {fileID: 1661229496}
-  storyBoxRight: {fileID: 1236912629}
-  choicesView: {fileID: 1482819114}
 --- !u!114 &291479442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,10 +1180,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOnAwake: 1
   storyAsset: {fileID: 4900000, guid: 8d36efbeabf300843a4732e791ae0fd2, type: 3}
-  storyDisplay: {fileID: 291479441}
+  storyDisplay: {fileID: 291479443}
   engine: {fileID: 1032171342}
   eventList: []
   variableList: []
+--- !u!114 &291479443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291479435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74369c9533ac94dbb0e575e40dfe0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterBoxCenter: {fileID: 593767858}
+  characterBoxLeft: {fileID: 223439953}
+  characterBoxRight: {fileID: 1499349167}
+  storyBoxCenter: {fileID: 268404476}
+  storyBoxLeft: {fileID: 1661229496}
+  storyBoxRight: {fileID: 1236912629}
+  choicesView: {fileID: 1482819114}
 --- !u!1 &346810024
 GameObject:
   m_ObjectHideFlags: 0
