@@ -6,16 +6,15 @@ using UnityEngine;
 public class SCR_GainQuete : MonoBehaviour
 {
 
-    public float moyennePerso1;
-    public float moyennePerso2;
 
+    [SerializeField] private SCR_GainQuete_UI ui;
 
-    //public SO_Personnage personnage1;
-    //public SO_Personnage personnage2;
-    //public List<SCR_Ingredient> ingredientsUtilises;
-    //public SO_Quete queteUtilise;
-    //SO_Boisson boisson1R;
-    //SO_Boisson boisson2R;
+    public SO_Personnage personnage1;
+    public SO_Personnage personnage2;
+    public List<SCR_Ingredient> ingredientsUtilises;
+    public SO_Quete queteUtilise;
+    SO_Boisson boisson1R;
+    SO_Boisson boisson2R;
 
     private Dictionary<enumResistance,float> dicoRes = new Dictionary<enumResistance, float>() // juste pour parcourir les enum
     {
@@ -30,8 +29,10 @@ public class SCR_GainQuete : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[0], false);
-        CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[1], false);
+        ui.SetGainQuete(this);
+
+
+       CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[0], false);
     }
 
     // Update is called once per frame
@@ -43,7 +44,7 @@ public class SCR_GainQuete : MonoBehaviour
 
 #if UNITY_EDITOR
     [ContextMenu("Calcule Quete")]
-   /* public void CalculQuete()
+    public void CalculQuete()
     {
         boisson1R = ScriptableObject.CreateInstance<SO_Boisson>();
         boisson2R = ScriptableObject.CreateInstance<SO_Boisson>();
@@ -70,13 +71,47 @@ public class SCR_GainQuete : MonoBehaviour
         boisson2R.CreateBoisson(ingredientsUtilises, statBoisson2);
 
         CalculeChanceQuete(queteUtilise,true);
-    }*/
+
+
+    }
+
+
+
+    public void CalculQuete2()
+    {
+        boisson1R = ScriptableObject.CreateInstance<SO_Boisson>();
+        boisson2R = ScriptableObject.CreateInstance<SO_Boisson>();
+
+        Dictionary<enumResistance, float> statBoisson1 = new Dictionary<enumResistance, float> {
+            { enumResistance.Thermique, 100 } ,
+            { enumResistance.Hemorragique, 100 } ,
+            { enumResistance.Toxique, 100 } ,
+            { enumResistance.Cryogenique, 50 } ,
+            { enumResistance.Electrique, 100 } ,
+            { enumResistance.Lethargique, 100 }
+        };
+
+        Dictionary<enumResistance, float> statBoisson2 = new Dictionary<enumResistance, float> {
+            { enumResistance.Thermique, 100 } ,
+            { enumResistance.Hemorragique, 100 } ,
+            { enumResistance.Toxique, 100 } ,
+            { enumResistance.Cryogenique, 100 } ,
+            { enumResistance.Electrique, 100 } ,
+            { enumResistance.Lethargique, 100 }
+        };
+
+        boisson1R.CreateBoisson(ingredientsUtilises, statBoisson1);
+        boisson2R.CreateBoisson(ingredientsUtilises, statBoisson2);
+
+        CalculeChanceQuete(queteUtilise, true);
+    }
 
 #endif
 
 
     public void CalculeChanceQuete(SO_Quete queteEffectueParameter, bool fromUi = false)
     {
+
 
         float ReussiteMission = 0; // % de chance de reussite de la mission
 
@@ -89,11 +124,16 @@ public class SCR_GainQuete : MonoBehaviour
         SO_Boisson boisson1 = queteEffectueParameter.boissonsServis[0];
         SO_Boisson boisson2 = queteEffectueParameter.boissonsServis[1];
 
-        
-    
-            /*perso1 = personnage1;  // a gerter
+       /* SO_Boisson boisson1 = boisson1R;
+        SO_Boisson boisson2 = boisson2R;*/
+
+
+        /*perso1 = personnage1;  // a gerter
             perso2 = personnage2;*/
 
+        //ui.Loadpage(personnage1.profil, personnage2.profil);
+        ui.Loadpage(perso1, perso2);
+        ui.UpdateAmitie(perso1, perso2, true);
 
 
 
@@ -167,14 +207,16 @@ public class SCR_GainQuete : MonoBehaviour
         {
             hasWinMission = true;
             AjoutXPRelation(queteEffectueParameter, ReussiteMission, hasWinMission);
+            ui.UpdateReward(queteUtilise,true);
 
-            Debug.Log("Tu as reussi la mission, BRAVO" + hasWinMission);
+            Debug.Log("Tu as reussi la mission, BRAVO  " + hasWinMission);
 
         }
         else
         {
             hasWinMission = false;
-            Debug.Log("Tu n'as pas réussi la mission " + hasWinMission);
+            Debug.Log("Tu n'as pas réussi la mission  " + hasWinMission);
+            ui.UpdateReward(queteUtilise,false);
         }
 
 
@@ -184,7 +226,8 @@ public class SCR_GainQuete : MonoBehaviour
 
     private void AjoutXPRelation(SO_Quete queteUtiliseXP, float percentReussiteParameter, bool hasWinMissionParameter)
     {
-        
+
+
         SO_Personnage perso1;
         perso1 = queteUtiliseXP.persosEnvoyes[0];
         //perso1 = personnage1; // a gerter
@@ -207,6 +250,8 @@ public class SCR_GainQuete : MonoBehaviour
             perso1.dicoRelationPerso[perso2.myEnumPerso] -= 1;
             perso2.dicoRelationPerso[perso1.myEnumPerso] -= 1;
         }
+
+        //ui.UpdateAmitie(perso1, perso2, false);
 
 
         /* foreach(KeyValuePair<enumPerso,int> persoEach in dicoRes)

@@ -25,7 +25,6 @@ namespace VNsup
         [SerializeField] protected StoryBoxView storyBoxLeft;
         [SerializeField] protected StoryBoxView storyBoxRight;
         StoryBoxView currentStoryBox;
-        private bool isRightTalking = true;
         [Header("Choices")]
         [SerializeField] protected ChoiceDisplay choicesView;
 
@@ -192,14 +191,12 @@ namespace VNsup
             }
             else if(id == Perso1Name)
             {
-                isRightTalking = false;
                 currentStoryBox = storyBoxLeft;
                 currentNameBox = characterBoxLeft;
 
             }
             else if(id == Perso2Name) 
             {
-                isRightTalking = true;
                 currentStoryBox = storyBoxRight;
                 currentNameBox = characterBoxRight;
 
