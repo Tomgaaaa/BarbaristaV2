@@ -217,7 +217,7 @@ namespace VNsup
                 SetupGlobalMethods();
                 story.ChoosePathString("Avantquete");
                 
-                Next();
+                //Next();
 
             }
             else if (SCR_DATA.instanceData.GetEtapeQuest() == 1 && SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)

@@ -27,6 +27,10 @@ public class SCR_DATA : MonoBehaviour
     }
 
 
+    
+
+ 
+
     public void SetListCurrentQuest(SO_Quete SoQueteParameter) { listCurrentQuete.Add(SoQueteParameter);} // fonction appeller lorsquu'on valide le choix des persos, jsp pk j'ai pas pus transferer de liste doncj'appelle cette fonction 2 fois
     public void SetListPersos(List<SO_Personnage> listPersosParameter) { listPersos = listPersosParameter; }
     public SO_Quete GetCurrentQuest() { return listCurrentQuete[etapeQuete]; } // fonction pour avoir la quete actuelle entre les 2 choisis

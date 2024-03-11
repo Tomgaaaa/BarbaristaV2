@@ -35,6 +35,14 @@ public class SCR_GainQuete_UI : MonoBehaviour
 
     private Tweener tweenerAmitie;
 
+    private void Start()
+    {
+        Loadpage(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1]);
+        UpdateAmitie(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1], false);
+        UpdateReward(SCR_DATA.instanceData.GetListCurrentQuest()[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].hasWinMission);
+    }
+
+
     public void Loadpage(SO_Personnage Perso1Parameter, SO_Personnage Perso2Parameter)
     {
         initialPositionCurseur = curseurAmitie.position;
@@ -54,16 +62,16 @@ public class SCR_GainQuete_UI : MonoBehaviour
 
     public void UpdateAmitie(SO_Personnage Perso1Parameter, SO_Personnage Perso2Parameter, bool instantDeplacement)
     {
-        float distanceMinMax = (listAmitieAB[1].position.x - listAmitieAB[0].position.x) / 6;
+        float distanceMinMax = ((listAmitieAB[1].position.x - listAmitieAB[0].position.x) / 6) * (3 + Perso1Parameter.dicoRelationPerso[Perso2Parameter.myEnumPerso]);
         curseurAmitie.position = initialPositionCurseur;
 
         if(instantDeplacement)
         {
-            curseurAmitie.position = new Vector3 (curseurAmitie.position.x + (+Perso1Parameter.dicoRelationPerso[Perso2Parameter.myEnumPerso] * distanceMinMax * distanceMinMax),curseurAmitie.position.y,curseurAmitie.position.z);
+            curseurAmitie.position = new Vector3 (listAmitieAB[0].position.x + distanceMinMax,curseurAmitie.position.y,curseurAmitie.position.z);
         }
         else
         {
-            tweenerAmitie = curseurAmitie.DOMoveX(curseurAmitie.position.x + (+Perso1Parameter.dicoRelationPerso[Perso2Parameter.myEnumPerso] * distanceMinMax * distanceMinMax),2f);
+            tweenerAmitie = curseurAmitie.DOMoveX(listAmitieAB[0].position.x + distanceMinMax,2f);
         }
     }
 
@@ -103,7 +111,10 @@ public class SCR_GainQuete_UI : MonoBehaviour
 
         textNmbQuete.text = "2/2";
         //gainQuete.CalculQuete2();
-        gainQuete.CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[1]);
+        Loadpage(SCR_DATA.instanceData.GetListCurrentQuest()[1].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[1].persosEnvoyes[1]);
+        UpdateAmitie(SCR_DATA.instanceData.GetListCurrentQuest()[1].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[1].persosEnvoyes[1],false);
+        UpdateReward(SCR_DATA.instanceData.GetListCurrentQuest()[1],SCR_DATA.instanceData.GetListCurrentQuest()[1].hasWinMission);
+        //gainQuete.CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[1]);
     }
 
     public void RetourQuetePrecedente()
@@ -115,8 +126,13 @@ public class SCR_GainQuete_UI : MonoBehaviour
         listButton[1].SetActive(false);
         listButton[2].SetActive(false);
         textNmbQuete.text = "1/2";
+
+
+        Loadpage(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1]);
+        UpdateAmitie(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1], false);
+        UpdateReward(SCR_DATA.instanceData.GetListCurrentQuest()[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].hasWinMission);
         //gainQuete.CalculQuete();
-        gainQuete.CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[0]);
+        //gainQuete.CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[0]);
     }
 
     public void PassResumeQuete()

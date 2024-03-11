@@ -31,8 +31,14 @@ public class SCR_GainQuete : MonoBehaviour
     {
         ui.SetGainQuete(this);
 
+        
+        
 
-       CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[0], false);
+        CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[0], false);
+       CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[1], false);
+
+
+
     }
 
     // Update is called once per frame
@@ -132,10 +138,9 @@ public class SCR_GainQuete : MonoBehaviour
             perso2 = personnage2;*/
 
         //ui.Loadpage(personnage1.profil, personnage2.profil);
-        ui.Loadpage(perso1, perso2);
-        ui.UpdateAmitie(perso1, perso2, true);
+       
 
-
+        
 
         int nombreStatUtilise = 0; // le nombre de stat qui est utilise par la mission, utile (diviseur) de la moyenne des stats
 
@@ -194,6 +199,8 @@ public class SCR_GainQuete : MonoBehaviour
 
 
 
+            Debug.Log("stat Perso 1 cryo  = " + queteEffectueParameter.persosEnvoyes[0].dicoResistance[enumResistance.Cryogenique]);
+            Debug.Log("stat boisson  cryo  = " + queteEffectueParameter.boissonsServis[0].dicoResistanceBoisson[enumResistance.Cryogenique]);
             Debug.Log("reussite de mission perso 1 = " + moyenneAllStatPerso1);
             Debug.Log("reussite de mission perso 2 = " + moyenneAllStatPerso2);
             Debug.Log("reussite de mission = " + ReussiteMission);
@@ -207,7 +214,7 @@ public class SCR_GainQuete : MonoBehaviour
         {
             hasWinMission = true;
             AjoutXPRelation(queteEffectueParameter, ReussiteMission, hasWinMission);
-            ui.UpdateReward(queteUtilise,true);
+            queteEffectueParameter.hasWinMission = true;
 
             Debug.Log("Tu as reussi la mission, BRAVO  " + hasWinMission);
 
@@ -216,7 +223,6 @@ public class SCR_GainQuete : MonoBehaviour
         {
             hasWinMission = false;
             Debug.Log("Tu n'as pas réussi la mission  " + hasWinMission);
-            ui.UpdateReward(queteUtilise,false);
         }
 
 
@@ -241,14 +247,19 @@ public class SCR_GainQuete : MonoBehaviour
         //partie gain d'affection 
         if (hasWinMissionParameter)
         {
-            perso1.dicoRelationPerso[perso2.myEnumPerso] += 1;
-            perso2.dicoRelationPerso[perso1.myEnumPerso] += 1;
+
+            int relation = Mathf.Clamp(perso1.dicoRelationPerso[perso2.myEnumPerso] += 1, -3, 3); ;
+            
+            perso1.dicoRelationPerso[perso2.myEnumPerso] = relation;
+            perso2.dicoRelationPerso[perso1.myEnumPerso] = relation;
 
         }
         else
         {
-            perso1.dicoRelationPerso[perso2.myEnumPerso] -= 1;
-            perso2.dicoRelationPerso[perso1.myEnumPerso] -= 1;
+            int relation = Mathf.Clamp(perso1.dicoRelationPerso[perso2.myEnumPerso] -= 1, -3, 3); ;
+
+            perso1.dicoRelationPerso[perso2.myEnumPerso] = relation;
+            perso2.dicoRelationPerso[perso1.myEnumPerso] = relation;
         }
 
         //ui.UpdateAmitie(perso1, perso2, false);

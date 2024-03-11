@@ -179,7 +179,9 @@ public class SCR_Tasse : SCR_Contenant
 
         return randomTranche;
     }
-    
+
+
+
     public void ResetBoisson()
     {
 
@@ -212,6 +214,8 @@ public class SCR_Tasse : SCR_Contenant
         listRapeDejaUtilise.Clear();
         listTrancheDejaUtilise.Clear();
 
+        SR_liquide.color = Color.white;
+
         listIngredientsUtilises.Clear();
         allVisuelle.SetActive(false);
         nmbIngredientIn = 0;
@@ -220,11 +224,22 @@ public class SCR_Tasse : SCR_Contenant
     }
 
 
+
     public SO_Boisson GetBoissonSo() 
     {
         SO_Boisson instanceSo = ScriptableObject.CreateInstance<SO_Boisson>();
 
-        instanceSo.CreateBoisson(listIngredientsUtilises, dicoStatBoisson);
+        Dictionary<enumResistance, float> dicoTransfere = new Dictionary<enumResistance, float>();
+        dicoTransfere[enumResistance.Cryogenique] = dicoStatBoisson[enumResistance.Cryogenique];
+        dicoTransfere[enumResistance.Thermique] = dicoStatBoisson[enumResistance.Thermique];
+        dicoTransfere[enumResistance.Toxique] = dicoStatBoisson[enumResistance.Toxique];
+        dicoTransfere[enumResistance.Hemorragique] = dicoStatBoisson[enumResistance.Hemorragique];
+        dicoTransfere[enumResistance.Electrique] = dicoStatBoisson[enumResistance.Electrique];
+        dicoTransfere[enumResistance.Lethargique] = dicoStatBoisson[enumResistance.Lethargique];
+
+        instanceSo.CreateBoisson(listIngredientsUtilises, dicoTransfere);
+
+        
         return instanceSo;
     }
 }

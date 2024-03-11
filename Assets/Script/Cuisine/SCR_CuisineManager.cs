@@ -87,7 +87,7 @@ public class SCR_CuisineManager : MonoBehaviour
         boulloire.transform.DOLocalMove(new Vector3 (-20,0,0), 1f);
 
         hexagone.gameObject.SetActive(false);
-        hexagone.transform.DOLocalMove(startPositionHexagone, 1f).OnComplete(ResetBoisson);
+        hexagone.transform.DOLocalMove(startPositionHexagone, 1f);
 
     }
 
@@ -96,6 +96,9 @@ public class SCR_CuisineManager : MonoBehaviour
         buttonValideBoisson.gameObject.SetActive(true); // bouton qui permet de passer a la prochaine boisson / quete
     }
 
+
+
+    
     public void NextBoisson()// fonction appeller par le bouton qui s'affiche quand on a finit de preparer une boisson
     {
         buttonValideBoisson.gameObject.SetActive(false);
@@ -104,11 +107,19 @@ public class SCR_CuisineManager : MonoBehaviour
 
 
 
+        SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Insert(0,refTasse.GetBoissonSo()) ; // ajoute la boisson preparer a la list des boissons servis de la quete
 
-        SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Add(refTasse.GetBoissonSo()); // ajoute la boisson preparer a la list des boissons servis de la quete
+      
 
 
-        if(SCR_DATA.instanceData.GetEtapePerso() == 0) // si on vient de servir le premier perso
+        
+
+
+
+
+
+
+        if (SCR_DATA.instanceData.GetEtapePerso() == 0) // si on vient de servir le premier perso
         {
             SCR_DATA.instanceData.EtapePersoUp(); // alors on passe au persos d'apres
 
@@ -146,7 +157,7 @@ public class SCR_CuisineManager : MonoBehaviour
 
         };
         refHexagone.UpdateStat(dicoStatBoisson,true);
-        hexagone.gameObject.SetActive(true);
+       
 
     }
 

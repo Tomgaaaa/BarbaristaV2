@@ -23,6 +23,8 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
     public List<SO_Boisson> boissonsServis = new List<SO_Boisson>();
 
     public TextAsset myQueteInk;
+
+    public bool hasWinMission;
     
 
 
