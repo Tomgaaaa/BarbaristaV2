@@ -98,6 +98,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
+ ~playSound("I_BonjourElira")
   {Perso}:Hey c'est Elira
   :La forme ?
   
@@ -105,6 +106,7 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
+ ~playSound("I_BonjourSaori")
   {Perso}:Hey c'est Saori
   :Comment tu vas Sigg ?
   
@@ -128,11 +130,13 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
+ 
  {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerai en récupéré pour sa collection personnelle.
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
+ 
   {Perso}:Élira espère vraiment que les Kerusculas ne leur poseront pas problème, elle n’a pas envie d’en tuer alors que ce n’est pas une nécessité.
   :Elle a hâte que tous soit prêt pour aller chasser l’Oméga qui fait beaucoup de mal à la faune et la flore.
   

@@ -35,6 +35,7 @@ VAR previousChemin = "vide"
 //dialogue avant que les personnages arrivent
  ~playSound("I_ArrivéPnjAlerte")
  ~playSound("I_ArrivéPnj")
+  ~playSound(" ")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -97,20 +98,19 @@ Sigg:Allez hop au travail
  - Perso == "Samuel" : // dialogue de presentation de Samuel
   ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
+ ~playSound("I_Cava")
  : ça va ?
 
  
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
- ~playSound("I_BonjourElira")
   {Perso}: Je ne suis pas censé pouvoir etre affecté à cette quête.
   
   
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
- ~playSound("I_BonjourSaori")
   {Perso}:Je ne suis pas censé pouvoir etre affecté à cette quête.
   
   
@@ -118,6 +118,7 @@ Sigg:Allez hop au travail
  - Perso == "Vikram" : // dialogue de presentation de Vikram
  ~playSound("I_BonjourVikram")
   {Perso}:Hey c'est Vikram
+  ~playSound("I_Vikram_Dialogue2")
   : ça va le vieux ?
  
  }
