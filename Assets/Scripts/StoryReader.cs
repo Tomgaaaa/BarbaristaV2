@@ -208,6 +208,15 @@ namespace VNsup
                 SCR_DATA.instanceData.EtapeQueteUp();
                 SCR_DATA.instanceData.EtapePersoUp();
 
+                if(SCR_DATA.instanceData.GetJour()<=2)
+                {
+                    SCR_DATA.instanceData.EtapeQueteUp();
+                    SCR_DATA.instanceData.EtapePersoUp();
+                    SCR_DATA.instanceData.JourUP();
+
+                    SceneManager.LoadScene("SCE_GainQuete");
+                }
+
                 story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
 
                 story.variablesState["Perso1"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[0].namePerso;

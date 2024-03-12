@@ -18,10 +18,12 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
 
     [System.Serializable] public class dicoJourQueteClass : TemplateDico<int, List<SO_Quete>> { };
-    private Dictionary<int, List<SO_Quete>> dicoJourQuete; // dico listant les quetes a afficher celon le jour
+    public  Dictionary<int, List<SO_Quete>> dicoJourQuete { get; private set; } // dico listant les quetes a afficher selon le jour
+    [SerializeField] private List<dicoJourQueteClass> listDicoJourQuete;
 
-    [SerializeField] private List<dicoJourQueteClass> listDicoJourQuete; 
-
+    [System.Serializable] public class dicoJourPersoClass : TemplateDico<int, List<SO_Personnage>> { };
+    private Dictionary<int, List<SO_Personnage>> dicoJourPerso; // dico listant les persos a afficher selon le jour
+    [SerializeField] private List<dicoJourPersoClass> listDicoJourPerso;
     public void OnBeforeSerialize()
     {
     }
@@ -37,6 +39,20 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
                 dicoJourQuete.Add(item.key, item.value);
             }
         }
+
+
+
+
+        dicoJourPerso = new Dictionary<int,List<SO_Personnage>>();
+
+        foreach (dicoJourPersoClass item in listDicoJourPerso)
+        {
+            if (!dicoJourPerso.ContainsKey(item.key))
+            {
+                dicoJourPerso.Add(item.key, item.value);
+            }
+        }
+
     }
 
     #endregion
@@ -73,6 +89,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     private Dictionary<SCR_QueteTableau, Vector3> backupTransformQuete = new Dictionary<SCR_QueteTableau, Vector3>();
     [SerializeField] private Transform positionOffQuete;
     [SerializeField] private Transform positionSelectQuete;
+
 
 
     private void Awake()
@@ -124,7 +141,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
 
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < dicoJourPerso[SCR_DATA.instanceData.GetJour()].Count; i++)
         {
             SCR_Ficheperso1 fichePerso = Instantiate(prefabFichePerso, parentFichePerso);
             listFichepersoPropose.Add(fichePerso);
@@ -133,7 +150,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             if (SCR_DATA.instanceData.GetListPersos().Count == 0)
             {
                 SO_Personnage personnageInstance = ScriptableObject.CreateInstance<SO_Personnage>();
-                SO_Personnage personnageChoisi = listSoPerso[i];
+               // SO_Personnage personnageChoisi = listSoPerso[i];
+                SO_Personnage personnageChoisi = dicoJourPerso[SCR_DATA.instanceData.GetJour()][i];
                 personnageInstance.Init(personnageChoisi.dicoResistance, personnageChoisi.dicoRelationPerso, personnageChoisi.namePerso, personnageChoisi.myEnumPerso,personnageChoisi.profil,personnageChoisi.characterPerso);
 
                 fichePerso.SetSoPerso(personnageInstance);
@@ -168,11 +186,22 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     {
         buttonRetour.SetActive(true);
         buttonConfirmation.SetActive(false);
-        buttonChangerSens.SetActive(true);
 
 
         //permet que pendant l'animation de decalage la page ne traverse pas celle du dessous
-        listCurrentQueteInstance[1].transform.position = new Vector3(listCurrentQueteInstance[1].transform.position.x, listCurrentQueteInstance[1].transform.position.y, 1);
+
+        if(SCR_DATA.instanceData.GetJour()>2)
+        {
+            buttonChangerSens.SetActive(true);
+
+            listCurrentQueteInstance[1].transform.position = new Vector3(listCurrentQueteInstance[1].transform.position.x, listCurrentQueteInstance[1].transform.position.y, 1);
+
+            // positionne la deuxieme quete derriere et legerement tourne et on la fait passer derriere la premiere quete
+            listCurrentQueteInstance[1].transform.DOMove(new Vector3(positionSelectQuete.position.x, positionSelectQuete.position.y, 0), 2);
+            listCurrentQueteInstance[1].transform.DORotate(new Vector3(0, 0, 35), 1);
+            listCurrentQueteInstance[1].GetComponent<SpriteRenderer>().sortingOrder = 0;
+            listCurrentQueteInstance[1].GetComponentInChildren<Canvas>().sortingOrder = 0;
+        }
 
 
         for (int i = 0 ; i < listQuetePropose.Count ; i++)
@@ -187,16 +216,12 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
         }
 
-        for (int i = 0 ; i < 4; i++) // on fait bouger les fiches persos pour les afficher dans l'ecran
+        for (int i = 0 ; i < dicoJourPerso[SCR_DATA.instanceData.GetJour()].Count; i++) // on fait bouger les fiches persos pour les afficher dans l'ecran
         {
             listFichepersoPropose[i].transform.DOMove(listTransformSpawn[i].position,2f);
         }
 
-        // positionne la deuxieme quete derriere et legerement tourne et on la fait passer derriere la premiere quete
-        listCurrentQueteInstance[1].transform.DOMove(new Vector3(positionSelectQuete.position.x, positionSelectQuete.position.y,0), 2);
-        listCurrentQueteInstance[1].transform.DORotate(new Vector3(0, 0, 35), 1);
-        listCurrentQueteInstance[1].GetComponent<SpriteRenderer>().sortingOrder = 0;
-        listCurrentQueteInstance[1].GetComponentInChildren<Canvas>().sortingOrder = 0;
+        
 
         // positionne la premiere quete devant la deuxieme 
         listCurrentQueteInstance[0].transform.DOMove(positionSelectQuete.position, 2);
@@ -322,7 +347,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         }
 
 
-        if(listFichepersoUtilise.Count == 4) // a changer
+        if(listFichepersoUtilise.Count == dicoJourPerso[SCR_DATA.instanceData.GetJour()].Count) // a changer
         {
 
             buttonConfirmationPersos.SetActive(true);
@@ -356,7 +381,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         {
             listCurrentQueteInstance.Add(currentQueteParameter); // on l'ajoute a la liste des quetes selectiones
 
-            if(listCurrentQueteInstance.Count == 2) // si on a selectionne 2 quetes,     a changer
+            if(listCurrentQueteInstance.Count == 2 || SCR_DATA.instanceData.GetJour() == 1 &&listCurrentQueteInstance.Count == 1 || SCR_DATA.instanceData.GetJour() == 2 && listCurrentQueteInstance.Count == 1) // si on a selectionne 2 quetes,     a changer
             {
                 buttonConfirmation.SetActive(true);
 
@@ -373,7 +398,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         }
         else
         {
-            if (listCurrentQueteInstance.Count == 2)
+            if (listCurrentQueteInstance.Count == 2 || SCR_DATA.instanceData.GetJour() == 1 && listCurrentQueteInstance.Count == 1 || SCR_DATA.instanceData.GetJour() == 2 && listCurrentQueteInstance.Count == 1)
             {
                 buttonConfirmation.SetActive(false);
 

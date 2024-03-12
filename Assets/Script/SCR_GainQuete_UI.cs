@@ -40,6 +40,14 @@ public class SCR_GainQuete_UI : MonoBehaviour
         Loadpage(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1]);
         UpdateAmitie(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1], false);
         UpdateReward(SCR_DATA.instanceData.GetListCurrentQuest()[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].hasWinMission);
+
+
+        if (SCR_DATA.instanceData.GetJour() <= 3) // 3 psk la retour du jour 2 est pendant le jour 3
+        {
+            textNmbQuete.text = "1/1";
+            listButton[0].SetActive(false);
+            listButton[2].SetActive(true);
+        }
     }
 
 
