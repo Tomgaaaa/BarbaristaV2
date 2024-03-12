@@ -11,7 +11,7 @@ public class SCR_QueteTableau : MonoBehaviour
 
     [SerializeField] private Text titre;
     [SerializeField] private Text description;
-    [SerializeField] private Text infoEventTexte;
+    [SerializeField] protected Text infoEventTexte;
 
     [SerializeField] private Image illu;
 

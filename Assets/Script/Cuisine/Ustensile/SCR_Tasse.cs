@@ -46,6 +46,8 @@ public class SCR_Tasse : SCR_Contenant
 
     [SerializeField] private Text textNmbIngredient;
 
+    [SerializeField] SCR_QueteCuisine cuisine;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -64,6 +66,8 @@ public class SCR_Tasse : SCR_Contenant
         ingredientDrop.gameObject.SetActive(false); // désactive l'ingrédient drop, faudra le renvoyer dans le pool plutot
 
         CalCulStat(ingredientDropParameter.GetCR_SO_Ingredient().dicoResistance); // met a jour les stats de la boisson avec l'ingrédient qui a ete drop
+
+        cuisine.UpdateStatWhenDrop(ingredientDropParameter.GetCR_SO_Ingredient().dicoResistance); //met a jour les stats de l'hewagone fiche perso dans l'UI cuisine quand on drop un ingredient
 
         // a mettre quand l'eau a ete versée
         UpdateVisuelle(ingredientDrop.GetCR_SO_Ingredient());
