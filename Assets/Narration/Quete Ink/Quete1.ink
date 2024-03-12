@@ -151,7 +151,7 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
- ~playSound("I_Raler")
+ ~playSound("I_VikramRaler")
   {Perso}:Vikram déclara d’un air sombre que contrairement à Samuel, il n’a pas hâte d’aller se geler les miches sous la grêle. Très peu pour lui. Il n’aime pas le froid et en tremble d’avance.
   
  
