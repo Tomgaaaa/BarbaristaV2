@@ -71,10 +71,9 @@ public class SCR_QueteTableau : MonoBehaviour
         if (inChoixPerso)
             return;
 
-      
 
 
-        if (SCR_QueteManager.instanceQueteManager.GetQueteCount() < SCR_QueteManager.instanceQueteManager.dicoJourQuete[SCR_DATA.instanceData.GetJour()].Count && !isSelected)
+        if (SCR_DATA.instanceData.GetJour() > 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 2 || SCR_DATA.instanceData.GetJour() >= 1 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 1)
         {
             isSelected = true;
             selectedTamp.SetActive(true);

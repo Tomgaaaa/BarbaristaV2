@@ -8,12 +8,13 @@ public class SCR_DATA : MonoBehaviour
     public static SCR_DATA instanceData;
 
     [SerializeField] private List<SO_Quete> listCurrentQuete;
+    [SerializeField] private List<SO_Quete> listAncienneQuete;
     private List<SO_Personnage> listPersos = new List<SO_Personnage>();
 
-    private int etapeQuete; // index indiquant laquelle des 2 quetes on est en train de preparer
-    private int etapePerso; // index indiquant quel perso on est en train de servir
+    public int etapeQuete; // index indiquant laquelle des 2 quetes on est en train de preparer
+    public int etapePerso; // index indiquant quel perso on est en train de servir
 
-    private int jour = 1; // le jour actuelle
+    public int jour = 1; // le jour actuelle
 
 
     private void Awake() // sinbgleton + don't destroy pour qu'il recupere / garde les datas a travers les scenes
@@ -29,9 +30,20 @@ public class SCR_DATA : MonoBehaviour
 
     
 
- 
+    public void ClearDay()
+    {
+        foreach (SO_Quete queteFaite in listCurrentQuete)
+        {
+            listAncienneQuete.Add(queteFaite);
+        }
+        EtapePersoUp();
+        listCurrentQuete.Clear();
+
+
+    }
 
     public void SetListCurrentQuest(SO_Quete SoQueteParameter) { listCurrentQuete.Add(SoQueteParameter);} // fonction appeller lorsquu'on valide le choix des persos, jsp pk j'ai pas pus transferer de liste doncj'appelle cette fonction 2 fois
+    public void SetListAncienneQuest(SO_Quete SoQueteParameter) { listAncienneQuete.Add(SoQueteParameter);} // fonction appeller lorsquu'on valide le choix des persos, jsp pk j'ai pas pus transferer de liste doncj'appelle cette fonction 2 fois
     public void SetListPersos(List<SO_Personnage> listPersosParameter) { listPersos = listPersosParameter; }
     public SO_Quete GetCurrentQuest() { return listCurrentQuete[etapeQuete]; } // fonction pour avoir la quete actuelle entre les 2 choisis
     public List<SO_Personnage> GetListPersos() { return listPersos; }

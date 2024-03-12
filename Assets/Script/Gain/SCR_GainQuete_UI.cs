@@ -31,6 +31,7 @@ public class SCR_GainQuete_UI : MonoBehaviour
     [SerializeField] private Transform gridLayout;   
 
     private SCR_GainQuete gainQuete;
+    [SerializeField] private SCR_GainIngredient gainIngredient;
 
 
     private Tweener tweenerAmitie;
@@ -146,9 +147,15 @@ public class SCR_GainQuete_UI : MonoBehaviour
     public void PassResumeQuete()
     {
         CanvasResumeQuete.SetActive(false);
+        gainIngredient.gameObject.SetActive(true);
+        gainIngredient.SpawnIngredient();
     }
     public void GoQuete()
     {
+        
+
+        SCR_DATA.instanceData.ClearDay();
+
         SceneManager.LoadScene("SCE_Quete");
     }
 

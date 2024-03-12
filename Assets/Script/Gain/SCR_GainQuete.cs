@@ -35,7 +35,12 @@ public class SCR_GainQuete : MonoBehaviour
         
 
         CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[0], false);
-       CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[1], false);
+
+        if(SCR_DATA.instanceData.GetJour() > 3)
+        {
+            CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[1], false);
+
+        }
 
 
 

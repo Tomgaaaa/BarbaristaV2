@@ -1356,6 +1356,12 @@ MonoBehaviour:
     value:
     - {fileID: 11400000, guid: f7274daebf690a2409d7d1f6384717ca, type: 2}
     - {fileID: 11400000, guid: 7e9ec6bd1ac84224b8beff98b9e8c0c9, type: 2}
+  - key: 3
+    value:
+    - {fileID: 11400000, guid: f7274daebf690a2409d7d1f6384717ca, type: 2}
+    - {fileID: 11400000, guid: 8680e3e8d71080a419c642bafe3551c6, type: 2}
+    - {fileID: 11400000, guid: 7e9ec6bd1ac84224b8beff98b9e8c0c9, type: 2}
+    - {fileID: 11400000, guid: d7f127c1f294331469667eaa52779399, type: 2}
   listTransformSpawn:
   - {fileID: 1324843974}
   - {fileID: 106536277}
@@ -2618,6 +2624,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listCurrentQuete: []
+  listAncienneQuete: []
+  etapeQuete: 0
+  etapePerso: 0
+  jour: 1
 --- !u!4 &1499374471
 Transform:
   m_ObjectHideFlags: 0

@@ -427,7 +427,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &426059434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,6 +490,7 @@ MonoBehaviour:
   CanvasResumeQuete: {fileID: 1462614990}
   prefabImageRien: {fileID: 6127632506655101608, guid: 1c8d519d856469c42a393461c9ac4894, type: 3}
   gridLayout: {fileID: 940402003}
+  gainIngredient: {fileID: 1448566465}
 --- !u!224 &477366289 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6924991544808735900, guid: 553882d7aa050a14ea18ef45fba2e72e, type: 3}
@@ -1593,6 +1594,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 977552900766986931, guid: 553882d7aa050a14ea18ef45fba2e72e, type: 3}
+      propertyPath: m_Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 977552900766986931, guid: 553882d7aa050a14ea18ef45fba2e72e, type: 3}
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
@@ -1792,6 +1797,10 @@ PrefabInstance:
       propertyPath: textNmbQuete
       value: 
       objectReference: {fileID: 611816529}
+    - target: {fileID: 4218991081955166494, guid: 553882d7aa050a14ea18ef45fba2e72e, type: 3}
+      propertyPath: m_Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4218991081955166494, guid: 553882d7aa050a14ea18ef45fba2e72e, type: 3}
       propertyPath: m_SortingOrder
       value: 10

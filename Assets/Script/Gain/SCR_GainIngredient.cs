@@ -47,7 +47,7 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
 
 
     [ContextMenu("Spawn")]
-    private void DebugSpawn()
+    public void SpawnIngredient()
     {
         StartCoroutine(SpawnDailyIngredient());
     }
