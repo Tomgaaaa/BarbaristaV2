@@ -73,6 +73,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue apres la reaction des personnages
+ ~playSound("I_SiggHappy")
 Sigg:Allez hop au travail
 
 
@@ -134,6 +135,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
+  ~playSound("I_SamuelHappy")
  {Perso}:Samuel, d’un ton <bounce>enjoué</bounce>, dit qu’il à hâte d’aller dans les montagnes pour extraire ce minerais car il a toujours voulu voir le minerais à l’état brut. 
  :Grâce à ces minerais, ils pourront forger d’autre armes et améliorer leur armures en vue du combat contre l’Oméga, ce dernier ayant détruit la ville basse il y a plusieurs années.
  
