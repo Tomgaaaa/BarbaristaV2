@@ -109,7 +109,7 @@ public class SCR_CuisineManager : MonoBehaviour
 
         SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Insert(0,refTasse.GetBoissonSo()) ; // ajoute la boisson preparer a la list des boissons servis de la quete
 
-      
+        Debug.Log("kkkkkk");
 
 
         
