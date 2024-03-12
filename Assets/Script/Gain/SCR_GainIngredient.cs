@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -30,13 +31,18 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
     #endregion
 
     [SerializeField] private List<enumAllIgredient> listDailyIngredient;
-    [SerializeField] private List<enumAllIgredient> listDataIngredient;
+    [SerializeField] private List<SCR_SO_Ingredient> listDataIngredient;
     [SerializeField] Transform transforCadrillage;
     [SerializeField] float delaySpawnIngredient;
     [SerializeField] float spacingXIngredient;
     [SerializeField] float spacingYIngredient;
     [SerializeField] int colonne;
     [SerializeField] SpriteRenderer prefabIngredient;
+
+    [SerializeField] private Transform cageotRecompense;
+    [SerializeField] Transform transforCadrillageRecompense;
+    [SerializeField] private Transform emplacementCageotRecompense;
+    [SerializeField] private AnimationCurve curveCageot;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +61,8 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
 
     private IEnumerator SpawnDailyIngredient()
     {
+        yield return new WaitForSeconds(1f);
+
         float spacingY = 0f;
         float offSetX = 0f;
       
@@ -73,6 +81,7 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
 
             yield return new WaitForSeconds(delaySpawnIngredient);
         }
+        SpawnIngredientRecompense();
 
         yield return null;
     }
@@ -80,14 +89,18 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
 
     private IEnumerator SpawnDaTaIngredient()
     {
+
+        yield return new WaitForSeconds(1f);
+
         float spacingY = 0f;
         float offSetX = 0f;
 
 
         for (int i = 0; i < listDataIngredient.Count; i++)
         {
-            SpriteRenderer ingredientSpawn = Instantiate(prefabIngredient, transforCadrillage);
-            ingredientSpawn.sprite = dicoIngredientSprite[listDailyIngredient[i]];
+            SpriteRenderer ingredientSpawn = Instantiate(prefabIngredient, transforCadrillageRecompense);
+            ingredientSpawn.sortingOrder = 15;
+            ingredientSpawn.sprite = dicoIngredientSprite[listDataIngredient[i].myEnumIngredientSO];
             ingredientSpawn.transform.localPosition = new Vector3((i - offSetX) * spacingXIngredient, -spacingY, 0);
 
             if (i == colonne - 1)
@@ -99,8 +112,23 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
             yield return new WaitForSeconds(delaySpawnIngredient);
         }
 
+
         yield return null;
     }
 
+
+    public void SpawnIngredientRecompense()
+    {
+        cageotRecompense.DOMoveY(emplacementCageotRecompense.position.y, 1, true).SetEase(curveCageot).OnComplete(CallCoroutine);
+        listDataIngredient = SCR_DATA.instanceData.GetListIngredientGagne();
+
+    }
+
+    public void CallCoroutine()
+    {
+        transforCadrillage.gameObject.SetActive(false);
+
+        StartCoroutine(SpawnDaTaIngredient());
+    }
 
 }

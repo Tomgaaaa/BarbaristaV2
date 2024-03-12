@@ -56,12 +56,12 @@ public class SCR_QueteTableau : MonoBehaviour
 
         }
 
-        for (int i = 0; i < myQueteSo.reward.Count; i++)
+        /*for (int i = 0; i < myQueteSo.reward.Count; i++)
         {
 
             listRewardInstance.Add(Instantiate<Image>(myQueteSo.reward[i], reward));
 
-        }
+        }*/
     }
 
 

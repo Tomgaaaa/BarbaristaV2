@@ -5,9 +5,35 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static SCR_GainIngredient;
 
-public class SCR_GainQuete_UI : MonoBehaviour
+public class SCR_GainQuete_UI : MonoBehaviour, ISerializationCallbackReceiver
 {
+
+    #region Dico
+
+    private Dictionary<enumAllIgredient, Sprite> dicoIngredientSprite;
+    [SerializeField] private List<dicoIngredientSpriteClass> listDicoIngredientSprite;
+    public void OnBeforeSerialize()
+    {
+    }
+
+    public void OnAfterDeserialize()
+    {
+        dicoIngredientSprite = new Dictionary<enumAllIgredient, Sprite>();
+
+        foreach (dicoIngredientSpriteClass item in listDicoIngredientSprite)
+        {
+            if (!dicoIngredientSprite.ContainsKey(item.key))
+            {
+                dicoIngredientSprite.Add(item.key, item.value);
+            }
+        }
+    }
+
+    #endregion
+
+
     [SerializeField] private Transform curseurAmitie;
     private Vector3 initialPositionCurseur;
     [SerializeField] private List<Transform> listAmitieAB;
@@ -98,7 +124,8 @@ public class SCR_GainQuete_UI : MonoBehaviour
         {
             for (int i = 0; i < queteUtiliseParameter.reward.Count; i++)
             {
-                Instantiate<Image>(queteUtiliseParameter.reward[i], gridLayout);
+                Image imag = Instantiate<Image>(prefabImageRien, gridLayout);
+                imag.sprite = dicoIngredientSprite[queteUtiliseParameter.reward[i].myEnumIngredientSO];
             }
 
         }
@@ -149,12 +176,36 @@ public class SCR_GainQuete_UI : MonoBehaviour
         CanvasResumeQuete.SetActive(false);
         gainIngredient.gameObject.SetActive(true);
         gainIngredient.SpawnIngredient();
+
+
+        List<SCR_SO_Ingredient> listIngredientGagne = new List<SCR_SO_Ingredient>();
+
+
+
+        foreach (SO_Quete queteFaite in SCR_DATA.instanceData.GetListCurrentQuest())
+        {
+
+            if (queteFaite.hasWinMission)
+            {
+                foreach (SCR_SO_Ingredient ingredient in SCR_DATA.instanceData.GetListCurrentQuest()[0].reward)
+                {
+                    listIngredientGagne.Add(ingredient);
+                }
+            }
+
+        }
+
+
+        SCR_DATA.instanceData.SetListIngredientGagne(listIngredientGagne);
+
     }
     public void GoQuete()
     {
         
 
         SCR_DATA.instanceData.ClearDay();
+
+
 
         SceneManager.LoadScene("SCE_Quete");
     }

@@ -10,6 +10,8 @@ public class SCR_DATA : MonoBehaviour
     [SerializeField] private List<SO_Quete> listCurrentQuete;
     [SerializeField] private List<SO_Quete> listAncienneQuete;
     private List<SO_Personnage> listPersos = new List<SO_Personnage>();
+    public List<SCR_SO_Ingredient> listIngredientReward = new List<SCR_SO_Ingredient>();
+
 
     public int etapeQuete; // index indiquant laquelle des 2 quetes on est en train de preparer
     public int etapePerso; // index indiquant quel perso on est en train de servir
@@ -78,4 +80,10 @@ public class SCR_DATA : MonoBehaviour
             Debug.Log(" y a un bleme");
        
     }
+
+    public void SetListIngredientGagne(List<SCR_SO_Ingredient> listIngredientParameter) => listIngredientReward = listIngredientParameter;
+    public List<SCR_SO_Ingredient> GetListIngredientGagne()
+    {
+        return listIngredientReward;
+    } 
 }
