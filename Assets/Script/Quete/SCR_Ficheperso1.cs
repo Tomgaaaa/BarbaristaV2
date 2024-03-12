@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,8 @@ public class SCR_Ficheperso1 : MonoBehaviour
     [SerializeField] SCR_HexagoneStat hexStat;
 
     private Vector3 initialScale;
-   
+    Tweener startTweener; 
+  
 
     private void Awake()
     {
@@ -46,6 +48,8 @@ public class SCR_Ficheperso1 : MonoBehaviour
     {
         if (!canMove) { return; }
 
+
+        startTweener.Kill();
         spriteRender.sortingOrder = spriteRender.sortingOrder + 1;
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition));
@@ -110,7 +114,11 @@ public class SCR_Ficheperso1 : MonoBehaviour
         UpdatePerso();
     }
 
-
+    public void SetTweener(Tweener tweenerParameter) => startTweener = tweenerParameter;
+    public Tweener GetTweener()
+    {
+        return startTweener;
+    }
     public void SetCanMove(bool canMoveParameter) { canMove = canMoveParameter; }
     public SO_Personnage GetSoPerso() { return perso; }
 }

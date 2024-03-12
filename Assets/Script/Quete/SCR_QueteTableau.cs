@@ -27,6 +27,7 @@ public class SCR_QueteTableau : MonoBehaviour
     public Dictionary<int, SCR_Ficheperso1> posQuete = new Dictionary<int, SCR_Ficheperso1>() { { 0,null},{ 1, null} };
 
     private bool isSelected = false;
+    private bool isHigher = false;
     private bool inChoixPerso = false;
 
     [SerializeField] private GameObject selectedTamp;
@@ -106,7 +107,7 @@ public class SCR_QueteTableau : MonoBehaviour
     #region pour le cote tableau
     public void OnDrop(SCR_Ficheperso1 fiche)
     {
-        if (!isSelected)
+        if (!isHigher)
             return;
 
         if (posQuete[0] == null)
@@ -212,6 +213,11 @@ public class SCR_QueteTableau : MonoBehaviour
         InitialisationQuete();
         
     }
-
     public void SetInChoixPerso(bool inChoixPersoParameter) { inChoixPerso = inChoixPersoParameter; }
+
+    public void SetHigher(bool isHigerParameter) => isHigher = isHigerParameter;
+    public bool GetHigher()
+    {
+        return isHigher;
+    }
 }

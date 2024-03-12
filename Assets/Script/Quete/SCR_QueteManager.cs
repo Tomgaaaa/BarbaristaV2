@@ -201,8 +201,11 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             listCurrentQueteInstance[1].transform.DORotate(new Vector3(0, 0, 35), 1);
             listCurrentQueteInstance[1].GetComponent<SpriteRenderer>().sortingOrder = 0;
             listCurrentQueteInstance[1].GetComponentInChildren<Canvas>().sortingOrder = 0;
-        }
+            listCurrentQueteInstance[1].SetHigher(false);
 
+        }
+        
+        listCurrentQueteInstance[0].SetHigher(true);
 
         for (int i = 0 ; i < listQuetePropose.Count ; i++)
         {
@@ -218,7 +221,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
         for (int i = 0 ; i < dicoJourPerso[SCR_DATA.instanceData.GetJour()].Count; i++) // on fait bouger les fiches persos pour les afficher dans l'ecran
         {
-            listFichepersoPropose[i].transform.DOMove(listTransformSpawn[i].position,2f);
+            listFichepersoPropose[i].SetTweener( listFichepersoPropose[i].transform.DOMove(listTransformSpawn[i].position,2f));
+           
         }
 
         
@@ -261,6 +265,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         {
             
             listFichepersoPropose[i].transform.DOMove(startPositionPerso[i], 2f);
+            listFichepersoPropose[i].transform.parent = null;
         }
     }
 
