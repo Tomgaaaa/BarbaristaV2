@@ -11,7 +11,7 @@ public class SCR_Mortier : SCR_Ustensile
     [SerializeField] private float velocityNecessaireBroyage; // velocité necessaire poour considerer que le pilon broie l'ingrédient
     [SerializeField] private Collider2D colliderPilon; // collider du pilon a activer au moment du drop
     [SerializeField] private GameObject colliderBordDMortier; // collider des bords du mortier 
-
+    [SerializeField] private GameObject devantMortier;
 
 
     public override void Start()
@@ -30,6 +30,7 @@ public class SCR_Mortier : SCR_Ustensile
     }
     public override void OnDrop(SCR_Ingredient ingredientDropParameter)
     {
+        devantMortier.SetActive(false);
         base.OnDrop(ingredientDropParameter);
         colliderPilon.enabled = true; // on active les collider de manipulation
         colliderBordDMortier.SetActive(true); // pareil
@@ -42,6 +43,7 @@ public class SCR_Mortier : SCR_Ustensile
 
     public override void FinishManipulation()
     {
+        devantMortier.SetActive(true);
         base.FinishManipulation();
         colliderPilon.enabled = false; // désactive les colliders de manipulation
         AudioManager.instanceAM.Play("Completion Mortier");

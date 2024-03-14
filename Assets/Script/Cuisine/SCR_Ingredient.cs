@@ -166,6 +166,8 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     private void OnMouseUp() // fonction appelé lorsqu'on relache le clique (et qu'on avait clique sur l'objet avant, pas lorsqu'on relache le clique n'importe ou)
     {
+
+        mySpriteRenderer.sortingOrder = 5; // repasse l'objet au meme niveau qu'il a de base
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
         isMaintenu = false;
@@ -221,7 +223,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         SetTargetJointOnAnotherObject(true); // retire le component TarGetJoint, parametre a vrai car cette fois on reset le joint
         gameObject.layer = LayerMask.NameToLayer("DragObject"); // repasse l'objet sur ce layer pour recevoir les Cast
         refEtagere.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast"); // change le layere de l'etagere pour pas qu'il interfere avec les ray cast de l'ingrédients
-        mySpriteRenderer.sortingOrder = 5; // repasse l'objet au meme niveau qu'il a de base
+      
     }
 
     public void OnMouseDrag() // fonction appelé lorsuq'on maintiens le clique sur l'ingrédient

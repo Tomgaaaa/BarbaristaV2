@@ -106,6 +106,8 @@ public class SCR_Bouilloire : SCR_Ustensile
 
     public void UnlockBouilloire() // debloque le fait de pouvoir manipuler la bouilloire
     {
+        mainCam.transform.DOMove(new Vector3(emplacementCam.x, emplacementCam.y, mainCam.transform.position.z), 1);
+        mainCam.DOOrthoSize(emplacementCam.z,1);
         colliderManipulation.enabled = true;
         inManipulation = true;
     }

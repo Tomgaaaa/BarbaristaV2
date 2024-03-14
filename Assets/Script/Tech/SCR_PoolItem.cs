@@ -15,7 +15,7 @@ public class SCR_PoolItem : MonoBehaviour // pool Item doit etre appliqué a tout
 
     public void Back()
     {
-        if (refPool != null) // verifie si on a bien referencie le pool, c'est pas censé arriver mais ça évite de bloquer le jeu si le pool n'est pas réferencé
+        if (refPool != null) // verifie si on a bien referencie le pool, c'est pas cense arriver mais ça evite de bloquer le jeu si le pool n'est pas reference
             refPool.Back(this);
     }
 

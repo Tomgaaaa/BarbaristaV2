@@ -9,7 +9,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     [SerializeField] private protected enumEtatIgredient etatApresTransformation; // état de l'ingrédient apres la transformation 
 
     private protected Camera mainCam; // reference a la cam pour la transition camera 
-    [SerializeField] private Vector3 emplacementCam; // position que devra prendre la camera apres transition
+    [SerializeField] private protected Vector3 emplacementCam; // position que devra prendre la camera apres transition
 
     [SerializeField] private protected Collider2D colliderManipulation; // reference au collider utile à la manipulation
     [SerializeField] private Collider2D colliderDrop; // reference au collider qui permet le OnDrop
@@ -112,6 +112,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
 
             base.OnDrop(ingredientDropParameter); // fait le OnDrop du script contenant
 
+            ingredientDropParameter.GetComponent<SpriteRenderer>().sortingOrder = 2;
 
             colliderManipulation.enabled = true; // active le collider de manipulation 
             colliderDrop.enabled = false; // désactive le collider qui permet de detecter le OnDrop
