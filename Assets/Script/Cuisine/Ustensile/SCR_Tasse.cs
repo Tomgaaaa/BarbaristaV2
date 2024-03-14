@@ -83,6 +83,8 @@ public class SCR_Tasse : SCR_Contenant
 
            
         }
+
+        ingredientDropParameter.Back(); // renvoie l'ingrédient dans le pool
     }
 
     private void CalCulStat(Dictionary<enumResistance,float> statIngredientParameter) // fonction qui permet de calculer les stats de la boisson en prennant en parametre le dico de stat de l'ingrédient

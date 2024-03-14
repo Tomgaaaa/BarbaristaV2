@@ -37,6 +37,8 @@ public class SCR_CuisineManager : MonoBehaviour
 
     [SerializeField] private GameObject buttonValideBoisson;
 
+    [SerializeField] private SO_Tuto tutoTest;
+
 
     private void Awake()
     {
@@ -58,8 +60,6 @@ public class SCR_CuisineManager : MonoBehaviour
 
 
         queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuest()); // update la quete a afficher avec celle qui est en cours
-
-
 
     }
 

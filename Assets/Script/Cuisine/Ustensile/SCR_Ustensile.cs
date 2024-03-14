@@ -16,6 +16,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     private protected bool inManipulation = false; // empeche de manipuler l'ingrédient si il n'y pas d'ingrédient
     private protected bool isMaintenu;
 
+    [SerializeField] private SO_Tuto myTutoOnDrop;
     
 
 
@@ -119,9 +120,12 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
             AudioManager.instanceAM.Play("Transition");
             mainCam.DOOrthoSize(emplacementCam.z, 1f); // change le zoom de la camera, emplacement.z car on est en 2D donc inutile le Z, ça évite de recreer une variable
             SCR_Cursor.instanceCursor.ZoomCamera();
+
+            SCR_TutoManager.instanceTuto.Calltuto(myTutoOnDrop, SCR_TutoManager.enumEmplacement.haut); // appelle le tuto manager pour afficher le tuto associé à l'ustensile
+
         }
 
-        
+
 
 
     }

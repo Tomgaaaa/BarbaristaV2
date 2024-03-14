@@ -261,7 +261,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
 
         listFichepersoUtilise.Clear();
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < listSoPersoInstancie.Count; i++)
         {
             
             listFichepersoPropose[i].transform.DOMove(startPositionPerso[i], 2f);

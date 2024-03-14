@@ -13,8 +13,10 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
     public Dictionary<enumResistance, float> dicoResistanceDifficulte; // dictionnaire des resistances, on associe une resistance à un float, float psk pour bouger dans l'hexagone il faut un float
     public string titre;
     public List<Image> difficulty;
-    public Sprite illustration; 
+    public Sprite illustration;
+    [TextArea(6,10)]
     public string description;
+    [TextArea(6,10)]
     public string infoEvenement;
     //public List<Image> reward;
     public List<SCR_SO_Ingredient> reward;
