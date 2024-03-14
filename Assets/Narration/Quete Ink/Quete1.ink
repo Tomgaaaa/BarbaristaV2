@@ -117,8 +117,7 @@ Sigg:Allez hop au travail
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
  ~playSound("I_BonjourVikram")
-  {Perso}:Hey c'est Vikram
-  ~playSound("I_Vikram_Dialogue2")
+  {Perso}:Hey c'est Vikram 
   : ça va le vieux ?
  
  }
@@ -136,8 +135,9 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
-  ~playSound("I_SamuelHappy")
+  ~playSound("I_SamuelHappy2")
  {Perso}:Samuel, d’un ton <bounce>enjoué</bounce>, dit qu’il à hâte d’aller dans les montagnes pour extraire ce minerais car il a toujours voulu voir le minerais à l’état brut. 
+ ~playSound("I_SamuelHappy")
  :Grâce à ces minerais, ils pourront forger d’autre armes et améliorer leur armures en vue du combat contre l’Oméga, ce dernier ayant détruit la ville basse il y a plusieurs années.
  
  
@@ -172,6 +172,7 @@ Sigg:Allez hop au travail
   ->Init(false)
   
   =PastInit
+  ~playSound("I_Siggprepafini")
 Sigg: Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")
