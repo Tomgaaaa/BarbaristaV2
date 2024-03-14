@@ -74,7 +74,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     private List<Vector3> startPositionPerso = new List<Vector3>(); // position de base des fiches persos
 
 
-    private List<SCR_QueteTableau> listCurrentQueteInstance = new List<SCR_QueteTableau>(); // liste des quetes instanties / proposes
+    public List<SCR_QueteTableau> listCurrentQueteInstance = new List<SCR_QueteTableau>(); // liste des quetes instanties / proposes
     private bool firstIsHigher = true; // bool qui permet de savoir si la premiere quete selectionne est celle du dessus
 
 
@@ -199,7 +199,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             // positionne la deuxieme quete derriere et legerement tourne et on la fait passer derriere la premiere quete
             listCurrentQueteInstance[1].transform.DOMove(new Vector3(positionSelectQuete.position.x, positionSelectQuete.position.y, 4), 2);
             listCurrentQueteInstance[1].transform.DORotate(new Vector3(0, 0, 35), 1);
-            listCurrentQueteInstance[1].GetComponent<SpriteRenderer>().sortingOrder = 0;
+           // listCurrentQueteInstance[1].GetComponent<SpriteRenderer>().sortingOrder = 0;
             listCurrentQueteInstance[1].GetComponentInChildren<Canvas>().sortingOrder = 0;
             listCurrentQueteInstance[1].SetHigher(false);
 
@@ -229,7 +229,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
         // positionne la premiere quete devant la deuxieme 
         listCurrentQueteInstance[0].transform.DOMove(positionSelectQuete.position, 2);
-        listCurrentQueteInstance[0].GetComponent<SpriteRenderer>().sortingOrder = 5;
+        //listCurrentQueteInstance[0].GetComponent<SpriteRenderer>().sortingOrder = 5;
         listCurrentQueteInstance[0].GetComponentInChildren<Canvas>().sortingOrder = 5;
 
         AudioManager.instanceAM.Play("ValidationQuest");
@@ -277,7 +277,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         {
             firstIsHigher = false;
             listCurrentQueteInstance[0].transform.position = new Vector3(listCurrentQueteInstance[0].transform.position.x, listCurrentQueteInstance[0].transform.position.y, 1);
-            listCurrentQueteInstance[0].GetComponent<SpriteRenderer>().sortingOrder = 0;
+            //listCurrentQueteInstance[0].GetComponent<SpriteRenderer>().sortingOrder = 0;
             listCurrentQueteInstance[0].GetComponentInChildren<Canvas>().sortingOrder = 0;
 
 
@@ -289,7 +289,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
 
             listCurrentQueteInstance[1].transform.position = new Vector3(listCurrentQueteInstance[1].transform.position.x, listCurrentQueteInstance[1].transform.position.y, 0);
-            listCurrentQueteInstance[1].GetComponent<SpriteRenderer>().sortingOrder = 5;
+            //listCurrentQueteInstance[1].GetComponent<SpriteRenderer>().sortingOrder = 5;
             listCurrentQueteInstance[1].GetComponentInChildren<Canvas>().sortingOrder = 5;
 
             foreach (SCR_Ficheperso1 fiche in listCurrentQueteInstance[1].GetComponentsInChildren<SCR_Ficheperso1>())
@@ -386,7 +386,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         {
             listCurrentQueteInstance.Add(currentQueteParameter); // on l'ajoute a la liste des quetes selectiones
 
-            if(listCurrentQueteInstance.Count == 2 || SCR_DATA.instanceData.GetJour() == 1 &&listCurrentQueteInstance.Count == 1 || SCR_DATA.instanceData.GetJour() == 2 && listCurrentQueteInstance.Count == 1) // si on a selectionne 2 quetes,     a changer
+            if(listCurrentQueteInstance.Count == 2 || SCR_DATA.instanceData.GetJour() <= 2 &&listCurrentQueteInstance.Count == 1 ) // si on a selectionne 2 quetes,     a changer
             {
                 buttonConfirmation.SetActive(true);
 

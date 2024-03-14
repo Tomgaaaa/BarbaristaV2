@@ -90,7 +90,7 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
     private IEnumerator SpawnDaTaIngredient()
     {
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         float spacingY = 0f;
         float offSetX = 0f;
@@ -119,6 +119,11 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
 
     public void SpawnIngredientRecompense()
     {
+
+        if (SCR_DATA.instanceData.GetListIngredientGagne().Count == 0)  // si on a pas gagne de recompense on fait pas l'animx
+            return;
+       
+
         cageotRecompense.DOMoveY(emplacementCageotRecompense.position.y, 1, true).SetEase(curveCageot).OnComplete(CallCoroutine);
         listDataIngredient = SCR_DATA.instanceData.GetListIngredientGagne();
 

@@ -74,7 +74,7 @@ public class SCR_QueteTableau : MonoBehaviour
 
 
 
-        if (SCR_DATA.instanceData.GetJour() > 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 2 || SCR_DATA.instanceData.GetJour() >= 1 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 1)
+        if (SCR_DATA.instanceData.GetJour() > 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 2 && !isSelected || SCR_DATA.instanceData.GetJour() <= 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 1)
         {
             isSelected = true;
             selectedTamp.SetActive(true);
@@ -83,6 +83,7 @@ public class SCR_QueteTableau : MonoBehaviour
         }
         else if (isSelected)
         {
+
             isSelected = false;
             selectedTamp.SetActive(false);
             SCR_QueteManager.instanceQueteManager.AddCurrentQuete(this, true);

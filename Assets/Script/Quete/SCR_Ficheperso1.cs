@@ -31,8 +31,11 @@ public class SCR_Ficheperso1 : MonoBehaviour
         
         mainCamera = Camera.main;
     }
-
-
+    
+    private void Update()
+    {
+        hexStat.UpdateLine();
+    }
 
     private void OnMouseDrag()
     {
