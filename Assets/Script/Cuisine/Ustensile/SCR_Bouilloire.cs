@@ -16,6 +16,10 @@ public class SCR_Bouilloire : SCR_Ustensile
     private float eauVerse; // la valeur actuelle de l'eau qu'on a versé
 
     [SerializeField] private SCR_Tasse refTasse;
+
+    private Tweener tweenerRotation;
+
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -41,6 +45,8 @@ public class SCR_Bouilloire : SCR_Ustensile
         Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);*/
 
         SCR_Cursor.instanceCursor.ChangeHoverOn(true);
+
+        tweenerRotation.Kill();
 
 
     }
@@ -89,7 +95,7 @@ public class SCR_Bouilloire : SCR_Ustensile
 
 
 
-        contenantBouilloire.transform.DOLocalRotate(startRotationBouilloire, 1f); // reset la rotation de la bouilloire àa sa rotation initial
+        tweenerRotation = contenantBouilloire.transform.DOLocalRotate(startRotationBouilloire, 1f); // reset la rotation de la bouilloire àa sa rotation initial
         RotZ = 0f; // permet que quand on clique a nouveau sur la bouilloire la rotation reprenne a 0
     }
 
@@ -102,12 +108,15 @@ public class SCR_Bouilloire : SCR_Ustensile
 
         refTasse.FinishBoisson();
 
+        
+
+        SCR_CuisineManager.instanceCM.NextBoisson();
+
     }
 
     public void UnlockBouilloire() // debloque le fait de pouvoir manipuler la bouilloire
     {
-        mainCam.transform.DOMove(new Vector3(emplacementCam.x, emplacementCam.y, mainCam.transform.position.z), 1);
-        mainCam.DOOrthoSize(emplacementCam.z,1);
+        
         colliderManipulation.enabled = true;
         inManipulation = true;
     }

@@ -150,10 +150,6 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
 
         
 
-
-
-
-
     }
 
     public override void PickUpFromContenant()

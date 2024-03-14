@@ -77,7 +77,7 @@ public class SCR_Tasse : SCR_Contenant
 
         if(listIngredientsUtilises.Count == 3) // si il y a 3 ingrédient dans la tasse 
         {
-            SCR_CuisineManager.instanceCM.TransitionBouilloire(false);
+            SCR_CuisineManager.instanceCM.TransitionBouilloire();
             
             refBouilloire.UnlockBouilloire(); // alors on débloque le fait de pouvoir manipuler la bouilloire
 

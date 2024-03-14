@@ -30,6 +30,7 @@ public class SCR_SO_Ingredient : ScriptableObject, ISerializationCallbackReceive
     [SerializeField] private List<dicoIngredientTransfoClass> listDicoIngredientTransfo; // permet de visualiser le dico qui référencie les ingrédient transfo, en private psk on a pas besoin d'y toucher, c'est juste pour visualiser en éditor
     public Color colorSO;
     public Sprite PresserTasse;
+    public Sprite TrancheTasse;
 
 
     public void OnAfterDeserialize() // fonction qui permet d'associer les listes (qu'on voit) aux dictionaires (qu'on ne voit pas)

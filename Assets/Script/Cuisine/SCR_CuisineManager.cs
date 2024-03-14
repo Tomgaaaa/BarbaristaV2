@@ -37,8 +37,9 @@ public class SCR_CuisineManager : MonoBehaviour
 
     [SerializeField] private GameObject buttonValideBoisson;
 
-    [SerializeField] private SO_Tuto tutoTest;
-
+    private Camera mainCam;
+    private Vector3 startPoseCam;
+    [SerializeField] private Vector3 emplacementCam;
 
     private void Awake()
     {
@@ -61,10 +62,14 @@ public class SCR_CuisineManager : MonoBehaviour
 
         queteCuisine.SetCurrentQuete(SCR_DATA.instanceData.GetCurrentQuest()); // update la quete a afficher avec celle qui est en cours
 
+
+        mainCam = Camera.main;
+        startPoseCam = new Vector3( mainCam.transform.position.x, mainCam.transform.position.y, 5.5f);
+
     }
 
 
-    public void TransitionBouilloire(bool resetPositionParameter) 
+    public void TransitionBouilloire() 
     {
         AudioManager.instanceAM.Play("Transibouilloire");
         bambooShade.DOLocalMove(emplacementbambooShade, 1f); // déplace le volet jusqu'a son emplacement
@@ -74,6 +79,10 @@ public class SCR_CuisineManager : MonoBehaviour
         boulloire.transform.DOLocalMove(emplacementBoulloire.position, 1f);
 
         hexagone.transform.DOLocalMove(emplacementHexagone.position, 1f);
+
+
+        mainCam.transform.DOMove(new Vector3(emplacementCam.x, emplacementCam.y, mainCam.transform.position.z), 1);
+        mainCam.DOOrthoSize(emplacementCam.z, 1);
 
     }
 
@@ -88,6 +97,10 @@ public class SCR_CuisineManager : MonoBehaviour
 
         hexagone.gameObject.SetActive(false);
         hexagone.transform.DOLocalMove(startPositionHexagone, 1f);
+
+
+        mainCam.transform.DOMove(new Vector3(startPoseCam.x, startPoseCam.y, mainCam.transform.position.z), 1);
+        mainCam.DOOrthoSize(5.5f, 1);
 
     }
 
@@ -108,12 +121,6 @@ public class SCR_CuisineManager : MonoBehaviour
 
 
         SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Insert(0,refTasse.GetBoissonSo()) ; // ajoute la boisson preparer a la list des boissons servis de la quete
-
-
-
-        
-
-
 
 
 
