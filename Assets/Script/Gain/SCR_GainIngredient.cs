@@ -72,7 +72,7 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
             SpriteRenderer ingredientSpawn = Instantiate(prefabIngredient,transforCadrillage);
             ingredientSpawn.sprite = dicoIngredientSprite[listDailyIngredient[i]];
             ingredientSpawn.transform.localPosition = new Vector3 ((i- offSetX) * spacingXIngredient ,-spacingY,0);
-
+            AudioManager.instanceAM.Play("SpawnIngrédients");
             if(i == colonne -1 )
             {
                 spacingY += spacingYIngredient;
@@ -102,7 +102,7 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
             ingredientSpawn.sortingOrder = 15;
             ingredientSpawn.sprite = dicoIngredientSprite[listDataIngredient[i].myEnumIngredientSO];
             ingredientSpawn.transform.localPosition = new Vector3((i - offSetX) * spacingXIngredient, -spacingY, 0);
-
+            AudioManager.instanceAM.Play("SpawnIngrédients");
             if (i == colonne - 1)
             {
                 spacingY += spacingYIngredient;
