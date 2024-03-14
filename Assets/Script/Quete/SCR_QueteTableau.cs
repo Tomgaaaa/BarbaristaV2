@@ -115,7 +115,7 @@ public class SCR_QueteTableau : MonoBehaviour
             fiche.GetComponent<SortingGroup>().sortingOrder = 6;
             fiche.transform.SetParent(transform);
             fiche.MakeSmall(true);
-            fiche.transform.position = new Vector3(P1.position.x, P1.position.y, -1);
+            fiche.transform.position = new Vector3(P1.position.x, P1.position.y, 0);
             posQuete[0] = fiche;
 
             myQueteSo.persosEnvoyes.Add(fiche.GetSoPerso());

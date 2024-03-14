@@ -194,10 +194,10 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         {
             buttonChangerSens.SetActive(true);
 
-            listCurrentQueteInstance[1].transform.position = new Vector3(listCurrentQueteInstance[1].transform.position.x, listCurrentQueteInstance[1].transform.position.y, 1);
+            listCurrentQueteInstance[1].transform.position = new Vector3(listCurrentQueteInstance[1].transform.position.x, listCurrentQueteInstance[1].transform.position.y, 4);
 
             // positionne la deuxieme quete derriere et legerement tourne et on la fait passer derriere la premiere quete
-            listCurrentQueteInstance[1].transform.DOMove(new Vector3(positionSelectQuete.position.x, positionSelectQuete.position.y, 0), 2);
+            listCurrentQueteInstance[1].transform.DOMove(new Vector3(positionSelectQuete.position.x, positionSelectQuete.position.y, 4), 2);
             listCurrentQueteInstance[1].transform.DORotate(new Vector3(0, 0, 35), 1);
             listCurrentQueteInstance[1].GetComponent<SpriteRenderer>().sortingOrder = 0;
             listCurrentQueteInstance[1].GetComponentInChildren<Canvas>().sortingOrder = 0;
