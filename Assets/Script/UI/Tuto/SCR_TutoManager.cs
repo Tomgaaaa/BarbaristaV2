@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
@@ -10,6 +11,8 @@ public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
     public static SCR_TutoManager instanceTuto;
 
     [SerializeField] private SCR_Tuto prefabTuto;
+    [SerializeField] private Transform gridAllHelp;
+    [SerializeField] private GameObject buttonCloseHelp;
 
 
 
@@ -75,7 +78,7 @@ public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
         if (!dicoTutoBool[tutoToShow])
         {
             SCR_Tuto tuto = Instantiate(prefabTuto, dicoEnumEmplacement[emplacementParameter]);
-            tuto.Initialisation(tutoToShow);
+            tuto.Initialisation(tutoToShow,true);
         }
     }
 
@@ -83,5 +86,32 @@ public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
     {
         dicoTutoBool[tutoParameter] = true;
 
+    }
+
+
+
+    public void ButtonHelp()
+    {
+        buttonCloseHelp.SetActive(true);
+
+        foreach (KeyValuePair<SO_Tuto,bool> pair in dicoTutoBool)
+        {
+            if (pair.Value)
+            {
+                SCR_Tuto tuto = Instantiate(prefabTuto, gridAllHelp );
+                tuto.Initialisation(pair.Key,false);
+            }
+        }
+    }
+
+
+    public void CloseButtonHelp()
+    {
+        foreach(Transform children in gridAllHelp)
+        {
+            Destroy(children.gameObject);
+        }
+        
+        buttonCloseHelp.SetActive(false);
     }
 }

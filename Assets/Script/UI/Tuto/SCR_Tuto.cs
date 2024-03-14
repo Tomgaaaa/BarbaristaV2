@@ -17,18 +17,22 @@ public class SCR_Tuto : MonoBehaviour
         textTuto = GetComponentInChildren<Text>();
         buttonTuto = GetComponentInChildren<Button>();
 
-        Initialisation(so_tuto);
+        Initialisation(so_tuto,true);
 
 
-        Invoke("UnlockButton", 1);
     }
 
 
-    public void Initialisation(SO_Tuto soTuto)
+    public void Initialisation(SO_Tuto soTuto, bool callUnlock)
     {
         so_tuto = soTuto;
         imageTuto.sprite = so_tuto.imageExplicative;
         textTuto.text = so_tuto.txtExplication;
+
+        if(callUnlock)
+        {
+            Invoke("UnlockButton", 1);
+        }
     }
 
     private void UnlockButton() // fonction pour empecher de spam click

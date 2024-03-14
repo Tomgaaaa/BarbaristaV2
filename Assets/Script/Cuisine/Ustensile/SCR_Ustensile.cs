@@ -17,6 +17,9 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     private protected bool isMaintenu;
 
     [SerializeField] private SO_Tuto myTutoOnDrop;
+
+
+    [SerializeField] private protected ParticleSystem myVFX;
     
 
 
