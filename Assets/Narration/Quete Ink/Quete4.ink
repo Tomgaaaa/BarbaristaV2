@@ -33,6 +33,8 @@ VAR previousChemin = "vide"
 
 
 //dialogue avant que les personnages arrivent 
+~playSound("I_ArrivéPnjAlerte")
+ ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -52,6 +54,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue avant que les personnages reagissent a la quete
+ ~playSound("I_ExpressionSigg")
  Sigg: Bon voici votre quete
  :Mission de sauvetage d'un avant-poste isolé
  
@@ -70,6 +73,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue apres la reaction des personnages
+  ~playSound("I_SiggHappy")
 Sigg:Allez hop au travail
 
 
@@ -91,13 +95,16 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
+ ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
+ ~playSound("I_Cava")
  :Ca va ?
 
  
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
+ ~playSound("I_BonjourElira")
   {Perso}:Hey c'est Elira
   :La forme ?
   
@@ -105,12 +112,14 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
+ ~playSound("I_SaoriBonjour")
   {Perso}:Hey c'est Saori
   :Comment tu vas Sigg ?
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
+ ~playSound("I_BonjourVikram")
   {Perso}:Hey c'est Vikram
   :Ca va le vieux ?
  }
@@ -128,12 +137,14 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
+ ~playSound("I_Samuelsadly")
  {Perso}:Samuel est inquièt pour les aventuriers et l’équipe blessée dans l’avant poste isolé dans la forêt bioluminescente car une brume toxique peut se lever et aggraver leur état.
 
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
+ ~playSound("I_EliraOui")
   {Perso}:Élira est inquiète pour les aventurier et l’équipe blessée dans l’avant post isolé dans la forêt bioluminescente car une brume toxique peut se lever et aggraver leur état ainsi que les Évispar qui sont très toxique. 
 
   
@@ -141,6 +152,7 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
+  ~playSound("I_Saori2")
   {Perso}:Saori aime beaucoup cette forêt car elle est fasciné par les plantes bioluminescentes qui s’y trouvent mais n’aime pas les Évispars qui la dégoutent.
   
   

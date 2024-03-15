@@ -142,6 +142,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
+ ~playSound("I_EliraOui")
   {Perso}Élira est plutôt neutre par rapport à cette quête mais inquiète pour le fait que l’activité volcanique  car les Srégols seront plus actifs et elle n’as pas envie d’en tuer si ce n’est pas nécessaire.
   
   

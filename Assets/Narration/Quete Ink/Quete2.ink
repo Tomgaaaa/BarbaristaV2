@@ -143,8 +143,9 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
- 
+ ~playSound("I_EliraEspoir")
   {Perso}:Élira espère vraiment que les Kerusculas ne leur poseront pas problème, elle n’a pas envie d’en tuer alors que ce n’est pas une nécessité.
+   ~playSound("I_EliraOui")
   :Elle a hâte que tous soit prêt pour aller chasser l’Oméga qui fait beaucoup de mal à la faune et la flore.
   
   
@@ -159,6 +160,7 @@ Sigg:Allez hop au travail
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
  ~playSound("I_VikramRaler")
   {Perso}:Vikram n’a pas du tout envie d’aller là-bas et de tomber sur les Keruscula, il les a en horreur car il est tombé dans un des nids et les bébé Kérusculas ont été partout sur lui. 
+  ~playSound("I_VikramTraumatiser")
   :Ça l’a <shake>traumatisé.</shake>
  
  }
