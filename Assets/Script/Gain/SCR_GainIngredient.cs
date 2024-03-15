@@ -122,9 +122,10 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
 
         if (SCR_DATA.instanceData.GetListIngredientGagne().Count == 0)  // si on a pas gagne de recompense on fait pas l'animx
             return;
-       
 
+        AudioManager.instanceAM.Play("CaisseFalling");
         cageotRecompense.DOMoveY(emplacementCageotRecompense.position.y, 1, true).SetEase(curveCageot).OnComplete(CallCoroutine);
+        AudioManager.instanceAM.Play("ItemBonus");
         listDataIngredient = SCR_DATA.instanceData.GetListIngredientGagne();
 
     }

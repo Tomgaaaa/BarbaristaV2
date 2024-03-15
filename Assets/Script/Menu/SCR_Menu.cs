@@ -44,6 +44,7 @@ public class SCR_Menu : MonoBehaviour
         AudioManager.instanceAM.Play("CliquerTableauQuete");
         AudioManager.instanceAM.Play("TransiTableauQuete");
         AudioManager.instanceAM.FadeOut("Menu",0, 2.5f);
+        AudioManager.instanceAM.Play("ButtonPlay");
         // transition + changement de scene
     }
 
@@ -55,17 +56,18 @@ public class SCR_Menu : MonoBehaviour
         Menu.SetActive(false);
         Options.SetActive(true);
         inOption = true;
-
-
+        AudioManager.instanceAM.Play("ButtonOptions");
+        
         lastSelected = EventSystem.current.currentSelectedGameObject;
         EventSystem.current.SetSelectedGameObject(optionsFirstButton);
-
+        
     }
 
 
     public void Quit()
     {
         Application.Quit();
+        AudioManager.instanceAM.Play("ButtonQuit");
         Debug.Log("J'ai quitté le jeu");
     }
 
@@ -77,7 +79,7 @@ public class SCR_Menu : MonoBehaviour
         Menu.SetActive(true);
         Options.SetActive(false);
         Credit.SetActive(false);
-
+        AudioManager.instanceAM.Play("ButtonReturnMenu");
         EventSystem.current.SetSelectedGameObject(lastSelected);
 
     }
@@ -92,7 +94,7 @@ public class SCR_Menu : MonoBehaviour
         Menu.SetActive(false);
         inOption = true; ;
         lastSelected = EventSystem.current.currentSelectedGameObject;
-
+        AudioManager.instanceAM.Play("ButtonCredits");
         EventSystem.current.SetSelectedGameObject(creditButton);
     }
 
@@ -104,6 +106,9 @@ public class SCR_Menu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(menuFirstButton);
     }
 
-
+    public void Over()
+    {
+        AudioManager.instanceAM.Play("Random");
+    }
 
 }
