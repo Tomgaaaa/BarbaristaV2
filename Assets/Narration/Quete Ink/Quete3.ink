@@ -33,6 +33,8 @@ VAR previousChemin = "vide"
 
 
 //dialogue avant que les personnages arrivent 
+ ~playSound("I_ArrivéPnjAlerte")
+ ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -52,6 +54,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue avant que les personnages reagissent a la quete
+ ~playSound("I_ExpressionSigg")
  Sigg:Chasse de Deshrog pour alimenter les chaufferies
  
  
@@ -69,6 +72,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue apres la reaction des personnages
+ ~playSound("I_SiggHappy")
 Sigg:Allez hop au travail
 
 
@@ -90,13 +94,16 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
+ ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
+ ~playSound("I_Cava")
  :Ca va ?
 
  
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
+ ~playSound("I_BonjourElira")
   {Perso}:Hey c'est Elira
   :La forme ?
   
@@ -104,12 +111,14 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
+ ~playSound("I_SaoriBonjour")
   {Perso}:Hey c'est Saori
   :Comment tu vas Sigg ?
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
+  ~playSound("I_BonjourVikram")
   {Perso}:Hey c'est Vikram
   :Ca va le vieux ?
  }
@@ -127,6 +136,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
+ ~playSound("I_SamuelHappy2")
  {Perso}:Samuel n’aime pas trop l’idée d’aller profondément dans le basalte car avec l’activité volcanique il y a des risque d’effondrement.
  
  
@@ -138,11 +148,13 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
+  ~playSound("I_Saori2")
   {Perso}:Saori dit qu’elle n’est pas très à l’aise à l’idée d’aller dans un biome chaud, elle supporte mal la chaleur et le feu lui rappel de mauvais souvenir lors de l’attaque de l’Oméga.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
+  ~playSound("I_VikramRaler")
   {Perso}:Vikram à hâte d’aller affronter des Deshrogs car on lui a promis une nouvelle arme dès que les fonderies auraient de quoi fonctionner.
  
  }
@@ -159,6 +171,7 @@ Sigg:Allez hop au travail
   ->Init(false)
   
   =PastInit
+  ~playSound("I_Siggprepafini")
 Sigg : Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")

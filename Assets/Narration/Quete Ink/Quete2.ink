@@ -33,6 +33,8 @@ VAR previousChemin = "vide"
 
 
 //dialogue avant que les personnages arrivent 
+~playSound("I_ArrivéPnjAlerte")
+ ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -52,6 +54,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue avant que les personnages reagissent a la quete
+  ~playSound("I_ExpressionSigg")
  Sigg: Bon voici votre quete
  :Récolte d'Aloalgue pour fabriquer des baumes
  
@@ -70,6 +73,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue apres la reaction des personnages
+  ~playSound("I_SiggHappy")
 Sigg:Allez hop au travail
 
 
@@ -91,7 +95,9 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
+ ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
+ ~playSound("I_Cava")
  :Ca va ?
 
  
@@ -106,13 +112,14 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
- ~playSound("I_BonjourSaori")
+  ~playSound("I_SaoriBonjour")
   {Perso}:Hey c'est Saori
   :Comment tu vas Sigg ?
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
+ ~playSound("I_BonjourVikram")
   {Perso}:Hey c'est Vikram
   :Ca va le vieux ?
  }
@@ -130,7 +137,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
- 
+ ~playSound("I_SamuelHappy2")
  {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerai en récupéré pour sa collection personnelle.
  
  
@@ -144,11 +151,13 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
+ ~playSound("I_Saori2")
   {Perso}:Saori s’exprime sur le fait qu’elle est contente d’aller récolter les Aloalgues car leur propriétés curative l’intéresse pour ses recherches mais l’idée d’aller dans une zone avec des Keruscula ne l’enchante pas car elle n’aime pas ces créatures.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
+ ~playSound("I_VikramRaler")
   {Perso}:Vikram n’a pas du tout envie d’aller là-bas et de tomber sur les Keruscula, il les a en horreur car il est tombé dans un des nids et les bébé Kérusculas ont été partout sur lui. 
   :Ça l’a <shake>traumatisé.</shake>
  
@@ -166,6 +175,7 @@ Sigg:Allez hop au travail
   ->Init(false)
   
   =PastInit
+  ~playSound("I_Siggprepafini")
 Sigg: Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")
