@@ -16,6 +16,7 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
     [SerializeField] private float tempsNecessaire;
     private float currentTempsPasse;
 
+    [SerializeField] private GameObject Poid;
     #region Drag
     private TargetJoint2D plaqueTargetJoint;
     [SerializeField, Range(0f, 100f)] float frequenceJoint = 5f; // frequence a laquel l'objet essaye de réetablir la distance avec la target
@@ -80,14 +81,13 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
                     vfxParticle.textureSheetAnimation.SetSprite(0, ingredientDrop.GetCR_SO_Ingredient().TrancheTasse);
                     timeBase = timeCode;
                 }
-                
-                /*
-                if ((int)currentTempsPasse == 1 || (int)currentTempsPasse == 2 || (int)currentTempsPasse == 3 || (int)currentTempsPasse == 4 || (int)currentTempsPasse == 5 || (int)currentTempsPasse == 6)
-                {
-                   
-                }
-                */
 
+                float percentReussite = currentTempsPasse / tempsNecessaire;
+                
+
+                float poidsY = Mathf.Lerp(1.3f, 0.9f, percentReussite);
+                Poid.transform.localPosition = new Vector3(Poid.transform.localPosition.x, poidsY, Poid.transform.localPosition.z);
+                
 
                 if (currentTempsPasse >= tempsNecessaire)
                 {
@@ -97,6 +97,7 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
                     currentTempsPasse = 0;
                     timeBase = 0;
                     sparkleVFX.Play();
+                    Poid.transform.localPosition = new Vector3(Poid.transform.localPosition.x, 1.3f, Poid.transform.localPosition.z);
                 }
             }
 

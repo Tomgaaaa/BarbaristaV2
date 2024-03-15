@@ -16,6 +16,8 @@ public class SCR_UST_Presse : SCR_Ustensile
 
     public Quaternion rotation;
 
+    [SerializeField] private GameObject Poid;
+
     // Start is called before the first frame update
     public override void Start()
     {
@@ -24,7 +26,11 @@ public class SCR_UST_Presse : SCR_Ustensile
         currentRotation = 360;
     }
 
-   
+    public override void OnDrop(SCR_Ingredient ingredientDropParameter)
+    {
+        base.OnDrop(ingredientDropParameter);
+        Poid.transform.localPosition = new Vector3(Poid.transform.localPosition.x, 2.05f, Poid.transform.localPosition.z);
+    }
 
     public override void OnMouseDrag()
     {
@@ -75,6 +81,10 @@ public class SCR_UST_Presse : SCR_Ustensile
                     ParticleSystem vfxParticle = Instantiate<ParticleSystem>(myVFX, transform);
                     vfxParticle.textureSheetAnimation.SetSprite(0, ingredientDrop.GetCR_SO_Ingredient().TrancheTasse);
 
+                    //float poidsY = Mathf.Lerp(2.05f, 1.113f, (nmbDeTour/nombreDeTourNecessaire)); 
+
+                    Poid.transform.localPosition = new Vector3(Poid.transform.localPosition.x, Poid.transform.localPosition.y -0.3f , Poid.transform.localPosition.z);
+
                     AudioManager.instanceAM.Play("Presse");
                     if (nmbDeTour >= nombreDeTourNecessaire) // si on a realise le nombre de tour necessaire
                     {
@@ -83,7 +93,6 @@ public class SCR_UST_Presse : SCR_Ustensile
                         currentRotation = 360;
 
                         roueCrante.rotation = Quaternion.Euler(0, 0, 0); // on reset la rotation de la roue
-
                     }
 
                 }
@@ -108,7 +117,12 @@ public class SCR_UST_Presse : SCR_Ustensile
         AudioManager.instanceAM.Play("Finish_Presse");
         // fauddra reset la position du bras de la presse
         sparkleVFX.Play();
+       
+    }
+    public override void PickUpFromContenant()
+    {
+        base.PickUpFromContenant();
+        Poid.transform.localPosition = new Vector3(Poid.transform.localPosition.x, 3.125f, Poid.transform.localPosition.z);
     }
 
-   
 }
