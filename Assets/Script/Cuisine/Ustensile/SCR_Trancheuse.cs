@@ -12,6 +12,7 @@ public class SCR_Trancheuse : SCR_Ustensile
     [SerializeField] private float rotationMin = 0f;
     [SerializeField] private float rotationMax = 100f;
 
+   
 
     // pour la partie drag
     private Vector3 lastMousePos;
@@ -154,6 +155,7 @@ public class SCR_Trancheuse : SCR_Ustensile
         base.FinishManipulation();
         currentNombreCoupe = 0; // reset le nombre de coup effectué
         AudioManager.instanceAM.Play("CompletionTrancheuse");
+        sparkleVFX.Play();
     }
 
 }

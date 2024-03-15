@@ -67,9 +67,14 @@ public class SCR_UST_Presse : SCR_Ustensile
 
                 if (currentRotation < 5) // si la rotation est superieur a 355, un tour a ete realise
                 {
+                    
 
                     currentRotation = 360; // on reset la rotation 
                     nmbDeTour++; // on ajoute 1 au nombre de tour effectué
+
+                    ParticleSystem vfxParticle = Instantiate<ParticleSystem>(myVFX, transform);
+                    vfxParticle.textureSheetAnimation.SetSprite(0, ingredientDrop.GetCR_SO_Ingredient().TrancheTasse);
+
                     AudioManager.instanceAM.Play("Presse");
                     if (nmbDeTour >= nombreDeTourNecessaire) // si on a realise le nombre de tour necessaire
                     {
@@ -102,7 +107,7 @@ public class SCR_UST_Presse : SCR_Ustensile
         base.FinishManipulation();
         AudioManager.instanceAM.Play("Finish_Presse");
         // fauddra reset la position du bras de la presse
-
+        sparkleVFX.Play();
     }
 
    

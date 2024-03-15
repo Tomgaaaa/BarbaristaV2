@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SCR_Pilon : MonoBehaviour
 {
+    public ParticleSystem pilonVfx;
+    public Sprite ingredientVfx;
 
     private Camera mainCam;
     private Rigidbody2D rb;
@@ -146,8 +148,9 @@ public class SCR_Pilon : MonoBehaviour
                 if(inMortier && Mathf.Abs(ddd.y) * 10 > velocityNecessairePilon)
                 {
                     currentTempsBroyage += Time.deltaTime; // alors on ajoute le temps que l'on passe en collision
-                   
 
+                    pilonVfx.Play();
+                    pilonVfx.textureSheetAnimation.SetSprite(0, ingredientVfx);
                 }
 
                
@@ -207,8 +210,10 @@ public class SCR_Pilon : MonoBehaviour
         }
     }
 
-    public void SetTimer(float dureeBroyageParameter, float velociteParameter,SCR_Mortier refMortierParameter) // recupere les informations du bol de mortier pour initialiser les parametres
+    public void SetTimer(float dureeBroyageParameter, float velociteParameter,SCR_Mortier refMortierParameter, ParticleSystem particle, Sprite ingredient) // recupere les informations du bol de mortier pour initialiser les parametres
     {
+        ingredientVfx = ingredient;
+        pilonVfx = particle;
         tempsNecessaireBoyagePilon = dureeBroyageParameter;
         velocityNecessairePilon = velociteParameter;
         refMortier = refMortierParameter;

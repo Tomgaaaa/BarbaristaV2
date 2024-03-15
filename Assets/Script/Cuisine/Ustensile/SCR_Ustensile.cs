@@ -18,9 +18,10 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
 
     [SerializeField] private SO_Tuto myTutoOnDrop;
 
+    [SerializeField] private Transform newPosPostTransfo;
 
     [SerializeField] private protected ParticleSystem myVFX;
-    
+    [SerializeField] private protected ParticleSystem sparkleVFX;
 
 
     // Start is called before the first frame update
@@ -150,7 +151,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
 
         ingredientDrop.Transformation(etatApresTransformation); // indique à l'ingrédient qu'on le transforme en l'etat que transforme l'ustensile
         ingredientCollider.enabled = true; // re active le collider de l'ingrédient pour pouvoir le reprendre
-
+        ingredientDrop.transform.position = newPosPostTransfo.position;
         
 
     }

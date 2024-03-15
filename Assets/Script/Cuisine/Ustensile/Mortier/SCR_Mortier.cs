@@ -19,7 +19,7 @@ public class SCR_Mortier : SCR_Ustensile
         base.Start();
         colliderPilon.enabled = false;
         colliderBordDMortier.SetActive(false);
-        InitPilon(); // transmet les informations (velocite et temps necessaire) au pilon 
+        //InitPilon(); // transmet les informations (velocite et temps necessaire) au pilon 
 
 
 
@@ -30,6 +30,8 @@ public class SCR_Mortier : SCR_Ustensile
     }
     public override void OnDrop(SCR_Ingredient ingredientDropParameter)
     {
+        
+
         devantMortier.SetActive(false);
         base.OnDrop(ingredientDropParameter);
         colliderPilon.enabled = true; // on active les collider de manipulation
@@ -37,23 +39,25 @@ public class SCR_Mortier : SCR_Ustensile
 
         refPilon.SetManipulation(true);
         ingredientCollider.isTrigger = true;
+        InitPilon();
     }
 
   
 
     public override void FinishManipulation()
     {
-        devantMortier.SetActive(true);
+        
         base.FinishManipulation();
         colliderPilon.enabled = false; // désactive les colliders de manipulation
         AudioManager.instanceAM.Play("Completion Mortier");
-
+        sparkleVFX.Play();
 
     }
 
     public void InitPilon()
     {
-        refPilon.SetTimer(tempsNecessaireBoyage,velocityNecessaireBroyage,this); // transmet les infos au pilon et le mortier comme reference
+        refPilon.SetTimer(tempsNecessaireBoyage,velocityNecessaireBroyage,this,myVFX,ingredientDrop.GetCR_SO_Ingredient().TrancheTasse); // transmet les infos au pilon et le mortier comme reference
+
     }
 
 
@@ -72,7 +76,7 @@ public class SCR_Mortier : SCR_Ustensile
 
         ingredientCollider.isTrigger = false;
         base.PickUpFromContenant();
-
+        devantMortier.SetActive(true);
     }
 
     public void LockIngredient()

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite d'ustensile pour avoir acces aux fonctions OnDrop()... 
 {
-
+    int timeBase = 0;
     [Header("Unique à la rape")]
     [SerializeField] private Transform refPlaque;
 
@@ -70,7 +70,24 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
             {
                 
                 currentTempsPasse += Mathf.Abs(diffMousePos.x /10);
+
+                int timeCode = Mathf.RoundToInt(currentTempsPasse);
                 
+
+                if(timeCode > timeBase)
+                {
+                    ParticleSystem vfxParticle = Instantiate<ParticleSystem>(myVFX, transform);
+                    vfxParticle.textureSheetAnimation.SetSprite(0, ingredientDrop.GetCR_SO_Ingredient().TrancheTasse);
+                    timeBase = timeCode;
+                }
+                
+                /*
+                if ((int)currentTempsPasse == 1 || (int)currentTempsPasse == 2 || (int)currentTempsPasse == 3 || (int)currentTempsPasse == 4 || (int)currentTempsPasse == 5 || (int)currentTempsPasse == 6)
+                {
+                   
+                }
+                */
+
 
                 if (currentTempsPasse >= tempsNecessaire)
                 {
@@ -78,6 +95,8 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
                     AudioManager.instanceAM.Play("RaperFini");
                     refPlaque.DOLocalMoveX(0, 0.5f);
                     currentTempsPasse = 0;
+                    timeBase = 0;
+                    sparkleVFX.Play();
                 }
             }
 
