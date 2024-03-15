@@ -307,7 +307,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             firstIsHigher = true;
             listCurrentQueteInstance[1].transform.position = new Vector3(listCurrentQueteInstance[1].transform.position.x, listCurrentQueteInstance[1].transform.position.y, 1);
 
-            listCurrentQueteInstance[1].GetComponent<SpriteRenderer>().sortingOrder = 0;
+            //listCurrentQueteInstance[1].GetComponent<SpriteRenderer>().sortingOrder = 0;
             listCurrentQueteInstance[1].GetComponentInChildren<Canvas>().sortingOrder = 0;
 
             foreach (SCR_Ficheperso1 fiche in listCurrentQueteInstance[1].GetComponentsInChildren<SCR_Ficheperso1>())
@@ -319,7 +319,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
             listCurrentQueteInstance[0].transform.position = new Vector3(listCurrentQueteInstance[0].transform.position.x, listCurrentQueteInstance[0].transform.position.y, 0);
 
-            listCurrentQueteInstance[0].GetComponent<SpriteRenderer>().sortingOrder = 5;
+            //listCurrentQueteInstance[0].GetComponent<SpriteRenderer>().sortingOrder = 5;
             listCurrentQueteInstance[0].GetComponentInChildren<Canvas>().sortingOrder = 5;
 
             foreach (SCR_Ficheperso1 fiche in listCurrentQueteInstance[0].GetComponentsInChildren<SCR_Ficheperso1>())
