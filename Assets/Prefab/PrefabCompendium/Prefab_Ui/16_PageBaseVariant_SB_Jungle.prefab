@@ -120,7 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8766189360275074664}
+      - m_Target: {fileID: 8208996917098774698}
         m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
         m_MethodName: GoToPage
         m_Mode: 2
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8766189360275074664}
+      - m_Target: {fileID: 8208996917098774698}
         m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
         m_MethodName: GoToPage
         m_Mode: 2
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8766189360275074664}
+      - m_Target: {fileID: 8208996917098774698}
         m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
         m_MethodName: GoToPage
         m_Mode: 2
@@ -770,7 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8208996917098774698}
         m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
         m_MethodName: GoToPage
         m_Mode: 2
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8766189360275074664}
+      - m_Target: {fileID: 8208996917098774698}
         m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
         m_MethodName: GoToPage
         m_Mode: 2
@@ -1170,6 +1170,7 @@ GameObject:
   - component: {fileID: 7479896898472212288}
   - component: {fileID: 2126262339402290743}
   - component: {fileID: 535022783439302329}
+  - component: {fileID: 2726158191004824463}
   m_Layer: 5
   m_Name: Phacoliere
   m_TagString: Untagged
@@ -1234,6 +1235,62 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2726158191004824463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8923457040786901066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 535022783439302329}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8208996917098774698}
+        m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
+        m_MethodName: GoToPage
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 9110377098978319838, guid: f1adf30c576089841a7a2c976f7c147e, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &4317036112869501650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1543,9 +1600,9 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7422016620189508245, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
   m_PrefabInstance: {fileID: 4317036112869501650}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8766189360275074664 stripped
+--- !u!114 &8208996917098774698 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4778024260429907130, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5333676253485312632, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
   m_PrefabInstance: {fileID: 4317036112869501650}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229706544532386115}

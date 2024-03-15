@@ -108,7 +108,14 @@ public class SCR_Bouilloire : SCR_Ustensile
 
         refTasse.FinishBoisson();
 
-        
+
+
+        Invoke("CallNextBoisson", 1);
+    }
+
+    public void CalllNextBoisson()
+    {
+
 
         SCR_CuisineManager.instanceCM.NextBoisson();
 

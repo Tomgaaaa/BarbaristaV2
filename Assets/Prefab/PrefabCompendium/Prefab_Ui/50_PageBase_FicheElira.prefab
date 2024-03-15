@@ -399,19 +399,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4404152156830495431}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2282837567500552469}
-        m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
-        m_MethodName: GoToPage
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8581976315347588670}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1678967334112961815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,7 +1122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1721977427849881559}
         m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
         m_MethodName: GoToPage
         m_Mode: 2
@@ -1773,7 +1761,7 @@ GameObject:
   - component: {fileID: 8297170051744593523}
   - component: {fileID: 5953155265106662547}
   m_Layer: 5
-  m_Name: Bestiaire (1)
+  m_Name: Sociogramme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1880,7 +1868,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1721977427849881559}
         m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
         m_MethodName: GoToPage
         m_Mode: 2
@@ -2146,8 +2134,8 @@ MonoBehaviour:
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   points:
-  - {x: 54, y: 79.66}
-  - {x: 1, y: 70.4}
+  - {x: 1, y: 1}
+  - {x: 1, y: 1}
   - {x: 1, y: 1}
   - {x: 1, y: 1}
   - {x: 1, y: 1}
@@ -2642,7 +2630,7 @@ GameObject:
   - component: {fileID: 5918132807188845450}
   - component: {fileID: 1112749605559229689}
   m_Layer: 5
-  m_Name: Ingredient (1)
+  m_Name: Historique
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2885,13 +2873,13 @@ PrefabInstance:
       addedObject: {fileID: 1853438053506255948}
     - targetCorrespondingSourceObject: {fileID: 8409940031648454452, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 1257844035301033357}
+      addedObject: {fileID: 8681621756081311172}
     - targetCorrespondingSourceObject: {fileID: 8409940031648454452, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
       insertIndex: 2
       addedObject: {fileID: 3271243275808544619}
     - targetCorrespondingSourceObject: {fileID: 8409940031648454452, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8681621756081311172}
+      insertIndex: 3
+      addedObject: {fileID: 1257844035301033357}
     - targetCorrespondingSourceObject: {fileID: 1139581643104460996, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8624495870212831153}
@@ -2906,9 +2894,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4774322469225393234}
   m_SourcePrefab: {fileID: 100100000, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
---- !u!114 &2282837567500552469 stripped
+--- !u!114 &1721977427849881559 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3070931588626990827, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2510143224863090729, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
   m_PrefabInstance: {fileID: 3832669584799485950}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8581976315347588670}

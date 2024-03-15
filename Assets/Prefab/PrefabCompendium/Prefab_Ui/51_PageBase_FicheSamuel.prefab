@@ -195,7 +195,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1721977427849881559}
         m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
         m_MethodName: GoToPage
         m_Mode: 2
@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 7061211338258347988}
   - component: {fileID: 4696273172011308010}
   m_Layer: 5
-  m_Name: Biome (1)
+  m_Name: fichePerso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -583,12 +583,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1721977427849881559}
         m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
         m_MethodName: GoToPage
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 8581976315347588670, guid: 11574bc2139b5c543b00eea3a3cf2959, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
@@ -959,7 +959,7 @@ GameObject:
   - component: {fileID: 5342306620991833490}
   - component: {fileID: 1796146139675411981}
   m_Layer: 5
-  m_Name: Bestiaire (1)
+  m_Name: Sociogramme
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1721977427849881559}
         m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
         m_MethodName: GoToPage
         m_Mode: 2
@@ -1788,7 +1788,7 @@ GameObject:
   - component: {fileID: 2549018966355282593}
   - component: {fileID: 478363321119667847}
   m_Layer: 5
-  m_Name: Ingredient (1)
+  m_Name: Historique
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1957,8 +1957,8 @@ MonoBehaviour:
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   points:
-  - {x: 54, y: 79.66}
-  - {x: 1, y: 70.4}
+  - {x: 1, y: 1}
+  - {x: 1, y: 1}
   - {x: 1, y: 1}
   - {x: 1, y: 1}
   - {x: 1, y: 1}
@@ -2902,6 +2902,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 194381302992143086}
   m_SourcePrefab: {fileID: 100100000, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+--- !u!114 &1721977427849881559 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2510143224863090729, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+  m_PrefabInstance: {fileID: 3832669584799485950}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581976315347588670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef9ea4a10d67b11469ca30a02cfec6c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4242667758990847802 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1139581643104460996, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}

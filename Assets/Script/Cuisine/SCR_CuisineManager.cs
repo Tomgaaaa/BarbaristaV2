@@ -30,6 +30,8 @@ public class SCR_CuisineManager : MonoBehaviour
 
     #endregion
 
+
+    [Header("Autre")]
     [SerializeField] private SCR_Tasse refTasse;
     [SerializeField] private SCR_HexagoneStat refHexagone;
 
@@ -40,6 +42,8 @@ public class SCR_CuisineManager : MonoBehaviour
     private Camera mainCam;
     private Vector3 startPoseCam;
     [SerializeField] private Vector3 emplacementCam;
+
+    [SerializeField] private GameObject canvasUI;
 
     private void Awake()
     {
@@ -135,7 +139,8 @@ public class SCR_CuisineManager : MonoBehaviour
         {
             // salors on passe a la partie VN
             AudioManager.instanceAM.Play("PreparationFinish");
-            AudioManager.instanceAM.FadeOut("CuisineAlatea", 0, 4.5f);
+            //AudioManager.instanceAM.FadeOut("CuisineAlatea", 0, 4.5f);
+            AudioManager.instanceAM.Pause("CuisineAlatea");
             AudioManager.instanceAM.Play("BarAlatea");
             SceneManager.LoadScene("SCE_VisualNovel");
 
@@ -169,6 +174,17 @@ public class SCR_CuisineManager : MonoBehaviour
     }
 
     
+    public void ZoomUstensile(bool isZooming)
+    {
+        if(isZooming)
+        {
+            canvasUI.SetActive(false);
+        }
+        else
+        {
+            canvasUI.SetActive(true);
 
+        }
+    }
 
 }

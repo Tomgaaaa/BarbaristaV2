@@ -125,7 +125,10 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
             mainCam.DOOrthoSize(emplacementCam.z, 1f); // change le zoom de la camera, emplacement.z car on est en 2D donc inutile le Z, ça évite de recreer une variable
             SCR_Cursor.instanceCursor.ZoomCamera();
 
-            SCR_TutoManager.instanceTuto.Calltuto(myTutoOnDrop, SCR_TutoManager.enumEmplacement.haut); // appelle le tuto manager pour afficher le tuto associé à l'ustensile
+            SCR_TutoManager.instanceTuto.Calltuto(myTutoOnDrop, SCR_TutoManager.enumEmplacement.gauche); // appelle le tuto manager pour afficher le tuto associé à l'ustensile
+
+
+            SCR_CuisineManager.instanceCM.ZoomUstensile(true);
 
         }
 
@@ -157,6 +160,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
         base.PickUpFromContenant();
         colliderDrop.enabled = true; // réactive le collider pour permettre de re drop des ingrédients sur l'ustensile, on le reactive que lorsque l'ingrédient est repris
 
+        SCR_CuisineManager.instanceCM.ZoomUstensile(false);
 
     }
 
