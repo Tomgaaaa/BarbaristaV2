@@ -114,9 +114,22 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
     private void SpawnQuete()
     {
+        if(SCR_DATA.instanceData.GetLisNotSelectedQuest().Count != 0)
+        {
+            foreach (SO_Quete queteNotSelected in SCR_DATA.instanceData.GetLisNotSelectedQuest())
+            {
+                dicoJourQuete[SCR_DATA.instanceData.GetJour()].Add(queteNotSelected);
+
+            }
+            SCR_DATA.instanceData.SetListNotSelectedQuest(null, true);
+        }
+
+       
+
+
+
         for (int i = 0; i < dicoJourQuete[SCR_DATA.instanceData.GetJour()].Count; i++) // pour chaque quete presente, au jour actuelle, je fais ce qu'il y ci dessous
         {
-
 
             SCR_QueteTableau ms = Instantiate(prefabQuete,transform); // instantie un prefab de quete
 
@@ -275,6 +288,10 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     {
         if(firstIsHigher) // si la premiere quete est sur le dessus alors on veut qu'elle passe derriere 
         {
+            listCurrentQueteInstance[0].SetHigher(false);
+            listCurrentQueteInstance[1].SetHigher(true);
+
+
             firstIsHigher = false;
             listCurrentQueteInstance[0].transform.position = new Vector3(listCurrentQueteInstance[0].transform.position.x, listCurrentQueteInstance[0].transform.position.y, 1);
             //listCurrentQueteInstance[0].GetComponent<SpriteRenderer>().sortingOrder = 0;
@@ -304,6 +321,10 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         }
         else // si la deuxieme quete est sur le dessus, on veut qu'elle passse derriere
         {
+            listCurrentQueteInstance[0].SetHigher(true);
+            listCurrentQueteInstance[1].SetHigher(false);
+
+
             firstIsHigher = true;
             listCurrentQueteInstance[1].transform.position = new Vector3(listCurrentQueteInstance[1].transform.position.x, listCurrentQueteInstance[1].transform.position.y, 1);
 
@@ -368,16 +389,27 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     public void ConfirmSelectionPersos() // bouton appeller par le bouton de confirmation du choix de perso
     {
 
-        foreach(SCR_QueteTableau masterQuete in listCurrentQueteInstance)
+        foreach(SCR_QueteTableau masterQuete in listQuetePropose)
         {
-            SCR_DATA.instanceData.SetListCurrentQuest(masterQuete.GetQuete()); // on transfere les quetes selectionnes au data
+
+            if(listCurrentQueteInstance.Contains(masterQuete))
+            {
+                SCR_DATA.instanceData.SetListCurrentQuest(masterQuete.GetQuete()); // on transfere les quetes selectionnes au data
+
+
+            }
+            else
+            {
+                SCR_DATA.instanceData.SetListNotSelectedQuest(masterQuete.GetQuete()); // on transfere les quetes non selectionnes au data
+
+            }
 
 
         }
 
-        SceneManager.LoadScene("SCE_VisualNovel");
         AudioManager.instanceAM.Play("switchVN");
         AudioManager.instanceAM.Play("ConfirmSwitchVN");
+        SceneManager.LoadScene("SCE_VisualNovel");
     }
 
     public void AddCurrentQuete(SCR_QueteTableau currentQueteParameter, bool removeParameter = false) // fonction appeler lorsqu'on clique sur une des quetes dans la partie choix de quete

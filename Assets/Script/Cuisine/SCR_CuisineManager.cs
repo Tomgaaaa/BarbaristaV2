@@ -88,6 +88,8 @@ public class SCR_CuisineManager : MonoBehaviour
         mainCam.transform.DOMove(new Vector3(emplacementCam.x, emplacementCam.y, mainCam.transform.position.z), 1);
         mainCam.DOOrthoSize(emplacementCam.z, 1);
 
+        ZoomUstensile(true);
+
     }
 
 
@@ -118,6 +120,9 @@ public class SCR_CuisineManager : MonoBehaviour
     
     public void NextBoisson()// fonction appeller par le bouton qui s'affiche quand on a finit de preparer une boisson
     {
+        ZoomUstensile(false);
+
+
         buttonValideBoisson.gameObject.SetActive(false);
 
         AudioManager.instanceAM.Play("TransiDeuxiemeBoisson");

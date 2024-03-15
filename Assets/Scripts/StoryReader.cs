@@ -202,7 +202,6 @@ namespace VNsup
                 
                 AudioManager.instanceAM.Play("CuisineAlatea");
                 SceneManager.LoadScene("SCE_Cuisine");
-                Debug.Log("Stp Fonctionne");
             }
             else if (SCR_DATA.instanceData.GetEtapeQuest() == 0 && SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
             {

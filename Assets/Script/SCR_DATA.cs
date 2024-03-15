@@ -9,6 +9,7 @@ public class SCR_DATA : MonoBehaviour
 
     [SerializeField] private List<SO_Quete> listCurrentQuete;
     [SerializeField] private List<SO_Quete> listAncienneQuete;
+    [SerializeField] private List<SO_Quete> listNotSelectedQuest;
     private List<SO_Personnage> listPersos = new List<SO_Personnage>();
     public List<SCR_SO_Ingredient> listIngredientReward = new List<SCR_SO_Ingredient>();
 
@@ -46,10 +47,20 @@ public class SCR_DATA : MonoBehaviour
 
     public void SetListCurrentQuest(SO_Quete SoQueteParameter) { listCurrentQuete.Add(SoQueteParameter);} // fonction appeller lorsquu'on valide le choix des persos, jsp pk j'ai pas pus transferer de liste doncj'appelle cette fonction 2 fois
     public void SetListAncienneQuest(SO_Quete SoQueteParameter) { listAncienneQuete.Add(SoQueteParameter);} // fonction appeller lorsquu'on valide le choix des persos, jsp pk j'ai pas pus transferer de liste doncj'appelle cette fonction 2 fois
+    public void SetListNotSelectedQuest(SO_Quete SoQueteParameter, bool reset = false) 
+    { 
+
+        if(!reset)
+            listNotSelectedQuest.Add(SoQueteParameter);
+        else
+            listNotSelectedQuest.Clear();
+
+    } // fonction appeller lorsquu'on valide le choix des persos, jsp pk j'ai pas pus transferer de liste doncj'appelle cette fonction 2 fois
     public void SetListPersos(List<SO_Personnage> listPersosParameter) { listPersos = listPersosParameter; }
     public SO_Quete GetCurrentQuest() { return listCurrentQuete[etapeQuete]; } // fonction pour avoir la quete actuelle entre les 2 choisis
     public List<SO_Personnage> GetListPersos() { return listPersos; }
     public List<SO_Quete> GetListCurrentQuest() { return listCurrentQuete; } // fonction pour recuperer les 2 quetes choisis
+    public List<SO_Quete> GetLisNotSelectedQuest() { return listNotSelectedQuest; } // fonction pour recuperer les 2 quetes choisis
     public int GetEtapeQuest() {  return etapeQuete; } // fonction pour recuperer l'etape de la quete, si on est en train de faire la premiere ou la deuxieme quete
     public int GetEtapePerso() {  return etapePerso; } // fonction pour recuperer  l'etape du perso, si on sert le premier ou le deuxieme client de la quete
     public int GetJour() {  return jour; } // fonction pour recuperer le jour actuelle
