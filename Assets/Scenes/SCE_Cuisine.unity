@@ -2724,9 +2724,9 @@ RectTransform:
   - {fileID: 1848761451}
   m_Father: {fileID: 538607404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -83, y: -66}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 59.7, y: 62.7}
   m_SizeDelta: {x: 78, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &305244188
@@ -23392,7 +23392,7 @@ MonoBehaviour:
   multiplicateurScaleIngredient: {x: 0, y: 0, z: 0}
   rendererOutline: []
   etatApresTransformation: 0
-  emplacementCam: {x: -1.93, y: -1.76, z: 2.45}
+  emplacementCam: {x: -1.93, y: -1.76, z: 2.67}
   colliderManipulation: {fileID: 1057885667}
   colliderDrop: {fileID: 0}
   myTutoOnDrop: {fileID: 0}
@@ -23400,7 +23400,7 @@ MonoBehaviour:
   myVFX: {fileID: 0}
   sparkleVFX: {fileID: 0}
   contenantBouilloire: {fileID: 584095983}
-  quantiteEauNecessaire: 600
+  quantiteEauNecessaire: 500
   refTasse: {fileID: 567218936}
 --- !u!61 &1057885667
 BoxCollider2D:
@@ -50732,7 +50732,6 @@ MonoBehaviour:
   refTasse: {fileID: 567218936}
   refHexagone: {fileID: 621068198}
   queteCuisine: {fileID: 8958335215553569623}
-  buttonValideBoisson: {fileID: 819584458}
   emplacementCam: {x: -1.93, y: -1.76, z: 2.45}
   canvasUI: {fileID: 1308563687}
 --- !u!4 &2096960045

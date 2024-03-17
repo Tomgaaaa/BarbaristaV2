@@ -112,7 +112,6 @@ public class SCR_Tasse : SCR_Contenant
         refHexagone.UpdateStat(dicoStatBoisson,false);
         allVisuelle.SetActive(true);
 
-        SCR_CuisineManager.instanceCM.hasFinishPreparation();
         AudioManager.instanceAM.Play("Preparationfini");
 
 

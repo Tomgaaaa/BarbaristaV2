@@ -37,7 +37,6 @@ public class SCR_CuisineManager : MonoBehaviour
 
     [SerializeField] private SCR_QueteCuisine queteCuisine; // quete a gauche de l'ecran
 
-    [SerializeField] private GameObject buttonValideBoisson;
 
     private Camera mainCam;
     private Vector3 startPoseCam;
@@ -110,10 +109,7 @@ public class SCR_CuisineManager : MonoBehaviour
 
     }
 
-    public void hasFinishPreparation() // fonction appeller quand on a finit de mettre de l'eau dans la tasse
-    {
-        buttonValideBoisson.gameObject.SetActive(true); // bouton qui permet de passer a la prochaine boisson / quete
-    }
+
 
 
 
@@ -123,7 +119,6 @@ public class SCR_CuisineManager : MonoBehaviour
         ZoomUstensile(false);
 
 
-        buttonValideBoisson.gameObject.SetActive(false);
 
         AudioManager.instanceAM.Play("TransiDeuxiemeBoisson");
 

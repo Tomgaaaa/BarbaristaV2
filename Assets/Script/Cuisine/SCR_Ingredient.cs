@@ -79,6 +79,10 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     public void OnMouseEnter()
     {
+
+        if (SCR_PauseMenu.instancePauseMenu.GetIsPause() || SCR_MasterCompendium.instanceMComp.GetIsOpen())
+            return;
+
         if (!inContenant || !hasBeenTransformed || hasBeenTransformed && myIngredient.actualStateSO!=enumEtatIgredient.Nature)
         {
 
@@ -112,6 +116,9 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     private void OnMouseDown() // fonction appelé lorsqu'on clique sur l'ingrédient
     {
+        if (SCR_PauseMenu.instancePauseMenu.GetIsPause() || SCR_MasterCompendium.instanceMComp.GetIsOpen())
+            return;
+
 
         isMaintenu = true;
 
@@ -166,6 +173,9 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     private void OnMouseUp() // fonction appelé lorsqu'on relache le clique (et qu'on avait clique sur l'objet avant, pas lorsqu'on relache le clique n'importe ou)
     {
+
+        if (SCR_PauseMenu.instancePauseMenu.GetIsPause() || SCR_MasterCompendium.instanceMComp.GetIsOpen())
+            return;
 
         mySpriteRenderer.sortingOrder = 5; // repasse l'objet au meme niveau qu'il a de base
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
@@ -228,7 +238,8 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     public void OnMouseDrag() // fonction appelé lorsuq'on maintiens le clique sur l'ingrédient
     {
-       
+        if (SCR_PauseMenu.instancePauseMenu.GetIsPause() || SCR_MasterCompendium.instanceMComp.GetIsOpen())
+            return;
 
 
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition)); // cast pour avoir la world position de la souris

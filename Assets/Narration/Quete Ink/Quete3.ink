@@ -172,6 +172,10 @@ Sigg:Allez hop au travail
   ->Init(false)
   
   =PastInit
+  
+  ~fadeIn(Perso1,0)
+~fadeIn(Perso2,0)
+  
   ~playSound("I_Siggprepafini")
 Sigg : Et voila
 :Bon courage

@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class SCR_PauseMenu : MonoBehaviour
 {
+    public static SCR_PauseMenu instancePauseMenu;
+
+
 
     bool GameIsPaused = false;
 
@@ -14,7 +17,18 @@ public class SCR_PauseMenu : MonoBehaviour
     [SerializeField] SCR_Options options;
     bool inOption = false;
 
-    AudioManager audioManager;
+
+    private void Awake()
+    {
+        if (instancePauseMenu == null)
+            instancePauseMenu = this;
+        else
+            Destroy(gameObject);
+
+
+
+
+    }
 
     public void Pause()
     {
@@ -73,8 +87,7 @@ public class SCR_PauseMenu : MonoBehaviour
 
     public void GoMenu()
     {
-        //audioManager = FindObjectOfType<AudioManager>();
-        //audioManager.Play("Menu");
+
         Time.timeScale = 1f;
         AudioManager.instanceAM.FadeOut("BarAlatea", 0, 4.5f);
         AudioManager.instanceAM.FadeOut("CuisineAlatea", 0, 4.5f);
@@ -84,6 +97,7 @@ public class SCR_PauseMenu : MonoBehaviour
 
 
     public bool GetInOption() {  return inOption; }
+    public bool GetIsPause() {  return GameIsPaused; }
 
 
 }
