@@ -86,6 +86,8 @@ namespace VNsup
             }
         }
 
+
+        
         public virtual void ShowStory(string text)
         {
             SetStoryMode(true);
@@ -102,6 +104,11 @@ namespace VNsup
                     content = CharacterContent();
                     ChangeCharacter(id);
                 }
+                else if (string.IsNullOrEmpty(id))
+                {
+                    content = content.Substring(1);
+                }
+
 
                 SetCharacterBoxActive(true);
             }
@@ -139,6 +146,8 @@ namespace VNsup
         {
             if (content.StartsWith(':'))
                 return true;
+
+            
             else
             {
                 Regex rx = new Regex("^[^: ]+:");
@@ -148,7 +157,6 @@ namespace VNsup
 
         public virtual string CharacterID()
         {
-            
             return content.Substring(0, content.IndexOf(':'));
         }
 

@@ -69,6 +69,9 @@ public class SCR_CuisineManager : MonoBehaviour
         mainCam = Camera.main;
         startPoseCam = new Vector3( mainCam.transform.position.x, mainCam.transform.position.y, 5.5f);
 
+        if (SCR_TutoManager.instanceTuto != null)
+            SCR_TutoManager.instanceTuto.gameObject.SetActive(true);
+
     }
 
 
@@ -142,6 +145,10 @@ public class SCR_CuisineManager : MonoBehaviour
             //AudioManager.instanceAM.FadeOut("CuisineAlatea", 0, 4.5f);
             AudioManager.instanceAM.Pause("CuisineAlatea");
             AudioManager.instanceAM.Play("BarAlatea");
+
+            if (SCR_TutoManager.instanceTuto != null)
+                SCR_TutoManager.instanceTuto.gameObject.SetActive(false);
+
             SceneManager.LoadScene("SCE_VisualNovel");
 
         }

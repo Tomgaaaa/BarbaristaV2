@@ -78,6 +78,9 @@ public class SCR_PauseMenu : MonoBehaviour
         CreditUI.SetActive(false);
         pauseMenuUI.SetActive(true);
 
+        if(SCR_TutoManager.instanceTuto != null)
+            SCR_TutoManager.instanceTuto.gameObject.SetActive(false);
+
     }
 
     

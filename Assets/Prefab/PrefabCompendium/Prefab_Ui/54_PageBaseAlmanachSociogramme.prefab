@@ -2567,7 +2567,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 229.29999, y: -75}
-  m_SizeDelta: {x: 86, y: 150}
+  m_SizeDelta: {x: 86, y: 117}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &2163435372826917599
 CanvasRenderer:
@@ -3882,7 +3882,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 987098827634181665}
   m_OnClick:
     m_PersistentCalls:
@@ -4084,6 +4084,14 @@ PrefabInstance:
     - target: {fileID: 7461717489192537110, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -46.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7700139831901903345, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758181458030204607, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7792111172743056744, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
       propertyPath: m_SizeDelta.y

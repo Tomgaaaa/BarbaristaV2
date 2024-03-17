@@ -169,5 +169,8 @@ Sigg:Allez hop au travail
 Sigg : Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")
+ 
+  ~fadeOut(Perso1,0)
+~fadeOut(Perso2,0)
 ->END
     
