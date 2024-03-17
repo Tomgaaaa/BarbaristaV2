@@ -59,14 +59,22 @@ public class SCR_GainQuete_UI : MonoBehaviour, ISerializationCallbackReceiver
     private SCR_GainQuete gainQuete;
     [SerializeField] private SCR_GainIngredient gainIngredient;
 
+    [SerializeField] private GameObject stampWin;
+    [SerializeField] private GameObject stampLose;
+    private Vector3 initialScaleStamp;
+
 
     private Tweener tweenerAmitie;
 
     private void Start()
     {
-        Loadpage(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1]);
+
+        initialScaleStamp = stampWin.transform.localScale;
+
+        Loadpage(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1],true);
         UpdateAmitie(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1], false);
         UpdateReward(SCR_DATA.instanceData.GetListCurrentQuest()[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].hasWinMission);
+
 
 
         if (SCR_DATA.instanceData.GetJour() <= 3) // 3 psk la retour du jour 2 est pendant le jour 3
@@ -78,7 +86,7 @@ public class SCR_GainQuete_UI : MonoBehaviour, ISerializationCallbackReceiver
     }
 
 
-    public void Loadpage(SO_Personnage Perso1Parameter, SO_Personnage Perso2Parameter)
+    public void Loadpage(SO_Personnage Perso1Parameter, SO_Personnage Perso2Parameter,bool loadFirstQuest)
     {
         initialPositionCurseur = curseurAmitie.position;
 
@@ -91,6 +99,51 @@ public class SCR_GainQuete_UI : MonoBehaviour, ISerializationCallbackReceiver
 
         hexagone1.UpdateStat(Perso1Parameter.dicoResistance, false);
         hexagone2.UpdateStat(Perso2Parameter.dicoResistance, false);
+
+
+        stampWin.SetActive(false); // je les desactive pour pouvoir les reactiver apres
+        stampLose.SetActive(false);
+
+        if (loadFirstQuest) // pour savoir si la page chargé montre la premiere quete ou la deuxieme
+        {
+            if (SCR_DATA.instanceData.GetListCurrentQuest()[0].hasWinMission) // si la mission 1 est reussite
+            {
+                stampWin.SetActive(true);
+                stampWin.transform.localScale = initialScaleStamp * 1.2f;
+                stampWin.transform.DOScale(initialScaleStamp, 0.5f);
+
+
+            }
+            else // si la mission 1 est perdue
+            {
+                stampLose.SetActive(true);
+                stampLose.transform.localScale = initialScaleStamp * 1.2f;
+                stampLose.transform.DOScale(initialScaleStamp, 0.5f);
+
+            }
+            
+
+        }
+        else
+        {
+            if (SCR_DATA.instanceData.GetListCurrentQuest()[1].hasWinMission) // si la mission 2 est reussite
+            {
+                stampWin.SetActive(true);
+                stampWin.transform.localScale = initialScaleStamp * 1.2f;
+                stampWin.transform.DOScale(initialScaleStamp, 0.5f);
+
+
+            }
+            else // si la mission 2 est perdue
+            {
+                stampLose.SetActive(true);
+                stampLose.transform.localScale = initialScaleStamp * 1.2f;
+                stampLose.transform.DOScale(initialScaleStamp, 0.5f);
+
+            }
+        }
+
+
 
 
     }
@@ -147,7 +200,7 @@ public class SCR_GainQuete_UI : MonoBehaviour, ISerializationCallbackReceiver
 
         textNmbQuete.text = "2/2";
         //gainQuete.CalculQuete2();
-        Loadpage(SCR_DATA.instanceData.GetListCurrentQuest()[1].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[1].persosEnvoyes[1]);
+        Loadpage(SCR_DATA.instanceData.GetListCurrentQuest()[1].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[1].persosEnvoyes[1],false);
         UpdateAmitie(SCR_DATA.instanceData.GetListCurrentQuest()[1].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[1].persosEnvoyes[1],false);
         UpdateReward(SCR_DATA.instanceData.GetListCurrentQuest()[1],SCR_DATA.instanceData.GetListCurrentQuest()[1].hasWinMission);
         //gainQuete.CalculeChanceQuete(SCR_DATA.instanceData.GetListCurrentQuest()[1]);
@@ -164,7 +217,7 @@ public class SCR_GainQuete_UI : MonoBehaviour, ISerializationCallbackReceiver
         textNmbQuete.text = "1/2";
 
 
-        Loadpage(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1]);
+        Loadpage(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1],true);
         UpdateAmitie(SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].persosEnvoyes[1], false);
         UpdateReward(SCR_DATA.instanceData.GetListCurrentQuest()[0], SCR_DATA.instanceData.GetListCurrentQuest()[0].hasWinMission);
         //gainQuete.CalculQuete();
@@ -177,6 +230,8 @@ public class SCR_GainQuete_UI : MonoBehaviour, ISerializationCallbackReceiver
         gainIngredient.gameObject.SetActive(true);
         gainIngredient.SpawnIngredient();
 
+        stampLose.gameObject.SetActive(false);
+        stampWin.gameObject.SetActive(false);
 
         List<SCR_SO_Ingredient> listIngredientGagne = new List<SCR_SO_Ingredient>();
 

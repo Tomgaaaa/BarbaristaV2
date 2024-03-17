@@ -166,11 +166,15 @@ Sigg:Allez hop au travail
  
  
  
+ 
+ 
   ==Apresquete==
   
   ->Init(false)
   
   =PastInit
+
+  
   ~playSound("I_Siggprepafini")
 Sigg: Et voila
 :Bon courage

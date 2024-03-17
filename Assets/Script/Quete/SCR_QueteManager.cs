@@ -74,7 +74,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     private List<Vector3> startPositionPerso = new List<Vector3>(); // position de base des fiches persos
 
 
-    public List<SCR_QueteTableau> listCurrentQueteInstance = new List<SCR_QueteTableau>(); // liste des quetes instanties / proposes
+    private List<SCR_QueteTableau> listCurrentQueteInstance = new List<SCR_QueteTableau>(); // liste des quetes instanties / proposes
     private bool firstIsHigher = true; // bool qui permet de savoir si la premiere quete selectionne est celle du dessus
 
 
