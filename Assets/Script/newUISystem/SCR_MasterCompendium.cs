@@ -159,5 +159,7 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
         infoBulle.gameObject.SetActive(false);
     }
 
+
+
     public bool GetIsOpen() => isOpen;
 }

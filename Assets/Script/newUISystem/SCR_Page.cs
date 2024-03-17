@@ -5,11 +5,33 @@ using UnityEngine.UI;
 
 public class SCR_Page : SCR_PoolItem
 {
-    
+
+    [SerializeField] private List<Button> sociogrammeButton;
+
+
     public void Start()
     {
-        
+        foreach (Button button in sociogrammeButton)
+        {
+            button.interactable = false;
+
+        }
     }
+
+    private void OnEnable()
+    {
+        if(SCR_DATA.instanceData.GetJour() == 3 && sociogrammeButton !=null)
+        {
+            foreach(Button button in sociogrammeButton)
+            {
+                button.interactable = true;
+
+            }
+
+        }
+    }
+
+
 
     public void GoToPage(GameObject ePage)
     {
@@ -29,6 +51,4 @@ public class SCR_Page : SCR_PoolItem
     {
         SCR_MasterCompendium.instanceMComp.CloseComp();
     }
-
-  
 }

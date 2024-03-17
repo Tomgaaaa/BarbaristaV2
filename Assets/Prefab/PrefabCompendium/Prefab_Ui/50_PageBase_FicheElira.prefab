@@ -590,7 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2753,6 +2753,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -735.346
       objectReference: {fileID: 0}
+    - target: {fileID: 2510143224863090729, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: sociogrammeButton
+      value: 
+      objectReference: {fileID: 5953155265106662547}
+    - target: {fileID: 2510143224863090729, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: sociogrammeButton.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2510143224863090729, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
+      propertyPath: sociogrammeButton.Array.data[0]
+      value: 
+      objectReference: {fileID: 5953155265106662547}
     - target: {fileID: 4767391515128437184, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
       propertyPath: m_Name
       value: 50_PageBase_FicheElira
