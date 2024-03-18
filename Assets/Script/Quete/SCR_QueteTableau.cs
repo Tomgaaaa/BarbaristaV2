@@ -47,7 +47,9 @@ public class SCR_QueteTableau : MonoBehaviour
             InitialisationQuete();
             
         }
-        initiaHighLightlScale = listHighlight[0].transform.localScale;
+
+        if(listHighlight.Count != 0)
+            initiaHighLightlScale = listHighlight[0].transform.localScale;
         
 
     }

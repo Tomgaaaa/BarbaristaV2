@@ -251,19 +251,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2509955668088878334}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8208996917098774698}
-        m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
-        m_MethodName: GoToPage
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1229706544532386115}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 9
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2973724181599055048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,11 +1012,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 650071133365849}
   m_SourcePrefab: {fileID: 100100000, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
---- !u!1 &1229706544532386115 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3096782121366051729, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
-  m_PrefabInstance: {fileID: 4317036112869501650}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1776795798591587257 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2540385494150932843, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
@@ -1116,7 +1099,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5333676253485312632, guid: b7e22e059a2a88d4a9bb8c248618dcc5, type: 3}
   m_PrefabInstance: {fileID: 4317036112869501650}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1229706544532386115}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef9ea4a10d67b11469ca30a02cfec6c5, type: 3}

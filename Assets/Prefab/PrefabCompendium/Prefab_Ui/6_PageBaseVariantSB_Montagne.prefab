@@ -327,7 +327,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8777060229392121075}
         m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
         m_MethodName: GoToPage
         m_Mode: 2
@@ -1217,19 +1217,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6365747702814725631}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8777060229392121075}
-        m_TargetAssemblyTypeName: SCR_Page, Assembly-CSharp
-        m_MethodName: GoToPage
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1815686648982162714}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7128498235572596258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,11 +1792,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5445296805792656186, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
   m_PrefabInstance: {fileID: 6565034602773173466}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1815686648982162714 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4767391515128437184, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
-  m_PrefabInstance: {fileID: 6565034602773173466}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3435591028593066990 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8409940031648454452, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
@@ -1824,7 +1807,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2510143224863090729, guid: a3a78e785cbfab0458df5e7483080c3a, type: 3}
   m_PrefabInstance: {fileID: 6565034602773173466}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1815686648982162714}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef9ea4a10d67b11469ca30a02cfec6c5, type: 3}

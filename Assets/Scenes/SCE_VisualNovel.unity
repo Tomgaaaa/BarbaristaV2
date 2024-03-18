@@ -1202,6 +1202,10 @@ MonoBehaviour:
   storyBoxLeft: {fileID: 1661229496}
   storyBoxRight: {fileID: 1236912629}
   choicesView: {fileID: 1482819114}
+  listTextAnimatorPlayer:
+  - {fileID: 1899055513}
+  - {fileID: 1285456460}
+  - {fileID: 1597231652}
 --- !u!1 &346810024
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,16 +2229,40 @@ MonoBehaviour:
   useTypeWriter: 1
   startTypewriterMode: 3
   canSkipTypewriter: 1
-  hideAppearancesOnSkip: 0
+  hideAppearancesOnSkip: 1
   triggerEventsOnSkip: 0
   resetTypingSpeedAtStartup: 1
   disappearanceOrientation: 0
   onTextShowed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 291479442}
+        m_TargetAssemblyTypeName: VNsup.StoryReader, Assembly-CSharp
+        m_MethodName: EndTextAnimator
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTypewriterStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 291479442}
+        m_TargetAssemblyTypeName: VNsup.StoryReader, Assembly-CSharp
+        m_MethodName: StartTextAnimator
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTextDisappeared:
     m_PersistentCalls:
       m_Calls: []
@@ -3236,16 +3264,40 @@ MonoBehaviour:
   useTypeWriter: 1
   startTypewriterMode: 3
   canSkipTypewriter: 1
-  hideAppearancesOnSkip: 0
+  hideAppearancesOnSkip: 1
   triggerEventsOnSkip: 0
   resetTypingSpeedAtStartup: 1
   disappearanceOrientation: 0
   onTextShowed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 291479442}
+        m_TargetAssemblyTypeName: VNsup.StoryReader, Assembly-CSharp
+        m_MethodName: EndTextAnimator
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTypewriterStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 291479442}
+        m_TargetAssemblyTypeName: VNsup.StoryReader, Assembly-CSharp
+        m_MethodName: StartTextAnimator
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTextDisappeared:
     m_PersistentCalls:
       m_Calls: []
@@ -4277,16 +4329,40 @@ MonoBehaviour:
   useTypeWriter: 1
   startTypewriterMode: 3
   canSkipTypewriter: 1
-  hideAppearancesOnSkip: 0
+  hideAppearancesOnSkip: 1
   triggerEventsOnSkip: 0
   resetTypingSpeedAtStartup: 1
   disappearanceOrientation: 0
   onTextShowed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 291479442}
+        m_TargetAssemblyTypeName: VNsup.StoryReader, Assembly-CSharp
+        m_MethodName: EndTextAnimator
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTypewriterStart:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 291479442}
+        m_TargetAssemblyTypeName: VNsup.StoryReader, Assembly-CSharp
+        m_MethodName: StartTextAnimator
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onTextDisappeared:
     m_PersistentCalls:
       m_Calls: []

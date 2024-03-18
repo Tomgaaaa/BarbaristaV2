@@ -11,6 +11,8 @@ namespace VNsup
     {
         public enum StoryReadState { NONE, READ, WAIT, RESUME };
 
+        public enum StoryAnimatorState { TIPING, WAITING }
+
         [System.Serializable] public class StoryEventTrigger : UnityEvent<StoryReader, object[]> { }
         [System.Serializable] public class VariableEventTrigger : UnityEvent<string, object> { }
         [System.Serializable]
@@ -40,6 +42,7 @@ namespace VNsup
         [SerializeField] List<VariableLink> variableList;
 
         public StoryReadState state { get; private set; }
+        private StoryAnimatorState animatorState;
 
         // Start is called before the first frame update
         void Awake()
@@ -127,10 +130,28 @@ namespace VNsup
             return true;
         }
 
+
+        public void StartTextAnimator()
+        {
+            animatorState = StoryAnimatorState.TIPING;
+        }
+        public void EndTextAnimator()
+        {
+            animatorState = StoryAnimatorState.WAITING;
+        }
+
         public virtual void Next()
         {
             if (!UpdateState())
                 return;
+
+
+            if(animatorState == StoryAnimatorState.TIPING)
+            {
+                storyDisplay.ShowText();
+                return;
+            }
+
 
             if (story.canContinue)
             {

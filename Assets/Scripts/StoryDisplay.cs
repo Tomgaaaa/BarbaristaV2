@@ -1,3 +1,4 @@
+using Febucci.UI;
 using Ink.Runtime;
 using System;
 using System.Collections;
@@ -27,6 +28,9 @@ namespace VNsup
         StoryBoxView currentStoryBox;
         [Header("Choices")]
         [SerializeField] protected ChoiceDisplay choicesView;
+
+
+        [SerializeField] private List<TextAnimatorPlayer> listTextAnimatorPlayer;
 
         protected string content { get; set; }
         protected string lastCharacter { get; set; }
@@ -222,5 +226,21 @@ namespace VNsup
             }
         }
 
+
+        public void ShowText()
+        {
+
+            foreach(TextAnimatorPlayer player in listTextAnimatorPlayer)
+            {
+                player.SkipTypewriter();
+            }
+           
+        }
+
+
     }
+
+
+
+   
 }
