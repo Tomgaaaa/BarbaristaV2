@@ -47,7 +47,10 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instanceAM;
 
     SoundSettings backUpLastSound;
-    public float backUpLastVolume;
+
+    [SerializeField] private AudioMixer mixer;
+
+    float lastVolume;
 
     private void Awake()
     {
@@ -175,11 +178,36 @@ public class AudioManager : MonoBehaviour
 
 
         backUpLastSound = s;
-        backUpLastVolume = s.volume;
 
         s.source.DOFade(value, duration).OnComplete(ResetSound);
 
     }
+
+
+
+    public void VoicePlaying(string name)
+    {
+        float clipLenght; 
+        
+        clipLenght = System.Array.Find(sounds, sound => sound.label == name).clip.Length;
+        Debug.Log(clipLenght);
+
+
+
+        mixer.GetFloat("Musique", out lastVolume);
+        mixer.SetFloat("Musique", lastVolume / 0.2f);
+
+        Invoke("RetablishVolume", clipLenght);
+
+        Play(name);
+
+    }
+    private void RetablishVolume()
+    {
+        mixer.SetFloat("Musique", lastVolume);
+
+    }
+
 
     private void ResetSound()
     {

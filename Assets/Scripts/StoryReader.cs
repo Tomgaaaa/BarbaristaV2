@@ -184,7 +184,7 @@ namespace VNsup
             story.BindExternalFunction("moveTo", (string character, string name, float duration) => engine.MoveTo(character, name, duration));
 
             story.BindExternalFunction("FinishDialogue", (string name) => ChangeScene());
-            story.BindExternalFunction("playSound", (string name) =>  AudioManager.instanceAM.Play(name));
+            story.BindExternalFunction("playSound", (string name) =>  AudioManager.instanceAM.VoicePlaying(name));
 
         }
 
