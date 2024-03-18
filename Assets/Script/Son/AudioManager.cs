@@ -50,7 +50,7 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioMixer mixer;
 
-    float lastVolume;
+    public float lastVolume;
 
     private void Awake()
     {
@@ -187,17 +187,18 @@ public class AudioManager : MonoBehaviour
 
     public void VoicePlaying(string name)
     {
+
+        SoundSettings s = System.Array.Find(sounds, sound => sound.label == name);
+
         float clipLenght; 
-        
-        clipLenght = System.Array.Find(sounds, sound => sound.label == name).clip.Length;
-        Debug.Log(clipLenght);
+        //clipLenght = s.clip.Length;
 
 
 
-        mixer.GetFloat("Musique", out lastVolume);
-        mixer.SetFloat("Musique", lastVolume / 0.2f);
+        mixer.GetFloat("Musique", out float lastVolume);
+        mixer.SetFloat("Musique", 0);
 
-        Invoke("RetablishVolume", clipLenght);
+        Invoke("RetablishVolume", 1);
 
         Play(name);
 
