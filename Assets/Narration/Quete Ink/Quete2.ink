@@ -35,7 +35,7 @@ VAR previousChemin = "vide"
 //dialogue avant que les personnages arrivent 
 ~playSound("I_ArrivéPnjAlerte")
  ~playSound("I_ArrivéPnj")
- Sigg: Haaa les voila qui arrivent
+ Sigg: Haaa les voila qui arrivent.
  
  
  
@@ -55,8 +55,8 @@ VAR previousChemin = "vide"
  
  // dialogue avant que les personnages reagissent a la quete
   ~playSound("I_ExpressionSigg")
- Sigg: Bon voici votre quete
- :Récolte d'Aloalgue pour fabriquer des baumes
+ Sigg: Bon voici votre quête.
+ :Récolte d'Aloalgue pour fabriquer des baumes.
  
  
  ->BeforeReaction //renvoi au chemin ci dessous
@@ -74,7 +74,7 @@ VAR previousChemin = "vide"
  
  // dialogue apres la reaction des personnages
   ~playSound("I_SiggHappy")
-Sigg:Allez hop au travail
+Sigg:Allez hop au travail.
 
 
 
@@ -96,16 +96,16 @@ Sigg:Allez hop au travail
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
  ~playSound("I_BonjourSamuel")
- {Perso}:Hey c'est Samuel
+ {Perso}:Hey c'est Samuel.
  ~playSound("I_Cava")
- :Ca va ?
+ :Ça va ?
 
  
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
  ~playSound("I_BonjourElira")
-  {Perso}:Hey c'est Elira
+  {Perso}:Hey c'est Elira.
   :La forme ?
   
   
@@ -113,15 +113,15 @@ Sigg:Allez hop au travail
  
  - Perso == "Saori" : // dialogue de presentation de Saori
   ~playSound("I_SaoriBonjour")
-  {Perso}:Hey c'est Saori
+  {Perso}:Hey c'est Saori.
   :Comment tu vas Sigg ?
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
  ~playSound("I_BonjourVikram")
-  {Perso}:Hey c'est Vikram
-  :Ca va le vieux ?
+  {Perso}:Hey c'est Vikram.
+  :Ça va le vieux ?
  }
  
  ~EtapePresentationPerso = EtapePresentationPerso + 1
@@ -138,7 +138,7 @@ Sigg:Allez hop au travail
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
  ~playSound("I_SamuelHappy2")
- {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerai en récupéré pour sa collection personnelle.
+ {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerait en récupérer pour sa collection personnelle.
  
  
  
@@ -159,7 +159,7 @@ Sigg:Allez hop au travail
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
  ~playSound("I_VikramRaler")
-  {Perso}:Vikram n’a pas du tout envie d’aller là-bas et de tomber sur les Keruscula, il les a en horreur car il est tombé dans un des nids et les bébé Kérusculas ont été partout sur lui. 
+  {Perso}:Vikram n’a pas du tout envie d’aller là-bas et de tomber sur les Keruscula, il les a en horreur car il est tombé dans un des nids et les bébés Kérusculas ont été partout sur lui. 
   ~playSound("I_VikramTraumatiser")
   :Ça l’a <shake>traumatisé.</shake>
  
@@ -182,8 +182,8 @@ Sigg:Allez hop au travail
 ~fadeIn(Perso2,0)
   
   ~playSound("I_Siggprepafini")
-Sigg: Et voila
-:Bon courage
+Sigg: Et voila.
+:Bon courage.
  ~ FinishDialogue("gainQuete")
  
  

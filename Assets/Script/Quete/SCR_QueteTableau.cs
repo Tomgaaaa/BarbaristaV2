@@ -33,6 +33,11 @@ public class SCR_QueteTableau : MonoBehaviour
     [SerializeField] private GameObject selectedTamp;
     [SerializeField] private GameObject greyMask;
 
+    [SerializeField] private List<GameObject> listHighlight;
+    private Vector3 initsScaleGrow;
+
+    private Sequence sequenceGrowing = DOTween.Sequence();
+
     private void Awake()
     {
         if(myQueteSo != null)
@@ -40,11 +45,21 @@ public class SCR_QueteTableau : MonoBehaviour
             InitialisationQuete();
             
         }
+        initsScaleGrow = listHighlight[0].transform.localScale;
+
+        
+
     }
 
 
     public virtual void InitialisationQuete()
     {
+        foreach(GameObject go in listHighlight)
+        {
+            go.SetActive(false);
+        }
+
+
         titre.text = myQueteSo.titre;
         description.text = myQueteSo.description;
         illu.sprite = myQueteSo.illustration;
@@ -104,6 +119,34 @@ public class SCR_QueteTableau : MonoBehaviour
 
         }
     }
+
+    public void ShowHighLight(bool needToShow)
+    {
+   
+
+        if (needToShow)
+        {
+           
+
+            if (posQuete[0]== null)
+                listHighlight[1].SetActive(true);
+
+            if (posQuete[1] == null)
+                listHighlight[0].SetActive(true);
+        }
+        else
+        {
+            sequenceGrowing.Pause();
+            foreach(GameObject go in listHighlight)
+            {
+                go.SetActive(false);
+            }
+        }
+
+
+    }
+
+   
 
     #region pour le cote tableau
     public void OnDrop(SCR_Ficheperso1 fiche)

@@ -35,7 +35,7 @@ VAR previousChemin = "vide"
 //dialogue avant que les personnages arrivent
  ~playSound("I_ArrivéPnjAlerte")
  ~playSound("I_ArrivéPnj")
- Sigg: Haaa les voila qui arrivent
+ Sigg: Haaa les voila qui arrivent.
  
  
  
@@ -55,8 +55,8 @@ VAR previousChemin = "vide"
  
  // dialogue avant que les personnages reagissent a la quete
  ~playSound("I_ExpressionSigg")
- Sigg: Bon voici votre quete.
-:Recherche d'un filon de Alatium pour fabriquer des armures
+ Sigg: Bon voici votre quête.
+:Recherche d'un filon de Alatium pour fabriquer des armures.
  
  
  ->BeforeReaction //renvoi au chemin ci dessous
@@ -74,7 +74,7 @@ VAR previousChemin = "vide"
  
  // dialogue apres la reaction des personnages
  ~playSound("I_SiggHappy")
-Sigg:Allez hop au travail
+Sigg:Allez hop au travail.
 
 
 
@@ -96,9 +96,9 @@ Sigg:Allez hop au travail
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
   ~playSound("I_BonjourSamuel")
- {Perso}:Hey c'est Samuel
+ {Perso}:Hey c'est Samuel.
  ~playSound("I_Cava")
- : ça va ?
+ :Ça va ?
 
  
  
@@ -116,8 +116,8 @@ Sigg:Allez hop au travail
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
  ~playSound("I_BonjourVikram")
-  {Perso}:Hey c'est Vikram 
-  : ça va le vieux ?
+  {Perso}:Hey c'est Vikram.
+  :Ça va le vieux ?
  
  }
  
@@ -154,7 +154,8 @@ Sigg:Allez hop au travail
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
  ~playSound("I_VikramRaler")
-  {Perso}:Vikram déclara d’un air sombre que contrairement à Samuel, il n’a pas hâte d’aller se geler les miches sous la grêle. Très peu pour lui. Il n’aime pas le froid et en tremble d’avance.
+  {Perso}:Vikram déclara d’un air sombre que contrairement à Samuel, il n’a pas hâte d’aller se geler les miches sous la grêle.
+  :Très peu pour lui. Il n’aime pas le froid et en tremble d’avance.
   
  
  }
@@ -178,8 +179,8 @@ Sigg:Allez hop au travail
 
   
   ~playSound("I_Siggprepafini")
-Sigg: Et voila
-:Bon courage
+Sigg: Et voila.
+:Bon courage.
  ~ FinishDialogue("gainQuete")
  
  

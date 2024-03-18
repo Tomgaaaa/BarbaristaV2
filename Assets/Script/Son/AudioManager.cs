@@ -16,6 +16,9 @@ public class SoundSettings
     [HideInInspector]
     public AudioSource source;
 
+    // group mixer, permet de differrencier les pistes musicales
+    public AudioMixerGroup group;
+
     // pour définir si on veut que le son loop ou non
     public bool loop;
 
@@ -89,7 +92,10 @@ public class AudioManager : MonoBehaviour
             // augmente ou baisse la vitesse du son
             s.source.pitch = s.pitch;
 
-            
+            //lie le mixer a celui du son instancie
+            s.source.outputAudioMixerGroup = s.group;
+
+
 
 
         }

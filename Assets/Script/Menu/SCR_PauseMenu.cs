@@ -78,8 +78,7 @@ public class SCR_PauseMenu : MonoBehaviour
         CreditUI.SetActive(false);
         pauseMenuUI.SetActive(true);
 
-        if(SCR_TutoManager.instanceTuto != null)
-            SCR_TutoManager.instanceTuto.gameObject.SetActive(false);
+       
 
     }
 
@@ -95,6 +94,10 @@ public class SCR_PauseMenu : MonoBehaviour
         AudioManager.instanceAM.FadeOut("BarAlatea", 0, 4.5f);
         AudioManager.instanceAM.FadeOut("CuisineAlatea", 0, 4.5f);
         AudioManager.instanceAM.Play("Menu");
+
+        if (SCR_TutoManager.instanceTuto != null)
+            SCR_TutoManager.instanceTuto.gameObject.SetActive(false);
+
         SceneManager.LoadScene("SCE_Menu");
     }
 

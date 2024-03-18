@@ -454,7 +454,13 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     }  
 
    
-
+    public void ShowHiglightForAllQuest(bool show)
+    {
+        foreach(SCR_QueteTableau quete in listCurrentQueteInstance)
+        {
+            quete.ShowHighLight(show);
+        }
+    }
 
 
     public int GetQueteCount() { return listCurrentQueteInstance.Count;}

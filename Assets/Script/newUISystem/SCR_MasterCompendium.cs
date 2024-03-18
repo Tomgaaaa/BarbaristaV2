@@ -46,6 +46,11 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
     private bool isOpen;
 
+
+
+    [SerializeField] SpriteRenderer outlineMaterial;
+
+
     private void Awake() // singleton toi meme tu sais
     {
         if (instanceMComp == null)
@@ -53,10 +58,12 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
         else
             Destroy(gameObject);
 
-       // pageToDestroy = Instantiate(dicoPage[enumPage.Sommaire], transform);
+        // pageToDestroy = Instantiate(dicoPage[enumPage.Sommaire], transform);
+
+
     }
 
-    
+
 
     public void PrevPage()
     {
@@ -159,6 +166,19 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
         infoBulle.gameObject.SetActive(false);
     }
 
+
+    public void HighLight(bool onHoover)
+    {
+        if (SCR_PauseMenu.instancePauseMenu.GetIsPause() || isOpen)
+            return;
+
+        if(onHoover)
+            outlineMaterial.material.SetFloat("_Thickness", 0.09f);
+        else
+            outlineMaterial.material.SetFloat("_Thickness", 0f);
+
+
+    }
 
 
     public bool GetIsOpen() => isOpen;
