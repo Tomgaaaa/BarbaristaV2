@@ -158,6 +158,8 @@ public class SCR_QueteTableau : MonoBehaviour
         }
         else
         {
+
+            sequenceScale.Kill();
             foreach(GameObject go in listHighlight)
             {
                 go.SetActive(false);

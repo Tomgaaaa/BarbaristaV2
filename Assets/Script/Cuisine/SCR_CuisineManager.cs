@@ -185,10 +185,12 @@ public class SCR_CuisineManager : MonoBehaviour
     {
         if(isZooming)
         {
+            SCR_Cursor.instanceCursor.ZoomCamera();
             canvasUI.SetActive(false);
         }
         else
         {
+            SCR_Cursor.instanceCursor.DeZoomCamera();
             canvasUI.SetActive(true);
 
         }
