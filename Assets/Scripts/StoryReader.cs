@@ -42,7 +42,7 @@ namespace VNsup
         [SerializeField] List<VariableLink> variableList;
 
         public StoryReadState state { get; private set; }
-        private StoryAnimatorState animatorState;
+        private StoryAnimatorState animatorState = StoryAnimatorState.WAITING;
 
         // Start is called before the first frame update
         void Awake()

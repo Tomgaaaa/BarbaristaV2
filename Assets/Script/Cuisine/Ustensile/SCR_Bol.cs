@@ -67,7 +67,7 @@ public class SCR_Bol : SCR_Contenant, ISerializationCallbackReceiver
     }
 
 
-    public override void ShowOutline(bool needShowOutline, SCR_Ingredient ingredientDragParameter)
+    public override void ShowGrey(bool needShowOutline, SCR_Ingredient ingredientDragParameter)
     {
 
         if(ingredientDragParameter.GetCR_SO_Ingredient().actualStateSO != enumEtatIgredient.Nature)

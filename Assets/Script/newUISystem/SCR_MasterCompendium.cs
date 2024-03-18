@@ -145,6 +145,9 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
     }
     public void CloseComp()
     {
+        outlineMaterial.material.SetFloat("_Thickness", 0f);
+
+
         isOpen = false;
         BGClickable.SetActive(false);
         AudioManager.instanceAM.Play("SesameFermetoi");

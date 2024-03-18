@@ -33,7 +33,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     private Camera mainCam;
     private Vector2 startPosCam;
-    public bool hasBeenTransformed = false;
+    private bool hasBeenTransformed = false;
 
     private Material outlineMaterial;
     private SCR_Contenant lastRefContenantOutline;
@@ -248,16 +248,23 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         {
             myTargetJoint.target = rayHit.point; // indique au TargetJoint que la target est la position de la souris
 
-            if(rayHit.transform.GetComponent<SCR_Contenant>())
+            if(rayHit.transform.GetComponent<SCR_Ustensile>() && !hasBeenTransformed || rayHit.transform.GetComponent<SCR_Tasse>() && hasBeenTransformed)
             {
+                Debug.Log("ici");
                 lastRefContenantOutline = rayHit.transform.GetComponent<SCR_Contenant>();
                 lastRefContenantOutline.ShowOutline(true,this);
+            }
+            else if(rayHit.transform.GetComponent<SCR_Contenant>())
+            {
+                lastRefContenantOutline = rayHit.transform.GetComponent<SCR_Contenant>();
+                lastRefContenantOutline.ShowGrey(true, this);
             }
             else
             {
                 if(lastRefContenantOutline != null)
                 {
                     lastRefContenantOutline.ShowOutline(false,this);
+                    lastRefContenantOutline.ShowGrey(false,this);
                     lastRefContenantOutline = null;
                 }
             }

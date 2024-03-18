@@ -17,22 +17,19 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
     private protected Vector3 startScaleIngredient; // scale initiale de l'ingrédient avant le dépot
 
 
-    [SerializeField] private protected List<Renderer> rendererOutline;
-    private protected List<Material> outlineMaterial = new List<Material>();
+    [SerializeField] private protected Renderer rendererOutline;
+    private protected Material outlineMaterial;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
-        /*foreach(Renderer renderer in rendererOutline)
-       {
-           outlineMaterial.Add(renderer.material);
-       }*/
+        outlineMaterial = rendererOutline.material;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
 
@@ -70,6 +67,11 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
             // creer un vector3 qui sera le scale de l'ingrédient apres multiplication
             Vector3 newScale = new Vector3(multiplicateurScaleIngredient.x * ingredientDropParameter.transform.localScale.x, multiplicateurScaleIngredient.y * ingredientDropParameter.transform.localScale.y, multiplicateurScaleIngredient.z * ingredientDropParameter.transform.localScale.z);
             ingredientDropParameter.transform.DOScale(newScale, 0.2f); // resize l'ingrédient avec le nouvea scla (scale de l'ingrédient X le multiplicateur)
+
+
+
+            outlineMaterial.SetFloat("_OutlineDensity", 0f);
+
         }
     }
 
@@ -91,24 +93,16 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
 
     public virtual void ShowOutline(bool needShowOutline, SCR_Ingredient ingredientDragParameter)
     {
-        if (needShowOutline)
-        {
+        outlineMaterial.SetFloat("_OutlineDensity", needShowOutline? 1f : 0f );
 
-            for (int i = 0; i < outlineMaterial.Count; i++)
-            {
-                outlineMaterial[i].SetFloat("_Thickness", 0.04f);
+    }
 
-            }
 
-        }
-        else
-        {
-            for (int i = 0; i < outlineMaterial.Count; i++)
-            {
-                outlineMaterial[i].SetFloat("_Thickness", 0);
+    public virtual void ShowGrey(bool needShowGrey, SCR_Ingredient ingredientDragParameter)
+    {
 
-            }
-        }
+        outlineMaterial.SetInt("_ShowGrey", needShowGrey ? 1 : 0);
 
+       
     }
 }
