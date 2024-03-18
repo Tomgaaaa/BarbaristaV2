@@ -34,9 +34,7 @@ public class SCR_QueteTableau : MonoBehaviour
     [SerializeField] private GameObject greyMask;
 
     [SerializeField] private List<GameObject> listHighlight;
-    private Vector3 initsScaleGrow;
 
-    private Sequence sequenceGrowing = DOTween.Sequence();
 
     private void Awake()
     {
@@ -45,7 +43,6 @@ public class SCR_QueteTableau : MonoBehaviour
             InitialisationQuete();
             
         }
-        initsScaleGrow = listHighlight[0].transform.localScale;
 
         
 
@@ -136,7 +133,6 @@ public class SCR_QueteTableau : MonoBehaviour
         }
         else
         {
-            sequenceGrowing.Pause();
             foreach(GameObject go in listHighlight)
             {
                 go.SetActive(false);

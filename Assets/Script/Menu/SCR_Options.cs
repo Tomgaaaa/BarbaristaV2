@@ -20,6 +20,7 @@ public class SCR_Options : MonoBehaviour
     {
         
         audioMixer.SetFloat("Musique", volume);
+        AudioManager.instanceAM.SetOptionVolume(volume);
     }
     public void Ambiance(float volume)
     {
