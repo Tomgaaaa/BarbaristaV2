@@ -159,7 +159,8 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
         infoBulle.gameObject.SetActive(true);
         infoBulle.GetComponentInChildren<Text>().text = info.textInfo;        
         infoBulle.transform.localPosition = info.position;
-        infoBulle.sizeDelta = info.dimension;  
+        infoBulle.sizeDelta = info.dimension;
+        AudioManager.instanceAM.Play("PopUpFiche");
     }
     public void PopUpEnd()
     {
@@ -172,10 +173,15 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
         if (SCR_PauseMenu.instancePauseMenu.GetIsPause() || isOpen)
             return;
 
-        if(onHoover)
+        if (onHoover)
+        {
             outlineMaterial.material.SetFloat("_Thickness", 0.09f);
+            AudioManager.instanceAM.Play("CompendiumOverride");
+
+        }
         else
             outlineMaterial.material.SetFloat("_Thickness", 0f);
+        
 
 
     }
