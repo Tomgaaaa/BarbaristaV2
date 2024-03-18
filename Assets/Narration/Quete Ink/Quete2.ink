@@ -137,7 +137,7 @@ Sigg:Allez hop au travail.
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
- ~playSound("I_SamuelHappy2")
+ ~playSound("I_SamuelHappy3")
  {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerait en récupérer pour sa collection personnelle.
  
  

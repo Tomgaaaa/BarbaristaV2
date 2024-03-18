@@ -136,26 +136,26 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
- ~playSound("I_SamuelHappy2")
+ ~playSound("I_Samuelraler")
  {Perso}:Samuel n’aime pas trop l’idée d’aller profondément dans le basalte car avec l’activité volcanique il y a des risque d’effondrement.
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
- ~playSound("I_EliraOui")
+ ~playSound("I_EliraPassive")
   {Perso}Élira est plutôt neutre par rapport à cette quête mais inquiète pour le fait que l’activité volcanique  car les Srégols seront plus actifs et elle n’as pas envie d’en tuer si ce n’est pas nécessaire.
   
   
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
-  ~playSound("I_Saori2")
+  ~playSound("I_SaoriPasContente")
   {Perso}:Saori dit qu’elle n’est pas très à l’aise à l’idée d’aller dans un biome chaud, elle supporte mal la chaleur et le feu lui rappel de mauvais souvenir lors de l’attaque de l’Oméga.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
-  ~playSound("I_VikramRaler")
+  ~playSound("I_VikramContent")
   {Perso}:Vikram à hâte d’aller affronter des Deshrogs car on lui a promis une nouvelle arme dès que les fonderies auraient de quoi fonctionner.
  
  }

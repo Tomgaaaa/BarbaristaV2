@@ -33,6 +33,8 @@ VAR previousChemin = "vide"
 
 
 //dialogue avant que les personnages arrivent 
+~playSound("I_ArrivéPnjAlerte")
+ ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -52,6 +54,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue avant que les personnages reagissent a la quete
+  ~playSound("I_ExpressionSigg")
  Sigg: Bon voici votre quete
  :Enquete sur une cartographie obsolète
  
@@ -70,6 +73,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue apres la reaction des personnages
+ ~playSound("I_SiggHappy")
 Sigg:Allez hop au travail
 
 
@@ -91,6 +95,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
+ ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
  :Ca va ?
 
@@ -98,6 +103,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
+  ~playSound("I_BonjourElira")
   {Perso}:Hey c'est Elira
   :La forme ?
   
@@ -105,12 +111,14 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
+ ~playSound("I_SaoriBonjour")
   {Perso}:Hey c'est Saori
   :Comment tu vas Sigg ?
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
+ ~playSound("I_BonjourVikram")
   {Perso}:Hey c'est Vikram
   :Ca va le vieux ?
  }
@@ -128,12 +136,14 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
+ ~playSound("I_SamuelIntrigué")
  {Perso}:Samuel est intrigué par les roches mouvantes il a hâte de découvrir pourquoi et espère que ce n’est pas quelque chose de dangereux.
 
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
+ ~playSound("I_EliraRale")
   {Perso}:Élira n’aime pas vraiment ce biome aride car il n’y a pas beaucoup de vie et les paysage sont moroses. 
   Sigg:sigg lui rep que même si ça en a pas l’air, cette zone regorge de vie like carabos camouflé
 
@@ -142,11 +152,13 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
+ ~playSound("I_SaoriContente")
   {Perso}:Saori est contente d’aller dans ce biome car elle peut y trouver des plantes à la sève glaçante quand celles-ci sont sont écrasées et elle veut les étudier pour faire des grenades cryogéniques.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
+ ~playSound("I_VikramConfiant")
   {Perso}:Vikram mentionne le Carabos qui peut être dangereux et dit qu’il s’en occupera s’il y en à un pour rapporter sa pince et l’avoir comme trophée.
  
  }
@@ -167,6 +179,7 @@ Sigg:Allez hop au travail
   ~fadeIn(Perso1,0)
 ~fadeIn(Perso2,0)
   
+  ~playSound("I_Siggprepafini")  
 Sigg : Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")

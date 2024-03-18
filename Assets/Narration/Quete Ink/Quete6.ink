@@ -33,6 +33,8 @@ VAR previousChemin = "vide"
 
 
 //dialogue avant que les personnages arrivent 
+~playSound("I_ArrivéPnjAlerte")
+ ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -52,6 +54,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue avant que les personnages reagissent a la quete
+ ~playSound("I_ExpressionSigg")
  Sigg: Bon voici votre quete
  :Récolte de plante toxique pour création d'enduit pour armes
  
@@ -70,6 +73,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue apres la reaction des personnages
+  ~playSound("I_SiggHappy")
 Sigg:Allez hop au travail
 
 
@@ -91,6 +95,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
+ ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
  :Ca va ?
 
@@ -98,6 +103,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
+ ~playSound("I_BonjourElira")
   {Perso}:Hey c'est Elira
   :La forme ?
   
@@ -105,12 +111,14 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
+ ~playSound("I_SaoriBonjour")
   {Perso}:Hey c'est Saori
   :Comment tu vas Sigg ?
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
+  ~playSound("I_BonjourVikram")
   {Perso}:Hey c'est Vikram
   :Ca va le vieux ?
  }
@@ -128,12 +136,14 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
+  ~playSound("I_Samuelraler")
  {Perso}:Samuel dit qu’il n’aime pas vraiment ce biome car il n’aime pas la majorité des plantes carnivore et n’aimerai pas finir digéré par l’une d’entre elles.
 
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
+  ~playSound("I_EliraCool")
   {Perso}:Élira aime beaucoup ce biome car pour elle c’est là que la nature y est la plus diversifiée et foisonnante et cela lui permettra de peindre certaine des fleures et plantes.
 
   
@@ -141,12 +151,14 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
+ ~playSound("I_SaoripasContente")
   {Perso}:Saori est pas très fan à l’idée d’aller dans la jungle car elle n’aime pas les créatures qui s’y trouve, il y fait très humide et elle ne voudrai pas salir sont équipement car le sol est boueux à certains endroit.
 
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
+ ~playSound("I_VikramMotivé")
   {Perso}:Vikram à hâte d’y aller car récolter ces plantes lui permettra de renforcer son poignard qu’il tien de ses parents mort contre l’Oméga.
  
  }
@@ -166,7 +178,9 @@ Sigg:Allez hop au travail
   
   ~fadeIn(Perso1,0)
 ~fadeIn(Perso2,0)
-  
+
+
+~playSound("I_Siggprepafini")
 Sigg : Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")

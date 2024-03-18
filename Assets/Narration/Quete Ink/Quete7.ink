@@ -33,6 +33,8 @@ VAR previousChemin = "vide"
 
 
 //dialogue avant que les personnages arrivent 
+~playSound("I_ArrivéPnjAlerte")
+ ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -51,7 +53,8 @@ VAR previousChemin = "vide"
   // si j'ai passé l'étape 2, je ne rentre pas dans le if et je passe à la suite
  
  
- // dialogue avant que les personnages reagissent a la quete
+ // dialogue avant que les personnages reagissent a la quete*
+ ~playSound("I_ExpressionSigg")
  Sigg: Bon voici votre quete
  :Opération d'extraction de souffre pour fabriquer de la poudre noir
  
@@ -70,6 +73,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue apres la reaction des personnages
+   ~playSound("I_SiggHappy")
 Sigg:Allez hop au travail
 
 
@@ -91,6 +95,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
+ ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
  :Ca va ?
 
@@ -98,6 +103,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
+ ~playSound("I_BonjourElira")
   {Perso}:Hey c'est Elira
   :La forme ?
   
@@ -105,12 +111,14 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
+ ~playSound("I_SaoriBonjour")
   {Perso}:Hey c'est Saori
   :Comment tu vas Sigg ?
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
+ ~playSound("I_BonjourVikram")
   {Perso}:Hey c'est Vikram
   :Ca va le vieux ?
  }
@@ -128,12 +136,14 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
+ ~playSound("I_SamuelHappy")
  {Perso}:Samuel trouve l’objectif de leur mission très utile car le souffre leur permettra de confectionner de la poudre noir pour des explosifs car ça à montré leur efficacité sur l’Oméga à l’époque.
 
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
+  ~playSound("I_Eliraaimepas")
   {Perso}:Élira n’aime pas ce biome car elle à peur qu’il s’étende et ne perturbe l’harmonie naturel du reste de la planète car le souffre est très nocif pour les plantes et les animaux (sauf ceux qui s’y trouve) si sa voute cristalline venait à lâcher.
 
   
@@ -141,11 +151,13 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
+ ~playSound("I_SaoriSatisfaite")
   {Perso}:Saori est satisfaite d’aller dans ce biome car elle pourras récupérer des échantillons de souffre pour savoir s’ils peuvent en faire plus qu’une poudre explosive et développer un engrais puissant.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
+  ~playSound("I_VikramImpatient")
   {Perso}:Vikram est impatient d’y aller car il à toujours voulu avoir des crocs de Cresholds car ils sont très stylé et font du feu quand les les frappe les uns contre les autres.
  
  }
@@ -165,7 +177,8 @@ Sigg:Allez hop au travail
   
   ~fadeIn(Perso1,0)
 ~fadeIn(Perso2,0)
-  
+ 
+ ~playSound("I_Siggprepafini")   
 Sigg : Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")

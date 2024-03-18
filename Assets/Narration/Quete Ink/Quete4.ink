@@ -97,7 +97,6 @@ Sigg:Allez hop au travail
  - Perso == "Samuel" : // dialogue de presentation de Samuel
  ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
- ~playSound("I_Cava")
  :Ca va ?
 
  
@@ -144,7 +143,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
- ~playSound("I_EliraOui")
+ ~playSound("I_EliraSad")
   {Perso}:Élira est inquiète pour les aventurier et l’équipe blessée dans l’avant post isolé dans la forêt bioluminescente car une brume toxique peut se lever et aggraver leur état ainsi que les Évispar qui sont très toxique. 
 
   
@@ -152,13 +151,15 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
-  ~playSound("I_Saori2")
+  ~playSound("I_SaoriFascinate")
   {Perso}:Saori aime beaucoup cette forêt car elle est fasciné par les plantes bioluminescentes qui s’y trouvent mais n’aime pas les Évispars qui la dégoutent.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
-  {Perso}:Vikram dit qu’il ne s’inquiète pas pour eux et souhaite éliminer un un maximum de monstre pour les venger et éviter que d’autre ne les gène plus tard.
+ ~playSound("I_VikramBeGood")
+  {Perso}:Vikram dit qu’il ne s’inquiète pas pour eux et souhaite élimin
+  er un un maximum de monstre pour les venger et éviter que d’autre ne les gène plus tard.
  
  }
  
@@ -178,6 +179,7 @@ Sigg:Allez hop au travail
   ~fadeIn(Perso1,0)
 ~fadeIn(Perso2,0)
   
+  ~playSound("I_Siggprepafini")  
 Sigg : Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")

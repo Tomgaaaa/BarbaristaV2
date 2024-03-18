@@ -33,6 +33,8 @@ VAR previousChemin = "vide"
 
 
 //dialogue avant que les personnages arrivent 
+~playSound("I_ArrivéPnjAlerte")
+ ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -52,6 +54,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue avant que les personnages reagissent a la quete
+  ~playSound("I_ExpressionSigg")
  Sigg: Bon voici votre quete
  :Récolte de sève de Mangracier pour renforcer les armes et armures
  
@@ -70,6 +73,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue apres la reaction des personnages
+ ~playSound("I_SiggHappy")
 Sigg:Allez hop au travail
 
 
@@ -91,6 +95,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
+ ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
  :Ca va ?
 
@@ -98,6 +103,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
+  ~playSound("I_BonjourElira")
   {Perso}:Hey c'est Elira
   :La forme ?
   
@@ -105,12 +111,14 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
+ ~playSound("I_SaoriBonjour")
   {Perso}:Hey c'est Saori
   :Comment tu vas Sigg ?
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
+ ~playSound("I_BonjourVikram")
   {Perso}:Hey c'est Vikram
   :Ca va le vieux ?
  }
@@ -128,12 +136,14 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
+ ~playSound("I_SamuelAimepasToxique")
  {Perso}:Samuel n’aime pas l’idée d’aller dans ce biome car il y a pas mal de choses toxique là-bas et il est allergique à la sève de Magracier.
 
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
+ ~playSound("I_EliraAimepasMarais")
   {Perso}:Élira n’aime pas trop l’idée d’aller dans le marais car même s’il y a de la vie là-bas, elle à simplement l’impression que tout y et pourris mais ils ont vraiment besoin de la sève.
 
   
@@ -141,11 +151,13 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
+ ~playSound("I_SaoriApprecipasMarais")
   {Perso}:Saori n’apprécie vraiment pas aller dans les marais car il y a une odeur de putréfaction et elle n’a pas envie de finir recouverte d’eau croupie.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
+ ~playSound("I_VikramAimepasMarais")
   {Perso}:Vikram n’aime pas vraiment les marais car il n’aime pas la vase qui les entrave lors de ses  déplacements en combats.
  
  }
@@ -165,6 +177,7 @@ Sigg:Allez hop au travail
   ~fadeIn(Perso1,0)
 ~fadeIn(Perso2,0)
   
+  ~playSound("I_Siggprepafini")    
 Sigg : Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")

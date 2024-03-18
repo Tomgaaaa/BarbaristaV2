@@ -91,8 +91,8 @@ public class SCR_PauseMenu : MonoBehaviour
     {
 
         Time.timeScale = 1f;
-        AudioManager.instanceAM.FadeOut("BarAlatea", 0, 4.5f);
-        AudioManager.instanceAM.FadeOut("CuisineAlatea", 0, 4.5f);
+        AudioManager.instanceAM.Pause("BarAlatea");
+        AudioManager.instanceAM.Pause("CuisineAlatea");
         AudioManager.instanceAM.Play("Menu");
 
         if (SCR_TutoManager.instanceTuto != null)

@@ -33,6 +33,8 @@ VAR previousChemin = "vide"
 
 
 //dialogue avant que les personnages arrivent 
+ ~playSound("I_ArrivéPnjAlerte")
+ ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -52,6 +54,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue avant que les personnages reagissent a la quete
+  ~playSound("I_ExpressionSigg")
  Sigg: Bon voici votre quete
  :Récupération d'eau régénérante
  
@@ -70,6 +73,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue apres la reaction des personnages
+ ~playSound("I_SiggHappy")
 Sigg:Allez hop au travail
 
 
@@ -91,6 +95,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
+ ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
  :Ca va ?
 
@@ -98,6 +103,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
+ ~playSound("I_BonjourElira")
   {Perso}:Hey c'est Elira
   :La forme ?
   
@@ -105,12 +111,14 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
+ ~playSound("I_SaoriBonjour")
   {Perso}:Hey c'est Saori
   :Comment tu vas Sigg ?
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
+  ~playSound("I_BonjourVikram")
   {Perso}:Hey c'est Vikram
   :Ca va le vieux ?
  }
@@ -128,12 +136,14 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
+  ~playSound("I_SamuelInquietNeutre")
  {Perso}:Samuel est à la fois neutre et inquiet car aller chercher l’eau régénérante est une bonne chose mais en cette période il y a de temps en temps des tempêtes de neige et que la population de Frengs augmente dans ces grottes.
 
  
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
+ ~playSound("I_EliraContenteEau")
   {Perso}:Élira est contente d’aller chercher de l’eau régénérante car cela montre à quel point la nature peut être bénéfique et qu’il faut tout faire pour la protéger. 
 
   
@@ -141,11 +151,13 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
+ ~playSound("I_SaoriApprecier")
   {Perso}:Saori apprécie aussi le fait d’aller dans ces grottes car elle va pouvoir continuer à faire des analyse sur cette eaux aux propriétés surprenantes et très utiles.
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
+ ~playSound("I_VikramExcité")
   {Perso}:Vikram est excité car il vont très probablement affronter une horde de Freng et il a toujours voulu voir de plus près ces créature car il ne sait pas encore quelle trophée rapporter.
  
  }
@@ -166,6 +178,7 @@ Sigg:Allez hop au travail
   ~fadeIn(Perso1,0)
 ~fadeIn(Perso2,0)
   
+ ~playSound("I_Siggprepafini")    
 Sigg : Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")

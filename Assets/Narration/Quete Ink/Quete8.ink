@@ -33,6 +33,8 @@ VAR previousChemin = "vide"
 
 
 //dialogue avant que les personnages arrivent 
+ ~playSound("I_ArrivéPnjAlerte")
+ ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -52,6 +54,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue avant que les personnages reagissent a la quete
+ ~playSound("I_ExpressionSigg")
  Sigg: Bon voici votre quete
  :Sécurisation d'un terrain pour un avant poste
  
@@ -70,6 +73,7 @@ VAR previousChemin = "vide"
  
  
  // dialogue apres la reaction des personnages
+ ~playSound("I_SiggHappy")
 Sigg:Allez hop au travail
 
 
@@ -91,6 +95,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
+  ~playSound("I_BonjourSamuel")
  {Perso}:Hey c'est Samuel
  :Ca va ?
 
@@ -98,6 +103,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de presentation de Elira
+ ~playSound("I_BonjourElira")
   {Perso}:Hey c'est Elira
   :La forme ?
   
@@ -105,12 +111,14 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de presentation de Saori
+  ~playSound("I_SaoriBonjour")
   {Perso}:Hey c'est Saori
   :Comment tu vas Sigg ?
   
   
  
  - Perso == "Vikram" : // dialogue de presentation de Vikram
+ ~playSound("I_BonjourVikram")
   {Perso}:Hey c'est Vikram
   :Ca va le vieux ?
  }
@@ -128,6 +136,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
+ ~playSound("I_SamuelPasqueBaston")
  {Perso}:Samuel est content de partir pour cette mission car il ne va pas faire que se battre contre les animaux hostile mais aussi aider à la construction d’une zone sécurisé.
 
 
@@ -135,6 +144,7 @@ Sigg:Allez hop au travail
  
  
  - Perso == "Elira" : // dialogue de reaction de quete de Elira
+ ~playSound("I_EliraContenteNeige")
   {Perso}:Élira est contente d’aller là-bas car elle aime beaucoup la neige, la forêt qui s’y trouve et les Chokaros qu’elle trouve adorables (ps - elle aimerais en adopter un).
 
   
@@ -142,12 +152,14 @@ Sigg:Allez hop au travail
   
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
+ ~playSound("I_SaoriNeutre")
   {Perso}:Saori est plutôt neutre par rapport à cette mission sauf si elle pouvais récupérer de la fourrure de Chokaro.
 
   
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
+ ~playSound("I_VikramRaleEncore")
   {Perso}:Vikram râle encore car ils vont devoir retourner dans une zone froide mais bon sa mauvaise humeur est compensée par le fait qu’il y a des Chokaros et qu’il veut récupérer leur griffes comme trophée. 
  
  }
@@ -168,6 +180,7 @@ Sigg:Allez hop au travail
   ~fadeIn(Perso1,0)
 ~fadeIn(Perso2,0)
   
+  ~playSound("I_Siggprepafini")    
 Sigg : Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")
