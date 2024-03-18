@@ -30,7 +30,7 @@ public class SCR_QueteTableau : MonoBehaviour
     private bool isHigher = false;
     private bool inChoixPerso = false;
 
-    [SerializeField] private GameObject selectedTamp;
+    [SerializeField] public GameObject selectedTamp;
     [SerializeField] private GameObject greyMask;
 
     [SerializeField] private List<GameObject> listHighlight;

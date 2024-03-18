@@ -61,8 +61,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     // out dated
     private List<SCR_QueteTableau> listQuetePropose = new List<SCR_QueteTableau>(); // liste de toute les quetes disponibles
 
-    [SerializeField] private List<Transform> listTransformSpawn; // liste des emplacements pour les quetes et les persos
-
+    [SerializeField] private List<Transform> listTransformSpawn; // liste des emplacements pour les quetes
+    [SerializeField] private List<Transform> listTransfoPerso; // liste des emplacements pour les fiches persos
     [Header("Spawn")]
     [SerializeField] private SCR_QueteTableau prefabQuete; // prefab de quete que pour le choix de quete
     [SerializeField] private SCR_Ficheperso1 prefabFichePerso; // prefab de fiche perso pour le choix des persos
@@ -224,6 +224,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         {
             listQuetePropose[i].SetInChoixPerso(true);// on indique aux quetes qu'on est dans la partie choix de persos, pour empecher de les grabs
 
+            listQuetePropose[i].selectedTamp.SetActive(false); // On désactive le stamp de selection dans la partie choix perso.
+
             if (!listCurrentQueteInstance.Contains(listQuetePropose[i])) 
             {
                 listQuetePropose[i].transform.DOMove(positionOffQuete.position, 2); // on change la position de celle qui ne sont pas selectionnes, pour les mettre hors ecran
@@ -234,7 +236,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
         for (int i = 0 ; i < dicoJourPerso[SCR_DATA.instanceData.GetJour()].Count; i++) // on fait bouger les fiches persos pour les afficher dans l'ecran
         {
-            listFichepersoPropose[i].SetTweener( listFichepersoPropose[i].transform.DOMove(listTransformSpawn[i].position,2f));
+            listFichepersoPropose[i].SetTweener( listFichepersoPropose[i].transform.DOMove(listTransfoPerso[i].position,2f));
            
         }
 
@@ -261,6 +263,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         for (int i = 0; i < listQuetePropose.Count; i++) // repositionne les quetes dans l'ecran, on indique qu'on est plus dans choix persos et on reset les persos s'ils en avaient
         {
             listQuetePropose[i].SetInChoixPerso(false);
+
+            listQuetePropose[i].selectedTamp.SetActive(true); // On réactive le stamp de selection dans la partie choix quête.
 
             listQuetePropose[i].transform.DOMove(backupTransformQuete[listQuetePropose[i]], 2);
             listQuetePropose[i].transform.DORotate(Vector3.zero, 1);

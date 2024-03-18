@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using TMPro;
 public class SCR_Ficheperso1 : MonoBehaviour
 {
     Camera mainCamera;
@@ -10,6 +11,9 @@ public class SCR_Ficheperso1 : MonoBehaviour
     [SerializeField] SpriteRenderer profilMini;
     [SerializeField] SpriteRenderer profilMaxi;
     [SerializeField] GameObject Maxi;
+    [SerializeField] TextMeshProUGUI nomPerso;
+    [SerializeField] Canvas canvas;
+
     private bool canMove = true;
     [SerializeField] SO_Personnage perso;
     private SortingGroup spriteRender;
@@ -25,6 +29,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
     private void Awake()
     {
+        
         spriteRender = GetComponent<SortingGroup>();
         initialScale = transform.localScale;
     }
@@ -78,6 +83,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
         startTweener.Kill();
         spriteRender.sortingOrder = spriteRender.sortingOrder + 1;
+        canvas.sortingOrder = canvas.sortingOrder + 1;
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition));
         AudioManager.instanceAM.Play("FichePerso");
@@ -105,6 +111,8 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
 
         spriteRender.sortingOrder = spriteRender.sortingOrder-1;
+        canvas.sortingOrder = canvas.sortingOrder - 1;
+
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition)); // créer un Cast pour savoir si on a relaché l'ingrédient sur quelque chose
         AudioManager.instanceAM.Play("FichePersoLacher");
 
@@ -131,7 +139,8 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
         if (etat)
         {
-            transform.localScale = initialScale / 2.5f;
+            // transform.localScale = initialScale / 2.5f;
+            transform.localScale = new Vector3(0.23f, 0.23f, 0);
             FullPic.SetActive(true);
             Maxi.SetActive(false);
         }
@@ -148,12 +157,14 @@ public class SCR_Ficheperso1 : MonoBehaviour
     {
         profilMaxi.sprite = perso.profil;
         profilMini.sprite = perso.profil;
+        nomPerso.text = perso.namePerso;
     }
 
     public void SetSoPerso(SO_Personnage persoParameter)
     {
         perso = persoParameter;
         UpdatePerso();
+        
     }
 
     public void SetTweener(Tweener tweenerParameter) => startTweener = tweenerParameter;
