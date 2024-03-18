@@ -199,7 +199,6 @@ public class AudioManager : MonoBehaviour
 
 
 
-        //mixer.GetFloat("Musique", out lastVolume);
         mixer.DOSetFloat("Musique", -20, 0.3f);
 
         Invoke("RetablishVolume", 1);

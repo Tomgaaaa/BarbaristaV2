@@ -35,6 +35,10 @@ public class SCR_QueteTableau : MonoBehaviour
 
     [SerializeField] private List<GameObject> listHighlight;
 
+    Sequence sequenceScale;
+    private Vector3 initiaHighLightlScale;
+
+
 
     private void Awake()
     {
@@ -43,7 +47,7 @@ public class SCR_QueteTableau : MonoBehaviour
             InitialisationQuete();
             
         }
-
+        initiaHighLightlScale = listHighlight[0].transform.localScale;
         
 
     }
@@ -117,13 +121,34 @@ public class SCR_QueteTableau : MonoBehaviour
         }
     }
 
+
+    private void testPourNoah()
+    {
+        AudioManager.instanceAM.Play("PulseQuest");
+
+    }
+
+
     public void ShowHighLight(bool needToShow)
     {
    
 
         if (needToShow)
         {
-           
+
+            sequenceScale = DOTween.Sequence();
+
+            sequenceScale.Append(listHighlight[0].transform.DOScale(new Vector3(initiaHighLightlScale.x * 1.1f, initiaHighLightlScale.y * 1.1f, initiaHighLightlScale.z * 1.1f),1f));
+            sequenceScale.Join(listHighlight[1].transform.DOScale(new Vector3(initiaHighLightlScale.x * 1.1f, initiaHighLightlScale.y * 1.1f, initiaHighLightlScale.z * 1.1f),1f));
+            sequenceScale.Join(listHighlight[0].GetComponent<SpriteRenderer>().DOFade(1, 1f));
+            sequenceScale.Join(listHighlight[1].GetComponent<SpriteRenderer>().DOFade(1, 1f).OnComplete(testPourNoah));
+
+
+            sequenceScale.Append(listHighlight[0].transform.DOScale(new Vector3(initiaHighLightlScale.x / 1.1f, initiaHighLightlScale.y / 1.1f, initiaHighLightlScale.z / 1.1f),1f));
+            sequenceScale.Join(listHighlight[1].transform.DOScale(new Vector3(initiaHighLightlScale.x / 1.1f, initiaHighLightlScale.y / 1.1f, initiaHighLightlScale.z / 1.1f),1f));
+            sequenceScale.Join(listHighlight[0].GetComponent<SpriteRenderer>().DOFade(0, 1f));
+            sequenceScale.Join(listHighlight[1].GetComponent<SpriteRenderer>().DOFade(0, 1f));
+            sequenceScale.SetLoops(-1);
 
             if (posQuete[0]== null)
                 listHighlight[1].SetActive(true);
