@@ -176,8 +176,8 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
         if (SCR_PauseMenu.instancePauseMenu.GetIsPause() || SCR_MasterCompendium.instanceMComp.GetIsOpen())
             return;
-
-        lastRefContenantOutline.ShowGrey(false, this);
+        if(lastRefContenantOutline!=null)
+            lastRefContenantOutline.ShowGrey(false, this);
 
 
 
