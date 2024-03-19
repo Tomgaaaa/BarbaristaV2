@@ -12,6 +12,13 @@ public class SCR_QueteTableau : MonoBehaviour
     [SerializeField] private Text titre;
     [SerializeField] private Text description;
     [SerializeField] protected Text infoEventTexte;
+    [SerializeField] protected Text biomeText;
+    [SerializeField] protected Text sBiomeText;
+    [SerializeField] protected Text tempText;
+    [SerializeField] protected Text meteoText;
+    [SerializeField] protected Text altitudeText;
+
+
 
     [SerializeField] private Image illu;
 
@@ -66,8 +73,12 @@ public class SCR_QueteTableau : MonoBehaviour
         titre.text = myQueteSo.titre;
         description.text = myQueteSo.description;
         illu.sprite = myQueteSo.illustration;
-        infoEventTexte.text = myQueteSo.infoEvenement;
-
+        infoEventTexte.text = myQueteSo.Evenement;
+        biomeText.text = myQueteSo.Biome;
+        sBiomeText.text = myQueteSo.SBiome;
+        tempText.text = myQueteSo.Temps;
+        meteoText.text = myQueteSo.Meteo;
+        altitudeText.text = myQueteSo.Altitude;
 
         for (int i = 0; i < myQueteSo.difficulty.Count; i++)
         {

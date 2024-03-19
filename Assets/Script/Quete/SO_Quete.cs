@@ -17,7 +17,14 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
     [TextArea(6,10)]
     public string description;
     [TextArea(6,10)]
-    public string infoEvenement;
+    public string Evenement;
+    public string Temps;
+    public string Meteo;
+    public string Altitude;
+    public string Biome;
+    public string SBiome;
+
+
     //public List<Image> reward;
     public List<SCR_SO_Ingredient> reward;
 
@@ -52,14 +59,19 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
         
     }
 
-    public void Init(Dictionary<enumResistance, float> dicoResistanceDifficulteParameter,string titreParameter, List<Image> difficultyParameter, Sprite illustrationParameter, string descriptionParameter, string infoEvenementParameter, List<SCR_SO_Ingredient> rewardParameter,TextAsset textInkParameter)
+    public void Init(Dictionary<enumResistance, float> dicoResistanceDifficulteParameter,string titreParameter, List<Image> difficultyParameter, Sprite illustrationParameter, string descriptionParameter, string infoEvenementParameter,string biomeParameter, string sBiomeParameter, string tempsParameter, string meteoParameter, string altitudeParameter, List<SCR_SO_Ingredient> rewardParameter,TextAsset textInkParameter)
     {
         dicoResistanceDifficulte = dicoResistanceDifficulteParameter;
         titre = titreParameter;
         difficulty = difficultyParameter;
         illustration = illustrationParameter;
         description = descriptionParameter;
-        infoEvenement = infoEvenementParameter;
+        Evenement = infoEvenementParameter;
+        Biome = biomeParameter;
+        SBiome = sBiomeParameter;
+        Temps = tempsParameter;
+        Meteo = meteoParameter;
+        Altitude = altitudeParameter;
         reward = rewardParameter;
         myQueteInk = textInkParameter;
 

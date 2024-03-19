@@ -33,7 +33,7 @@ public class SCR_QueteCuisine : SCR_QueteTableau
        listDifficultyInstance.Clear();
         */
         //base.InitialisationQuete();
-        infoEventTexte.text = myQueteSo.infoEvenement;
+        infoEventTexte.text = myQueteSo.Biome + "\n" + myQueteSo.SBiome + "\n" + myQueteSo.Temps + "\n" + myQueteSo.Meteo + "\n" + myQueteSo.Altitude + "\n" + myQueteSo.Evenement;
 
 
         perso = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[0];
