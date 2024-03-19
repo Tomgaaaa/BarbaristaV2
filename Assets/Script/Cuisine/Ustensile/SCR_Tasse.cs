@@ -48,13 +48,19 @@ public class SCR_Tasse : SCR_Contenant
 
     [SerializeField] SCR_QueteCuisine cuisine;
 
+    [SerializeField] private GameObject smokeVFX;
+
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         allVisuelle.SetActive(false);
+
+        smokeVFX.SetActive(false);
     }
 
+
+    
     public override void OnDrop(SCR_Ingredient ingredientDropParameter)
     {
         base.OnDrop(ingredientDropParameter);
@@ -111,6 +117,8 @@ public class SCR_Tasse : SCR_Contenant
     {
         refHexagone.UpdateStat(dicoStatBoisson,false);
         allVisuelle.SetActive(true);
+
+        smokeVFX.SetActive(true);
 
         AudioManager.instanceAM.Play("Preparationfini");
 
@@ -223,6 +231,8 @@ public class SCR_Tasse : SCR_Contenant
 
         listIngredientsUtilises.Clear();
         allVisuelle.SetActive(false);
+        smokeVFX.SetActive(false);
+
         nmbIngredientIn = 0;
         textNmbIngredient.text = nmbIngredientIn + " /3";
 

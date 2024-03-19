@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 
 public class SCR_CuisineManager : MonoBehaviour
 {
@@ -45,7 +47,12 @@ public class SCR_CuisineManager : MonoBehaviour
     [SerializeField] private GameObject canvasUI;
 
     [SerializeField] private List<SCR_Ustensile> listUstensile;
-    public List<Vector3> listTransformUstensile = new List<Vector3>();
+    private List<Vector3> listTransformUstensile = new List<Vector3>();
+
+    [SerializeField] private TextMeshProUGUI compteurBoisson;
+    [SerializeField] private GameObject nextBoissonButton;
+    private Text textNextBoisson;
+    private CanvasGroup canvasGroupNextBoisson;
 
 
     private void Awake()
@@ -75,6 +82,11 @@ public class SCR_CuisineManager : MonoBehaviour
 
         if (SCR_TutoManager.instanceTuto != null)
             SCR_TutoManager.instanceTuto.gameObject.SetActive(true);
+
+        nextBoissonButton.SetActive(false);
+        textNextBoisson = nextBoissonButton.GetComponentInChildren<Text>();
+        canvasGroupNextBoisson = nextBoissonButton.GetComponentInChildren<CanvasGroup>();
+
 
     }
 
@@ -118,11 +130,19 @@ public class SCR_CuisineManager : MonoBehaviour
 
 
 
-
+    public void FinisshBouilloire()
+    {
+        nextBoissonButton.gameObject.SetActive(true);
+        textNextBoisson.text = "Boisson de " + SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[SCR_DATA.instanceData.GetEtapePerso()].namePerso + " servie";
+        canvasGroupNextBoisson.DOFade(1, 1);
+    }
 
     
     public void NextBoisson()// fonction appeller par le bouton qui s'affiche quand on a finit de preparer une boisson
     {
+
+        canvasGroupNextBoisson.DOFade(0, 0);
+        nextBoissonButton.SetActive(false);
         ZoomUstensile(false, boulloire);
 
 
@@ -140,6 +160,9 @@ public class SCR_CuisineManager : MonoBehaviour
         {
             SCR_DATA.instanceData.EtapePersoUp(); // alors on passe au persos d'apres
             queteCuisine.ChangePerso();
+
+            compteurBoisson.text = "1/2";
+
 
         }
         else if(SCR_DATA.instanceData.GetEtapePerso() == 1) // si on vient de servir le deuxieme perso
