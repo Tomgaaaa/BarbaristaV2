@@ -83,6 +83,8 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         if (SCR_PauseMenu.instancePauseMenu.GetIsPause() || SCR_MasterCompendium.instanceMComp.GetIsOpen())
             return;
 
+        SCR_CuisineManager.instanceCM.PopUp(true,myIngredient.myEnumIngredientSO.ToString());    
+
         if (!inContenant || !hasBeenTransformed || hasBeenTransformed && myIngredient.actualStateSO!=enumEtatIgredient.Nature)
         {
 
@@ -100,8 +102,10 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     private void OnMouseExit()
     {
+            SCR_CuisineManager.instanceCM.PopUp(false, myIngredient.myEnumIngredientSO.ToString());
 
-        if(!isMaintenu)
+
+        if (!isMaintenu)
         {
 
             outlineMaterial.SetFloat("_Thickness", 0f);

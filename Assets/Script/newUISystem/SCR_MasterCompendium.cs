@@ -170,6 +170,7 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
         infoBulle.gameObject.SetActive(false);
     }
 
+   
 
     public void HighLight(bool onHoover)
     {

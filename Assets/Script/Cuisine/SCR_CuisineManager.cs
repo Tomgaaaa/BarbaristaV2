@@ -55,6 +55,9 @@ public class SCR_CuisineManager : MonoBehaviour
     private CanvasGroup canvasGroupNextBoisson;
 
 
+    [SerializeField] SCR_PopUp popUpIngredient;
+
+
     private void Awake()
     {
         if (instanceCM == null)
@@ -247,6 +250,23 @@ public class SCR_CuisineManager : MonoBehaviour
 
             SCR_Cursor.instanceCursor.DeZoomCamera();
             canvasUI.SetActive(true);
+
+        }
+    }
+
+
+
+
+
+    public void PopUp(bool show, string ingredientName)
+    {
+        if (show)
+        {
+            popUpIngredient.Activate(ingredientName, new Vector3(30, -40,0));
+        }
+        else
+        {
+            popUpIngredient.Desactivate();
 
         }
     }
