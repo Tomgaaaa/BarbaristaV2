@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 {
@@ -90,7 +91,9 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     [SerializeField] private Transform positionOffQuete;
     [SerializeField] private Transform positionSelectQuete;
 
-
+    [SerializeField] private GameObject QuestCounter;
+    [SerializeField] private TextMeshProUGUI UIquestCount;
+    
 
     private void Awake()
     {
@@ -108,13 +111,20 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     {
         SpawnQuete(); //instantie des persos et des quetes par rapport a leur SO
         SpawnPerso();
-
+        if (SCR_DATA.instanceData.GetJour() <= 2)
+        {
+            UIquestCount.text = listCurrentQueteInstance.Count + "/1";
+        }
+        else
+            UIquestCount.text = listCurrentQueteInstance.Count + "/2";
     }
 
 
     private void SpawnQuete()
     {
-        if(SCR_DATA.instanceData.GetLisNotSelectedQuest().Count != 0)
+        
+
+        if (SCR_DATA.instanceData.GetLisNotSelectedQuest().Count != 0)
         {
             foreach (SO_Quete queteNotSelected in SCR_DATA.instanceData.GetLisNotSelectedQuest())
             {
@@ -151,7 +161,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
     private void SpawnPerso()// a revoir
     {
-
+        
 
 
         for (int i = 0; i < dicoJourPerso[SCR_DATA.instanceData.GetJour()].Count; i++)
@@ -200,10 +210,11 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         buttonRetour.SetActive(true);
         buttonConfirmation.SetActive(false);
 
+        QuestCounter.transform.localScale = new Vector3(0.5f, 0.5f, 1);//Change la taille de l'UI de décompte des quêtes
 
         //permet que pendant l'animation de decalage la page ne traverse pas celle du dessous
 
-        if(SCR_DATA.instanceData.GetJour()>2)
+        if (SCR_DATA.instanceData.GetJour()>2)
         {
             buttonChangerSens.SetActive(true);
 
@@ -253,6 +264,9 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
     }
     public void RetourChoixQuete() // fonction appeller par le bouton retour dans la partie choix de perso
     {
+        QuestCounter.transform.localScale = new Vector3(1, 1, 1);
+       
+
         buttonRetour.SetActive(false);
         buttonConfirmation.SetActive(true);
         buttonChangerSens.SetActive(false);
@@ -262,6 +276,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
         for (int i = 0; i < listQuetePropose.Count; i++) // repositionne les quetes dans l'ecran, on indique qu'on est plus dans choix persos et on reset les persos s'ils en avaient
         {
+
             listQuetePropose[i].SetInChoixPerso(false);
 
             listQuetePropose[i].selectedTamp.SetActive(true); // On réactive le stamp de selection dans la partie choix quête.
@@ -454,6 +469,12 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             listCurrentQueteInstance.Remove(currentQueteParameter);
 
         }
+        if(SCR_DATA.instanceData.GetJour() <= 2)
+        {
+            UIquestCount.text = listCurrentQueteInstance.Count + "/1";            
+        }
+        else
+            UIquestCount.text = listCurrentQueteInstance.Count + "/2";
 
     }  
 
