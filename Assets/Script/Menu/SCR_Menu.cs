@@ -81,6 +81,8 @@ public class SCR_Menu : MonoBehaviour
         Credit.SetActive(false);
         AudioManager.instanceAM.Play("ButtonReturnMenu");
         EventSystem.current.SetSelectedGameObject(lastSelected);
+        AudioManager.instanceAM.Pause("CreditsMusic");
+        AudioManager.instanceAM.Play("Menu");
 
     }
 
@@ -96,6 +98,9 @@ public class SCR_Menu : MonoBehaviour
         lastSelected = EventSystem.current.currentSelectedGameObject;
         AudioManager.instanceAM.Play("ButtonCredits");
         EventSystem.current.SetSelectedGameObject(creditButton);
+        AudioManager.instanceAM.Pause("Menu");
+        AudioManager.instanceAM.Play("CreditsMusic");
+
     }
 
 
