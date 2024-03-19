@@ -12,6 +12,7 @@ public class SCR_PlayerController : MonoBehaviour
 
     SCR_PauseMenu pauseMenu;
 
+
     private void Start()
     {
         pauseMenu = GetComponentInChildren<SCR_PauseMenu>();
@@ -63,7 +64,7 @@ public class SCR_PlayerController : MonoBehaviour
 
 
         #region Compendium
-        if (Input.GetKeyDown(KeyCode.Tab) && SceneManager.GetActiveScene().buildIndex == 1)
+        if (Input.GetKeyDown(KeyCode.Tab) && SceneManager.GetActiveScene().name  == "SCE_Cuisine")
         {
             if (masterCompendium.GetIsOpen())
             {
@@ -77,11 +78,33 @@ public class SCR_PlayerController : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && SceneManager.GetActiveScene().buildIndex == 1 && masterCompendium.GetIsOpen())
+
+
+        if (SceneManager.GetActiveScene().name == "SCE_Cuisine" && Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition)); // créer un Cast pour savoir si on a relaché l'ingrédient sur quelque chose
+
+
+            if (masterCompendium.GetIsOpen())
+            {
+                masterCompendium.CloseComp();
+            }
+            else if (rayHit.transform.GetComponent<SCR_Ingredient>())
+            {
+                Debug.Log("touche ingredient");
+                SCR_Ingredient ingredientClick = rayHit.transform.GetComponent<SCR_Ingredient>();
+                //masterCompendium.GoToPage()
+            }
+
+
+            masterCompendium.CloseComp();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow) && SceneManager.GetActiveScene().name == "SCE_Cuisine" && masterCompendium.GetIsOpen())
         { 
             masterCompendium.NextPage();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && SceneManager.GetActiveScene().buildIndex == 1)
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && SceneManager.GetActiveScene().name == "SCE_Cuisine")
         {
             masterCompendium.PrevPage();
         }

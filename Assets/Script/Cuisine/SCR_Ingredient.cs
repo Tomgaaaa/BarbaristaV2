@@ -177,6 +177,10 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         if (SCR_PauseMenu.instancePauseMenu.GetIsPause() || SCR_MasterCompendium.instanceMComp.GetIsOpen())
             return;
 
+        lastRefContenantOutline.ShowGrey(false, this);
+
+
+
         mySpriteRenderer.sortingOrder = 5; // repasse l'objet au meme niveau qu'il a de base
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 
