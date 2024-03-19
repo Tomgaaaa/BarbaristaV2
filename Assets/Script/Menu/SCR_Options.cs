@@ -42,7 +42,7 @@ public class SCR_Options : MonoBehaviour
 
     public void UpdateValue()
     {
-        audioMixer.GetFloat("Générale", out float valeurGenerale);
+        audioMixer.GetFloat("Generale", out float valeurGenerale);
         GeneraleSlider.value = valeurGenerale; 
 
         audioMixer.GetFloat("Musique", out float valeurMusic);
