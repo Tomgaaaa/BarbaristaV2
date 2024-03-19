@@ -1,7 +1,6 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -46,7 +45,7 @@ public class SCR_CuisineManager : MonoBehaviour
     [SerializeField] private GameObject canvasUI;
 
     [SerializeField] private List<SCR_Ustensile> listUstensile;
-    private List<Vector3> listTransformUstensile = new List<Vector3>();
+    public List<Vector3> listTransformUstensile = new List<Vector3>();
 
 
     private void Awake()
@@ -190,7 +189,7 @@ public class SCR_CuisineManager : MonoBehaviour
     {
         if(isZooming)
         {
-            listTransformUstensile.Clear();
+            /*listTransformUstensile.Clear();
 
             int index = listUstensile.IndexOf(ustensileUsed);
 
@@ -198,11 +197,11 @@ public class SCR_CuisineManager : MonoBehaviour
             {
                 if(i!= index)
                 {
-                    listTransformUstensile.Add(listUstensile[i].transform.position);
+                    listTransformUstensile.Add(listUstensile[i].transform.localPosition);
                     listUstensile[i].transform.DOLocalMove(new Vector3(listUstensile[i].transform.position.x - 30f, listUstensile[i].transform.position.y, listUstensile[i].transform.position.z), 1f);
                 }
 
-            }
+            }*/
 
 
             SCR_Cursor.instanceCursor.ZoomCamera();
@@ -211,16 +210,16 @@ public class SCR_CuisineManager : MonoBehaviour
         else
         {
 
-            int index = listUstensile.IndexOf(ustensileUsed);
+           /* int index = listUstensile.IndexOf(ustensileUsed);
 
             for (int i = 0; i < listUstensile.Count; i++)
             {
-                //if (i != index)
-                    //listUstensile[i].transform.DOLocalMove(new Vector3(listTransformUstensile[i].x + 17f, listTransformUstensile[i].y, listTransformUstensile[i].z), 1f);
+                if (i != index)
+                    listUstensile[i].transform.DOLocalMove(new Vector3(listTransformUstensile[i].x, listTransformUstensile[i].y, listTransformUstensile[i].z), 1f);
 
 
 
-            }
+            }*/
 
 
             SCR_Cursor.instanceCursor.DeZoomCamera();

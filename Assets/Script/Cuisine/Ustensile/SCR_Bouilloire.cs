@@ -19,12 +19,16 @@ public class SCR_Bouilloire : SCR_Ustensile
 
     private Tweener tweenerRotation;
 
+    [SerializeField] private Animator waterAnimator;
+
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         startRotationBouilloire = transform.rotation.eulerAngles;
+
+        
 
     }
 
@@ -63,14 +67,25 @@ public class SCR_Bouilloire : SCR_Ustensile
 
             if(rotationXRemap < -10) // si la bouilloire atteint une certaines rotation, l'eau coule
             {
-                
+                waterAnimator.SetBool("startAnimation",true);
+                waterAnimator.SetFloat("flowSpeed", RotZ);
+
                 eauVerse  += Remap(rotzClamp,0.5f,1,0,1);// remap la rotation min qui permet de verser de l'eau et le max, si la bouilloire est + penche, elle verse + d'eau
                 
                 if (eauVerse >= quantiteEauNecessaire) // si on atteint la quati d'eau necessaire on a finit de manipuler
                 {
+                    waterAnimator.SetBool("endAnimation", true);
+                    waterAnimator.SetBool("startAnimation", false);
 
                     FinishManipulation();
                 }
+            }
+            else
+            {
+                waterAnimator.SetBool("endAnimation",false);
+                waterAnimator.SetBool("startAnimation", false);
+
+
             }
 
             contenantBouilloire.transform.rotation = Quaternion.Euler(0, 0, rotationXRemap); // update la rotation de la bouilloire 

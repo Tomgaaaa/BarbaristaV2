@@ -24,24 +24,24 @@ public class SCR_PlayerController : MonoBehaviour
 
 
 
+            if (SceneManager.GetActiveScene().name == "SCE_Cuisine")
+            {
+                if (masterCompendium.GetIsOpen())
+                {
+                    masterCompendium.CloseComp();
+
+                }
+
+            }
 
 
-            
             if (pauseMenu.GetInOption())
             {
                 pauseMenu.LeaveOption();
             }
             else
             {
-                if (SceneManager.GetActiveScene().name == "SCE_Cuisine")
-                {
-                    if (masterCompendium.GetIsOpen())
-                    {
-                        masterCompendium.CloseComp();
-
-                    }
-
-                }
+                
                 pauseMenu.Pause();
             }
 
@@ -51,11 +51,11 @@ public class SCR_PlayerController : MonoBehaviour
 
 
         #region VN
-        if (Input.GetKeyDown(KeyCode.Space) && SceneManager.GetActiveScene().buildIndex == 4)  
+        if (Input.GetKeyDown(KeyCode.Space) && SceneManager.GetActiveScene().buildIndex == 2)  
         {
             storyReader.Next();
         }
-        if (Input.GetKey(KeyCode.LeftControl) && SceneManager.GetActiveScene().buildIndex == 4)
+        if (Input.GetKey(KeyCode.LeftControl) && SceneManager.GetActiveScene().buildIndex == 2)
         {
             storyReader.Next();
         }
