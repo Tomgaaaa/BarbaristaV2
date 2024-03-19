@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -43,6 +44,10 @@ public class SCR_CuisineManager : MonoBehaviour
     [SerializeField] private Vector3 emplacementCam;
 
     [SerializeField] private GameObject canvasUI;
+
+    [SerializeField] private List<SCR_Ustensile> listUstensile;
+    private List<Vector3> listTransformUstensile = new List<Vector3>();
+
 
     private void Awake()
     {
@@ -90,7 +95,7 @@ public class SCR_CuisineManager : MonoBehaviour
         mainCam.transform.DOMove(new Vector3(emplacementCam.x, emplacementCam.y, mainCam.transform.position.z), 1);
         mainCam.DOOrthoSize(emplacementCam.z, 1);
 
-        ZoomUstensile(true);
+        ZoomUstensile(true, boulloire);
 
     }
 
@@ -119,7 +124,7 @@ public class SCR_CuisineManager : MonoBehaviour
     
     public void NextBoisson()// fonction appeller par le bouton qui s'affiche quand on a finit de preparer une boisson
     {
-        ZoomUstensile(false);
+        ZoomUstensile(false, boulloire);
 
 
 
@@ -181,15 +186,43 @@ public class SCR_CuisineManager : MonoBehaviour
     }
 
     
-    public void ZoomUstensile(bool isZooming)
+    public void ZoomUstensile(bool isZooming, SCR_Ustensile ustensileUsed)
     {
         if(isZooming)
         {
+            listTransformUstensile.Clear();
+
+            int index = listUstensile.IndexOf(ustensileUsed);
+
+            for(int i = 0; i < listUstensile.Count; i++)
+            {
+                if(i!= index)
+                {
+                    listTransformUstensile.Add(listUstensile[i].transform.position);
+                    listUstensile[i].transform.DOLocalMove(new Vector3(listUstensile[i].transform.position.x - 30f, listUstensile[i].transform.position.y, listUstensile[i].transform.position.z), 1f);
+                }
+
+            }
+
+
             SCR_Cursor.instanceCursor.ZoomCamera();
             canvasUI.SetActive(false);
         }
         else
         {
+
+            int index = listUstensile.IndexOf(ustensileUsed);
+
+            for (int i = 0; i < listUstensile.Count; i++)
+            {
+                //if (i != index)
+                    //listUstensile[i].transform.DOLocalMove(new Vector3(listTransformUstensile[i].x + 17f, listTransformUstensile[i].y, listTransformUstensile[i].z), 1f);
+
+
+
+            }
+
+
             SCR_Cursor.instanceCursor.DeZoomCamera();
             canvasUI.SetActive(true);
 

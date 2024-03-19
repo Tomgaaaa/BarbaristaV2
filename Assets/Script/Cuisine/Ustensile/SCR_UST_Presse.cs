@@ -12,11 +12,13 @@ public class SCR_UST_Presse : SCR_Ustensile
     private float currentRotation; // valeur de rotation qui permet d'evaluer cmbien de tour la roue a fait
     private int nmbDeTour; // nombre de tour réalisé
     [SerializeField] private int nombreDeTourNecessaire; // nombre de tour necessaire avant de transfoirmer un ingredient
+    [SerializeField] private float acceptation; // valeur qui permet de faciliter la manipulation 
     private bool Isplayingsound = false;
 
-    public Quaternion rotation;
+    private Quaternion rotation;
 
     [SerializeField] private GameObject Poid;
+   
 
     // Start is called before the first frame update
     public override void Start()
@@ -58,7 +60,7 @@ public class SCR_UST_Presse : SCR_Ustensile
 
             // si la rotation virtuelle est plus petite que la rotation actuelle + 10 mais qu'elle est supérieur a la rotation actuelle
             // ou si la rotation actuelle est superieur a 355 et que la rotation virtuelle est superieur a 0
-            if (rotationVirtuelle.eulerAngles.z > currentRotation - 20 && rotationVirtuelle.eulerAngles.z < currentRotation )
+            if (rotationVirtuelle.eulerAngles.z > currentRotation - acceptation && rotationVirtuelle.eulerAngles.z < currentRotation )
             {
                 if (!Isplayingsound)
                 {

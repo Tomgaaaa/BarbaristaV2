@@ -129,7 +129,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
             SCR_TutoManager.instanceTuto.Calltuto(myTutoOnDrop, SCR_TutoManager.enumEmplacement.gauche); // appelle le tuto manager pour afficher le tuto associé à l'ustensile
 
 
-            SCR_CuisineManager.instanceCM.ZoomUstensile(true);
+            SCR_CuisineManager.instanceCM.ZoomUstensile(true, this);
 
         }
 
@@ -161,7 +161,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
         base.PickUpFromContenant();
         colliderDrop.enabled = true; // réactive le collider pour permettre de re drop des ingrédients sur l'ustensile, on le reactive que lorsque l'ingrédient est repris
 
-        SCR_CuisineManager.instanceCM.ZoomUstensile(false);
+        SCR_CuisineManager.instanceCM.ZoomUstensile(false, this);
 
     }
 

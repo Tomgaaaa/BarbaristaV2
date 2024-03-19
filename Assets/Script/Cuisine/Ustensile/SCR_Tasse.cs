@@ -51,7 +51,7 @@ public class SCR_Tasse : SCR_Contenant
     // Start is called before the first frame update
     public override void Start()
     {
-
+        base.Start();
         allVisuelle.SetActive(false);
     }
 

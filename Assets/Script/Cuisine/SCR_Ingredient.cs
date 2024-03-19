@@ -250,7 +250,6 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
             if(rayHit.transform.GetComponent<SCR_Ustensile>() && !hasBeenTransformed || rayHit.transform.GetComponent<SCR_Tasse>() && hasBeenTransformed)
             {
-                Debug.Log("ici");
                 lastRefContenantOutline = rayHit.transform.GetComponent<SCR_Contenant>();
                 lastRefContenantOutline.ShowOutline(true,this);
             }
