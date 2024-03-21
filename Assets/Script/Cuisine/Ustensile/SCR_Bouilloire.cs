@@ -21,7 +21,9 @@ public class SCR_Bouilloire : SCR_Ustensile
 
     [SerializeField] private Animator waterAnimator;
 
-
+    [SerializeField] private GameObject waterImg;
+    [SerializeField] private float waterStart;
+    [SerializeField] private float waterEnd;
 
 
     // Start is called before the first frame update
@@ -29,10 +31,6 @@ public class SCR_Bouilloire : SCR_Ustensile
     {
         base.Start();
         startRotationBouilloire = transform.rotation.eulerAngles;
-
-
-        
-
     }
 
 
@@ -70,13 +68,20 @@ public class SCR_Bouilloire : SCR_Ustensile
 
             if(rotationXRemap < -10) // si la bouilloire atteint une certaines rotation, l'eau coule
             {
+
                 waterAnimator.SetBool("endAnimation", false);
                 waterAnimator.SetBool("startAnimation",true);
 
                 waterAnimator.SetFloat("flowSpeed", RotZ);
 
                 eauVerse  += Remap(rotzClamp,0.5f,1,0,1);// remap la rotation min qui permet de verser de l'eau et le max, si la bouilloire est + penche, elle verse + d'eau
-                
+
+                float percentReussite = eauVerse / quantiteEauNecessaire;
+
+
+                float poidsY = Mathf.Lerp(-0.323f, 0.495f, percentReussite);
+                waterImg.transform.localPosition = new Vector3(waterImg.transform.localPosition.x, poidsY, waterImg.transform.localPosition.z);
+
                 if (eauVerse >= quantiteEauNecessaire) // si on atteint la quati d'eau necessaire on a finit de manipuler
                 {
                     waterAnimator.SetBool("endAnimation", true);
@@ -136,7 +141,7 @@ public class SCR_Bouilloire : SCR_Ustensile
     public void CallNextBoisson()
     {
         SCR_CuisineManager.instanceCM.FinisshBouilloire();
-
+        waterImg.transform.position = new Vector3(waterImg.transform.position.x, -0.323f, waterImg.transform.position.z);
     }
 
     public void UnlockBouilloire() // debloque le fait de pouvoir manipuler la bouilloire
