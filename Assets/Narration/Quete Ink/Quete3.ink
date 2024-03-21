@@ -95,6 +95,7 @@ Sigg:Allez hop au travail
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
  ~playSound("I_BonjourSamuel")
+  ~stopSound("BarAlatea")
  {Perso}:Hey c'est Samuel
  ~playSound("I_Cava")
  :Ca va ?
@@ -137,6 +138,7 @@ Sigg:Allez hop au travail
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
  ~playSound("I_Samuelraler")
+ ~playSound("MelancholicVibe")
  {Perso}:Samuel n’aime pas trop l’idée d’aller profondément dans le basalte car avec l’activité volcanique il y a des risque d’effondrement.
  
  
