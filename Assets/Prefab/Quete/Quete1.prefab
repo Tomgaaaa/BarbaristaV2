@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 5335620874685259992}
   - component: {fileID: 8826094816607665774}
   - component: {fileID: 916833271445397167}
+  - component: {fileID: 8025015439540001119}
   m_Layer: 0
   m_Name: Diff
   m_TagString: Untagged
@@ -136,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -152,6 +153,51 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8025015439540001119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2551927133862111472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5439268921980895812}
+          m_TargetAssemblyTypeName: SCR_QueteTableau, Assembly-CSharp
+          m_MethodName: CallPopUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5439268921980895812}
+          m_TargetAssemblyTypeName: SCR_QueteTableau, Assembly-CSharp
+          m_MethodName: CallPopCancel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2625774207450594708
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +443,7 @@ GameObject:
   - component: {fileID: 8334853773582338020}
   - component: {fileID: 7050206046429303474}
   - component: {fileID: 572590079503697049}
-  - component: {fileID: 1828222581439219739}
+  - component: {fileID: 3085664598404112446}
   m_Layer: 0
   m_Name: Stars
   m_TagString: Untagged
@@ -462,7 +508,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1828222581439219739
+--- !u!114 &3085664598404112446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -471,23 +517,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2923567680049852834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0.5
-  m_ChildForceExpandWidth: 0
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_Delegates: []
 --- !u!1 &2946391948264590381
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +811,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.0136, y: -0.00000095367}
-  m_SizeDelta: {x: 5.9723, y: 3.018}
+  m_SizeDelta: {x: 5.4647, y: 3.018}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5518846395407575263
 CanvasRenderer:
@@ -810,11 +843,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 2
+    m_FontSize: 4
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 160
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1077,7 +1110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myQueteSo: {fileID: 0}
   titre: {fileID: 7575117667536800696}
-  description: {fileID: 3092035698626004009}
+  description: {fileID: 4754376131838804397}
   infoEventTexte: {fileID: 2896843453053028140}
   biomeText: {fileID: 7852679853856776340}
   sBiomeText: {fileID: 950336503335265358}

@@ -18,7 +18,7 @@ public class SCR_QueteTableau : MonoBehaviour
     [SerializeField] protected Text meteoText;
     [SerializeField] protected Text altitudeText;
 
-
+    string infoDiff;
 
     [SerializeField] private Image illu;
 
@@ -80,12 +80,15 @@ public class SCR_QueteTableau : MonoBehaviour
         meteoText.text = myQueteSo.Meteo;
         altitudeText.text = myQueteSo.Altitude;
 
+        Instantiate<GameObject>(myQueteSo.difficultySprite, diff);
+
+        /*
         for (int i = 0; i < myQueteSo.difficulty.Count; i++)
         {
             listDifficultyInstance.Add( Instantiate<Image>(myQueteSo.difficulty[0], diff));
 
         }
-
+        */
         /*for (int i = 0; i < myQueteSo.reward.Count; i++)
         {
 
@@ -300,4 +303,31 @@ public class SCR_QueteTableau : MonoBehaviour
     {
         return isHigher;
     }
+
+    public void CallPopUp()
+    {
+
+
+        Debug.Log(myQueteSo.difficultyInt);
+
+        switch (myQueteSo.difficultyInt)
+        { 
+            case 1: infoDiff = "Facile";               
+                break;
+            case 2: infoDiff = "Intermediaire";
+                break;
+            case 3: infoDiff = "Difficile";
+                break;
+        }
+
+       
+        SCR_QueteManager.instanceQueteManager.PopUpReader(infoDiff);
+       
+    }
+
+    public void CallPopCancel()
+    {
+        SCR_QueteManager.instanceQueteManager.PopCancel();
+    }
+
 }

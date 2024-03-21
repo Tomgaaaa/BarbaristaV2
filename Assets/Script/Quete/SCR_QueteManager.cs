@@ -93,8 +93,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
     [SerializeField] private GameObject QuestCounter;
     [SerializeField] private TextMeshProUGUI UIquestCount;
-    
 
+    [SerializeField] private SCR_PopUp popUp;
     private void Awake()
     {
         if (instanceQueteManager == null)
@@ -147,7 +147,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             SO_Quete queteChoisis = dicoJourQuete[SCR_DATA.instanceData.GetJour()][i]; // quete renseigne dans le dico quete / jour, on la recupere pour prendre ses infos
             
             // on transmet les infos de la quete selectionne a l'instance de SO, c'est l'equivalent de faire un copie coller de SO
-            queteInstance.Init(queteChoisis.dicoResistanceDifficulte,queteChoisis.titre,queteChoisis.difficulty,queteChoisis.illustration,queteChoisis.description,queteChoisis.Evenement, queteChoisis.Biome, queteChoisis.SBiome, queteChoisis.Temps, queteChoisis.Meteo, queteChoisis.Altitude, queteChoisis.reward, queteChoisis.myQueteInk);
+            queteInstance.Init(queteChoisis.dicoResistanceDifficulte,queteChoisis.titre,queteChoisis.difficultyInt,queteChoisis.difficultySprite,queteChoisis.illustration,queteChoisis.description,queteChoisis.Evenement, queteChoisis.Biome, queteChoisis.SBiome, queteChoisis.Temps, queteChoisis.Meteo, queteChoisis.Altitude, queteChoisis.reward, queteChoisis.myQueteInk);
 
 
            // ms.SetCurrentQuete(dicoJourQuete[SCR_DATA.instanceData.GetJour()][i]);
@@ -490,5 +490,15 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
     public int GetQueteCount() { return listCurrentQueteInstance.Count;}
 
-    
+  
+    public void PopUpReader(string diffTxt)
+    {
+        //Debug.Log("Holo2");
+        popUp.Activate(diffTxt,Vector3.zero);
+            
+    }
+    public void PopCancel()
+    {
+        popUp.Desactivate();
+    }
 }

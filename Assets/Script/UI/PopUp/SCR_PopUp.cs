@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 public class SCR_PopUp : MonoBehaviour
 {
+
     [SerializeField]TextMeshProUGUI textInfo;
     private bool startTimer;
     private float timeToActivate;
@@ -31,5 +32,10 @@ public class SCR_PopUp : MonoBehaviour
     public void Desactivate()
     {
         gameObject.SetActive(false);
+    }
+
+    public void CallPopUp(string infoDiff)
+    {
+        SCR_QueteManager.instanceQueteManager.PopUpReader(infoDiff);
     }
 }

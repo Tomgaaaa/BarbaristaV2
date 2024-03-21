@@ -12,7 +12,9 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
 
     public Dictionary<enumResistance, float> dicoResistanceDifficulte; // dictionnaire des resistances, on associe une resistance à un float, float psk pour bouger dans l'hexagone il faut un float
     public string titre;
-    public List<Image> difficulty;
+    public GameObject difficultySprite;
+    [Range(1,3)]
+    public int difficultyInt = 1;
     public Sprite illustration;
     [TextArea(6,10)]
     public string description;
@@ -59,11 +61,12 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
         
     }
 
-    public void Init(Dictionary<enumResistance, float> dicoResistanceDifficulteParameter,string titreParameter, List<Image> difficultyParameter, Sprite illustrationParameter, string descriptionParameter, string infoEvenementParameter,string biomeParameter, string sBiomeParameter, string tempsParameter, string meteoParameter, string altitudeParameter, List<SCR_SO_Ingredient> rewardParameter,TextAsset textInkParameter)
+    public void Init(Dictionary<enumResistance, float> dicoResistanceDifficulteParameter,string titreParameter,int difficultyIntParameter, GameObject difficultyParameter, Sprite illustrationParameter, string descriptionParameter, string infoEvenementParameter,string biomeParameter, string sBiomeParameter, string tempsParameter, string meteoParameter, string altitudeParameter, List<SCR_SO_Ingredient> rewardParameter,TextAsset textInkParameter)
     {
         dicoResistanceDifficulte = dicoResistanceDifficulteParameter;
         titre = titreParameter;
-        difficulty = difficultyParameter;
+        difficultySprite = difficultyParameter;
+        difficultyInt = difficultyIntParameter;
         illustration = illustrationParameter;
         description = descriptionParameter;
         Evenement = infoEvenementParameter;
@@ -76,6 +79,6 @@ public class SO_Quete : ScriptableObject, ISerializationCallbackReceiver
         myQueteInk = textInkParameter;
 
     }
-    
 
+  
 }
