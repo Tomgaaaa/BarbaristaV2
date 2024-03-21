@@ -45,7 +45,7 @@ public class SCR_QueteTableau : MonoBehaviour
     Sequence sequenceScale;
     private Vector3 initiaHighLightlScale;
 
-
+    [SerializeField] private SO_Tuto tutoCompendium;
 
     private void Awake()
     {
@@ -101,7 +101,7 @@ public class SCR_QueteTableau : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (inChoixPerso)
+        if (inChoixPerso || !SCR_TutoManager.instanceTuto.GetDicoTuto()[tutoCompendium])
             return;
 
 

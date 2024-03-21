@@ -129,4 +129,6 @@ public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
         buttonCloseHelp.SetActive(false);
     }
 
+    public Dictionary<SO_Tuto, bool> GetDicoTuto() { return dicoTutoBool; }
+
 }
