@@ -28,6 +28,9 @@ public class SoundSettings
     [Range(0,2)]
     public float pitch;
 
+    [Range(0, 2)]
+    public float ChangeVolume;
+
     
 
     
@@ -97,6 +100,8 @@ public class AudioManager : MonoBehaviour
 
             //lie le mixer a celui du son instancie
             s.source.outputAudioMixerGroup = s.group;
+
+            
 
 
 
@@ -213,6 +218,8 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    
+
 
     private void ResetSound()
     {
@@ -221,7 +228,18 @@ public class AudioManager : MonoBehaviour
 
     }
 
+    
+
 
     public void SetOptionVolume(float volumeParameter) => optionVolume = volumeParameter;
+
+    public void ChangeVolume(string songName, float newVolume)
+    {
+
+        SoundSettings s = System.Array.Find(sounds, sound => sound.label == songName);
+
+        s.source.volume = newVolume;
+       
+    }
 
 }

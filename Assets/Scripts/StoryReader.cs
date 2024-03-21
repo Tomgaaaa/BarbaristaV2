@@ -213,6 +213,8 @@ namespace VNsup
 
             story.BindExternalFunction("FinishDialogue", (string name) => ChangeScene());
             story.BindExternalFunction("playSound", (string name) =>  AudioManager.instanceAM.VoicePlaying(name));
+            story.BindExternalFunction("stopSound", (string name) => AudioManager.instanceAM.Pause(name));
+            story.BindExternalFunction("ChangeVolume", (string name,float volume) => AudioManager.instanceAM.ChangeVolume(name,volume));
 
         }
 

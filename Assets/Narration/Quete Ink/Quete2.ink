@@ -137,6 +137,7 @@ Sigg:Allez hop au travail.
  
  
  - Perso == "Samuel" : // dialogue reaction de quete de Samuel
+ ~stopSound("BarAlatea")
  ~playSound("I_SamuelHappy3")
  {Perso}:Samuel a hâte d’aller chercher des Aloalgues car dans ce biome les lacs ont des pierres aimanté, des magnétites et il aimerait en récupérer pour sa collection personnelle.
  
@@ -153,8 +154,11 @@ Sigg:Allez hop au travail.
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
  ~playSound("I_Saori2")
+ ~stopSound("BarAlatea")
+ ~playSound("Joie")
   {Perso}:Saori s’exprime sur le fait qu’elle est contente d’aller récolter les Aloalgues car leur propriétés curative l’intéresse pour ses recherches mais l’idée d’aller dans une zone avec des Keruscula ne l’enchante pas car elle n’aime pas ces créatures.
-  
+  ~stopSound("Joie")
+  ~playSound("BarAlatea")
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram
