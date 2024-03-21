@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
 {
 
-    public enum enumEmplacement{haut,gauche }
+    public enum enumEmplacement{haut,gauche, centre, right }
 
     public static SCR_TutoManager instanceTuto;
 
@@ -13,8 +14,7 @@ public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
     [SerializeField] private Transform gridAllHelp;
     [SerializeField] private GameObject buttonCloseHelp;
 
-
-
+    SCR_Tuto persistentTuto;
 
     #region Dico
 
@@ -72,14 +72,24 @@ public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
     }
 
 
-    public void Calltuto(SO_Tuto tutoToShow, enumEmplacement emplacementParameter)
+    public void Calltuto(SO_Tuto tutoToShow, enumEmplacement emplacementParameter,bool forceTuto)
     {
-        if (!dicoTutoBool[tutoToShow])
+        if (!dicoTutoBool[tutoToShow]) // verifie si le tuto n'a pas deja ete montre
         {
             SCR_Tuto tuto = Instantiate(prefabTuto, dicoEnumEmplacement[emplacementParameter]);
-            tuto.Initialisation(tutoToShow,true);
+            tuto.Initialisation(tutoToShow,forceTuto);
         }
     }
+    public void CallPersistentTuto(SO_Tuto tutoToShow ,enumEmplacement emplacementParameter, Action<SO_Tuto> eventEndPersistent)
+    {
+        persistentTuto = Instantiate(prefabTuto, dicoEnumEmplacement[emplacementParameter]);
+        persistentTuto.Initialisation(tutoToShow,true);
+
+        SCR_MasterCompendium.clickOnCompendium += ValidTutoPersistent;
+
+    }
+
+
 
     public void ValidTuto(SO_Tuto tutoParameter)
     {
@@ -87,6 +97,11 @@ public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
 
     }
 
+    public void ValidTutoPersistent(SO_Tuto tutoParameter)
+    {
+        dicoTutoBool[tutoParameter] = true;
+        persistentTuto.ButtonClose();
+    }
 
 
     public void ButtonHelp()
@@ -113,4 +128,5 @@ public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
         
         buttonCloseHelp.SetActive(false);
     }
+
 }

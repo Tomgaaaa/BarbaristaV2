@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -46,9 +47,13 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
     private bool isOpen;
 
-
-
     [SerializeField] SpriteRenderer outlineMaterial;
+
+
+    public static event Action<SO_Tuto> clickOnCompendium;
+
+    [SerializeField] private SO_Tuto tutoCompendium;
+
 
 
     private void Awake() // singleton toi meme tu sais
@@ -59,6 +64,7 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
             Destroy(gameObject);
 
         // pageToDestroy = Instantiate(dicoPage[enumPage.Sommaire], transform);
+        SCR_TutoManager.instanceTuto.CallPersistentTuto(tutoCompendium, SCR_TutoManager.enumEmplacement.right, clickOnCompendium);
 
 
     }
@@ -136,6 +142,8 @@ public class SCR_MasterCompendium : MonoBehaviour, ISerializationCallbackReceive
 
     public void OpenComp()
     {
+        clickOnCompendium?.Invoke(tutoCompendium);
+
         isOpen = true;
         BGClickable.SetActive(true);
         AudioManager.instanceAM.Play("SesameOuvretoi");

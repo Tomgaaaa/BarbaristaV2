@@ -17,7 +17,7 @@ public class SCR_Tuto : MonoBehaviour
         textTuto = GetComponentInChildren<Text>();
         buttonTuto = GetComponentInChildren<Button>();
 
-        Initialisation(so_tuto,true);
+        //Initialisation(so_tuto,true);
 
 
     }
@@ -37,7 +37,8 @@ public class SCR_Tuto : MonoBehaviour
 
     private void UnlockButton() // fonction pour empecher de spam click
     {
-        buttonTuto.interactable = true;
+        //buttonTuto.interactable = true;
+        buttonTuto?.gameObject.SetActive(true);
     }
 
     public void ButtonClose() // fonction appeller par le bouton omnipresent pour fermer le tuto
