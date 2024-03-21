@@ -136,7 +136,7 @@ public class SCR_CuisineManager : MonoBehaviour
     public void FinisshBouilloire()
     {
         nextBoissonButton.gameObject.SetActive(true);
-        textNextBoisson.text = "Boisson de " + SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[SCR_DATA.instanceData.GetEtapePerso()].namePerso + " servie";
+        textNextBoisson.text = "Boisson de " + SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[SCR_DATA.instanceData.GetEtapePerso()].namePerso + " préparée";
         canvasGroupNextBoisson.DOFade(1, 1);
     }
 

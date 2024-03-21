@@ -103,6 +103,11 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
 
         outlineMaterial.SetInt("_ShowGrey", needShowGrey ? 1 : 0);
 
+   
        
+
+
+       // ternaire, ci dessus
+       // null check
     }
 }

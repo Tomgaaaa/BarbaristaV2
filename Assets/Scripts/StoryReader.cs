@@ -88,25 +88,32 @@ namespace VNsup
         public virtual void Start()
         {
 
-            story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
-
-
-
-            if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
+            if(SCR_DATA.instanceData != null)
             {
-                story.ChoosePathString("Apresquete");
+                story = new Story(SCR_DATA.instanceData.GetCurrentQuest().myQueteInk.text);
+
+
+
+                if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
+                {
+                    story.ChoosePathString("Apresquete");
+                }
+                else
+                {
+                    story.ChoosePathString("Avantquete");
+                }
+
+
+                story.variablesState["Perso1"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[0].namePerso;
+                story.variablesState["Perso2"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[1].namePerso;
+                storyDisplay.SetStringPerso(story.variablesState["Perso1"].ToString(), story.variablesState["Perso2"].ToString());
+
+                SetupGlobalMethods(); // re set up car on change la story
+
             }
-            else
-            {
-                story.ChoosePathString("Avantquete");
-            }
 
 
-            story.variablesState["Perso1"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[0].namePerso;
-            story.variablesState["Perso2"] = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[1].namePerso;
-            storyDisplay.SetStringPerso(story.variablesState["Perso1"].ToString(), story.variablesState["Perso2"].ToString());
 
-            SetupGlobalMethods();
 
 
 
@@ -216,7 +223,13 @@ namespace VNsup
 
         private void ChangeScene()
         {
-            if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 0)
+
+            if (SCR_DATA.instanceData == null)
+            {
+                SceneManager.LoadScene("SCE_Quete");
+
+            }
+            else if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 0)
             {
                 AudioManager.instanceAM.Play("SwitchToCuisine");
                 AudioManager.instanceAM.Pause("BarAlatea");

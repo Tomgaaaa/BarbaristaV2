@@ -14,6 +14,13 @@ public class SCR_PopUp : MonoBehaviour
     {
         gameObject.transform.position = Input.mousePosition + offset;
     }
+
+    public void ActivateFromBiome(string popInfoText)
+    {
+        Activate(popInfoText, Vector3.zero);
+
+    }
+
     public void Activate(string popInfoTxt, Vector3 offsetParamater)
     {
         offset = offsetParamater;
@@ -24,6 +31,5 @@ public class SCR_PopUp : MonoBehaviour
     public void Desactivate()
     {
         gameObject.SetActive(false);
-        startTimer = false;
     }
 }

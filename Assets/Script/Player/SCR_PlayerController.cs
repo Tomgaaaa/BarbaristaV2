@@ -52,7 +52,7 @@ public class SCR_PlayerController : MonoBehaviour, ISerializationCallbackReceive
 
 
 
-            if (SceneManager.GetActiveScene().name == "SCE_Cuisine")
+            if (SceneManager.GetActiveScene().name == "SCE_Cuisine" || SceneManager.GetActiveScene().name == "SCE_Quete")
             {
                 if (masterCompendium.GetIsOpen())
                 {
@@ -91,7 +91,7 @@ public class SCR_PlayerController : MonoBehaviour, ISerializationCallbackReceive
 
 
         #region Compendium
-        if (Input.GetKeyDown(KeyCode.Tab) && SceneManager.GetActiveScene().name  == "SCE_Cuisine")
+        if (Input.GetKeyDown(KeyCode.Tab) && SceneManager.GetActiveScene().name  == "SCE_Cuisine" || Input.GetKeyDown(KeyCode.Tab) && SceneManager.GetActiveScene().name == "SCE_Quete")
         {
             if (masterCompendium.GetIsOpen())
             {
@@ -107,7 +107,7 @@ public class SCR_PlayerController : MonoBehaviour, ISerializationCallbackReceive
 
 
 
-        if (SceneManager.GetActiveScene().name == "SCE_Cuisine" && Input.GetKeyDown(KeyCode.Mouse1))
+        if (SceneManager.GetActiveScene().name == "SCE_Cuisine" && Input.GetKeyDown(KeyCode.Mouse1) || SceneManager.GetActiveScene().name == "SCE_Quete" && Input.GetKeyDown(KeyCode.Mouse1))
         {
             RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition)); // créer un Cast pour savoir si on a relaché l'ingrédient sur quelque chose
 
@@ -128,11 +128,11 @@ public class SCR_PlayerController : MonoBehaviour, ISerializationCallbackReceive
 
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && SceneManager.GetActiveScene().name == "SCE_Cuisine" && masterCompendium.GetIsOpen())
+        if (Input.GetKeyDown(KeyCode.RightArrow) && SceneManager.GetActiveScene().name == "SCE_Cuisine" && masterCompendium.GetIsOpen() || Input.GetKeyDown(KeyCode.RightArrow) && SceneManager.GetActiveScene().name == "SCE_Quete" && masterCompendium.GetIsOpen())
         { 
             masterCompendium.NextPage();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && SceneManager.GetActiveScene().name == "SCE_Cuisine" && masterCompendium.GetIsOpen())
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && SceneManager.GetActiveScene().name == "SCE_Cuisine" && masterCompendium.GetIsOpen() || Input.GetKeyDown(KeyCode.LeftArrow) && SceneManager.GetActiveScene().name == "SCE_Quete" && masterCompendium.GetIsOpen())
         {
             masterCompendium.PrevPage();
         }

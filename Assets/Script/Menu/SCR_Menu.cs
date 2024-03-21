@@ -40,7 +40,7 @@ public class SCR_Menu : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("SCE_Quete");
+        SceneManager.LoadScene("SCE_VisualNovel");
         AudioManager.instanceAM.Play("CliquerTableauQuete");
         AudioManager.instanceAM.Play("TransiTableauQuete");
         AudioManager.instanceAM.Pause("Menu");
