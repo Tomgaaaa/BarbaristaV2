@@ -82,11 +82,14 @@ public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
     }
     public void CallPersistentTuto(SO_Tuto tutoToShow ,enumEmplacement emplacementParameter, Action<SO_Tuto> eventEndPersistent)
     {
-        persistentTuto = Instantiate(prefabTuto, dicoEnumEmplacement[emplacementParameter]);
-        persistentTuto.Initialisation(tutoToShow,true);
 
-        SCR_MasterCompendium.clickOnCompendium += ValidTutoPersistent;
+        if (!dicoTutoBool[tutoToShow]) // verifie si le tuto n'a pas deja ete montre
+        {
+            persistentTuto = Instantiate(prefabTuto, dicoEnumEmplacement[emplacementParameter]);
+            persistentTuto.Initialisation(tutoToShow, false);
 
+            SCR_MasterCompendium.clickOnCompendium += ValidTutoPersistent;
+        }
     }
 
 
@@ -99,8 +102,13 @@ public class SCR_TutoManager : MonoBehaviour, ISerializationCallbackReceiver
 
     public void ValidTutoPersistent(SO_Tuto tutoParameter)
     {
-        dicoTutoBool[tutoParameter] = true;
-        persistentTuto.ButtonClose();
+
+        if (!dicoTutoBool[tutoParameter]) // verifie si le tuto n'a pas deja ete montre
+        {
+            //dicoTutoBool[tutoParameter] = true;
+            persistentTuto.ButtonClose();
+        }
+
     }
 
 

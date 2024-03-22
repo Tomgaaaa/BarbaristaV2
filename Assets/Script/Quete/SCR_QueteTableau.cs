@@ -308,7 +308,6 @@ public class SCR_QueteTableau : MonoBehaviour
     {
 
 
-        Debug.Log(myQueteSo.difficultyInt);
 
         switch (myQueteSo.difficultyInt)
         { 

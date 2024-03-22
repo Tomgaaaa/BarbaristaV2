@@ -9,13 +9,12 @@ public class SCR_Tuto : MonoBehaviour
     [SerializeField] private SO_Tuto so_tuto;
     [SerializeField] private Image imageTuto; // en serialize car si je fais getComponenet ça me chope le BG
     [SerializeField] private Text textTuto;
-    private Button buttonTuto;
+    [SerializeField] private Button buttonTuto;
 
     // Start is called before the first frame update
     void Start()
     {
         textTuto = GetComponentInChildren<Text>();
-        buttonTuto = GetComponentInChildren<Button>();
 
         //Initialisation(so_tuto,true);
 
@@ -31,14 +30,14 @@ public class SCR_Tuto : MonoBehaviour
 
         if(callUnlock)
         {
-            Invoke("UnlockButton", 1);
+            Invoke("UnlockButton", 0.5f);
         }
     }
 
     private void UnlockButton() // fonction pour empecher de spam click
     {
-        //buttonTuto.interactable = true;
-        buttonTuto?.gameObject.SetActive(true);
+        //buttonTuton.interactable = true;
+        buttonTuto.gameObject.SetActive(true);  
     }
 
     public void ButtonClose() // fonction appeller par le bouton omnipresent pour fermer le tuto
