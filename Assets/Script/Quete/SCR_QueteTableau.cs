@@ -31,7 +31,7 @@ public class SCR_QueteTableau : MonoBehaviour
     [SerializeField] private Transform P1;
     [SerializeField] private Transform P2;
 
-    public Dictionary<int, SCR_Ficheperso1> posQuete = new Dictionary<int, SCR_Ficheperso1>() { { 0,null},{ 1, null} };
+    private Dictionary<int, SCR_Ficheperso1> posQuete = new Dictionary<int, SCR_Ficheperso1>() { { 0,null},{ 1, null} };
 
     private bool isSelected = false;
     private bool isHigher = false;
@@ -106,7 +106,7 @@ public class SCR_QueteTableau : MonoBehaviour
 
 
 
-        if (SCR_DATA.instanceData.GetJour() > 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 2 && !isSelected || SCR_DATA.instanceData.GetJour() <= 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 1)
+        if (SCR_DATA.instanceData.GetJour() > 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 2 && !isSelected || SCR_DATA.instanceData.GetJour() <= 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 2)// a changer le 2 en 1
         {
             isSelected = true;
             selectedTamp.SetActive(true);
@@ -149,7 +149,7 @@ public class SCR_QueteTableau : MonoBehaviour
     {
    
 
-        if (needToShow)
+        if (needToShow && isHigher)
         {
 
             sequenceScale = DOTween.Sequence();
@@ -238,7 +238,7 @@ public class SCR_QueteTableau : MonoBehaviour
 
             fiche.transform.SetParent(null);
 
-            fiche.MakeSmall(false);
+            //fiche.MakeSmall(false);
             posQuete[0] = null;
 
             myQueteSo.persosEnvoyes.Remove(fiche.GetSoPerso());
@@ -251,7 +251,7 @@ public class SCR_QueteTableau : MonoBehaviour
 
             fiche.transform.SetParent(null);
 
-            fiche.MakeSmall(false);
+           // fiche.MakeSmall(false);
             posQuete[1] = null;
 
             myQueteSo.persosEnvoyes.Remove(fiche.GetSoPerso());
@@ -329,4 +329,7 @@ public class SCR_QueteTableau : MonoBehaviour
         SCR_QueteManager.instanceQueteManager.PopCancel();
     }
 
+
+    public Dictionary<int, SCR_Ficheperso1> GetDicoPerso() => posQuete;
+    
 }

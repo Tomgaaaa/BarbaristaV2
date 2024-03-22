@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using TMPro;
+
+
+
 public class SCR_Ficheperso1 : MonoBehaviour
 {
     Camera mainCamera;
@@ -26,6 +29,9 @@ public class SCR_Ficheperso1 : MonoBehaviour
     [SerializeField] private Transform shadow;
     private Tweener tweenerScale;
   
+    private SCR_QueteTableau queteHoverRaycast= null;
+    private List<Collider2D> lastFichePerso= null; // list des ficher persos ou on passe dessus, pour pouvoir re activer leur collider
+
 
     private void Awake()
     {
@@ -55,7 +61,76 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
         hexStat.UpdateLine();
         transform.position = new Vector3 (mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y,0) ;
+
+
+        RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition)); // cast pour avoir la world position de la souris
+
+        if (rayHit)
+        {
+            if (rayHit.transform.GetComponent<SCR_QueteTableau>())
+            {
+
+                
+
+
+                queteHoverRaycast = rayHit.transform.GetComponent<SCR_QueteTableau>();
+
+
+                if (queteHoverRaycast.GetDicoPerso()[0] == null && queteHoverRaycast.GetHigher()|| queteHoverRaycast.GetDicoPerso()[1] == null && queteHoverRaycast.GetHigher())
+                {
+                    transform.SetParent(rayHit.transform, false);
+
+                    MakeSmall(true);
+                }
+                else
+                {
+                    queteHoverRaycast = null;
+
+                    transform.SetParent(null, false);
+                    MakeSmall(false);
+
+                    transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+                }
+                
+            }
+            else if(rayHit.transform.GetComponent<SCR_Ficheperso1>())   
+            {
+
+                SCR_Ficheperso1 ficheDessous = rayHit.transform.GetComponent<SCR_Ficheperso1>();
+
+                Collider2D colliderFicheDessous = ficheDessous.GetComponent<Collider2D>();
+
+                if(colliderFicheDessous != null)
+                {
+                    Debug.Log(colliderFicheDessous);
+                    lastFichePerso.Add(colliderFicheDessous);
+
+                    colliderFicheDessous.enabled = false;
+                }
+                
+
+
+            }
+            else 
+            {
+
+              
+
+                queteHoverRaycast = null;
+
+                transform.SetParent(null, false);
+
+                MakeSmall(false);
+
+                transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+
+
+            }
+            
+
+        }
         
+
 
     }
 
@@ -101,10 +176,22 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
     private void OnMouseUp()
     {
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        //Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        SCR_Cursor.instanceCursor.ChangeHoverOff(true);
+
         //tweenerScale = transform.DOScale(new Vector3(initialScale.x, initialScale.y, initialScale.z), 1f);
 
         SCR_QueteManager.instanceQueteManager.ShowHiglightForAllQuest(false);
+
+        if (lastFichePerso != null)
+        {
+
+            for (int i = 0; i < lastFichePerso.Count; i++)
+            {
+                lastFichePerso[i].enabled = true;
+            }
+        }
+            
 
 
         shadow.DOLocalMove(Vector3.zero, 0.5f);
@@ -128,16 +215,29 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
 
         }
-       
+        else if (rayHit.transform.GetComponent<SCR_Ficheperso1>()) // si on relache la ficher perso sur une autre fiche perso
+        {
+            queteHoverRaycast = null;
 
-        gameObject.layer = LayerMask.NameToLayer("Default");
+            transform.SetParent(null, false);
+
+            MakeSmall(false);
+
+            transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+            // remet la position en Z a 0 psk le changement de parent peut faire buger
+
+        }
+        
+
+
+            gameObject.layer = LayerMask.NameToLayer("Default");
     }
 
-    public void MakeSmall(bool etat)
+    public void MakeSmall(bool isSmall)
     {
 
 
-        if (etat)
+        if (isSmall)
         {
             // transform.localScale = initialScale / 2.5f;
             transform.localScale = new Vector3(0.23f, 0.23f, 0);

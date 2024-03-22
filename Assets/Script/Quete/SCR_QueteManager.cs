@@ -214,7 +214,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
         //permet que pendant l'animation de decalage la page ne traverse pas celle du dessous
 
-        if (SCR_DATA.instanceData.GetJour()>2)
+        if (SCR_DATA.instanceData.GetJour()<2) // a changer le < en >
         {
             buttonChangerSens.SetActive(true);
 
@@ -321,6 +321,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             {
                 fiche.SetCanMove(false);
                 fiche.GetComponent<SortingGroup>().sortingOrder = 4;
+                fiche.transform.position = new Vector3(fiche.transform.position.x, fiche.transform.position.y, -3);
             }
 
 
@@ -332,6 +333,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             {
                 fiche.SetCanMove(true);
                 fiche.GetComponent<SortingGroup>().sortingOrder = 6;
+                fiche.transform.position = new Vector3(fiche.transform.position.x, fiche.transform.position.y, -1);
+
             }
 
             listCurrentQueteInstance[1].transform.DORotate(new Vector3(0, 0, 0), 1);
@@ -350,10 +353,13 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             //listCurrentQueteInstance[1].GetComponent<SpriteRenderer>().sortingOrder = 0;
             listCurrentQueteInstance[1].GetComponentInChildren<Canvas>().sortingOrder = 0;
 
+
             foreach (SCR_Ficheperso1 fiche in listCurrentQueteInstance[1].GetComponentsInChildren<SCR_Ficheperso1>())
             {
                 fiche.SetCanMove(false);
                 fiche.GetComponent<SortingGroup>().sortingOrder = 4;
+                fiche.transform.position = new Vector3(fiche.transform.position.x, fiche.transform.position.y, -3);
+
             }
 
 
@@ -366,6 +372,8 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
             {
                 fiche.SetCanMove(true);
                 fiche.GetComponent<SortingGroup>().sortingOrder = 6;
+                fiche.transform.position = new Vector3(fiche.transform.position.x, fiche.transform.position.y, -1);
+
             }
 
             listCurrentQueteInstance[0].transform.DORotate(new Vector3(0, 0, 0), 1);
