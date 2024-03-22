@@ -324,5 +324,11 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     public void SetHasBeenTransformed(bool newTransfoParameter) { hasBeenTransformed = newTransfoParameter; }
     public void SetInUstensileAndUstensile(bool inUstensileParameter, SCR_Contenant ustensileUseParameter) { inContenant = inUstensileParameter; refLastContenant = ustensileUseParameter; }
-    public void SetSoIngredient(SCR_SO_Ingredient parameter_SOingredient, SCR_Etagere etagereParameter) { myIngredient = parameter_SOingredient; refEtagere = etagereParameter; } 
+    public void SetSoIngredient(SCR_SO_Ingredient parameter_SOingredient, SCR_Etagere etagereParameter) { myIngredient = parameter_SOingredient; refEtagere = etagereParameter; }
+
+
+    public void UpdatePosition(Vector3 newPosition)
+    {
+        transform.position = newPosition;
+    }
 }

@@ -18,7 +18,7 @@ public class SCR_UST_Presse : SCR_Ustensile
     private Quaternion rotation;
 
     [SerializeField] private GameObject Poid;
-   
+    private SCR_Ingredient ingredientActuel;
 
     // Start is called before the first frame update
     public override void Start()
@@ -32,6 +32,8 @@ public class SCR_UST_Presse : SCR_Ustensile
     {
         base.OnDrop(ingredientDropParameter);
         Poid.transform.localPosition = new Vector3(Poid.transform.localPosition.x, 2.05f, Poid.transform.localPosition.z);
+        ingredientActuel = ingredientDropParameter;
+        ingredientActuel.transform.rotation = new Quaternion(0, 0, 0.707106829f, 0.707106829f);
     }
 
     public override void OnMouseDrag()
@@ -86,6 +88,8 @@ public class SCR_UST_Presse : SCR_Ustensile
                     //float poidsY = Mathf.Lerp(2.05f, 1.113f, (nmbDeTour/nombreDeTourNecessaire)); 
 
                     Poid.transform.localPosition = new Vector3(Poid.transform.localPosition.x, Poid.transform.localPosition.y -0.3f , Poid.transform.localPosition.z);
+                    //ingredientActuel.transform.localScale = new Vector3(ingredientActuel.transform.localScale.x * 0.25f, ingredientActuel.transform.localScale.y, ingredientActuel.transform.localScale.z);
+                    
 
                     AudioManager.instanceAM.Play("Presse");
                     if (nmbDeTour >= nombreDeTourNecessaire) // si on a realise le nombre de tour necessaire
@@ -95,6 +99,7 @@ public class SCR_UST_Presse : SCR_Ustensile
                         currentRotation = 360;
 
                         roueCrante.rotation = Quaternion.Euler(0, 0, 0); // on reset la rotation de la roue
+                        ingredientActuel.transform.rotation = new Quaternion(0, 0, 0, 1);
                     }
 
                 }
@@ -126,5 +131,5 @@ public class SCR_UST_Presse : SCR_Ustensile
         base.PickUpFromContenant();
         Poid.transform.localPosition = new Vector3(Poid.transform.localPosition.x, 3.125f, Poid.transform.localPosition.z);
     }
-
+ 
 }

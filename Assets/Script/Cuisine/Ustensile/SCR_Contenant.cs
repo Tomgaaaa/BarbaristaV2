@@ -12,7 +12,7 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
     private protected Collider2D ingredientCollider; // collider de l'ingrédient pour le passer en trigger, on le stock pour eviter de cast lors du depot et lors du retrait
     private Rigidbody2D ingredientRB; // meme chose pour le rigidBody de l'ingrédient
 
-    [SerializeField] private Transform emplacementIngredient; // emplacement où doit se situer l'ingrédient lorsqu'on le dépose
+    [SerializeField] private protected Transform emplacementIngredient; // emplacement où doit se situer l'ingrédient lorsqu'on le dépose
     [SerializeField] private Vector3 multiplicateurScaleIngredient; // valeur qui va multiplier le scale de l'ingrédient lorsqu'on le dépose
     private protected Vector3 startScaleIngredient; // scale initiale de l'ingrédient avant le dépot
 

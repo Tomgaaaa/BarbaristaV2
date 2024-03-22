@@ -23,6 +23,7 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
     [SerializeField, Range(0f, 100f)] float dampingJoint = 1f; // vitesse qui est réduit a chaque fréquence
     #endregion
 
+    private SCR_Ingredient IngredientIn;
 
     // Start is called before the first frame update
     public override void Start()
@@ -86,8 +87,9 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
                 
 
                 float poidsY = Mathf.Lerp(1.3f, 0.9f, percentReussite);
+                float posIngredient = Mathf.Lerp(emplacementIngredient.position.y, -1.318f, percentReussite);
                 Poid.transform.localPosition = new Vector3(Poid.transform.localPosition.x, poidsY, Poid.transform.localPosition.z);
-                
+                IngredientIn.transform.position = new Vector3(IngredientIn.transform.position.x, posIngredient, 0);
 
                 if (currentTempsPasse >= tempsNecessaire)
                 {
@@ -98,6 +100,8 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
                     timeBase = 0;
                     sparkleVFX.Play();
                     Poid.transform.localPosition = new Vector3(Poid.transform.localPosition.x, 1.3f, Poid.transform.localPosition.z);
+                    IngredientIn.GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.None;
+                    IngredientIn.transform.rotation = new Quaternion(0, 0, 0, 1);
                 }
             }
 
@@ -108,4 +112,15 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
 
 
     }
+    public override void OnDrop(SCR_Ingredient ingredientDropParameter)
+    {
+        base.OnDrop(ingredientDropParameter);
+        IngredientIn = ingredientDropParameter;
+        ingredientDropParameter.transform.DOMove(new Vector3(emplacementIngredient.position.x, emplacementIngredient.position.y, 0), 1f);
+       
+        ingredientDropParameter.GetComponent<SpriteRenderer>().sortingOrder = 1;
+        ingredientDropParameter.transform.rotation = new Quaternion(0, 0, 0.707106829f, 0.707106829f);
+        ingredientDropParameter.GetComponent<SpriteRenderer>().maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+    }
+
 }
