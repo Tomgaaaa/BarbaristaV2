@@ -46204,10 +46204,12 @@ MonoBehaviour:
   myVFX: {fileID: 1589926222}
   sparkleVFX: {fileID: 1412912497}
   couteau: {fileID: 79334856}
-  rotationMin: 0
+  rotationMin: 5
   rotationMax: 100
+  mouseVelocity: 0
   initialForceRotation: 40
   nombreDeCoupeNecessaire: 3
+  needReset: 0
 --- !u!61 &1930612886
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class SCR_Trancheuse : SCR_Ustensile
 
     // pour la partie drag
     private Vector3 lastMousePos;
-    private float mouseVelocity;
+    public float mouseVelocity;
     private float forceRotation;
     [SerializeField] private float initialForceRotation = 10;
     private float totalRotation;
@@ -26,7 +26,7 @@ public class SCR_Trancheuse : SCR_Ustensile
 
     [SerializeField] private int nombreDeCoupeNecessaire; // pour realiser la transformation
     private int currentNombreCoupe; // le nombre de coup mis actuellement
-    private bool needReset ;  // si le couteau est revenu a sa rotation d'origine 
+    public bool needReset ;  // si le couteau est revenu a sa rotation d'origine 
 
 
 
@@ -53,7 +53,7 @@ public class SCR_Trancheuse : SCR_Ustensile
             
             Vector3 diffMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition) - lastMousePos; // calcul le vecteur direction entre la derniere position de la souris et sa position actuelle
             mouseVelocity += diffMousePos.x + diffMousePos.y; // valeur positive si on va a droite ou haut et negative si on va a gauche ou bas
-            float mouseClamp = Mathf.Clamp(mouseVelocity, -1, 0); // clamp la valeur pour trancher d'un coup si on fait un mouvement rapide
+            float mouseClamp = Mathf.Clamp(mouseVelocity, -1, 1); // clamp la valeur pour trancher d'un coup si on fait un mouvement rapide
             mouseVelocity = mouseClamp; // permet que mouseVelocity est la valeur max du clamp
 
 
@@ -96,6 +96,7 @@ public class SCR_Trancheuse : SCR_Ustensile
             {
                 totalRotation -= mouseVelocity * -forceRotation;
                 couteau.Rotate(new Vector3(0, 0, mouseVelocity * -forceRotation));
+                couteau.eulerAngles =new Vector3(0,0, Mathf.Clamp( couteau.eulerAngles.z,rotationMin,rotationMax));
             }
 
 
@@ -109,7 +110,7 @@ public class SCR_Trancheuse : SCR_Ustensile
             }
 
             // -10 = position de fin / rotation finale
-            if(couteau.eulerAngles.z > rotationMax && !needReset ) // si le couteau est arrivé a la fin de sa course, il doit revenir a sa rotation initial, pour pas juste faire des petits accoups
+            if(couteau.eulerAngles.z >= rotationMax -1 && couteau.eulerAngles.z <= rotationMax + 1 && !needReset ) // si le couteau est arrivé a la fin de sa course, il doit revenir a sa rotation initial, pour pas juste faire des petits accoups
             {
                 myVFX.Play();
                 myVFX.textureSheetAnimation.SetSprite(0,ingredientDrop.GetCR_SO_Ingredient().TrancheTasse);
@@ -145,7 +146,7 @@ public class SCR_Trancheuse : SCR_Ustensile
 
 
         //tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, -51), 0.8f) ; // si le joueur relache le clique, le couteau se repositionne à sa rotation intial
-        tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, 0), 0.8f) ; // si le joueur relache le clique, le couteau se repositionne à sa rotation intial
+        tweenRotationDrag = couteau.DORotate(new Vector3(0, 0, rotationMin), 0.8f) ; // si le joueur relache le clique, le couteau se repositionne à sa rotation intial
         mouseVelocity = 0; // reset la valeur pour pas que quand on clique a nouveau, le couteau reprenne sa position ou on l'a lache
     }
   
