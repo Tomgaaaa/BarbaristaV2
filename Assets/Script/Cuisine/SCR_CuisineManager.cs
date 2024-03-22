@@ -122,6 +122,9 @@ public class SCR_CuisineManager : MonoBehaviour
 
         boulloire.transform.DOLocalMove(new Vector3 (-20,0,0), 1f);
 
+        boulloire.SetEauVerser();
+        
+
         hexagone.gameObject.SetActive(false);
         hexagone.transform.DOLocalMove(startPositionHexagone, 1f);
 

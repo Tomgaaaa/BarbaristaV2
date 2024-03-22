@@ -80,7 +80,7 @@ public class SCR_Bouilloire : SCR_Ustensile
 
 
                 float poidsY = Mathf.Lerp(-0.323f, 0.495f, percentReussite);
-                waterImg.transform.localPosition = new Vector3(waterImg.transform.localPosition.x, poidsY, waterImg.transform.localPosition.z);
+                waterImg.transform.localPosition = new Vector3(waterImg.transform.localPosition.x, poidsY, waterImg.transform.localPosition.z);// fait monter l'eau dans la tasse
 
                 if (eauVerse >= quantiteEauNecessaire) // si on atteint la quati d'eau necessaire on a finit de manipuler
                 {
@@ -141,7 +141,7 @@ public class SCR_Bouilloire : SCR_Ustensile
     public void CallNextBoisson()
     {
         SCR_CuisineManager.instanceCM.FinisshBouilloire();
-        waterImg.transform.position = new Vector3(waterImg.transform.position.x, -0.323f, waterImg.transform.position.z);
+       
     }
 
     public void UnlockBouilloire() // debloque le fait de pouvoir manipuler la bouilloire
@@ -152,6 +152,10 @@ public class SCR_Bouilloire : SCR_Ustensile
     }
     
 
-
+    public void SetEauVerser()
+    {
+        eauVerse = 0;
+        waterImg.transform.position = new Vector3(waterImg.transform.position.x, -0.323f, waterImg.transform.position.z);//reset la position du liquide dans la bouilloire
+    }
     
 }
