@@ -50,6 +50,7 @@ public class SCR_Tasse : SCR_Contenant
     [SerializeField] SCR_QueteCuisine cuisine;
 
     [SerializeField] private GameObject smokeVFX;
+    public LayerMask layerPourVN;
     public Camera camPourVN;
     public Camera mainCam;
 
@@ -123,8 +124,9 @@ public class SCR_Tasse : SCR_Contenant
 
         smokeVFX.SetActive(true);
 
-        //SCR_DATA.instanceData.texture = mainCam.Render();
+        mainCam.cullingMask = layerPourVN;
         StartCoroutine(TakeScreenShot());
+
 
 
         AudioManager.instanceAM.Play("Preparationfini");
@@ -137,7 +139,8 @@ public class SCR_Tasse : SCR_Contenant
         yield return new WaitForEndOfFrame();
         
         SCR_DATA.instanceData.texture = ScreenCapture.CaptureScreenshotAsTexture();
-       
+        mainCam.cullingMask = ~0;
+
     }
 
     private void UpdateVisuelle(SCR_SO_Ingredient SoParameter)
