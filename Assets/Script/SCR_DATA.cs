@@ -14,11 +14,11 @@ public class SCR_DATA : MonoBehaviour
     public List<SCR_SO_Ingredient> listIngredientReward = new List<SCR_SO_Ingredient>();
 
 
-    public int etapeQuete; // index indiquant laquelle des 2 quetes on est en train de preparer
-    public int etapePerso; // index indiquant quel perso on est en train de servir
+    private int etapeQuete; // index indiquant laquelle des 2 quetes on est en train de preparer
+    private int etapePerso; // index indiquant quel perso on est en train de servir
 
-    public int jour = 1; // le jour actuelle
-
+    private int jour = 1; // le jour actuelle
+    public List<GameObject> boissonTasse;
 
     private void Awake() // sinbgleton + don't destroy pour qu'il recupere / garde les datas a travers les scenes
     {

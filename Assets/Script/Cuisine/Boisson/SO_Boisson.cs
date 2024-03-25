@@ -8,6 +8,8 @@ public class SO_Boisson : ScriptableObject
 
     public Sprite screenBoisson; // ça on verra plus tard pour l'affichage dans l'historique
 
+    public GameObject tasseVN;
+
 
     public Dictionary<enumResistance, float> dicoResistanceBoisson = new Dictionary<enumResistance, float> // dico des resistances de la boisson, on l'initialise a 0 
     {
@@ -33,5 +35,5 @@ public class SO_Boisson : ScriptableObject
    
     public Dictionary<enumResistance, float> GetStat() => dicoResistanceBoisson; // fonction pour recuperer les stats de la boisson
    
-
+    public void SetTasseVN(GameObject obj) => tasseVN = obj;
 }

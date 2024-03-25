@@ -32,6 +32,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
     private SCR_QueteTableau queteHoverRaycast= null;
     private List<Collider2D> lastFichePerso= null; // list des ficher persos ou on passe dessus, pour pouvoir re activer leur collider
     [SerializeField] private SpriteRenderer outlineRenderer;
+    [SerializeField] private LayerMask layerMaskDrag;
 
     private void Awake()
     {
@@ -63,7 +64,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
         transform.position = new Vector3 (mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y,0) ;
 
 
-        RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition)); // cast pour avoir la world position de la souris
+        RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition), float.MaxValue,layerMaskDrag ); // cast pour avoir la world position de la souris
 
         if (rayHit)
         {
@@ -232,7 +233,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
         
 
 
-            gameObject.layer = LayerMask.NameToLayer("Default");
+            gameObject.layer = LayerMask.NameToLayer("FichePerso");
     }
 
     public void MakeSmall(bool isSmall)

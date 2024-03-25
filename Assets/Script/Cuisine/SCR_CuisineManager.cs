@@ -65,6 +65,9 @@ public class SCR_CuisineManager : MonoBehaviour
         else
             Destroy(gameObject);
 
+
+       
+
     }
 
 

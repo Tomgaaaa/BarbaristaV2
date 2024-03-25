@@ -43,6 +43,7 @@ namespace VNsup
 
         public StoryReadState state { get; private set; }
         private StoryAnimatorState animatorState = StoryAnimatorState.WAITING;
+        [SerializeField] List<Transform> listEmplacementTasse;
 
         // Start is called before the first frame update
         void Awake()
@@ -97,6 +98,8 @@ namespace VNsup
                 if (SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
                 {
                     story.ChoosePathString("Apresquete");
+                    GameObject tassePerso1 = Instantiate(SCR_DATA.instanceData.GetCurrentQuest().boissonsServis[0].tasseVN, listEmplacementTasse[0]);
+                    GameObject tassePerso2 = Instantiate(SCR_DATA.instanceData.GetCurrentQuest().boissonsServis[1].tasseVN, listEmplacementTasse[1]);
                 }
                 else
                 {
