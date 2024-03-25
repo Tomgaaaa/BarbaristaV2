@@ -24,6 +24,7 @@ public class SCR_Tasse : SCR_Contenant
     #region Visuelle
     [Header("Presse")]
     [SerializeField] private SpriteRenderer SR_liquide;
+    [SerializeField] private SpriteRenderer SR_eauMonte;
 
     [Header("Tranche")]
     [SerializeField] private List<SpriteRenderer> listSrTranche;
@@ -137,14 +138,15 @@ public class SCR_Tasse : SCR_Contenant
 
             switch (listIngredientsUtilises.Count)
             {
-                case 1: SR_liquide.color = SoParameter.colorSO; break; 
+                case 1: SR_liquide.color = SoParameter.colorSO; SR_eauMonte.color = SoParameter.colorSO; break; 
 
                 case 2:
                     Color MixedColor = new Color((listIngredientsUtilises[0].GetCR_SO_Ingredient().colorSO.r + SoParameter.colorSO.r) / 2, (listIngredientsUtilises[0].GetCR_SO_Ingredient().colorSO.g + SoParameter.colorSO.g) / 2, (listIngredientsUtilises[0].GetCR_SO_Ingredient().colorSO.b + SoParameter.colorSO.b) / 2, 255);
                     SR_liquide.color = MixedColor;
+                    SR_eauMonte.color = MixedColor;
                     break; 
 
-                case 3: SR_liquide.color = SoParameter.colorSO; break; 
+                case 3: SR_liquide.color = SoParameter.colorSO; SR_eauMonte.color = SoParameter.colorSO; break; 
             }
         }
 

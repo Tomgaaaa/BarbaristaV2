@@ -12,7 +12,7 @@ public class SCR_Mortier : SCR_Ustensile
     [SerializeField] private Collider2D colliderPilon; // collider du pilon a activer au moment du drop
     [SerializeField] private GameObject colliderBordDMortier; // collider des bords du mortier 
     [SerializeField] private GameObject devantMortier;
-
+    SCR_Ingredient ingredientActuel;
 
     public override void Start()
     {
@@ -30,8 +30,8 @@ public class SCR_Mortier : SCR_Ustensile
     }
     public override void OnDrop(SCR_Ingredient ingredientDropParameter)
     {
-        
 
+        ingredientActuel = ingredientDropParameter;
         devantMortier.SetActive(false);
         base.OnDrop(ingredientDropParameter);
         colliderPilon.enabled = true; // on active les collider de manipulation
@@ -40,6 +40,7 @@ public class SCR_Mortier : SCR_Ustensile
         refPilon.SetManipulation(true);
         ingredientCollider.isTrigger = true;
         InitPilon();
+        ingredientDropParameter.transform.rotation = new Quaternion(0, 0, 0.707106829f, 0.707106829f);
     }
 
   
@@ -51,7 +52,7 @@ public class SCR_Mortier : SCR_Ustensile
         colliderPilon.enabled = false; // désactive les colliders de manipulation
         AudioManager.instanceAM.Play("Completion Mortier");
         sparkleVFX.Play();
-
+        ingredientActuel.transform.rotation = new Quaternion(0, 0, 0, 1);
     }
 
     public void InitPilon()

@@ -16,6 +16,7 @@ public class SCR_Contenant : MonoBehaviour // script parent de bol et ustensile,
     [SerializeField] private Vector3 multiplicateurScaleIngredient; // valeur qui va multiplier le scale de l'ingrédient lorsqu'on le dépose
     private protected Vector3 startScaleIngredient; // scale initiale de l'ingrédient avant le dépot
 
+    
 
     [SerializeField] private protected Renderer rendererOutline;
     private protected Material outlineMaterial;

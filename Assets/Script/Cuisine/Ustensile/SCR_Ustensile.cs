@@ -23,6 +23,7 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
     [SerializeField] private protected ParticleSystem myVFX;
     [SerializeField] private protected ParticleSystem sparkleVFX;
 
+    [SerializeField] private protected List<SCR_Ustensile> listUstensil;
 
     // Start is called before the first frame update
     public override void Start()
@@ -131,9 +132,17 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
 
             SCR_CuisineManager.instanceCM.ZoomUstensile(true, this);
 
+
+
         }
 
-
+        foreach(var item in listUstensil)
+        {
+            if(this != item)
+            {
+                item.gameObject.SetActive(false);
+            }
+        }
 
 
     }
@@ -162,6 +171,14 @@ public class SCR_Ustensile : SCR_Contenant // script parent de tout les ustensil
         colliderDrop.enabled = true; // réactive le collider pour permettre de re drop des ingrédients sur l'ustensile, on le reactive que lorsque l'ingrédient est repris
 
         SCR_CuisineManager.instanceCM.ZoomUstensile(false, this);
+
+        foreach (var item in listUstensil)
+        {
+            if (this != item)
+            {
+                item.gameObject.SetActive(true);
+            }
+        }
 
     }
 
