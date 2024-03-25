@@ -33,11 +33,13 @@ public class SCR_Ficheperso1 : MonoBehaviour
     private List<Collider2D> lastFichePerso= null; // list des ficher persos ou on passe dessus, pour pouvoir re activer leur collider
     [SerializeField] private SpriteRenderer outlineRenderer;
     [SerializeField] private LayerMask layerMaskDrag;
+    private Collider2D myCollider;
 
     private void Awake()
     {
         
         spriteRender = GetComponent<SortingGroup>();
+        myCollider = GetComponent<Collider2D>();
         initialScale = transform.localScale;
     }
 
@@ -165,7 +167,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition));
         AudioManager.instanceAM.Play("FichePerso");
-
+        myCollider.enabled = false;
 
         if (rayHit.transform.GetComponent<SCR_QueteTableau>())
         {
@@ -185,6 +187,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
         //tweenerScale = transform.DOScale(new Vector3(initialScale.x, initialScale.y, initialScale.z), 1f);
 
         SCR_QueteManager.instanceQueteManager.ShowHiglightForAllQuest(false);
+        myCollider.enabled = true;
 
         if (lastFichePerso != null)
         {
