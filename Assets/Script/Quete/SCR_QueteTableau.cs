@@ -47,6 +47,9 @@ public class SCR_QueteTableau : MonoBehaviour
 
     [SerializeField] private SO_Tuto tutoCompendium;
 
+    [SerializeField] private SpriteRenderer outlineObject; // jsp pk mais le shader veut pas marcher sur celui la
+
+
     private void Awake()
     {
         if(myQueteSo != null)
@@ -57,7 +60,7 @@ public class SCR_QueteTableau : MonoBehaviour
 
         if(listHighlight.Count != 0)
             initiaHighLightlScale = listHighlight[0].transform.localScale;
-        
+
 
     }
 
@@ -97,7 +100,25 @@ public class SCR_QueteTableau : MonoBehaviour
         }*/
     }
 
+    public void OnMouseEnter()
+    {
+        if (inChoixPerso || !SCR_TutoManager.instanceTuto.GetDicoTuto()[tutoCompendium])
+            return;
+       
+        outlineObject.gameObject.SetActive(true);
 
+    }
+
+    public void OnMouseExit()
+    {
+        if (inChoixPerso || !SCR_TutoManager.instanceTuto.GetDicoTuto()[tutoCompendium])
+            return;
+
+      
+
+        outlineObject.gameObject.SetActive(false);
+
+    }
 
     private void OnMouseDown()
     {
@@ -106,12 +127,14 @@ public class SCR_QueteTableau : MonoBehaviour
 
 
 
-        if (SCR_DATA.instanceData.GetJour() > 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 2 && !isSelected || SCR_DATA.instanceData.GetJour() <= 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 2)// a changer le 2 en 1
+        if (SCR_DATA.instanceData.GetJour() > 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 2 && !isSelected || SCR_DATA.instanceData.GetJour() <= 2 && SCR_QueteManager.instanceQueteManager.GetQueteCount() < 2 && !isSelected)// a changer le 2 en 1
         {
             isSelected = true;
             selectedTamp.SetActive(true);
             SCR_QueteManager.instanceQueteManager.AddCurrentQuete(this);
-            
+            outlineObject.color = Color.red;
+
+
         }
         else if (isSelected)
         {
@@ -119,6 +142,8 @@ public class SCR_QueteTableau : MonoBehaviour
             isSelected = false;
             selectedTamp.SetActive(false);
             SCR_QueteManager.instanceQueteManager.AddCurrentQuete(this, true);
+            outlineObject.color = Color.yellow;
+
         }
         AudioManager.instanceAM.Play("Selection");
 
@@ -151,6 +176,10 @@ public class SCR_QueteTableau : MonoBehaviour
 
         if (needToShow && isHigher)
         {
+            // evite que la sequence bug si elle est quitte au moment ou ça doit grossir
+            listHighlight[0].transform.localScale = new Vector3(initiaHighLightlScale.x,initiaHighLightlScale.y, initiaHighLightlScale.z);
+            listHighlight[1].transform.localScale = new Vector3(initiaHighLightlScale.x,initiaHighLightlScale.y, initiaHighLightlScale.z);
+            sequenceScale.Kill();
 
             sequenceScale = DOTween.Sequence();
 

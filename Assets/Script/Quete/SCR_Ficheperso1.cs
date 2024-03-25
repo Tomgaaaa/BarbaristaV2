@@ -31,7 +31,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
   
     private SCR_QueteTableau queteHoverRaycast= null;
     private List<Collider2D> lastFichePerso= null; // list des ficher persos ou on passe dessus, pour pouvoir re activer leur collider
-
+    [SerializeField] private SpriteRenderer outlineRenderer;
 
     private void Awake()
     {
@@ -137,11 +137,13 @@ public class SCR_Ficheperso1 : MonoBehaviour
     private void OnMouseEnter()
     {
         SCR_Cursor.instanceCursor.ChangeHoverOff(true);
+        outlineRenderer.gameObject.SetActive(true);
     }
 
     private void OnMouseExit()
     {
         SCR_Cursor.instanceCursor.ChangeClickOff(false);
+        outlineRenderer.gameObject.SetActive(false);
     }
 
 
