@@ -34,7 +34,6 @@ VAR previousChemin = "vide"
 
 //dialogue avant que les personnages arrivent 
  ~playSound("I_ArrivéPnjAlerte")
- ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent
  
  
@@ -85,7 +84,7 @@ Sigg:Allez hop au travail
  ==Presentation(Perso)==
 
 ~fadeIn(Perso,1)
-
+~playSound("I_ArrivéPnj")
 
 
 // ici faut du texte en fonction de la personne 

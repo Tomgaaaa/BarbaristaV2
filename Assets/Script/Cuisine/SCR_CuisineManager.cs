@@ -144,6 +144,7 @@ public class SCR_CuisineManager : MonoBehaviour
         nextBoissonButton.gameObject.SetActive(true);
         textNextBoisson.text = "Boisson de " + SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[SCR_DATA.instanceData.GetEtapePerso()].namePerso + " préparée";
         canvasGroupNextBoisson.DOFade(1, 1);
+        AudioManager.instanceAM.Play("CompletionBoissonServi");
     }
 
     
