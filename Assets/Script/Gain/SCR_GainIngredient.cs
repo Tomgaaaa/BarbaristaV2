@@ -11,6 +11,11 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
     [System.Serializable] public class dicoIngredientSpriteClass : TemplateDico<enumAllIgredient, Sprite> { };
     private Dictionary<enumAllIgredient, Sprite> dicoIngredientSprite; 
     [SerializeField] private List<dicoIngredientSpriteClass> listDicoIngredientSprite;
+
+    [System.Serializable] public class dicoIngredientStockClass : TemplateDico<int, List<enumAllIgredient>> { };
+    private Dictionary<int, List<enumAllIgredient>> dicoStock;
+    [SerializeField] private List<dicoIngredientStockClass> dicoStockList;
+
     public void OnBeforeSerialize()
     {
     }
@@ -26,11 +31,24 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
                 dicoIngredientSprite.Add(item.key, item.value);
             }
         }
+
+        dicoStock = new Dictionary<int, List<enumAllIgredient>>();
+
+        foreach (dicoIngredientStockClass item in dicoStockList)
+        {
+            if (!dicoStock.ContainsKey(item.key))
+            {
+                dicoStock.Add(item.key, item.value);
+            }
+        }
     }
 
+    
+   
     #endregion
 
     [SerializeField] private List<enumAllIgredient> listDailyIngredient;
+
     [SerializeField] private List<SCR_SO_Ingredient> listDataIngredient;
     [SerializeField] Transform transforCadrillage;
     [SerializeField] float delaySpawnIngredient;
@@ -65,22 +83,44 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
 
         float spacingY = 0f;
         float offSetX = 0f;
-      
-
-        for (int i = 0 ; i< listDailyIngredient.Count;i++)
+        
+       
+        for (int i = 0; i < dicoStockList[SCR_DATA.instanceData.GetJour()].value.Count ; i++)
         {
-            SpriteRenderer ingredientSpawn = Instantiate(prefabIngredient,transforCadrillage);
-            ingredientSpawn.sprite = dicoIngredientSprite[listDailyIngredient[i]];
-            ingredientSpawn.transform.localPosition = new Vector3 ((i- offSetX) * spacingXIngredient ,-spacingY,0);
+            SpriteRenderer ingredientSpawn = Instantiate(prefabIngredient, transforCadrillage);
+
+            enumAllIgredient ingredientDico = dicoStockList[SCR_DATA.instanceData.GetJour()].value[i];
+            ingredientSpawn.sprite = dicoIngredientSprite[ingredientDico];
+            
+
+            ingredientSpawn.transform.localPosition = new Vector3((i - offSetX) * spacingXIngredient, -spacingY, 0);
             AudioManager.instanceAM.Play("SpawnIngrédients");
-            if(i == colonne -1 )
+            if (i == colonne - 1)
             {
                 spacingY += spacingYIngredient;
-                offSetX = i +1;
+                offSetX = i + 1;
+            }
+
+            yield return new WaitForSeconds(delaySpawnIngredient);
+
+        }
+       
+        /*
+        for (int i = 0; i < listDailyIngredient.Count; i++)
+        {
+            SpriteRenderer ingredientSpawn = Instantiate(prefabIngredient, transforCadrillage);
+            ingredientSpawn.sprite = dicoIngredientSprite[listDailyIngredient[i]];
+            ingredientSpawn.transform.localPosition = new Vector3((i - offSetX) * spacingXIngredient, -spacingY, 0);
+            AudioManager.instanceAM.Play("SpawnIngrédients");
+            if (i == colonne - 1)
+            {
+                spacingY += spacingYIngredient;
+                offSetX = i + 1;
             }
 
             yield return new WaitForSeconds(delaySpawnIngredient);
         }
+        */
         SpawnIngredientRecompense();
 
         yield return null;
