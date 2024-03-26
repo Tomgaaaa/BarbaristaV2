@@ -8,6 +8,11 @@ public class SCR_PostItSwitch : MonoBehaviour
     
     [SerializeField] GameObject _pp1;
     [SerializeField] GameObject _pp2;
+    private SO_Personnage persoActuel;
+    [SerializeField] GameObject pageSamuel;
+    [SerializeField] GameObject pageVikram;
+    [SerializeField] GameObject pageElira;
+    [SerializeField] GameObject pageSaori;
 
     [Header("List P1")]
     [SerializeField] List<Image> _pointP1Feu;
@@ -213,4 +218,26 @@ public class SCR_PostItSwitch : MonoBehaviour
         }
     }
 
+
+    public void GoToChara()
+    {
+       persoActuel = SCR_DATA.instanceData.GetCurrentQuest().persosEnvoyes[SCR_DATA.instanceData.GetEtapePerso()];
+
+        switch(persoActuel.namePerso)
+        {
+            case "Samuel":
+                SCR_MasterCompendium.instanceMComp.GoToPage(pageSamuel);
+                break;
+            case "Vikram":
+                SCR_MasterCompendium.instanceMComp.GoToPage(pageVikram);
+                break;
+            case "Elira":
+                SCR_MasterCompendium.instanceMComp.GoToPage(pageElira);
+                break;
+            case "Saori":
+                SCR_MasterCompendium.instanceMComp.GoToPage(pageSaori);
+                break;
+        }
+
+    }
 }
