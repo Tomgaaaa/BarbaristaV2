@@ -214,7 +214,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
 
         //permet que pendant l'animation de decalage la page ne traverse pas celle du dessous
 
-        if (SCR_DATA.instanceData.GetJour()<2) // a changer le < en >
+        if (SCR_DATA.instanceData.GetJour()>2) // a changer le > en < pour avoir 2 quete J1
         {
             buttonChangerSens.SetActive(true);
 
@@ -445,7 +445,7 @@ public class SCR_QueteManager : MonoBehaviour, ISerializationCallbackReceiver
         {
             listCurrentQueteInstance.Add(currentQueteParameter); // on l'ajoute a la liste des quetes selectiones
 
-            if(listCurrentQueteInstance.Count == 2 || SCR_DATA.instanceData.GetJour() <= 2 &&listCurrentQueteInstance.Count == 1 ) // si on a selectionne 2 quetes,     a changer
+            if(listCurrentQueteInstance.Count == 2 || SCR_DATA.instanceData.GetJour() <= 2 && listCurrentQueteInstance.Count == 1 ) // si on a selectionne 2 quetes,     a changer
             {
                 buttonConfirmation.SetActive(true);
 

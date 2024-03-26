@@ -65,7 +65,8 @@ public class SCR_Pilon : MonoBehaviour
         lastMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 
         Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOn");
-        Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
+        SCR_Cursor.instanceCursor.ChangeHoverOn(true);
+
     }
 
 
@@ -74,7 +75,8 @@ public class SCR_Pilon : MonoBehaviour
         if(!isMaintenu)
         {
             Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
-            Cursor.SetCursor(cursorHover, new Vector2(80f, 50f), CursorMode.Auto);
+            SCR_Cursor.instanceCursor.ChangeHoverOff(true);
+
 
         }
     }
@@ -83,7 +85,9 @@ public class SCR_Pilon : MonoBehaviour
     {
         if(!isMaintenu)
         {
-            Cursor.SetCursor(null, new Vector2(80f, 50f), CursorMode.Auto);
+            SCR_Cursor.instanceCursor.ChangeClickOff(false);
+
+
 
         }
     }
