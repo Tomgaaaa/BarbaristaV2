@@ -249,6 +249,9 @@ public class SCR_QueteTableau : MonoBehaviour
 
             SCR_QueteManager.instanceQueteManager.AddRemovePersosUtilise(fiche, true);
 
+            if(SCR_DATA.instanceData.GetJour() > 2)
+                SCR_QueteManager.instanceQueteManager.ChangeShowedQuete();
+
         }
 
          

@@ -44,6 +44,7 @@ namespace VNsup
         public StoryReadState state { get; private set; }
         private StoryAnimatorState animatorState = StoryAnimatorState.WAITING;
         [SerializeField] List<SCR_Tasse> listTasse;
+        [SerializeField] List<Animator> listAnimatorTriangle;
 
 
         // Start is called before the first frame update
@@ -151,10 +152,20 @@ namespace VNsup
         public void StartTextAnimator()
         {
             animatorState = StoryAnimatorState.TIPING;
+
+            for (int i = 0; i<listAnimatorTriangle.Count; i++)
+            {
+                listAnimatorTriangle[i].SetBool("isWaiting", false);
+            }
         }
         public void EndTextAnimator()
         {
             animatorState = StoryAnimatorState.WAITING;
+
+            for (int i = 0; i < listAnimatorTriangle.Count; i++)
+            {
+                listAnimatorTriangle[i].SetBool("isWaiting", true);
+            }
         }
 
         public virtual void Next()
@@ -256,9 +267,7 @@ namespace VNsup
 
                 if(SCR_DATA.instanceData.GetJour()<=2)
                 {
-                    SCR_DATA.instanceData.EtapeQueteUp();
-                    SCR_DATA.instanceData.EtapePersoUp();
-                    SCR_DATA.instanceData.JourUP();
+                  
 
                     SceneManager.LoadScene("SCE_GainQuete");
                 }
@@ -277,9 +286,7 @@ namespace VNsup
             }
             else if (SCR_DATA.instanceData.GetEtapeQuest() == 1 && SCR_DATA.instanceData.GetCurrentQuest().boissonsServis.Count == 2)
             {
-                SCR_DATA.instanceData.EtapeQueteUp();
-                SCR_DATA.instanceData.EtapePersoUp();
-                SCR_DATA.instanceData.JourUP();
+                
 
                 SceneManager.LoadScene("SCE_GainQuete");
 

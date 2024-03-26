@@ -35,6 +35,14 @@ public class SCR_Ficheperso1 : MonoBehaviour
     [SerializeField] private LayerMask layerMaskDrag;
     private Collider2D myCollider;
 
+
+    private Vector3 diffMousePos;
+    private Vector2 ScaleRayCast = new Vector3(21f,29f);
+    private Vector2 initialScaleRayCast = new Vector3(21f,29f);
+
+
+
+
     private void Awake()
     {
         
@@ -63,12 +71,11 @@ public class SCR_Ficheperso1 : MonoBehaviour
         SCR_Cursor.instanceCursor.ChangeHoverOn(true);
 
         hexStat.UpdateLine();
-        transform.position = new Vector3 (mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y,0) ;
 
 
-        RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition), float.MaxValue,layerMaskDrag ); // cast pour avoir la world position de la souris
+        //RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition), float.MaxValue,layerMaskDrag ); // cast pour avoir la world position de la souris
 
-        if (rayHit)
+        /*if (rayHit)
         {
             if (rayHit.transform.GetComponent<SCR_QueteTableau>())
             {
@@ -84,6 +91,8 @@ public class SCR_Ficheperso1 : MonoBehaviour
                     transform.SetParent(rayHit.transform, false);
 
                     MakeSmall(true);
+                    transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x  , mainCamera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+
                 }
                 else
                 {
@@ -92,7 +101,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
                     transform.SetParent(null, false);
                     MakeSmall(false);
 
-                    transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+                    transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x - diffMousePos.x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y - diffMousePos.y, 0);
                 }
                 
             }
@@ -117,7 +126,74 @@ public class SCR_Ficheperso1 : MonoBehaviour
             else 
             {
 
-              
+                queteHoverRaycast = null;
+
+                transform.SetParent(null, false);
+
+                MakeSmall(false);
+
+                transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x - diffMousePos.x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y - diffMousePos.y, 0);
+
+
+            }
+            
+
+        }*/
+
+
+        Collider2D squareCollider = Physics2D.OverlapBox(transform.position, ScaleRayCast,0) ;
+        if(squareCollider)
+        {
+            if (squareCollider.transform.GetComponent<SCR_QueteTableau>())
+            {
+
+
+
+
+                queteHoverRaycast = squareCollider.transform.GetComponent<SCR_QueteTableau>();
+
+
+                if (queteHoverRaycast.GetDicoPerso()[0] == null && queteHoverRaycast.GetHigher() || queteHoverRaycast.GetDicoPerso()[1] == null && queteHoverRaycast.GetHigher())
+                {
+                    transform.SetParent(squareCollider.transform, false);
+
+                    MakeSmall(false);
+                    transform.localScale = new Vector3(initialScale.x * 0.7f, initialScale.y * 0.7f, initialScale.z);
+                    ScaleRayCast = new Vector2(initialScaleRayCast.x * 1.25f, initialScaleRayCast.y * 1.25f);
+
+                    transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x - diffMousePos.x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y - diffMousePos.y, 0);
+
+                }
+                else
+                {
+                    queteHoverRaycast = null;
+
+                    transform.SetParent(null, false);
+                    //MakeSmall(false);
+
+                    transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x - diffMousePos.x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y - diffMousePos.y, 0);
+                }
+
+            }
+            else if (squareCollider.transform.GetComponent<SCR_Ficheperso1>())
+            {
+
+                SCR_Ficheperso1 ficheDessous = squareCollider.transform.GetComponent<SCR_Ficheperso1>();
+
+                Collider2D colliderFicheDessous = ficheDessous.GetComponent<Collider2D>();
+
+                if (colliderFicheDessous != null)
+                {
+                    //lastFichePerso.Add(colliderFicheDessous);
+
+                    colliderFicheDessous.enabled = false;
+                }
+
+
+
+            }
+            else // si ya ni quete ni fiche perso
+            {
 
                 queteHoverRaycast = null;
 
@@ -125,17 +201,26 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
                 MakeSmall(false);
 
-                transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+                ScaleRayCast = new Vector2(initialScaleRayCast.x, initialScaleRayCast.y);
+
+
+                transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x - diffMousePos.x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y - diffMousePos.y, 0);
 
 
             }
-            
-
         }
-        
-
-
     }
+
+
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(transform.position, new Vector2(ScaleRayCast.x,ScaleRayCast.y));
+    }
+
+#endif
 
     private void OnMouseEnter()
     {
@@ -153,6 +238,10 @@ public class SCR_Ficheperso1 : MonoBehaviour
     private void OnMouseDown()
     {
         if (!canMove) { return; }
+
+        Vector3 distanceMousePosition;
+        distanceMousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        diffMousePos = distanceMousePosition ;
 
         SCR_Cursor.instanceCursor.ChangeHoverOn(true);
         //tweenerScale = transform.DOScale(new Vector3(initialScale.x * 1.1f, initialScale.y * 1.1f, initialScale.z * 1.1f), 1f);
@@ -206,8 +295,11 @@ public class SCR_Ficheperso1 : MonoBehaviour
         spriteRender.sortingOrder = spriteRender.sortingOrder-1;
         canvas.sortingOrder = canvas.sortingOrder - 1;
 
-        RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition)); // créer un Cast pour savoir si on a relaché l'ingrédient sur quelque chose
         AudioManager.instanceAM.Play("FichePersoLacher");
+        //RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition)); // créer un Cast pour savoir si on a relaché l'ingrédient sur quelque chose
+
+        Collider2D rayHit = Physics2D.OverlapBox(transform.position, ScaleRayCast, 0);
+
 
         if (rayHit.transform.GetComponent<SCR_QueteTableau>())
         {
@@ -218,7 +310,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
             hexStat.UpdateLine();
             AudioManager.instanceAM.Play("FichePersoLacher");
 
-
+            ScaleRayCast = new Vector2(initialScale.x * 5, initialScale.y * 7);
 
         }
         else if (rayHit.transform.GetComponent<SCR_Ficheperso1>()) // si on relache la ficher perso sur une autre fiche perso
@@ -238,6 +330,9 @@ public class SCR_Ficheperso1 : MonoBehaviour
 
             gameObject.layer = LayerMask.NameToLayer("FichePerso");
     }
+
+
+   
 
     public void MakeSmall(bool isSmall)
     {

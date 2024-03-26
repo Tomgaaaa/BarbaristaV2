@@ -1055,6 +1055,7 @@ Transform:
   - {fileID: 1671874302084640884}
   - {fileID: 1172887162255730930}
   - {fileID: 5955747201080494985}
+  - {fileID: 8375106404698663069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8127190390091322798
@@ -1127,6 +1128,7 @@ MonoBehaviour:
   layerMaskDrag:
     serializedVersion: 2
     m_Bits: 951
+  diffMousePos: {x: 0, y: 0, z: 0}
 --- !u!210 &2619343982964668694
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -2274,6 +2276,37 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 1
   m_ApplyActiveColorSpace: 1
+--- !u!1 &6059884700008643666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8375106404698663069}
+  m_Layer: 10
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8375106404698663069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059884700008643666}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.81, y: -11.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7978785204713340363}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6352253553106601533
 GameObject:
   m_ObjectHideFlags: 0
