@@ -33,6 +33,7 @@ VAR previousChemin = "vide"
 
 
 //dialogue avant que les personnages arrivent
+~playSound("BarAlatea")
  ~playSound("I_ArrivéPnjAlerte")
  ~playSound("I_ArrivéPnj")
  Sigg: Haaa les voila qui arrivent.
