@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class SO_Boisson : ScriptableObject 
 {
-    public List<SCR_Ingredient> listIngredientsUtilises = new List<SCR_Ingredient>(); // liste des ingrédients transformés utilisés pour créer la boisson 
+    public List<SCR_SO_Ingredient> listIngredientsUtilises = new List<SCR_SO_Ingredient>(); // liste des ingrédients transformés utilisés pour créer la boisson 
 
-    public Sprite screenBoisson; // ça on verra plus tard pour l'affichage dans l'historique
-
-    public Texture2D textureTasse;
+    public List<int> spriteRendererUtilise = new List<int>();
 
 
     public Dictionary<enumResistance, float> dicoResistanceBoisson = new Dictionary<enumResistance, float> // dico des resistances de la boisson, on l'initialise a 0 
@@ -24,12 +22,14 @@ public class SO_Boisson : ScriptableObject
     
     }; 
 
-    public void CreateBoisson(List<SCR_Ingredient> listIngredientParameter, Dictionary<enumResistance, float> dicoResistanceParameter) // fonction qui permet de creer la boisson (obviously)
+    public void CreateBoisson(List<SCR_SO_Ingredient> listIngredientParameter, Dictionary<enumResistance, float> dicoResistanceParameter, List<int> listSpriteRendererParameter) // fonction qui permet de creer la boisson (obviously)
     {
 
         listIngredientsUtilises = listIngredientParameter; // on recupere la liste des ingredient utilises
 
         dicoResistanceBoisson = dicoResistanceParameter; // et le dico des resistances associés
+
+        spriteRendererUtilise = listSpriteRendererParameter;
     }
 
    

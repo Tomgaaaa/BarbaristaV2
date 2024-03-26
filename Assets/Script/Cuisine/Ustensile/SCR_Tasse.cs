@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SCR_Tasse : SCR_Contenant
 {
 
-    [SerializeField] private List<SCR_Ingredient> listIngredientsUtilises = new List<SCR_Ingredient>(); // liste des ingrédients qui ont ete drop dans la tasse, sera utilise pour l'historique
+    [SerializeField] private List<SCR_SO_Ingredient> listIngredientsUtilises = new List<SCR_SO_Ingredient>(); // liste des ingrédients qui ont ete drop dans la tasse, sera utilise pour l'historique
     private Dictionary<enumResistance, float> dicoStatBoisson = new Dictionary<enumResistance, float>()
     {
         { enumResistance.Cryogenique, 0 },
@@ -50,15 +50,16 @@ public class SCR_Tasse : SCR_Contenant
     [SerializeField] SCR_QueteCuisine cuisine;
 
     [SerializeField] private GameObject smokeVFX;
-    public LayerMask layerPourVN;
-    public Camera camPourVN;
-    public Camera mainCam;
+
+    private List <int> listSpriteRandomIndex = new List<int>();
+    private int Etape = 0;
+
 
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
-        allVisuelle.SetActive(false);
+        //allVisuelle.SetActive(false);
 
         smokeVFX.SetActive(false);
     }
@@ -71,7 +72,7 @@ public class SCR_Tasse : SCR_Contenant
 
         textNmbIngredient.text = nmbIngredientIn + " /3";
 
-        listIngredientsUtilises.Add(ingredientDropParameter); // ajoute l'ingrédient drop sur la tasse a la liste des ingrédients utilisés pour la boisson
+        listIngredientsUtilises.Add(ingredientDropParameter.GetCR_SO_Ingredient()); // ajoute l'ingrédient drop sur la tasse a la liste des ingrédients utilisés pour la boisson
         AudioManager.instanceAM.Play("DropItemTasse");
         ingredientDrop.gameObject.SetActive(false); // désactive l'ingrédient drop, faudra le renvoyer dans le pool plutot
 
@@ -80,7 +81,7 @@ public class SCR_Tasse : SCR_Contenant
         cuisine.UpdateStatWhenDrop(ingredientDropParameter.GetCR_SO_Ingredient().dicoResistance); //met a jour les stats de l'hewagone fiche perso dans l'UI cuisine quand on drop un ingredient
 
         // a mettre quand l'eau a ete versée
-        UpdateVisuelle(ingredientDrop.GetCR_SO_Ingredient());
+        UpdateVisuelle(ingredientDrop.GetCR_SO_Ingredient(),false);
 
 
         SCR_Cursor.instanceCursor.ChangeClickOff(true);
@@ -124,8 +125,6 @@ public class SCR_Tasse : SCR_Contenant
 
         smokeVFX.SetActive(true);
 
-        mainCam.cullingMask = layerPourVN;
-        StartCoroutine(TakeScreenShot());
 
 
 
@@ -133,29 +132,30 @@ public class SCR_Tasse : SCR_Contenant
 
     }
 
-
-    IEnumerator TakeScreenShot()
+    public void RecreateBoisson(List<SCR_SO_Ingredient> listIngredientParameter)
     {
-        yield return new WaitForEndOfFrame();
-        
-        SCR_DATA.instanceData.texture = ScreenCapture.CaptureScreenshotAsTexture();
-        mainCam.cullingMask = ~0;
 
+        listIngredientsUtilises = listIngredientParameter;
+        UpdateVisuelle(listIngredientsUtilises[0],true);
+        UpdateVisuelle(listIngredientsUtilises[1],true);
+        UpdateVisuelle(listIngredientsUtilises[2],true);
+        allVisuelle.SetActive(true);
     }
 
-    private void UpdateVisuelle(SCR_SO_Ingredient SoParameter)
+    public void UpdateVisuelle(SCR_SO_Ingredient SoParameter, bool recreateBoisson)
     {
-
-
         if(SoParameter.actualStateSO == enumEtatIgredient.Presse)
         {
+
+            listSpriteRandomIndex.Add(0);
+
 
             switch (listIngredientsUtilises.Count)
             {
                 case 1: SR_liquide.color = SoParameter.colorSO; SR_eauMonte.color = SoParameter.colorSO; break; 
 
                 case 2:
-                    Color MixedColor = new Color((listIngredientsUtilises[0].GetCR_SO_Ingredient().colorSO.r + SoParameter.colorSO.r) / 2, (listIngredientsUtilises[0].GetCR_SO_Ingredient().colorSO.g + SoParameter.colorSO.g) / 2, (listIngredientsUtilises[0].GetCR_SO_Ingredient().colorSO.b + SoParameter.colorSO.b) / 2, 255);
+                    Color MixedColor = new Color((listIngredientsUtilises[0].colorSO.r + SoParameter.colorSO.r) / 2, (listIngredientsUtilises[0].colorSO.g + SoParameter.colorSO.g) / 2, (listIngredientsUtilises[0].colorSO.b + SoParameter.colorSO.b) / 2, 255);
                     SR_liquide.color = MixedColor;
                     SR_eauMonte.color = MixedColor;
                     break; 
@@ -166,8 +166,15 @@ public class SCR_Tasse : SCR_Contenant
 
         else if(SoParameter.actualStateSO == enumEtatIgredient.Tranche)
         {
+
             SpriteRenderer randomTranche = getRandomSr(listSrTranche,listTrancheDejaUtilise);
+
+            listSpriteRandomIndex.Add(listTrancheDejaUtilise.IndexOf(randomTranche)); // nouveau
+            if (recreateBoisson)
+                randomTranche = listSrTranche[Etape];
+
             listTrancheDejaUtilise.Add(randomTranche);
+
 
             randomTranche.color = SoParameter.colorSO;
             randomTranche.gameObject.SetActive(true);
@@ -176,7 +183,13 @@ public class SCR_Tasse : SCR_Contenant
 
         else if (SoParameter.actualStateSO == enumEtatIgredient.Broye)
         {
+
             SpriteRenderer randomBroye = getRandomSr(listSrBroye, listBroyeDejaUtilise);
+
+            listSpriteRandomIndex.Add(listTrancheDejaUtilise.IndexOf(randomBroye)); // nouveau
+            if (recreateBoisson)
+                randomBroye = listSrBroye[Etape];
+
             listBroyeDejaUtilise.Add(randomBroye);
 
             randomBroye.color = SoParameter.colorSO;
@@ -185,13 +198,21 @@ public class SCR_Tasse : SCR_Contenant
 
         else if(SoParameter.actualStateSO == enumEtatIgredient.Rape)
         {
+
             SpriteRenderer randomRape = getRandomSr(listSrRape, listRapeDejaUtilise);
+
+            listSpriteRandomIndex.Add(listTrancheDejaUtilise.IndexOf(randomRape)); // nouveau
+            if (recreateBoisson)
+                randomRape = listSrRape[Etape];
+
+
             listRapeDejaUtilise.Add(randomRape);
 
             randomRape.color = SoParameter.colorSO;
             randomRape.gameObject.SetActive(true);
         }
 
+        Etape++;
 
 
     }
@@ -243,6 +264,9 @@ public class SCR_Tasse : SCR_Contenant
         listRapeDejaUtilise.Clear();
         listTrancheDejaUtilise.Clear();
 
+        listSpriteRandomIndex.Clear();
+        Etape = 0;
+
         SR_liquide.color = Color.white;
 
         listIngredientsUtilises.Clear();
@@ -268,8 +292,20 @@ public class SCR_Tasse : SCR_Contenant
         dicoTransfere[enumResistance.Electrique] = dicoStatBoisson[enumResistance.Electrique];
         dicoTransfere[enumResistance.Lethargique] = dicoStatBoisson[enumResistance.Lethargique];
 
-        instanceSo.CreateBoisson(listIngredientsUtilises, dicoTransfere);
 
+        List<SCR_SO_Ingredient> listIngredientTransfere = new List<SCR_SO_Ingredient>();
+        for (int i = 0; i < listIngredientsUtilises.Count; i++)
+        {
+            listIngredientTransfere.Add(listIngredientsUtilises[i]);
+        }
+
+        List<int> listIndexTransfere = new List<int>();
+        for (int i = 0; i < listSpriteRandomIndex.Count; i++)
+        {
+            listIndexTransfere.Add(listSpriteRandomIndex[i]);
+        }
+
+        instanceSo.CreateBoisson(listIngredientTransfere, dicoTransfere, listIndexTransfere);
         
         return instanceSo;
     }

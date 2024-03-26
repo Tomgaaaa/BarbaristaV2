@@ -78,8 +78,8 @@ public class SCR_GainQuete : MonoBehaviour
             { enumResistance.Lethargique, 100 }
         };
 
-        boisson1R.CreateBoisson(ingredientsUtilises, statBoisson1);
-        boisson2R.CreateBoisson(ingredientsUtilises, statBoisson2);
+        //boisson1R.CreateBoisson(ingredientsUtilises, statBoisson1);
+        //boisson2R.CreateBoisson(ingredientsUtilises, statBoisson2);
 
         CalculeChanceQuete(queteUtilise,true);
 
@@ -111,8 +111,8 @@ public class SCR_GainQuete : MonoBehaviour
             { enumResistance.Lethargique, 100 }
         };
 
-        boisson1R.CreateBoisson(ingredientsUtilises, statBoisson1);
-        boisson2R.CreateBoisson(ingredientsUtilises, statBoisson2);
+        //boisson1R.CreateBoisson(ingredientsUtilises, statBoisson1);
+        //boisson2R.CreateBoisson(ingredientsUtilises, statBoisson2);
 
         CalculeChanceQuete(queteUtilise, true);
     }
