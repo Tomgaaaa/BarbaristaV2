@@ -35,8 +35,6 @@ VAR previousChemin = "vide"
 //dialogue avant que les personnages arrivent 
 ~playSound("I_ArrivéPnjAlerte")
  ~playSound("I_ArrivéPnj")
-  ~stopSound("BarAlatea")
- ~playSound("ChillVibe")
  Sigg: Haaa les voila qui arrivent
 
  
@@ -77,7 +75,6 @@ VAR previousChemin = "vide"
  
  // dialogue apres la reaction des personnages
   ~playSound("I_SiggHappy")
-   ~stopSound("ChillVibe")
 Sigg:Allez hop au travail.
 
 
@@ -158,10 +155,8 @@ Sigg:Allez hop au travail.
  
  - Perso == "Saori" : // dialogue de reaction de quete de Saori
  ~playSound("I_Saori2")
- ~stopSound("BarAlatea")
   {Perso}:Saori s’exprime sur le fait qu’elle est contente d’aller récolter les Aloalgues car leur propriétés curative l’intéresse pour ses recherches mais l’idée d’aller dans une zone avec des Keruscula ne l’enchante pas car elle n’aime pas ces créatures.
   ~stopSound("Joie")
-  ~playSound("BarAlatea")
   
  
  - Perso == "Vikram" : // dialogue de reaction de quete de Vikram

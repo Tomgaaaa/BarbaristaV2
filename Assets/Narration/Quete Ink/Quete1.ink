@@ -96,7 +96,6 @@ Sigg:Allez hop au travail.
  
  - Perso == "Samuel" : // dialogue de presentation de Samuel
   ~playSound("I_BonjourSamuel")
-  ~stopSound("BarAlatea")
  {Perso}:Hey c'est Samuel.
  :Ça va ?
 
