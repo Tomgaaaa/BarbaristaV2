@@ -16,7 +16,7 @@ public class SCR_Trancheuse : SCR_Ustensile
 
     // pour la partie drag
     private Vector3 lastMousePos;
-    public float mouseVelocity;
+    private float mouseVelocity;
     private float forceRotation;
     [SerializeField] private float initialForceRotation = 10;
     private float totalRotation;
@@ -92,7 +92,7 @@ public class SCR_Trancheuse : SCR_Ustensile
 
 
 
-            if (totalRotation > -rotationMax && !needReset)
+            if (totalRotation > -rotationMax )
             {
                 totalRotation -= mouseVelocity * -forceRotation;
                 couteau.Rotate(new Vector3(0, 0, mouseVelocity * -forceRotation));
