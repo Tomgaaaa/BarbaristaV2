@@ -30,7 +30,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
     private Tweener tweenerScale;
   
     private SCR_QueteTableau queteHoverRaycast= null;
-    private List<Collider2D> lastFichePerso= null; // list des ficher persos ou on passe dessus, pour pouvoir re activer leur collider
+    private List<Collider2D> lastFichePerso= new List<Collider2D>(); // list des ficher persos ou on passe dessus, pour pouvoir re activer leur collider
     [SerializeField] private SpriteRenderer outlineRenderer;
     [SerializeField] private LayerMask layerMaskDrag;
     private Collider2D myCollider;
@@ -141,7 +141,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
         }*/
 
 
-        Collider2D squareCollider = Physics2D.OverlapBox(transform.position, ScaleRayCast,0) ;
+        Collider2D squareCollider = Physics2D.OverlapBox(transform.position, ScaleRayCast,0,layerMaskDrag) ;
         if(squareCollider)
         {
             if (squareCollider.transform.GetComponent<SCR_QueteTableau>())
@@ -175,23 +175,24 @@ public class SCR_Ficheperso1 : MonoBehaviour
                 }
 
             }
-            else if (squareCollider.transform.GetComponent<SCR_Ficheperso1>())
+            /*else if (squareCollider.transform.GetComponent<SCR_Ficheperso1>())
             {
+                transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x - diffMousePos.x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y - diffMousePos.y, 0);
 
                 SCR_Ficheperso1 ficheDessous = squareCollider.transform.GetComponent<SCR_Ficheperso1>();
 
-                Collider2D colliderFicheDessous = ficheDessous.GetComponent<Collider2D>();
+                BoxCollider2D colliderFicheDessous = ficheDessous.GetComponent<BoxCollider2D>();
 
-                if (colliderFicheDessous != null)
+                if (!lastFichePerso.Contains(colliderFicheDessous))
                 {
-                    //lastFichePerso.Add(colliderFicheDessous);
+                    lastFichePerso.Add(colliderFicheDessous);
 
                     colliderFicheDessous.enabled = false;
                 }
 
 
 
-            }
+            }*/
             else // si ya ni quete ni fiche perso
             {
 
@@ -276,16 +277,8 @@ public class SCR_Ficheperso1 : MonoBehaviour
         //tweenerScale = transform.DOScale(new Vector3(initialScale.x, initialScale.y, initialScale.z), 1f);
 
         SCR_QueteManager.instanceQueteManager.ShowHiglightForAllQuest(false);
-        myCollider.enabled = true;
 
-        if (lastFichePerso != null)
-        {
-
-            for (int i = 0; i < lastFichePerso.Count; i++)
-            {
-                lastFichePerso[i].enabled = true;
-            }
-        }
+    
             
 
 
@@ -298,13 +291,14 @@ public class SCR_Ficheperso1 : MonoBehaviour
         AudioManager.instanceAM.Play("FichePersoLacher");
         //RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Input.mousePosition)); // créer un Cast pour savoir si on a relaché l'ingrédient sur quelque chose
 
-        Collider2D rayHit = Physics2D.OverlapBox(transform.position, ScaleRayCast, 0);
+        Collider2D rayHit = Physics2D.OverlapBox(transform.position, ScaleRayCast, 0, layerMaskDrag);
 
 
         if (rayHit.transform.GetComponent<SCR_QueteTableau>())
         {
             tweenerScale.Kill();
 
+            Debug.Log("jjj");
             SCR_QueteTableau mQuete = rayHit.transform.GetComponent<SCR_QueteTableau>();
             mQuete.OnDrop(this);
             hexStat.UpdateLine();
@@ -313,22 +307,12 @@ public class SCR_Ficheperso1 : MonoBehaviour
             ScaleRayCast = new Vector2(initialScale.x * 5, initialScale.y * 7);
 
         }
-        else if (rayHit.transform.GetComponent<SCR_Ficheperso1>()) // si on relache la ficher perso sur une autre fiche perso
-        {
-            queteHoverRaycast = null;
-
-            transform.SetParent(null, false);
-
-            MakeSmall(false);
-
-            transform.position = new Vector3(mainCamera.ScreenToWorldPoint(Input.mousePosition).x, mainCamera.ScreenToWorldPoint(Input.mousePosition).y, 0);
-            // remet la position en Z a 0 psk le changement de parent peut faire buger
-
-        }
+        
         
 
 
-            gameObject.layer = LayerMask.NameToLayer("FichePerso");
+        myCollider.enabled = true;
+        gameObject.layer = LayerMask.NameToLayer("FichePerso");
     }
 
 

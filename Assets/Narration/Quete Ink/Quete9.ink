@@ -179,7 +179,7 @@ Sigg:Allez hop au travail
 ~fadeIn(Perso2,0)
   
  ~playSound("I_Siggprepafini")    
-Sigg : Et voila
+Sigg: Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")
  

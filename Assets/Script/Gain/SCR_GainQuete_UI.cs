@@ -77,7 +77,7 @@ public class SCR_GainQuete_UI : MonoBehaviour, ISerializationCallbackReceiver
 
 
 
-        if (SCR_DATA.instanceData.GetJour() <= 3) // 3 psk la retour du jour 2 est pendant le jour 3
+        if (SCR_DATA.instanceData.GetJour() < 3) 
         {
             textNmbQuete.text = "1/1";
             listButton[0].SetActive(false);
@@ -261,7 +261,9 @@ public class SCR_GainQuete_UI : MonoBehaviour, ISerializationCallbackReceiver
         SCR_DATA.instanceData.ClearDay();
 
 
-
+        SCR_DATA.instanceData.EtapeQueteUp();
+        SCR_DATA.instanceData.EtapePersoUp();
+        SCR_DATA.instanceData.JourUP();
         SceneManager.LoadScene("SCE_Quete");
     }
 

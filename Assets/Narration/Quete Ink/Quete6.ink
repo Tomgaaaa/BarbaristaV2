@@ -180,7 +180,7 @@ Sigg:Allez hop au travail
 
 
 ~playSound("I_Siggprepafini")
-Sigg : Et voila
+Sigg: Et voila
 :Bon courage
  ~ FinishDialogue("gainQuete")
  

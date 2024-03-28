@@ -249,7 +249,7 @@ public class SCR_QueteTableau : MonoBehaviour
 
             SCR_QueteManager.instanceQueteManager.AddRemovePersosUtilise(fiche, true);
 
-            if(SCR_DATA.instanceData.GetJour() > 2)
+            if(SCR_DATA.instanceData.GetJour() > 2) //pour changer la quete automatiquement quand il y a 2 persos dessus 
                 SCR_QueteManager.instanceQueteManager.ChangeShowedQuete();
 
         }
