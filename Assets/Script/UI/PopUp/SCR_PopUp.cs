@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 public class SCR_PopUp : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SCR_PopUp : MonoBehaviour
     private void Update()
     {
         gameObject.transform.position = Input.mousePosition + offset;
+        
     }
 
     public void ActivateFromBiome(string popInfoText)
@@ -24,7 +26,18 @@ public class SCR_PopUp : MonoBehaviour
 
     public void Activate(string popInfoTxt, Vector3 offsetParamater)
     {
-        offset = offsetParamater;
+        if (Input.mousePosition.x > Screen.width/2)
+        {
+            offset = offsetParamater;
+            gameObject.GetComponent<RectTransform>().pivot = new Vector2(1, 0.5f);
+           // CreateSprite(gameObject.GetComponent<Image>().sprite, new Vector2(1, 1));
+        }
+        else
+        {
+            offset = offsetParamater;
+            gameObject.GetComponent<RectTransform>().pivot = new Vector2(0, 0.5f);
+            // CreateSprite(gameObject.GetComponent<Image>().sprite, new Vector2(0, 1));
+        }
         gameObject.SetActive(true);
         gameObject.transform.position = Input.mousePosition + offset;
         textInfo.text = popInfoTxt;
@@ -37,5 +50,10 @@ public class SCR_PopUp : MonoBehaviour
     public void CallPopUp(string infoDiff)
     {
         SCR_QueteManager.instanceQueteManager.PopUpReader(infoDiff);
+    }
+
+    void CreateSprite(Sprite actualSprite, Vector2 pivot)
+    {
+        Sprite.Create(actualSprite.texture, actualSprite.rect, pivot);
     }
 }
