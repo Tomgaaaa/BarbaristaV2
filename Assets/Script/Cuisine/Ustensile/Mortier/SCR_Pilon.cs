@@ -31,6 +31,9 @@ public class SCR_Pilon : MonoBehaviour
 
     private bool isMaintenu;
 
+    [SerializeField] private SpriteRenderer outlinePilonRenderer;
+    private Material outlinePilonMaterial;
+
     #region Drag
     private TargetJoint2D myTargetJoint;
     [SerializeField, Range(0f, 1000f)] float frequenceJoint = 5f; // frequence a laquel l'objet essaye de réetablir la distance avec la target
@@ -48,7 +51,7 @@ public class SCR_Pilon : MonoBehaviour
 
         rb.centerOfMass = new Vector3 (0,-0.8f,0); // change le centre de masse du pilon pour le mettre en bas du pilon
 
-
+        outlinePilonMaterial = outlinePilonRenderer.material;
     }
 
     private void OnMouseDown()
@@ -72,7 +75,10 @@ public class SCR_Pilon : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if(!isMaintenu)
+        outlinePilonMaterial.SetFloat("_OutlineDensity", 1f);
+
+
+        if (!isMaintenu)
         {
             Texture2D cursorHover = Resources.Load<Texture2D>("Cursor_HoverOff");
             SCR_Cursor.instanceCursor.ChangeHoverOff(true);
@@ -83,7 +89,10 @@ public class SCR_Pilon : MonoBehaviour
 
     private void OnMouseExit()
     {
-        if(!isMaintenu)
+        outlinePilonMaterial.SetFloat("_OutlineDensity", 0f);
+
+
+        if (!isMaintenu)
         {
             SCR_Cursor.instanceCursor.ChangeClickOff(false);
 
@@ -101,6 +110,7 @@ public class SCR_Pilon : MonoBehaviour
         if (inManipulation)
         {
             RaycastHit2D rayHit = Physics2D.GetRayIntersection(mainCam.ScreenPointToRay(Input.mousePosition)); // cast pour avoir la world position de la souris
+            outlinePilonMaterial.SetFloat("_OutlineDensity", 1f);
 
 
             if (rayHit)// si le cast touche quelque chose
@@ -196,6 +206,9 @@ public class SCR_Pilon : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("DragObject"); // repasse l'objet sur ce layer pour recevoir les Cast
 
         rb.velocity = Vector3.zero; // a voir
+
+        outlinePilonMaterial.SetFloat("_OutlineDensity", 0f);
+
     }
 
     public void SetTargetJointOnAnotherObject(bool needReset = false) // fonction qui ajoute / retire le component TargetJoint, élément principal pour Drag un objet 

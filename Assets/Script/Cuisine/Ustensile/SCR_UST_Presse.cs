@@ -20,12 +20,18 @@ public class SCR_UST_Presse : SCR_Ustensile
     [SerializeField] private GameObject Poid;
     private SCR_Ingredient ingredientActuel;
 
+
+    [SerializeField] private SpriteRenderer outlineRoueRenderer;
+    private Material outlineRoueMaterial;
+
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         etatApresTransformation = enumEtatIgredient.Presse; // vus que c'est le script Presse, l'etat de transformation sera pressé 
         currentRotation = 360;
+
+        outlineRoueMaterial = outlineRoueRenderer.material;
     }
 
     public override void OnDrop(SCR_Ingredient ingredientDropParameter)
@@ -36,11 +42,37 @@ public class SCR_UST_Presse : SCR_Ustensile
         ingredientActuel.transform.rotation = new Quaternion(0, 0, 0.707106829f, 0.707106829f);
     }
 
+    public override void OnMouseUp()
+    {
+        base.OnMouseUp();
+        if(inManipulation)
+            outlineRoueMaterial.SetFloat("_OutlineDensity", 0f);
+
+    }
+
+    public override void OnMouseEnter()
+    {
+        base.OnMouseEnter();
+        if(inManipulation)
+            outlineRoueMaterial.SetFloat("_OutlineDensity", 1f);
+
+    }
+
+    public override void OnMouseExit()
+    {
+        base.OnMouseExit();
+        if(inManipulation)
+            outlineRoueMaterial.SetFloat("_OutlineDensity", 0f);
+
+    }
     public override void OnMouseDrag()
     {
         if(inManipulation) // verifie qu'on manipule bien l'ustensile
         {
             base.OnMouseDrag();
+
+            outlineRoueMaterial.SetFloat("_OutlineDensity", 1f);
+
 
             Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition); // recupere la world position du curseur
             Vector3 mouseDirection = mousePos - roueCrante.position; // calcule le vecteur de direction entre la roue et le curseur
