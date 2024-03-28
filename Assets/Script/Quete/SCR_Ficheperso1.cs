@@ -298,7 +298,6 @@ public class SCR_Ficheperso1 : MonoBehaviour
         {
             tweenerScale.Kill();
 
-            Debug.Log("jjj");
             SCR_QueteTableau mQuete = rayHit.transform.GetComponent<SCR_QueteTableau>();
             mQuete.OnDrop(this);
             hexStat.UpdateLine();

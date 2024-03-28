@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using static SCR_QueteManager;
 
 public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
 {
@@ -15,6 +14,10 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
     [System.Serializable] public class dicoIngredientStockClass : TemplateDico<int, List<enumAllIgredient>> { };
     private Dictionary<int, List<enumAllIgredient>> dicoStock;
     [SerializeField] private List<dicoIngredientStockClass> dicoStockList;
+
+    [System.Serializable] public class dicoEnumSoIngredientClass : TemplateDico<enumAllIgredient, SCR_SO_Ingredient> { };
+    private Dictionary<enumAllIgredient, SCR_SO_Ingredient> dicoEnumSoIngredient;
+    [SerializeField] private List<dicoEnumSoIngredientClass> dicoEnumIngredientList;
 
     public void OnBeforeSerialize()
     {
@@ -39,6 +42,17 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
             if (!dicoStock.ContainsKey(item.key))
             {
                 dicoStock.Add(item.key, item.value);
+            }
+        }
+
+
+        dicoEnumSoIngredient = new Dictionary<enumAllIgredient, SCR_SO_Ingredient>();
+
+        foreach (dicoEnumSoIngredientClass item in dicoEnumIngredientList)
+        {
+            if (!dicoEnumSoIngredient.ContainsKey(item.key))
+            {
+                dicoEnumSoIngredient.Add(item.key, item.value);
             }
         }
     }
@@ -105,7 +119,7 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
 
         }
        
-        /*
+        /*  version avant qu'on rajoute le dico d'ingrédient
         for (int i = 0; i < listDailyIngredient.Count; i++)
         {
             SpriteRenderer ingredientSpawn = Instantiate(prefabIngredient, transforCadrillage);
@@ -160,7 +174,7 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
     public void SpawnIngredientRecompense()
     {
 
-        if (SCR_DATA.instanceData.GetListIngredientGagne().Count == 0)  // si on a pas gagne de recompense on fait pas l'animx
+        if (SCR_DATA.instanceData.GetListIngredientGagne().Count == 0)  // si on a pas gagne de recompense on fait pas l'anim
             return;
 
         AudioManager.instanceAM.Play("CaisseFalling");
@@ -169,6 +183,20 @@ public class SCR_GainIngredient : MonoBehaviour, ISerializationCallbackReceiver
         listDataIngredient = SCR_DATA.instanceData.GetListIngredientGagne();
 
     }
+
+
+    public  List<SCR_SO_Ingredient> GetIngredientGain()
+    {
+        List<SCR_SO_Ingredient> listToSend = new List<SCR_SO_Ingredient>();
+
+        for (int i = 0; i< dicoStock[SCR_DATA.instanceData.GetJour()+1].Count; i++)
+        {
+            enumAllIgredient ingredientAjoute = dicoStock[SCR_DATA.instanceData.GetJour()+1][i];
+            listToSend.Add(dicoEnumSoIngredient[ingredientAjoute]);
+        }
+
+        return listToSend;
+    } 
 
     public void CallCoroutine()
     {

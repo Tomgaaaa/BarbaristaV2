@@ -37,6 +37,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
 
     private Material outlineMaterial;
     private SCR_Contenant lastRefContenantOutline;
+    [SerializeField] private bool spawnFromStart; 
 
     private void Start()
     {
@@ -46,6 +47,12 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         Init(refPool); //initialise les ingrédients qui passe pas par le pool
         mainCam = Camera.main;
         startPosCam = mainCam.transform.position;
+
+        if(spawnFromStart )
+        {
+            refEtagere.SpawnIngredient(myIngredient, false, true);
+        }
+
     }
 
     private void OnEnable() // dans le OnEnable car c'est avant le start
@@ -139,7 +146,7 @@ public class SCR_Ingredient : SCR_PoolItem // script de l'ingrédient et de l'ing
         if (inEtagere) // verifie si l'objet est dans l'etagere ou non 
         {
             inEtagere = false; // l'objet n'est plus dans l'etagere car on l'a pris
-            myIngredient.stockSO--; // retire 1 au stock
+            //myIngredient.stockSO--; // retire 1 au stock
             AudioManager.instanceAM.Play("PickItem");
             refEtagere.SpawnIngredient(myIngredient); // fait spawn un ingrédient dans l'etagere
             //SpawnIngredient(); // fait spawn un ingrédient pour remplacer celui qu'on a pris

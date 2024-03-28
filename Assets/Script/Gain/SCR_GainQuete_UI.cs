@@ -256,8 +256,15 @@ public class SCR_GainQuete_UI : MonoBehaviour, ISerializationCallbackReceiver
     }
     public void GoQuete()
     {
-        
+        List<SCR_SO_Ingredient> dailyIngredient = gainIngredient.GetIngredientGain();
 
+        for(int i = 0; i < dailyIngredient.Count; i++)
+        {
+            SCR_DATA.instanceData.GetListIngredientGagne().Add(dailyIngredient[i]);
+
+        }
+
+        
         SCR_DATA.instanceData.ClearDay();
 
 

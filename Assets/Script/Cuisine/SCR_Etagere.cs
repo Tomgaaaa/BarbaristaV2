@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using static DictionaryLesson;
 
 
 
@@ -31,22 +30,14 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
 
     [System.Serializable] public class dicoOutlineMaterialClass : TemplateDico<enumAllIgredient, Material> { };
     [SerializeField] private List<dicoOutlineMaterialClass> listOutlineMaterial; // juste pour visualiser le dico ci-dessous
-    private Dictionary<enumAllIgredient, Material> dicoOutlineMaterial; 
-
-    #endregion
+    private Dictionary<enumAllIgredient, Material> dicoOutlineMaterial;
 
 
-
-    [SerializeField] private SCR_Pool refPool; // besoin du pool quand on veut rajouter un ingrédient dans le stock et que le stock est à 0
-
-   
-
+    [System.Serializable] public class dicoSoIngredientStockClass : TemplateDico<SCR_SO_Ingredient, int> { };
+    [SerializeField] private List<dicoSoIngredientStockClass> listSoIngredientStock; 
+    private Dictionary<SCR_SO_Ingredient, int> dicoSoIngredientStock;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
     public void OnAfterDeserialize() // permet de faire le lien list (qu'on voit) -> dico (qu'on voit pas)
     {
@@ -89,16 +80,50 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
         }
 
 
+        dicoSoIngredientStock = new Dictionary<SCR_SO_Ingredient, int>();
+        foreach (dicoSoIngredientStockClass item in listSoIngredientStock)
+        {
+            if (!dicoSoIngredientStock.ContainsKey(item.key))
+            {
+                dicoSoIngredientStock.Add(item.key, item.value);
+            }
+        }
+
+
     }
+
+    #endregion
+
+
+
+    [SerializeField] private SCR_Pool refPool; // besoin du pool quand on veut rajouter un ingrédient dans le stock et que le stock est à 0
+
+   
+
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+
+        for (int i = 0; i < SCR_DATA.instanceData.GetListIngredientGagne().Count; i++)
+        {
+            dicoSoIngredientStock[SCR_DATA.instanceData.GetListIngredientGagne()[i]] ++;
+
+        }
+    }
+
+    
 
 
     public void AddIngredient(SCR_SO_Ingredient ingredientAddParameter) // fonction appelé par les boutons, permet de rajouter 1 au stock d'un ingrédient
     {
-        if(ingredientAddParameter.stockSO == 0) // si le stock est a 0 il y a quelque truc a faire en +
+        //if(ingredientAddParameter.stockSO == 0) // backup
+        if(dicoSoIngredientStock[ingredientAddParameter] == 0) // si le stock est a 0 il y a quelque truc a faire en +
         {
-            
 
-            SpawnIngredient(ingredientAddParameter,true); // force le spawn d'un ingrédient car on veut en rajouter un
+            SpawnIngredient(ingredientAddParameter,true,true); // force le spawn d'un ingrédient car on veut en rajouter un
             
 
 
@@ -106,7 +131,8 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
             etiquetteOutOfStock.SetActive(false); // désactive le OutOfStock car on rajouter 1 au stock dans il n'est plus "out of stock"
         }
 
-        ingredientAddParameter.stockSO++; // rajoute 1 au stock
+        //ingredientAddParameter.stockSO++; // backup
+        dicoSoIngredientStock[ingredientAddParameter] ++; // rajoute 1 au stock
         AudioManager.instanceAM.Play("ReposerItem");
         UpdateStockIngredient(ingredientAddParameter); // fonction expliqué ci-dessous
 
@@ -114,10 +140,19 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
 
     }
 
-    public void SpawnIngredient(SCR_SO_Ingredient ingredientRemoveParameter, bool forceSpawnParameter = false) // fonction appelé lorsqu'on clique sur l'ingrédient et qu'il etait sur l'etagere, forceSpawn permet de forcer le spawn meme si il n'y a plus de stock
+    public void SpawnIngredient(SCR_SO_Ingredient ingredientRemoveParameter, bool forceSpawnParameter = false,bool specialSpawnFromStart = false) // fonction appelé lorsqu'on clique sur l'ingrédient et qu'il etait sur l'etagere, forceSpawn permet de forcer le spawn meme si il n'y a plus de stock
     {
-        if (ingredientRemoveParameter.stockSO > 0 || forceSpawnParameter) // s'il y a encore du stock ou qu'on force le spawn d'un ingrédient
+        if (!specialSpawnFromStart)
         {
+            dicoSoIngredientStock[ingredientRemoveParameter]--;
+
+        }
+
+        // if (ingredientRemoveParameter.stockSO > 0 || forceSpawnParameter) //backup
+        if (dicoSoIngredientStock[ingredientRemoveParameter] > 0 || forceSpawnParameter) // s'il y a encore du stock ou qu'on force le spawn d'un ingrédient
+        {
+
+            
             SCR_PoolItem poolItem = refPool.Instantiate(); // on "instancie" un pool item depuis le pool
            SCR_Ingredient poolIngredient = poolItem.GetComponent<SCR_Ingredient>(); // on cast le pool item en ingrédient
            poolIngredient.SetSoIngredient(ingredientRemoveParameter, this); // définit quel est l'ingrédient 
@@ -136,9 +171,11 @@ public class SCR_Etagere : MonoBehaviour, ISerializationCallbackReceiver // scri
 
     public void UpdateStockIngredient(SCR_SO_Ingredient IngredientPris ) // fonction qui met a jour le text de stock d'un ingrédient, appelé lorsqu'un ingrédient est pris
     {
-        dicoTextStock[IngredientPris.myEnumIngredientSO].text = "x" + IngredientPris.stockSO; ; // recupere quel text on doit update grace au dico, le texte affiché est juste un X et me int du stock de l'ingrédient 
+        //dicoTextStock[IngredientPris.myEnumIngredientSO].text = "x" + IngredientPris.stockSO; ; //  backup
+        dicoTextStock[IngredientPris.myEnumIngredientSO].text = "x" + dicoSoIngredientStock[IngredientPris]; ; // recupere quel text on doit update grace au dico, le texte affiché est juste un X et me int du stock de l'ingrédient 
 
-        if (IngredientPris.stockSO == 0) // si le stock d'un ingrédient qu'on a pris arrive a 0, il faut faire quelques trucs
+       // if (IngredientPris.stockSO == 0) // back up
+        if (dicoSoIngredientStock[IngredientPris] == 0) // si le stock d'un ingrédient qu'on a pris arrive a 0, il faut faire quelques trucs
         {
             GameObject etiquetteOutOfStock =  dicoOutOfStock[IngredientPris.myEnumIngredientSO]; // recupere le OutOfStock associé a l'ingrédient pris
             etiquetteOutOfStock.SetActive(true); //active l'objet, qui est désactiver de base

@@ -26,7 +26,7 @@ public class SCR_SO_Ingredient : ScriptableObject, ISerializationCallbackReceive
     public Sprite mySpriteSO; // le sprite associé à l'ingrédient / ingrédient transformé
     public enumEtatIgredient actualStateSO; // définit l'état actuel de l'ingrédient 
     [SerializeField] private List<dicoResistanceClass> listDicoResistance; // permet de visualiser le dico des résistances, en private psk on a pas besoin d'y toucher, c'est juste pour visualiser en éditor
-    public int stockSO; // c'est le stock... ça me parait évident, int psk y'aura pas de demi-ingrédient 
+    //public int stockSO; // c'est le stock... ça me parait évident, int psk y'aura pas de demi-ingrédient 
     [SerializeField] private List<dicoIngredientTransfoClass> listDicoIngredientTransfo; // permet de visualiser le dico qui référencie les ingrédient transfo, en private psk on a pas besoin d'y toucher, c'est juste pour visualiser en éditor
     public Color colorSO;
     public Sprite PresserTasse;

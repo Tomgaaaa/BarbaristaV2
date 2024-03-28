@@ -18,7 +18,6 @@ public class SCR_DATA : MonoBehaviour
     private int etapePerso; // index indiquant quel perso on est en train de servir
 
     public int jour = 1; // le jour actuelle
-    public Texture2D texture;
 
 
     private void Awake() // sinbgleton + don't destroy pour qu'il recupere / garde les datas a travers les scenes
