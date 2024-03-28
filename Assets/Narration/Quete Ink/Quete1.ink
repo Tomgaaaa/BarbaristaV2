@@ -56,7 +56,7 @@ VAR previousChemin = "vide"
  // dialogue avant que les personnages reagissent a la quete
  ~playSound("I_ExpressionSigg")
  Sigg: Bon voici votre quête.
-:Recherche d'un filon de Alatium pour fabriquer des armures.
+:Il s'agit d'une recherche d'un filon d'Alatium.
  
  
  ->BeforeReaction //renvoi au chemin ci dessous
