@@ -140,7 +140,6 @@ public class SCR_Bouilloire : SCR_Ustensile
     {
  
         OnMouseUp(); // reset la rotation de la bouilloire
-        eauVerse = 0f; // reset la valeur d'eau versé
 
         refTasse.FinishBoisson();
 
@@ -152,7 +151,9 @@ public class SCR_Bouilloire : SCR_Ustensile
     public void CallNextBoisson()
     {
         SCR_CuisineManager.instanceCM.FinisshBouilloire();
-       
+        eauVerse = 0f; // reset la valeur d'eau versé
+
+
     }
 
     public void UnlockBouilloire() // debloque le fait de pouvoir manipuler la bouilloire

@@ -218,7 +218,7 @@ public class SCR_Ficheperso1 : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawCube(transform.position, new Vector2(ScaleRayCast.x,ScaleRayCast.y));
+        //Gizmos.DrawCube(transform.position, new Vector2(ScaleRayCast.x,ScaleRayCast.y));
     }
 
 #endif
