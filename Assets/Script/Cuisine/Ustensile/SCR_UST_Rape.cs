@@ -25,11 +25,18 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
 
     private SCR_Ingredient IngredientIn;
 
+
+    [SerializeField] private SpriteRenderer poigneeOutlineRenderer;
+    private Material poigneeOutlineMaterial;
+
+
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
         etatApresTransformation = enumEtatIgredient.Rape; // vus que c'est le script Rape, l'etat de transformation sera rapé 
+
+        poigneeOutlineMaterial = poigneeOutlineRenderer.material;
     }
 
 
@@ -46,19 +53,44 @@ public class SCR_UST_Rape : SCR_Ustensile // script specifique a la rape, hérite
         
     }
 
+    public override void OnMouseOver()
+    {
+        base.OnMouseOver();
+
+        if(inManipulation)
+            poigneeOutlineMaterial.SetFloat("_OutlineDensity", 1f);
+
+
+    }
+
+
+
+    public override void OnMouseExit()
+    {
+        base.OnMouseExit();
+
+        if(inManipulation)
+            poigneeOutlineMaterial.SetFloat("_OutlineDensity", 0f);
+
+    }
+
     public override void OnMouseUp()
     {
         base.OnMouseUp();
         Destroy(plaqueTargetJoint); plaqueTargetJoint = null;
         refPlaque.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        
+        poigneeOutlineMaterial.SetFloat("_OutlineDensity", 0f);
+
+
     }
     public override void OnMouseDrag()
     {
         if(inManipulation)
         {
             base.OnMouseDrag();
-            
+            poigneeOutlineMaterial.SetFloat("_OutlineDensity", 1f);
+
+
             Vector3 diffMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition) - lastMousePos; // vecteur de direction entre la derniere position de la souris et sa position actuelle
             
             PosX += diffMousePos.x; // positif quand on va vers le haut ou droite et negatif quand on va a gauche ou en bas

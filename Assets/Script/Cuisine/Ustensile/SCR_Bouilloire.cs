@@ -37,8 +37,16 @@ public class SCR_Bouilloire : SCR_Ustensile
     public override void OnMouseOver()
     {
         base.OnMouseOver();
-    }
+        outlineMaterial.SetFloat("_OutlineDensity", 1f);
 
+    }
+    public override void OnMouseExit()
+    {
+        base.OnMouseExit();
+        outlineMaterial.SetFloat("_OutlineDensity", 0f);
+
+
+    }
     public override void OnMouseDown()
     {
         isMaintenu = true;
@@ -60,6 +68,8 @@ public class SCR_Bouilloire : SCR_Ustensile
     {
         if(inManipulation)
         {
+            outlineMaterial.SetFloat("_OutlineDensity", 1f);
+
             Vector3 diffMousePos = mainCam.ScreenToWorldPoint(Input.mousePosition) - lastMousePos; // vecteur de direction entre la derniere position de la souris et sa position actuelle
             RotZ += diffMousePos.x + diffMousePos.y; // positif quand on va vers le haut ou droite et negatif quand on va a gauche ou en bas
             float rotzClamp = Mathf.Clamp(RotZ, 0, 1); // clamp cette valeur à 1 car on veut on mouvement ver le haut ou droite pour effectuer la manipulation
@@ -115,6 +125,7 @@ public class SCR_Bouilloire : SCR_Ustensile
     {
 
         base.OnMouseUp();
+        outlineMaterial.SetFloat("_OutlineDensity", 0f);
 
         //Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
 

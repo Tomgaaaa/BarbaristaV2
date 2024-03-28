@@ -92,7 +92,7 @@ public class SCR_Trancheuse : SCR_Ustensile
 
 
 
-            if (totalRotation > -rotationMax )
+            if (totalRotation >= -rotationMax )
             {
                 totalRotation -= mouseVelocity * -forceRotation;
                 couteau.Rotate(new Vector3(0, 0, mouseVelocity * -forceRotation));
